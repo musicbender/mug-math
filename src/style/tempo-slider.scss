@@ -1,0 +1,49 @@
+@import './variables';
+
+.tempo-slider-section {
+  position: relative;
+  height: 18em;
+  top: -4em;
+}
+
+.tempo-slider-div {
+  position: absolute;
+  width: 75%;
+  height: 4em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.tempo-slider {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 100px);
+  transform: translate(-50%,-50%);
+}
+
+.tempo-slider > div > div > div:first-child {
+  background-color: rgb(189, 189, 189) !important;
+}
+
+.plus,
+.minus {
+  display: inline-block;
+  position: absolute !important;
+  top: -11%;
+}
+
+.plus {
+  right: -2%;
+}
+
+.minus {
+  left: -5%;
+}
+
+.plus .material-icons,
+.minus .material-icons {
+  font-size: 32px !important;
+}

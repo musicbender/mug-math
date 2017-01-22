@@ -1,0 +1,33 @@
+@import './variables.scss';
+@import './helpers/_mixins.scss';
+@import './helpers/_placeholders.scss';
+
+.ripple-container {
+  position: absolute;
+  top: 90%;
+  right: 11%;
+  width: 50px;
+  height: 50px;
+}
+
+.ripple-1,
+.ripple-2,
+.ripple-3 {
+  @extend %ripple;
+  @extend %ripple-animate;
+}
+
+.ripple-hide {
+  opacity: 0;
+}
+
+@include keyframes(ripple-animation) {
+    from {
+      transform: scale(0.5);
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(10);
+      opacity: 0;
+    }
+}
