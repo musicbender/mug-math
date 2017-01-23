@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {soundOn, soundOff, changeRipple} from '../actions/index';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { soundOn, soundOff, changeRipple } from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
 import Tick from '../components/tick.jsx';
@@ -51,8 +51,11 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({sound, speed}) {
-    return {sound, speed};
+function mapStateToProps({dripTimer_sound, dripTimer_speed}) {
+    return {
+      sound: dripTimer_sound,
+      speed: dripTimer_speed
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);

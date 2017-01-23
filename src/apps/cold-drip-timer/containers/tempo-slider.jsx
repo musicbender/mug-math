@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {soundOn, soundOff, changeTempo} from '../actions/index';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { soundOn, soundOff, changeTempo } from '../actions/index';
 import Slider from 'material-ui/Slider';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -81,8 +81,12 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({sound, speed, range}) {
-    return {sound, speed, range};
+function mapStateToProps({dripTimer_sound, dripTimer_speed, dripTimer_range}) {
+    return {
+      sound: dripTimer_sound,
+      speed: dripTimer_speed,
+      range: dripTimer_range
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TempoSlider);

@@ -1,6 +1,5 @@
 import { CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/index';
 
-
 const initialState = {
     tempo: 40,
     color: "rgb(121,85,72)",
