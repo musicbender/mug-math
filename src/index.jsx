@@ -18,7 +18,7 @@ const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && windo
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router histry={browserHistory} routes={routes} />
+    <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.getElementById('app')
 );

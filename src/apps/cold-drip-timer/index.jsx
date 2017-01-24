@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {onRange, offRange} from '../actions/index';
+import {onRange, offRange} from './actions/index';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -52,8 +52,11 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({speed, range}) {
-    return {speed, range};
+function mapStateToProps({dripTimer_speed, dripTimer_range}) {
+    return {
+    speed: dripTimer_speed,
+    range: dripTimer_range
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from './apps/App.jsx';
 import HomeMenu from './apps/home/index.jsx';
 import ColdDripTimer from './apps/cold-drip-timer/index.jsx'

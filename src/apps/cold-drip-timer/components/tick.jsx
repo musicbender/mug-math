@@ -11,7 +11,7 @@ class Tick extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
   newOscillator() {
