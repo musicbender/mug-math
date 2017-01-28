@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import {onRange, offRange} from './actions/index';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import DropdownMenu from './components/dropdown-menu.jsx';
 import barStyle from './style/bar-style';
@@ -15,18 +13,7 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 class ColdDripTimer extends Component {
   render() {
-    const muiTheme = getMuiTheme({
-      slider: {
-        handleSize: 20,
-        selectionColor: this.props.speed.color,
-        handleColorZero: 'rgb(70, 50, 42)',
-        handleFillColor: 'rgb(70, 50, 42)',
-        rippleColor: this.props.speed.color
-      }
-    });
-
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-div">
           <AppBar
             title="Cold Drip Coffee Timer"
@@ -40,7 +27,6 @@ class ColdDripTimer extends Component {
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext } />
         </div>
-      </MuiThemeProvider>
     )
   }
 }

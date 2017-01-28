@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import HomeMenu from './home/index.jsx';
+import '../style/header.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <div className="header-container">
-          <h6 className="header-title">Mug Math</h6>
-        </div>
+        <HomeMenu />
         {this.props.children}
       </div>
     )

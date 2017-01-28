@@ -6,7 +6,6 @@ import ColdDripTimer from './apps/cold-drip-timer/index.jsx'
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomeMenu} />
-    <Route path="apps/cold-drip-timer" component={ColdDripTimer} />
+    <Route path="apps/cold-drip-timer/" component={ColdDripTimer} />
   </Route>
 );

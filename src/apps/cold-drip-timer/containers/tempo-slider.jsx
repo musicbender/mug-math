@@ -52,7 +52,7 @@ class TempoSlider extends Component {
     var iconColor = {color: this.props.speed.color};
 
     return (
-      <section className="tempo-slider-section">
+      <section className="section section-bottom tempo-slider-section">
         <div className="tempo-slider-div">
           <IconButton className="minus" onClick={() => this.handleIcon("down")} iconStyle={iconColor}>
             <FontIcon className="material-icons">remove</FontIcon>

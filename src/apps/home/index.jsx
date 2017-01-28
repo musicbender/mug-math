@@ -6,7 +6,7 @@ class HomeMenu extends Component {
     return (
       <div className="home-container">
         <h1>Mug Math</h1>
-        <Link to='apps/cold-drip-timer' className="home-app-btn">
+        <Link to='apps/cold-drip-timer/' className="home-app-btn" onlyActiveOnIndex="true">
           Cold Drip Timer
         </Link>
       </div>
