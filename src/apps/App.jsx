@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { connect } from 'react-redux';
 import HomeMenu from './home/index.jsx';
 import '../style/header.scss';
 
 class App extends Component {
   render() {
+    const muiTheme = getMuiTheme({
+      slider: {
+        handleSize: 20,
+        selectionColor: this.props.speed.color,
+        handleColorZero: 'rgb(70, 50, 42)',
+        handleFillColor: 'rgb(70, 50, 42)',
+        rippleColor: this.props.speed.color
+      }
+    });
+
     return (
-      <div className="app-container">
-        <HomeMenu />
-        {this.props.children}
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div className="app-container">
+          <HomeMenu />
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
 
-export default App;
+function mapStateToProps({dripTimer_speed}) {
+  return {
+    speed: dripTimer_speed
+  };
+}
+
+export default connect(mapStateToProps)(App);
