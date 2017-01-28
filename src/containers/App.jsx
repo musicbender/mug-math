@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
-import HomeMenu from './home/index.jsx';
+import HomeMenu from './Home-Menu.jsx';
 import '../style/header.scss';
 
 class App extends Component {
