@@ -1,33 +1,54 @@
 @import './helpers/_variables';
+@import './helpers/_mixins';
+@import './helpers/_placeholders';
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 body {
-  background-color: $offwhite;
+    background-color: $offwhite;
 }
 
 h1 {
-  font-size: $h1-size;
-  text-align: center;
+    font-size: $h1-size;
+    text-align: center;
+}
+
+.app-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
 }
 
 .app-div {
-  margin: 0 auto;
-  height: 46em;
-  padding: 0;
-  width: 100%;
-  max-width: 52em;
-  overflow: hidden;
-  background-color: $white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    @include super-center;
+    @include box-shadow(2);
+    margin: 0 auto;
+    height: 46em;
+    padding: 0;
+    width: 100%;
+    max-width: 52em;
+    overflow: hidden;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.app-div-outter {
+  @extend %full-position;
+  z-index: 5;
+}
+
+.home-container {
+    @extend %full-position;
+    z-index: 1;
 }
 
 .section {
-  position: relative;
-  top: -3em;
-  height: 23em;
+    position: relative;
+    top: -3em;
+    height: 23em;
 }

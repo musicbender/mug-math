@@ -1,25 +1,20 @@
 @import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
 
 .tempo-slider-div {
-  position: absolute;
+  @include super-center;
   width: 75%;
   height: 4em;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
 }
 
 .tempo-slider {
+  @include super-center;
   display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: calc(100% - 100px);
-  transform: translate(-50%,-50%);
 }
 
 .tempo-slider > div > div > div:first-child {
-  background-color: rgb(189, 189, 189) !important;
+  background-color: $grey !important;
 }
 
 .plus,

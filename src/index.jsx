@@ -7,6 +7,7 @@ import routes from './routes.jsx';
 import reducers from './reducers';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import './style/base.scss';
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();
