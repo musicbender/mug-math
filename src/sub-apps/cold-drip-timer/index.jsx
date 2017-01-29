@@ -15,7 +15,7 @@ class ColdDripTimer extends Component {
   render() {
     return (
       <div>
-        <div className="app-div">
+        <div className="sub-app">
           <AppBar
             title="Cold Drip Coffee Timer"
             titleStyle={barStyle.title}
@@ -28,7 +28,7 @@ class ColdDripTimer extends Component {
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext } />
         </div>
-        <Link to="/" className="app-div-outter" />
+        <Link to="/" className="sub-app-outter" />
       </div>
     )
   }

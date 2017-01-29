@@ -60,6 +60,9 @@ var config = {
       ServiceWorkerWebpackPluginConfig,
       CopyWebpackPluginConfig
     ],
+    devServer: {
+      historyApiFallback: true,
+    },
     watch: true
 }
 
