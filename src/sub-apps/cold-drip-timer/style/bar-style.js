@@ -13,8 +13,7 @@ const barStyle = {
   iconLeft: {
     marginTop: 0,
     height: 45,
-    width: 45,
-    display: "none"
+    width: 45
   },
   iconRight: {
     marginTop: 0
