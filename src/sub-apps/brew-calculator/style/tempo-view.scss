@@ -1,0 +1,15 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+
+.tempo-view-div {
+  @include super-center($left:  7%, $x: 0);
+  font-family: $font;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: $white;
+}
+
+.tempo-number {
+  font-size: 2.5em;
+  font-weight: 400;
+}

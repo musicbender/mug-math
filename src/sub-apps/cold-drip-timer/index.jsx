@@ -3,11 +3,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import {onRange, offRange} from './actions/index';
-import PlaybackControls from './containers/playback-controls.jsx';
-import TempoSlider from './containers/tempo-slider.jsx';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import PlaybackControls from './containers/playback-controls.jsx';
+import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
 import barStyle from './style/bar-style';
 

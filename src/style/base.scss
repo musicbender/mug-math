@@ -56,3 +56,17 @@ h1 {
 .home-blur {
   filter: blur(15px);
 }
+
+/*******MEDIA QUERIES*******/
+
+@media only screen and (max-width: 767px) {
+  .sub-app {
+    height: 100%;
+  }
+  .section {
+    height: 50%;
+  }
+  .home-blur {
+    filter: none;
+  }
+}

@@ -17,6 +17,9 @@ class HomeMenu extends Component {
         <Link to='sub-apps/cold-drip-timer/' className="home-app-btn" onlyActiveOnIndex>
           Cold Drip Timer
         </Link>
+        <Link to='sub-apps/brew-calculator/' className="home-app-btn" onlyActiveOnIndex>
+          Brew Calculator
+        </Link>
       </div>
     )
   }
