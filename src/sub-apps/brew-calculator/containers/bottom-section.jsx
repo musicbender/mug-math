@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { LABELS } from '../constants/index';
+import '../style/bottom-section.scss';
 
 class BottomSection extends Component {
   render() {

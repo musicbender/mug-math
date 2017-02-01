@@ -5,12 +5,19 @@
 $black: rgb(60,60,60);
 $white: #fff;
 $offwhite: rgb(245,245,245);
+$lightgrey: rgb(225,225,225);
 $grey: rgb(189,189,189);
+
 $brown500: #795548;
 
 
 /*******Font*******/
 
-$h1-size: 3em;
-$p-size: 1em;
+$extra-large: 3em;
+$large: 2em;
+$small: 1em;
+
+$h1-size: $extra-large;
+$p-size: $small;
+
 $font: 'Roboto', sans-serif;

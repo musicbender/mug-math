@@ -1,0 +1,31 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+@import '../../../style/helpers/_placeholders';
+
+.number-container {
+  @extend %full-position;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.number-btn {
+  position: relative;
+  width: 33.33%;
+  height: 25%;
+  float: left;
+  border: 1px solid $lightgrey;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: $offwhite;
+  }
+}
+
+.number-btn-num {
+  @include super-center;
+  font-family: $font;
+  font-size: 1.3em;
+}
