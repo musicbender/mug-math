@@ -47,15 +47,29 @@ h1 {
     z-index: 1;
 }
 
-.section {
-    position: relative;
-    top: -3em;
-    height: 23em;
-}
-
 .home-blur {
   filter: blur(15px);
 }
+
+
+/*******Sections*******/
+
+.section {
+  position: relative;
+}
+
+.section-top {
+  position: relative;
+  top: 0;
+  height: 20em;
+}
+
+.section-bottom {
+    position: relative;
+    top: 0;
+    height: 23em;
+}
+
 
 /*******MEDIA QUERIES*******/
 
