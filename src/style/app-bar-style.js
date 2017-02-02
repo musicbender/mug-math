@@ -7,7 +7,7 @@ const appBarStyle = {
     lineHeight: '45px'
   },
   bar: {
-    height: 45
+    height: 45,
   },
   iconLeft: {
     marginTop: 0,

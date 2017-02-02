@@ -68,19 +68,34 @@ h1 {
 
 .section {
   position: relative;
+  top: 0;
 }
 
 .section-top {
-  position: relative;
-  top: 0;
-  height: 23em;
+  height: calc(50% - 45px);
 }
 
 .section-bottom {
-    position: relative;
-    top: 0;
-    height: 20.3em;
+  height: 50%;
 }
+
+.section-top.withtabs {
+  height: calc(60% - 45px);
+}
+
+.section-bottom.withtabs {
+  height: 40%;
+}
+
+.section-top.withcolorfade {
+  height: calc(50% - 45px + 3em);
+  top: -3em;
+}
+
+.section-bottom.withcolorfade {
+  top: -3em;
+}
+
 
 
 /*******MEDIA QUERIES*******/
@@ -89,8 +104,12 @@ h1 {
   .sub-app {
     height: 100%;
   }
-  .section {
-    height: 50%;
+  .section,
+  .section.withtabs {
+    height: calc(50% - 22.5px);
+  }
+  .section.withcolorfade {
+    height: calc(50% - 22.5px + 3em);
   }
   .home-blur {
     filter: none;

@@ -33,7 +33,7 @@ class PlaybackControls extends Component {
     render() {
       const styles = { backgroundColor: this.props.speed.color }
       return (
-          <section id="playback-controls" className="section section-top playback-controls-div" style={styles}>
+          <section id="playback-controls" className="section section-top playback-controls-div withcolorfade" style={styles}>
             <TempoView tempo={this.props.speed.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
             <Ripple rippleState={this.props.speed.ripple}/>

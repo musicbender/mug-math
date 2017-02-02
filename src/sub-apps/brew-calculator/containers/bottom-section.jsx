@@ -17,7 +17,7 @@ class BottomSection extends Component {
     );
 
     return (
-      <section className="section section-bottom number-btn-section">
+      <section className="section section-bottom withtabs">
         <div className="number-container">
           {labelList}
         </div>
