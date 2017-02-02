@@ -2,6 +2,15 @@
 @import './helpers/_mixins';
 @import './helpers/_placeholders';
 
+
+/*******GLOBALS*******/
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body,
 html {
     margin: 0;
@@ -18,11 +27,8 @@ h1 {
     text-align: center;
 }
 
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
+/*******MAIN*******/
 
 .app-container {
     position: relative;

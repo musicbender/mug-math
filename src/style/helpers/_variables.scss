@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100, 400');
 
+/*******Material Color*******/
+
+@import 'node_modules/sass-material-colors/sass/sass-material-colors';
+
+
 /*******Color*******/
 
-$black: rgb(60,60,60);
+$black: rgb(80,80,80);
 $white: #fff;
 $offwhite: rgb(245,245,245);
 $lightgrey: rgb(225,225,225);
 $grey: rgb(189,189,189);
-
-$brown500: #795548;
 
 
 /*******Font*******/

@@ -1,6 +1,10 @@
 @import '../../../style/helpers/_variables';
 @import '../../../style/helpers/_mixins';
 
+.app-bar {
+  background-color: material-color('teal','900') !important;
+}
+
 .tempo-view-div {
   @include super-center($left:  7%, $x: 0);
   font-family: $font;

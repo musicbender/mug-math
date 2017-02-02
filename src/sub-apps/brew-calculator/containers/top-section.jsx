@@ -5,7 +5,7 @@ import '../style/top-section.scss';
 class TopSection extends Component {
     render() {
       return (
-          <section id="playback-controls" className="section section-top brew-section-top">
+          <section className="section section-top brew-section-top">
             <BrewTabs />
           </section>
       )

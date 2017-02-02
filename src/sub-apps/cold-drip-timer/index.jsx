@@ -9,7 +9,7 @@ import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
-import barStyle from './style/bar-style';
+import barStyle from '../../style/app-bar-style';
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -26,6 +26,7 @@ class ColdDripTimer extends Component {
             title="Cold Drip Coffee Timer"
             titleStyle={barStyle.title}
             style={barStyle.bar}
+            className="app-bar"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}

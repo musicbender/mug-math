@@ -1,4 +1,4 @@
-const barStyle = {
+const appBarStyle = {
   title: {
     textAlign: "left",
     fontSize: 18,
@@ -7,7 +7,6 @@ const barStyle = {
     lineHeight: '45px'
   },
   bar: {
-    backgroundColor: "rgba(70, 50, 42, 0.3)",
     height: 45
   },
   iconLeft: {
@@ -20,4 +19,4 @@ const barStyle = {
   }
 }
 
-export default barStyle;
+export default appBarStyle;

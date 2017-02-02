@@ -6,7 +6,7 @@ import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
-import barStyle from './style/bar-style';
+import barStyle from '../../style/app-bar-style';
 
 
 class BrewCalculator extends Component {
@@ -22,6 +22,7 @@ class BrewCalculator extends Component {
             title="Brew Ratio Calculator"
             titleStyle={barStyle.title}
             style={barStyle.bar}
+            className="app-bar"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}

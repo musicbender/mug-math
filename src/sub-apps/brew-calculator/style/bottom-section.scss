@@ -29,10 +29,9 @@
   }
 }
 
-
-
 .number-btn-num {
   @include super-center;
   font-family: $font;
   font-size: 1.3em;
+  color: $black;
 }
