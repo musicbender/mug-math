@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import navigation from './router_navigation';
+import navigation from './reducer_navigation';
 
 const rootReducer = combineReducers({
   navigation

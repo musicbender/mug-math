@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeMode, changeBlock, changeNum } from '../actions/index';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { teal800 } from 'material-ui/styles/colors';
 import CalcMode from '../components/calc-mode.jsx';
@@ -26,5 +28,18 @@ class BrewTabs extends Component {
   }
 }
 
+function mapStateToProps({navigation}) {
+  return {
+    navigation
+  }
+}
 
-export default BrewTabs;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    changeMode,
+    changeBlock,
+    changeNum
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrewTabs);
