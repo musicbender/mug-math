@@ -6,10 +6,17 @@ const backspace = () => { return <ContentBackspace /> ;}
 export const LABELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", backspace()];
 
 class BottomSection extends Component {
+  handleClick(num) {
+    console.log(num);
+    if (typeof num === "object") {
+      console.log('backspace');
+    }
+  }
+
   render() {
     const labelList = LABELS.map((label, index) => {
         return (
-          <div className="number-btn" key={index}>
+          <div className="number-btn" key={index} onClick={() => this.handleClick(label)}>
             <div className="number-btn-num">{label}</div>
           </div>
         );

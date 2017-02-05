@@ -5,3 +5,25 @@
 .brew-section-top {
   background-color: $grey;
 }
+
+/*******Tabs*******/
+
+.tabs {
+  height: 100%;
+}
+
+.tabs > div:nth-child(3) {
+  height: calc(100% - 48px);
+  > div {
+    height: 100%;
+  > div {
+      height: 100%;
+    }
+  }
+}
+
+[class*="-calc-container"] {
+  position: relative;
+  width: 100%;
+  height: 33.33%;
+}
