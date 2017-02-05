@@ -1,0 +1,16 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+@import '../../../style/helpers/_placeholders';
+
+[class*="-calc-container"].result {
+  background-color: $offwhite;
+}
+
+[class*="-calc-container"].second {
+  border-top: 1px solid $lightgrey;
+}
+
+.calc-body {
+  @include super-center();
+  color: $black;
+}
