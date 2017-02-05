@@ -2,7 +2,7 @@ import { MODE_CHANGE, BLOCK_CHANGE, NUM_CHANGE } from '../constants/index';
 
 const initialState = {
   mode: "ratio",
-  blockSelected: "coffee",
+  block: "coffee",
   coffee: 0,
   water: 0,
   ratio: 0

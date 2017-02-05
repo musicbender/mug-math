@@ -6,7 +6,7 @@ class TopSection extends Component {
     render() {
       return (
           <section className="section section-top withtabs">
-            <BrewTabs className="tabs-container"/>
+            <BrewTabs test="test" className="tabs-container"/>
           </section>
       )
     }

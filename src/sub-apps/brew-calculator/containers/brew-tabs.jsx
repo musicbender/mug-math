@@ -11,16 +11,34 @@ const tabStyle = {
 }
 
 class BrewTabs extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleTabChange = this.handleTabChange.bind(this);
+  }
+
+  handleTabChange(value) {
+    const { changeMode } = this.props;
+    changeMode(value);
+  }
+
   render() {
+    const { mode, block, changeMode, changeBlock } = this.props;
+
     return (
-      <Tabs tabItemContainerStyle={tabStyle} className="brew-tabs">
-        <Tab label="Find Ratio" className="tab brew-tab-1">
+      <Tabs
+        tabItemContainerStyle={tabStyle}
+        className="brew-tabs"
+        value={mode}
+        onChange={this.handleTabChange}
+      >
+        <Tab label="Find Ratio" value="ratio" className="tab brew-tab-1">
           <CalcMode mode="ratio" />
         </Tab>
-        <Tab label="Find Water" className="tab brew-tab-2">
-          <h4>Second Tab</h4>
+        <Tab label="Find Water" value="water" className="tab brew-tab-2">
+          <h4>{this.props.mode} in {this.props.block}</h4>
         </Tab>
-        <Tab label="Find Coffee" className="tab brew-tab-3">
+        <Tab label="Find Coffee" value="coffee" className="tab brew-tab-3">
           <h4>Third Tab</h4>
         </Tab>
       </Tabs>
@@ -28,9 +46,10 @@ class BrewTabs extends Component {
   }
 }
 
-function mapStateToProps({navigation}) {
+function mapStateToProps({brewCalc}) {
   return {
-    navigation
+    mode: brewCalc.navigation.mode,
+    block: brewCalc.navigation.block
   }
 }
 
