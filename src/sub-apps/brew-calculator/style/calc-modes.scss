@@ -2,6 +2,13 @@
 @import '../../../style/helpers/_mixins';
 @import '../../../style/helpers/_placeholders';
 
+
+[class*="-calc-container"] {
+  position: relative;
+  width: 100%;
+  height: 33.33%;
+}
+
 [class*="-calc-container"].result {
   background-color: $offwhite;
 }
@@ -10,7 +17,7 @@
   border-top: 1px solid $lightgrey;
 }
 
-.calc-body {
+.brew-calc-body {
   @include super-center();
   color: $black;
 }

@@ -11,19 +11,20 @@ const tabStyle = {
 class BrewTabs extends Component {
   render() {
     return (
-      <Tabs tabItemContainerStyle={tabStyle} className="tabs">
-        <Tab label="Find Ratio" className="tab tab-1">
-          <CalcMode prefix="ratio" />
+      <Tabs tabItemContainerStyle={tabStyle} className="brew-tabs">
+        <Tab label="Find Ratio" className="tab brew-tab-1">
+          <CalcMode mode="ratio" />
         </Tab>
-        <Tab label="Find Water" className="tab tab-2">
+        <Tab label="Find Water" className="tab brew-tab-2">
           <h4>Second Tab</h4>
         </Tab>
-        <Tab label="Find Coffee" className="tab tab-3">
+        <Tab label="Find Coffee" className="tab brew-tab-3">
           <h4>Third Tab</h4>
         </Tab>
       </Tabs>
     );
   }
 }
+
 
 export default BrewTabs;

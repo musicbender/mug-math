@@ -8,11 +8,11 @@
 
 /*******Tabs*******/
 
-.tabs {
+.brew-tabs {
   height: 100%;
 }
 
-.tabs > div:nth-child(3) {
+.brew-tabs > div:nth-child(3) {
   height: calc(100% - 48px);
   > div {
     height: 100%;
@@ -20,10 +20,4 @@
       height: 100%;
     }
   }
-}
-
-[class*="-calc-container"] {
-  position: relative;
-  width: 100%;
-  height: 33.33%;
 }

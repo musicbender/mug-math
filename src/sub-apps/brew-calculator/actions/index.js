@@ -1,7 +1,22 @@
-import { NUM_CHANGE } from '../constants/index';
+import { MODE_CHANGE, BLOCK_CHANGE, NUM_CHANGE } from '../constants/index';
 
-export function changeNum(actionType) {
+export function changeMode(mode) {
   return {
-    type: NUM_CHANGE
+    type: MODE_CHANGE,
+    mode
+  }
+}
+
+export function changeBlock(block) {
+  return {
+    type: BLOCK_CHANGE,
+    block
+  }
+}
+
+export function changeNum(input) {
+  return {
+    type: NUM_CHANGE,
+    input
   }
 }
