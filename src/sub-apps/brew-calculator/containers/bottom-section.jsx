@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeNum } from '../actions/index';
 import ContentBackspace from 'material-ui/svg-icons/content/backspace';
 import '../style/bottom-section.scss';
 
@@ -7,12 +10,8 @@ export const LABELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", backspace()];
 
 class BottomSection extends Component {
   handleClick(num) {
-    console.log(num);
-    if (typeof num === "object") {
-      console.log('backspace');
-    }
+    this.props.changeNum(num, this.props.block);
   }
-
   render() {
     const labelList = LABELS.map((label, index) => {
         return (
@@ -33,4 +32,23 @@ class BottomSection extends Component {
   }
 }
 
-export default BottomSection;
+function mapStateToProps({brewCalc}) {
+    const { mode, block } = brewCalc.navigation;
+    const { coffee, water, ratio } = brewCalc.values;
+
+    return {
+      mode,
+      block,
+      coffee,
+      water,
+      ratio
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    changeNum
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BottomSection);

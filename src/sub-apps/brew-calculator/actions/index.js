@@ -14,9 +14,10 @@ export function changeBlock(block) {
   }
 }
 
-export function changeNum(input) {
+export function changeNum(input, block) {
   return {
     type: NUM_CHANGE,
-    input
+    input,
+    block
   }
 }

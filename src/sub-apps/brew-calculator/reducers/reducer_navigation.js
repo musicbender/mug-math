@@ -1,17 +1,17 @@
-import { MODE_CHANGE, BLOCK_CHANGE, NUM_CHANGE } from '../constants/index';
+import { MODE_CHANGE, BLOCK_CHANGE } from '../constants/index';
 
 const initialState = {
   mode: "ratio",
-  block: "coffee",
-  coffee: 0,
-  water: 0,
-  ratio: 0
+  block: "coffee"
 }
 
-export default function subApp(state = initialState, action) {
+export default function navigation(state = initialState, action) {
   switch (action.type) {
     case MODE_CHANGE:
       return {...state, mode: action.mode};
+
+    case BLOCK_CHANGE:
+      return {...state, block: action.block};
 
     default:
       return state;

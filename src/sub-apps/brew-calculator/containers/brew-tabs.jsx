@@ -33,7 +33,7 @@ class BrewTabs extends Component {
         onChange={this.handleTabChange}
       >
         <Tab label="Find Ratio" value="ratio" className="tab brew-tab-1">
-          <CalcMode mode="ratio" />
+          <CalcMode mode={mode} />
         </Tab>
         <Tab label="Find Water" value="water" className="tab brew-tab-2">
           <h4>{this.props.mode} in {this.props.block}</h4>
