@@ -5,18 +5,18 @@ import { changeNum } from '../actions/index';
 import ContentBackspace from 'material-ui/svg-icons/content/backspace';
 import '../style/bottom-section.scss';
 
-const backspace = () => { return <ContentBackspace /> ;}
-export const LABELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", backspace()];
+export const LABELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", "delete"];
 
 class BottomSection extends Component {
   handleClick(num) {
     this.props.changeNum(num, this.props.block);
   }
   render() {
+    const createDelete = () => { return <ContentBackspace /> ;}
     const labelList = LABELS.map((label, index) => {
         return (
           <div className="number-btn" key={index} onClick={() => this.handleClick(label)}>
-            <div className="number-btn-num">{label}</div>
+            <div className="number-btn-num">{label === "delete" ? createDelete() : label}</div>
           </div>
         );
       }
