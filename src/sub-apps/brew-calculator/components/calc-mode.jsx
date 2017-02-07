@@ -5,13 +5,19 @@ import RatioBlock from './block_ratio.jsx';
 import '../style/calc-modes.scss';
 
 export default (props) => {
-  const { mode } = props;
+  const nav = {
+    mode: props.mode,
+    block: props.block,
+    changeBlock: props.changeBlock
+  }
+
+  const {coffee, water, ratio} = props;
 
   return (
     <div>
-      <CoffeeBlock mode={mode} order="first"/>
-      <WaterBlock mode={mode} order="second"/>
-      <RatioBlock mode={mode} order="result"/>
+      <CoffeeBlock {...nav} coffee={coffee} order="first"/>
+      <WaterBlock {...nav} water={water} order="second"/>
+      <RatioBlock {...nav} ratio={ratio} order="result"/>
     </div>
   )
 }

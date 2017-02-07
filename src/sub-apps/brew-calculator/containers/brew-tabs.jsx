@@ -18,22 +18,28 @@ class BrewTabs extends Component {
   }
 
   handleTabChange(value) {
-    const { changeMode } = this.props;
-    changeMode(value);
+    this.props.changeMode(value);
   }
 
   render() {
-    const { mode, block, changeMode, changeBlock } = this.props;
+    const propsObj = {
+      mode: this.props.mode,
+      block: this.props.block,
+      changeBlock: this.props.changeBlock,
+      coffee: this.props.coffee,
+      water: this.props.water,
+      ratio: this.props.ratio
+    }
 
     return (
       <Tabs
         tabItemContainerStyle={tabStyle}
         className="brew-tabs"
-        value={mode}
+        value={this.props.mode}
         onChange={this.handleTabChange}
       >
         <Tab label="Find Ratio" value="ratio" className="tab brew-tab-1">
-          <CalcMode mode={mode} />
+          <CalcMode {...propsObj} />
         </Tab>
         <Tab label="Find Water" value="water" className="tab brew-tab-2">
           <h4>{this.props.mode} in {this.props.block}</h4>
@@ -47,9 +53,14 @@ class BrewTabs extends Component {
 }
 
 function mapStateToProps({brewCalc}) {
+  const { mode, block } = brewCalc.navigation;
+  const { coffee, water, ratio } = brewCalc.values;
   return {
-    mode: brewCalc.navigation.mode,
-    block: brewCalc.navigation.block
+    mode,
+    block,
+    coffee,
+    water,
+    ratio
   }
 }
 
