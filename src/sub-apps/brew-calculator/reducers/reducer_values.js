@@ -11,7 +11,14 @@ export default function values(state = initialState, action) {
     case NUM_CHANGE:
 
       function deleteLast(input) {
-        let newInput = input.substr(0, input.length-1);
+        var newInput;
+
+        if (input.length === 1 || !input.length) {
+          newInput = 0;
+        } else {
+          newInput = input.substr(0, input.length-1);
+        }
+        
         return newInput;
       }
 
