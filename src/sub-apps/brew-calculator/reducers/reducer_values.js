@@ -11,55 +11,73 @@ export default function values(state = initialState, action) {
     case NUM_CHANGE:
 
       function onlyOneDecimal(current) {
-        let a = current.toString();
-        console.log(a.indexOf('.') > -1 ? false : true);
-        return a.indexOf('.') > -1 ? false : true;
+        return current.indexOf('.') > -1 ? false : true;
       }
 
       function deleteLast(current) {
         var newInput;
-        var c = current.toString();
 
-        if (c.length === 1 || !c.length) {
+        if (current.length === 1 || !current.length) {
           newInput = 0;
         } else {
-          c = c.substr(0, c.length-1);
+          let c = current.substr(0, current.length-1);
           newInput = c;
         }
         return newInput;
+      }
+
+      function numberMax(input, current) {
+        const decimal = current.search(".");
+        var max;
+
+        switch(decimal) {
+          case -1:
+            max = 3;
+            break;
+          case 1:
+            max = 4;
+            break;
+          case 2:
+            max = 5;
+            break;
+          case 3:
+            max = 6;
+            break;
+        }
+
       }
 
       function newNumber(input, current) {
         var output;
 
         switch (true) {
-          case (!current && input !== "delete" && input !== "."):
+          case (!current && input !== "delete" && input !== "." && input !== "0"):
             output = input;
+            break;
+          case (!current && input === "."):
+            output = `0${input}`;
+            break;
+          case (!current && input === "0"):
+            output = current;
             break;
           case (input === "delete"):
             output = deleteLast(current);
             break;
           case (input === "." && onlyOneDecimal(current)):
-            let a = input.toString();
             output = current + input;
             break;
-          case (input === "1"):
-          case (input === "2"):
-          case (input === "3"):
-          case (input === "4"):
-          case (input === "5"):
-          case (input === "6"):
-          case (input === "7"):
-          case (input === "8"):
-          case (input === "9"):
-          case (input === "0"):
+          case (input === "." && !(onlyOneDecimal(current))):
+            console.error('too many decibles');
+            output = current;
+            break;
+          case (input !== "." && input !== "delete"):
             output = `${current}${input}`;
             break;
           default:
             console.error('output error to default');
-            output = 0;
+            output = current;
         }
-        console.log(typeof output);
+
         return output;
       }
 
