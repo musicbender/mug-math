@@ -10,52 +10,67 @@ export default function values(state = initialState, action) {
   switch(action.type) {
     case NUM_CHANGE:
 
-      function deleteLast(input) {
-        var newInput;
+      function onlyOneDecimal(current) {
+        let a = current.toString();
+        console.log(a.indexOf('.') > -1 ? false : true);
+        return a.indexOf('.') > -1 ? false : true;
+      }
 
-        if (input.length === 1 || !input.length) {
+      function deleteLast(current) {
+        var newInput;
+        var c = current.toString();
+
+        if (c.length === 1 || !c.length) {
           newInput = 0;
         } else {
-          newInput = input.substr(0, input.length-1);
+          c = c.substr(0, c.length-1);
+          newInput = c;
         }
-        
         return newInput;
       }
 
+      function newNumber(input, current) {
+        var output;
+
+        switch (true) {
+          case (!current && input !== "delete" && input !== "."):
+            output = input;
+            break;
+          case (input === "delete"):
+            output = deleteLast(current);
+            break;
+          case (input === "." && onlyOneDecimal(current)):
+            let a = input.toString();
+            output = current + input;
+            break;
+          case (input === "1"):
+          case (input === "2"):
+          case (input === "3"):
+          case (input === "4"):
+          case (input === "5"):
+          case (input === "6"):
+          case (input === "7"):
+          case (input === "8"):
+          case (input === "9"):
+          case (input === "0"):
+            output = `${current}${input}`;
+            break;
+          default:
+            console.error('output error to default');
+            output = 0;
+        }
+        console.log(typeof output);
+        return output;
+      }
+
+
       switch (action.block) {
         case "coffee":
-          if (!state.coffee && action.input !== "delete") {
-            return {...state, coffee: action.input}
-          } else {
-            if (action.input === "delete") {
-              let input = deleteLast(state.coffee);
-              return {...state, coffee: input}
-            } else {
-              return {...state, coffee: `${state.coffee}${action.input}`}
-            }
-          }
+          return {...state, coffee: newNumber(action.input, state.coffee)}
         case "water":
-          if (!state.water && action.input !== "delete") {
-            return {...state, water: action.input}
-          } else {
-            if (action.input === "delete") {
-              let input = deleteLast(state.water);
-              return {...state, water: input}
-            } else {
-              return {...state, water: `${state.water}${action.input}`}
-            }
-          }
+          break;
         case "ratio":
-          if (!state.ratio && action.input !== "delete") {
-            return {...state, ratio: action.input}
-          } else {
-            if (action.input === "delete") {
-              let input = deleteLast(state.ratio);
-              return {...state, ratio: input}
-            } else {
-              return {...state, ratio: `${state.ratio}${action.input}`}
-            }
-          }
+          break;
         default:
           return state;
       }

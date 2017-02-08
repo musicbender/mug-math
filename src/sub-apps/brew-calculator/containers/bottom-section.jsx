@@ -5,7 +5,7 @@ import { changeNum } from '../actions/index';
 import ContentBackspace from 'material-ui/svg-icons/content/backspace';
 import '../style/bottom-section.scss';
 
-export const LABELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ".", "delete"];
+const LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", '.', "delete"];
 
 class BottomSection extends Component {
   handleClick(num) {
