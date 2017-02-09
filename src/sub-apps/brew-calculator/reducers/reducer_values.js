@@ -92,9 +92,9 @@ export default function values(state = initialState, action) {
         case "coffee":
           return {...state, coffee: newNumber.output(action.input, state.coffee)}
         case "water":
-          return {...state, water: newNumber.output(action.input, state.coffee)}
+          return {...state, water: newNumber.output(action.input, state.water)}
         case "ratio":
-          return {...state, ratio: newNumber.output(action.input, state.coffee)}
+          return {...state, ratio: newNumber.output(action.input, state.ratio)}
         default:
           return state;
       }

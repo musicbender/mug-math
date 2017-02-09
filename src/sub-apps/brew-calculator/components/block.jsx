@@ -7,13 +7,13 @@ export default (props) => {
     changeBlock(name);
   }
 
-  function addArrow() {
+  function selected() {
     return name === block ? <span>--</span> : '';
   }
 
   return (
     <div className={`brew-block-${mode} brew-block ${order} brew-${type}`} onClick={() => handleClick()}>
-      <div className="brew-calc-body">{addArrow()}{props.children}</div>
+      <div className="brew-calc-body">{selected()}{props.children}</div>
     </div>
   )
 }
