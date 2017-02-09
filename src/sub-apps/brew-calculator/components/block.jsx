@@ -4,11 +4,17 @@ export default (props) => {
   const { mode, block, changeBlock, type, name, order} = props;
 
   function handleClick() {
-    changeBlock(name);
+    if (notResult()) {
+      changeBlock(name);
+    }
+  }
+
+  function notResult() {
+    return order !== "result" ? true : false;
   }
 
   function selected() {
-    return name === block ? <span>--</span> : '';
+    return (name === block && notResult()) ? <span>--</span> : '';
   }
 
   return (
