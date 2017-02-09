@@ -1,7 +1,6 @@
 import React from 'react';
-import CoffeeBlock from './block_coffee.jsx';
-import WaterBlock from './block_water.jsx';
-import RatioBlock from './block_ratio.jsx';
+import BrewBlock from './block.jsx';
+
 import '../style/calc-modes.scss';
 
 export default (props) => {
@@ -15,9 +14,9 @@ export default (props) => {
 
   return (
     <div>
-      <CoffeeBlock {...nav} coffee={coffee} order="first"/>
-      <WaterBlock {...nav} water={water} order="second"/>
-      <RatioBlock {...nav} ratio={ratio} order="result"/>
+      <BrewBlock {...nav} name="coffee" type={coffee} order="first">{coffee}g of coffee</BrewBlock>
+      <BrewBlock {...nav} name="water" type={water} order="second">{water}g of water</BrewBlock>
+      <BrewBlock {...nav} name="ratio" type={ratio} order="result">Ratio of 1:{ratio}</BrewBlock>
     </div>
   )
 }
