@@ -38,13 +38,13 @@ class BrewTabs extends Component {
         value={this.props.mode}
         onChange={this.handleTabChange}
       >
-        <Tab label="Find Ratio" value="ratio" className="tab brew-tab-1">
+        <Tab label="Find Ratio" value="findRatio" className="tab brew-tab-1">
           <CalcMode {...propsObj} />
         </Tab>
-        <Tab label="Find Water" value="water" className="tab brew-tab-2">
+        <Tab label="Find Water" value="findWater" className="tab brew-tab-2">
           <h4>{this.props.mode} in {this.props.block}</h4>
         </Tab>
-        <Tab label="Find Coffee" value="coffee" className="tab brew-tab-3">
+        <Tab label="Find Coffee" value="findCoffee" className="tab brew-tab-3">
           <h4>Third Tab</h4>
         </Tab>
       </Tabs>

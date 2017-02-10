@@ -3,17 +3,17 @@ import React from 'react';
 export default (props) => {
   const { mode, block, changeBlock, type, name, order} = props;
 
-  function handleClick() {
+  const handleClick = () => {
     if (notResult()) {
       changeBlock(name);
     }
   }
 
-  function notResult() {
+  const notResult = () => {
     return order !== "result" ? true : false;
   }
 
-  function selected() {
+  const selected = () => {
     return (name === block && notResult()) ? <span>--</span> : '';
   }
 
