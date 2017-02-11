@@ -1,4 +1,4 @@
-import { MODE_CHANGE, BLOCK_CHANGE, NUM_CHANGE } from '../constants/index';
+import { MODE_CHANGE, BLOCK_CHANGE, NUM_CHANGE, NUM_CLEAR } from '../constants/index';
 
 export function changeMode(mode) {
   return {
@@ -20,5 +20,11 @@ export function changeNum(input, mode, block) {
     input,
     mode,
     block
+  }
+}
+
+export function clearNum() {
+  return {
+    type: NUM_CLEAR
   }
 }

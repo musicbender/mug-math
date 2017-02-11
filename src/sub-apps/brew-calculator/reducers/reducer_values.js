@@ -1,4 +1,4 @@
-import { NUM_CHANGE } from '../constants/index';
+import { NUM_CHANGE, NUM_CLEAR } from '../constants/index';
 
 const initialState = {
   coffee: 0,
@@ -145,6 +145,14 @@ export default function values(state = initialState, action) {
 
       const output = calculate.result()
       return {...state, ...output}
+
+    case NUM_CLEAR:
+      return {
+        ...state,
+        coffee: 0,
+        water: 0,
+        ratio: 0
+      }
 
     default:
       return state;

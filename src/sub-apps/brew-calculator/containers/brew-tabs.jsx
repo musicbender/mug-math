@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeMode, changeBlock, changeNum } from '../actions/index';
+import { changeMode, changeBlock, changeNum, clearNum } from '../actions/index';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { teal800 } from 'material-ui/styles/colors';
 import CalcMode from '../components/calc-mode.jsx';
@@ -19,6 +19,7 @@ class BrewTabs extends Component {
 
   handleTabChange(value) {
     this.props.changeMode(value);
+    this.props.clearNum();
   }
 
   render() {
@@ -68,7 +69,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     changeMode,
     changeBlock,
-    changeNum
+    changeNum,
+    clearNum
   }, dispatch)
 }
 
