@@ -11,10 +11,12 @@ export default function values(state = initialState, action) {
     case NUM_CHANGE:
 
       const newNum = {
+        //check for multiple decimals
         onlyOneDecimal: function(current) {
           return current.indexOf('.') > -1 ? false : true;
         },
 
+        //backspace
         deleteLast: function(current) {
           var newInput;
 
@@ -27,6 +29,7 @@ export default function values(state = initialState, action) {
           return newInput;
         },
 
+        //find our max number limit
         findMax: function(current) {
           const decimal = current.indexOf(".");
           var max;
@@ -49,10 +52,12 @@ export default function values(state = initialState, action) {
           return max;
         },
 
+        //check if number is maxed out
         isNotMax: function(current) {
           return current.length >= this.findMax(current) ? false : true;
         },
 
+        //what our number will be based on input and current number
         output: function(input, current) {
           var output;
 
@@ -87,27 +92,29 @@ export default function values(state = initialState, action) {
           return output;
         },
 
+        //get final number result
         getNum: function() {
           return this.output(action.input, state[action.block])
         }
       }
 
       const calculate = {
-        findRatio: function(coffee, water) {
-          let sum = Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
+        findRatio: function(c, w) {
+          let sum = Math.round((parseFloat(w) / parseFloat(c)) * 10) / 10;
 
           return sum !== Infinity && !isNaN(sum) ? sum : "0";
         },
 
-        findWater: function() {
-          return;
+        findWater: function(c, r) {
+          const sum = Math.round(c * r);
+
+          return sum !== Infinity && !isNaN(sum) ? sum : "0";
         },
 
-        findCoffee: function() {
-          return;
-        },
+        findCoffee: function(w, r) {
+          const sum = Math.round((parseFloat(w) / parseFloat(r)) * 10) / 10;
 
-        getConstant: function(a, b) {
+          return sum !== Infinity && !isNaN(sum) ? sum : "0";
           return;
         },
 
@@ -124,7 +131,7 @@ export default function values(state = initialState, action) {
                 water = newNum.getNum();
               }
 
-              var result = {
+              const result = {
                 [action.block]: newNum.getNum(),
                 ratio: this.findRatio(coffee, water)
               }
@@ -133,17 +140,47 @@ export default function values(state = initialState, action) {
             }
 
             case "findWater": {
-              break;
+              var coffee, ratio;
+
+              if (action.block === "coffee") {
+                coffee = newNum.getNum();
+                ratio = state.ratio;
+              } else if ( action.block === "ratio") {
+                coffee = state.coffee;
+                ratio = newNum.getNum();
+              }
+
+              const result = {
+                [action.block]: newNum.getNum(),
+                water: this.findWater(coffee, ratio)
+              }
+
+              return result;
             }
 
             case "findCoffee": {
-              break;
+              var water, ratio;
+
+              if (action.block === "water") {
+                water = newNum.getNum();
+                ratio = state.ratio;
+              } else if ( action.block === "ratio") {
+                water = state.water;
+                ratio = newNum.getNum();
+              }
+
+              const result = {
+                [action.block]: newNum.getNum(),
+                coffee: this.findCoffee(water, ratio)
+              }
+
+              return result;
             }
           }
         }
       }
 
-      const output = calculate.result()
+      const output = calculate.result();
       return {...state, ...output}
 
     case NUM_CLEAR:
@@ -155,6 +192,7 @@ export default function values(state = initialState, action) {
       }
 
     default:
+    console.log("NUM_CHANGE: default");
       return state;
   }
 }
