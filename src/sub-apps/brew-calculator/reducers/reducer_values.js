@@ -89,16 +89,59 @@ export default function values(state = initialState, action) {
         num: this.output(action.input, state[action.block])
       }
 
-      switch (action.block) {
-        case "coffee":
-          return {...state, coffee: newNum.output(action.input, state[action.block])}
-        case "water":
-          return {...state, water: newNum.output(action.input, state[action.block])}
-        case "ratio":
-          return {...state, ratio: newNum.output(action.input, state[action.block])}
-        default:
-          return state;
+      const calculate = {
+        findRatio: function(coffee, water) {
+          return Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10
+        },
+
+        findWater: function() {
+          return;
+        },
+
+        findCoffee: function() {
+          return;
+        },
+
+        getConstant: function(a, b) {
+          return;
+        },
+
+        result: function() {
+          switch (action.mode) {
+            case "findRatio": {
+              var coffee, water;
+
+              if (action.block === "coffee") {
+                coffee = newNum.num;
+                water = state.water;
+              } else if ( action.block === "water") {
+                coffee = state.coffee;
+                water = newNum.num;
+              }
+
+              var result = {
+                [action.block]: newNum.num,
+                ratio: this.findRatio(coffee, water)
+              }
+
+              console.log(result);
+
+              return result;
+            }
+
+            case "findWater": {
+              break;
+            }
+
+            case "findCoffee": {
+              break;
+            }
+          }
+        }
       }
+
+      const output = calculate.result()
+      return {...state, ...output}
 
     default:
       return state;
@@ -106,5 +149,13 @@ export default function values(state = initialState, action) {
   }
 }
 
-//GET ratio
-//Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
+// switch (action.block) {
+//   case "coffee":
+//     return {...state, coffee: newNum.output(action.input, state[action.block])}
+//   case "water":
+//     return {...state, water: newNum.output(action.input, state[action.block])}
+//   case "ratio":
+//     return {...state, ratio: newNum.output(action.input, state[action.block])}
+//   default:
+//     return state;
+// }
