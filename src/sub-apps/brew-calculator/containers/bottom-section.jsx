@@ -9,7 +9,8 @@ const LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", '.', "delete"]
 
 class BottomSection extends Component {
   handleClick(num) {
-    this.props.changeNum(num, this.props.block);
+    const {mode, block} = this.props;
+    this.props.changeNum(num, mode, block);
   }
   render() {
     const createDelete = () => { return <ContentBackspace /> ;}

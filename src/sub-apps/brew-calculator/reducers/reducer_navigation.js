@@ -1,7 +1,7 @@
 import { MODE_CHANGE, BLOCK_CHANGE } from '../constants/index';
 
 const initialState = {
-  mode: "ratio",
+  mode: "findRatio",
   block: "coffee"
 }
 

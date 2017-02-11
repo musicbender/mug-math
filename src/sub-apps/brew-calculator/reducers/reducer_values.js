@@ -52,10 +52,6 @@ export default function values(state = initialState, action) {
           return current.length >= this.findMax(current) ? false : true;
         },
 
-        calculate: function(find) {
-          return;
-        },
-
         output: function(input, current) {
           var output;
 
@@ -88,28 +84,23 @@ export default function values(state = initialState, action) {
           }
 
           return output;
-        },
-
-        answers: function() {
-          return;
         }
       }
 
       switch (action.block) {
         case "coffee":
-          return {...state, coffee: newNum.output(action.input, state[action.block])}
+          return {...state, coffee: newNum.output(action.input, state.coffee)}
         case "water":
-          return {...state, water: newNum.output(action.input, state[action.block])}
+          return {...state, water: newNum.output(action.input, state.water)}
         case "ratio":
-          return {...state, ratio: newNum.output(action.input, state[action.block])}
+          return {...state, ratio: newNum.output(action.input, state.ratio)}
         default:
           return state;
       }
 
-
-
     default:
       return state;
+
   }
 }
 
