@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => {
-  const { mode, block, changeBlock, type, name, order} = props;
+  const { mode, block, changeBlock, name, order} = props;
 
   const handleClick = () => {
     if (notResult()) {
@@ -18,7 +18,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`brew-block-${mode} brew-block ${order} brew-${type}`} onClick={() => handleClick()}>
+    <div className={`brew-block-${mode} brew-block ${order} brew-${name}`} onClick={() => handleClick()}>
       <div className="brew-calc-body">{selected()}{props.children}</div>
     </div>
   )

@@ -42,10 +42,10 @@ class BrewTabs extends Component {
           <CalcMode {...propsObj} />
         </Tab>
         <Tab label="Find Water" value="findWater" className="tab brew-tab-2">
-          <h4>{this.props.mode} in {this.props.block}</h4>
+          <CalcMode {...propsObj} />
         </Tab>
         <Tab label="Find Coffee" value="findCoffee" className="tab brew-tab-3">
-          <h4>Third Tab</h4>
+          <CalcMode {...propsObj} />
         </Tab>
       </Tabs>
     );

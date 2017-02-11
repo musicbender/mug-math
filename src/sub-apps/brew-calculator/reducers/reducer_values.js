@@ -95,7 +95,7 @@ export default function values(state = initialState, action) {
       const calculate = {
         findRatio: function(coffee, water) {
           let sum = Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
-          console.log(sum);
+
           return sum !== Infinity && !isNaN(sum) ? sum : "0";
         },
 

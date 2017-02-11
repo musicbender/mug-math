@@ -2,6 +2,9 @@
 @import '../../../style/helpers/_mixins';
 @import '../../../style/helpers/_placeholders';
 
+.brew-block-container {
+  height: 100%;
+}
 
 .brew-block {
   position: relative;
