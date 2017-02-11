@@ -84,16 +84,18 @@ export default function values(state = initialState, action) {
           }
 
           return output;
-        }
+        },
+
+        num: this.output(action.input, state[action.block])
       }
 
       switch (action.block) {
         case "coffee":
-          return {...state, coffee: newNum.output(action.input, state.coffee)}
+          return {...state, coffee: newNum.output(action.input, state[action.block])}
         case "water":
-          return {...state, water: newNum.output(action.input, state.water)}
+          return {...state, water: newNum.output(action.input, state[action.block])}
         case "ratio":
-          return {...state, ratio: newNum.output(action.input, state.ratio)}
+          return {...state, ratio: newNum.output(action.input, state[action.block])}
         default:
           return state;
       }
