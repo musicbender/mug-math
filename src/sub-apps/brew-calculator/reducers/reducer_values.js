@@ -96,7 +96,7 @@ export default function values(state = initialState, action) {
         findRatio: function(coffee, water) {
           let sum = Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
           console.log(sum);
-          return (sum !== Infinity && sum !== null) ? sum : "0";
+          return sum !== Infinity && !isNaN(sum) ? sum : "0";
         },
 
         findWater: function() {
@@ -148,17 +148,5 @@ export default function values(state = initialState, action) {
 
     default:
       return state;
-
   }
 }
-
-// switch (action.block) {
-//   case "coffee":
-//     return {...state, coffee: newNum.output(action.input, state[action.block])}
-//   case "water":
-//     return {...state, water: newNum.output(action.input, state[action.block])}
-//   case "ratio":
-//     return {...state, ratio: newNum.output(action.input, state[action.block])}
-//   default:
-//     return state;
-// }
