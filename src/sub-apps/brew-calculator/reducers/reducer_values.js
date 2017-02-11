@@ -9,6 +9,7 @@ const initialState = {
 export default function values(state = initialState, action) {
   switch(action.type) {
     case NUM_CHANGE:
+
       const newNum = {
         onlyOneDecimal: function(current) {
           return current.indexOf('.') > -1 ? false : true;
@@ -86,12 +87,15 @@ export default function values(state = initialState, action) {
           return output;
         },
 
-        num: this.output(action.input, state[action.block])
+        getNum: function() {
+          return this.output(action.input, state[action.block])
+        }
       }
 
       const calculate = {
         findRatio: function(coffee, water) {
-          return Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10
+          console.log(Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10);
+          return Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
         },
 
         findWater: function() {
@@ -112,15 +116,15 @@ export default function values(state = initialState, action) {
               var coffee, water;
 
               if (action.block === "coffee") {
-                coffee = newNum.num;
+                coffee = newNum.getNum();
                 water = state.water;
               } else if ( action.block === "water") {
                 coffee = state.coffee;
-                water = newNum.num;
+                water = newNum.getNum();
               }
 
               var result = {
-                [action.block]: newNum.num,
+                [action.block]: newNum.getNum(),
                 ratio: this.findRatio(coffee, water)
               }
 
