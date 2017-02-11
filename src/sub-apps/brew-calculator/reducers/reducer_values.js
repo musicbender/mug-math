@@ -94,8 +94,9 @@ export default function values(state = initialState, action) {
 
       const calculate = {
         findRatio: function(coffee, water) {
-          console.log(Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10);
-          return Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
+          let sum = Math.round((parseFloat(water) / parseFloat(coffee)) * 10) / 10;
+          console.log(sum);
+          return (sum !== Infinity && sum !== null) ? sum : "0";
         },
 
         findWater: function() {
@@ -127,8 +128,6 @@ export default function values(state = initialState, action) {
                 [action.block]: newNum.getNum(),
                 ratio: this.findRatio(coffee, water)
               }
-
-              console.log(result);
 
               return result;
             }
