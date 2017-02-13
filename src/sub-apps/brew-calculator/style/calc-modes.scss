@@ -24,7 +24,10 @@
   width: 50%;
   height: 66.66%;
   background-color: material-color('teal', '500');
-  color: $white;
+
+  * {
+    color: $white;
+  }
 
   &:hover,
   &:focus {
@@ -33,7 +36,7 @@
 }
 
 .brew-block.first {
-  border-right: 1px solid rgba(0,0,0,0.15);
+  border-right: 1px solid rgba($black, 0.15);
 }
 
 .brew-block.result {

@@ -11,6 +11,15 @@ export default (props) => {
   }
 
   const {coffee, water, ratio} = props;
+
+  const blockArray = [
+    {id: "coffee", unit: "g", resultText: "of coffee"},
+    {id: "water", unit: "g", resultText: "of water"},
+    {id: "ratio", unit: "", resultText: "Ratio of"}
+  ]
+
+  
+
   var blocks;
 
   if (props.mode === "findRatio") {
@@ -24,16 +33,16 @@ export default (props) => {
   } else if (props.mode === "findWater") {
     blocks = (
       <div className="brew-block-container">
-        <BrewBlock {...nav} name="ratio" order="second">Ratio of 1:{ratio}</BrewBlock>
-        <BrewBlock {...nav} name="coffee" order="first">{coffee}g of coffee</BrewBlock>
+        <BrewBlock {...nav} name="ratio" order="first">Ratio of 1:{ratio}</BrewBlock>
+        <BrewBlock {...nav} name="coffee" order="second">{coffee}g of coffee</BrewBlock>
         <BrewBlock {...nav} name="water" order="result">{water}g of water</BrewBlock>
       </div>
     )
   } else if (props.mode === "findCoffee") {
     blocks = (
       <div className="brew-block-container">
-        <BrewBlock {...nav} name="ratio" order="second">Ratio of 1:{ratio}</BrewBlock>
-        <BrewBlock {...nav} name="water" order="first">{water}g of water</BrewBlock>
+        <BrewBlock {...nav} name="ratio" order="first">Ratio of 1:{ratio}</BrewBlock>
+        <BrewBlock {...nav} name="water" order="second">{water}g of water</BrewBlock>
         <BrewBlock {...nav} name="coffee" order="result">{coffee}g of coffee</BrewBlock>
       </div>
     )
