@@ -8,6 +8,7 @@ const appBarStyle = {
   },
   bar: {
     height: 45,
+    shadow: "none"
   },
   iconLeft: {
     marginTop: 0,

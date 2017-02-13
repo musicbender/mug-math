@@ -11,7 +11,8 @@ import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
   height: barStyle.bar.height,
-  backgroundColor: teal800
+  backgroundColor: teal800,
+  boxShadow: barStyle.bar.shadow
 }
 
 class BrewCalculator extends Component {

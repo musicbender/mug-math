@@ -4,27 +4,43 @@
 
 .brew-block-container {
   height: 100%;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 .brew-block {
   position: relative;
   width: 100%;
   height: 33.33%;
+  float: left;
 }
 
 .brew-block:not(.result) {
+  display: inline-block;
+  width: 50%;
+  height: 66.66%;
+  background-color: material-color('teal', '500');
+  color: $white;
+
   &:hover,
   &:focus {
     cursor: pointer;
   }
 }
 
-.brew-block.result {
-  background-color: $offwhite;
+.brew-block.first {
+  border-right: 1px solid rgba(0,0,0,0.15);
 }
 
-.brew-block.second {
-  border-top: 1px solid $lightgrey;
+.brew-block.result {
+  display: block;
+  background-color: $offwhite;
+  width: 100%;
+  height: 33.33%;
 }
 
 .brew-calc-body {
