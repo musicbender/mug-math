@@ -39,7 +39,7 @@
   .brew-name {
     @include super-center($top: 10%, $y: 0);
     font-size: $small;
-    color: rgba(material-color('teal', '100'), 0.5);
+    color: rgba(material-color('teal', '800'), 0.75);
   }
 
   .brew-value {
@@ -63,7 +63,7 @@
 
 .brew-block.selected {
   border: 4px solid $black;
-} 
+}
 
 
 /*******Result Block*******/
@@ -76,6 +76,6 @@
 
   .brew-result {
     @include super-center();
-    font-size: $large;
+    font-size: $medium;
   }
 }
