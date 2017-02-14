@@ -19,7 +19,7 @@
   float: left;
 }
 
-.brew-block:not(.result) {
+.brew-block:not(:nth-child(3)) {
   display: inline-block;
   width: 50%;
   height: 66.66%;
@@ -35,11 +35,11 @@
   }
 }
 
-.brew-block.first {
+.brew-block:first-child {
   border-right: 1px solid rgba($black, 0.15);
 }
 
-.brew-block.result {
+.brew-block:nth-child(3) {
   display: block;
   background-color: $offwhite;
   width: 100%;

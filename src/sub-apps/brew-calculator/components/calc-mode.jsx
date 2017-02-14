@@ -23,7 +23,6 @@ export default (props) => {
   }
 
   const blocks = orderBlocks();
-  console.log(blocks);
   const blockList = blocks.map((block, index) => {
     return (
       <BrewBlock
@@ -33,6 +32,7 @@ export default (props) => {
         order={index}
         text={block.text}
         unit={block.unit}
+        text={block.resultText}
       />
     )
   });
@@ -43,36 +43,3 @@ export default (props) => {
     </div>
   )
 }
-
-
-
-
-// var blocks;
-//
-// if (props.mode === "findRatio") {
-//   blocks = (
-//     <div className="brew-block-container">
-//       <BrewBlock {...props} name="coffee" order="first">{coffee}g of coffee</BrewBlock>
-//       <BrewBlock {...props} name="water" order="second">{water}g of water</BrewBlock>
-//       <BrewBlock {...props} name="ratio" order="result">Ratio of 1:{ratio}</BrewBlock>
-//     </div>
-//   )
-// } else if (props.mode === "findWater") {
-//   blocks = (
-//     <div className="brew-block-container">
-//       <BrewBlock {...props} name="ratio" order="first">Ratio of 1:{ratio}</BrewBlock>
-//       <BrewBlock {...props} name="coffee" order="second">{coffee}g of coffee</BrewBlock>
-//       <BrewBlock {...props} name="water" order="result">{water}g of water</BrewBlock>
-//     </div>
-//   )
-// } else if (props.mode === "findCoffee") {
-//   blocks = (
-//     <div className="brew-block-container">
-//       <BrewBlock {...props} name="ratio" order="first">Ratio of 1:{ratio}</BrewBlock>
-//       <BrewBlock {...props} name="water" order="second">{water}g of water</BrewBlock>
-//       <BrewBlock {...props} name="coffee" order="result">{coffee}g of coffee</BrewBlock>
-//     </div>
-//   )
-// } else {
-//   return (<p>Error: Could not load blocks</p>)
-// }
