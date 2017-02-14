@@ -50,3 +50,7 @@
   @include super-center();
   color: $black;
 }
+
+.brew-block.selected {
+  border: 4px solid $black;
+}
