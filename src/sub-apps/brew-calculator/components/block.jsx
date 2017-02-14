@@ -20,17 +20,19 @@ export default (props) => {
   const getContent = () => {
     if (notResult()) {
       return (
-        <div>
+        <div className="brew-block-div">
           <div className="brew-name">{name}</div>
           <div className="brew-value">
-            {name === "ratio" ? `1:${props[name]}` : `${props[name]}${unit}`}
+            {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="brew-unit">{unit}</span>
           </div>
         </div>
       )
     } else {
         return (
-          <div className="brew-result">
-            {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
+          <div className="brew-block-div">
+            <div className="brew-result">
+              {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
+            </div>
           </div>
         )
     }
@@ -38,9 +40,7 @@ export default (props) => {
 
   return (
     <div className={`brew-block-${mode} brew-block brew-${name} ${selected()}`} onClick={() => handleClick()}>
-      <div className="brew-calc-body">
         {getContent()}
-      </div>
     </div>
   )
 }

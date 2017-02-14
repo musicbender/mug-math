@@ -12,12 +12,19 @@
   }
 }
 
+.brew-block-div {
+  @extend %full-position;
+  color: $black;
+}
+
 .brew-block {
   position: relative;
   width: 100%;
-  height: 33.33%;
   float: left;
 }
+
+
+/*******Input Blocks*******/
 
 .brew-block:not(:nth-child(3)) {
   display: inline-block;
@@ -27,6 +34,21 @@
 
   * {
     color: $white;
+  }
+
+  .brew-name {
+    @include super-center($top: 10%, $y: 0);
+    font-size: $small;
+    color: rgba(material-color('teal', '100'), 0.5);
+  }
+
+  .brew-value {
+    @include super-center();
+    font-size: $extra-large;
+  }
+
+  .brew-unit {
+    font-size: 0.4em;
   }
 
   &:hover,
@@ -39,18 +61,21 @@
   border-right: 1px solid rgba($black, 0.15);
 }
 
+.brew-block.selected {
+  border: 4px solid $black;
+} 
+
+
+/*******Result Block*******/
+
 .brew-block:nth-child(3) {
   display: block;
   background-color: $offwhite;
   width: 100%;
   height: 33.33%;
-}
 
-.brew-calc-body {
-  @include super-center();
-  color: $black;
-}
-
-.brew-block.selected {
-  border: 4px solid $black;
+  .brew-result {
+    @include super-center();
+    font-size: $large;
+  }
 }

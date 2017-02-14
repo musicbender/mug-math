@@ -30,7 +30,6 @@ export default (props) => {
         name={block.name}
         key={block.name}
         order={index}
-        text={block.text}
         unit={block.unit}
         text={block.resultText}
       />
