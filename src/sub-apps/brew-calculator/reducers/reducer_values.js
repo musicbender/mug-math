@@ -11,6 +11,7 @@ export default function values(state = initialState, action) {
     case NUM_CHANGE:
 
       const newNum = {
+
         //check for multiple decimals
         onlyOneDecimal: function(current) {
           return current.indexOf('.') > -1 ? false : true;
@@ -33,18 +34,22 @@ export default function values(state = initialState, action) {
         findMax: function(current) {
           const decimal = current.indexOf(".");
           var max;
+          var b = action.block;
 
           switch(decimal) {
             case -1:
-              max = 3;
+              max = b === "water" ? 4 : 3;
               break;
             case 1:
-              max = 4;
+              max = 3;
               break;
             case 2:
-              max = 5;
+              max = 4;
               break;
             case 3:
+              max = 5;
+              break;
+            case 4:
               max = 6;
               break;
           }
