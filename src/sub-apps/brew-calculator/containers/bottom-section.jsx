@@ -7,23 +7,27 @@ import '../style/bottom-section.scss';
 
 
 class BottomSection extends Component {
+  constructor(props) {
+    super(props);
+
+    this.changeNumber = this.changeNumber.bind(this);
+  }
   changeNumber(num) {
     const {mode, block} = this.props;
     this.props.changeNum(num, mode, block);
   }
 
   render() {
-    console.log('test');
     return (
       <section className="section section-bottom withtabs">
-        test
+        <KeyPad clickHandle={this.changeNumber} />
       </section>
     )
   }
 }
 
-function mapStateToProps({brewCalc}) {
-    const { mode, block } = brewCalc.navigation;
+function mapStateToProps(state) {
+    const { mode, block } = state.brewCalc.navigation;
 
     return {
       mode,
@@ -38,5 +42,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BottomSection);
-
-// <KeyPad clickHandle={this.changeNumber} />
