@@ -2,32 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeNum } from '../actions/index';
-import ContentBackspace from 'material-ui/svg-icons/content/backspace';
+import KeyPad from '../../../components/key-pad.jsx';
 import '../style/bottom-section.scss';
 
-const LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", '.', "delete"];
 
 class BottomSection extends Component {
-  handleClick(num) {
+  changeNumber(num) {
     const {mode, block} = this.props;
     this.props.changeNum(num, mode, block);
   }
-  render() {
-    const createDelete = () => { return <ContentBackspace /> ;}
-    const labelList = LABELS.map((label, index) => {
-        return (
-          <div className="number-btn" key={index} onClick={() => this.handleClick(label)}>
-            <div className="number-btn-num">{label === "delete" ? createDelete() : label}</div>
-          </div>
-        );
-      }
-    );
 
+  render() {
+    console.log('test');
     return (
       <section className="section section-bottom withtabs">
-        <div className="number-container">
-          {labelList}
-        </div>
+        test
       </section>
     )
   }
@@ -35,14 +24,10 @@ class BottomSection extends Component {
 
 function mapStateToProps({brewCalc}) {
     const { mode, block } = brewCalc.navigation;
-    const { coffee, water, ratio } = brewCalc.values;
 
     return {
       mode,
-      block,
-      coffee,
-      water,
-      ratio
+      block
     }
 }
 
@@ -53,3 +38,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BottomSection);
+
+// <KeyPad clickHandle={this.changeNumber} />

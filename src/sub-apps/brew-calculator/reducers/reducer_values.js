@@ -197,7 +197,6 @@ export default function values(state = initialState, action) {
       }
 
     default:
-    console.log("NUM_CHANGE: default");
       return state;
   }
 }

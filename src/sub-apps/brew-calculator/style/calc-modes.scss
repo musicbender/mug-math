@@ -37,11 +37,11 @@
   }
 
   .brew-name {
-    @include super-center($top: 18%, $y: 0);
-    font-size: $small;
-    color: rgba(255,255,255,1);
+    @include super-center($top: 20%);
+    font-size: $tiny;
+    color: rgba(0, 77, 64, 0.9);
     text-transform: uppercase;
-    border-bottom: 2px solid rgba(0, 77, 64, 0.5);
+    border-bottom: 2px solid rgba(0, 77, 64, 0.6);
     padding-bottom: 0.3em;
   }
 
