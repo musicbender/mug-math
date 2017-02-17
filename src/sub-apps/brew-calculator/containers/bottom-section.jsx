@@ -12,6 +12,7 @@ class BottomSection extends Component {
 
     this.changeNumber = this.changeNumber.bind(this);
   }
+
   changeNumber(num) {
     const {mode, block} = this.props;
     this.props.changeNum(num, mode, block);

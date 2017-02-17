@@ -1,77 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeMode, changeBlock, changeNum, clearNum } from '../actions/index';
+import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { teal800 } from 'material-ui/styles/colors';
 import CalcMode from '../components/calc-mode.jsx';
 
-const tabStyle = {
-  backgroundColor: teal800
-}
+export default (props) => {
 
-class BrewTabs extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleTabChange = this.handleTabChange.bind(this);
+  const tabStyle = {
+    backgroundColor: teal800
   }
 
-  handleTabChange(value) {
-    this.props.changeMode(value);
-    this.props.clearNum();
+  const handleTabChange = (value) => {
+    props.onTab(value);
   }
 
-  render() {
-    const propsObj = {
-      mode: this.props.mode,
-      block: this.props.block,
-      changeBlock: this.props.changeBlock,
-      coffee: this.props.coffee,
-      water: this.props.water,
-      ratio: this.props.ratio
-    }
-
-    return (
-      <Tabs
-        tabItemContainerStyle={tabStyle}
-        className="brew-tabs"
-        value={this.props.mode}
-        onChange={this.handleTabChange}
-      >
-        <Tab label="Find Ratio" value="findRatio" className="tab brew-tab-1">
-          <CalcMode {...propsObj} />
-        </Tab>
-        <Tab label="Find Water" value="findWater" className="tab brew-tab-2">
-          <CalcMode {...propsObj} />
-        </Tab>
-        <Tab label="Find Coffee" value="findCoffee" className="tab brew-tab-3">
-          <CalcMode {...propsObj} />
-        </Tab>
-      </Tabs>
-    );
-  }
+  return (
+    <Tabs
+      tabItemContainerStyle={tabStyle}
+      className="brew-tabs"
+      value={props.mode}
+      onChange={handleTabChange}
+    >
+      <Tab label="Find Ratio" value="findRatio" className="tab brew-tab-1">
+        <CalcMode {...props} />
+      </Tab>
+      <Tab label="Find Water" value="findWater" className="tab brew-tab-2">
+        <CalcMode {...props} />
+      </Tab>
+      <Tab label="Find Coffee" value="findCoffee" className="tab brew-tab-3">
+        <CalcMode {...props} />
+      </Tab>
+    </Tabs>
+  );
 }
-
-function mapStateToProps({brewCalc}) {
-  const { mode, block } = brewCalc.navigation;
-  const { coffee, water, ratio } = brewCalc.values;
-  return {
-    mode,
-    block,
-    coffee,
-    water,
-    ratio
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    changeMode,
-    changeBlock,
-    changeNum,
-    clearNum
-  }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BrewTabs);
