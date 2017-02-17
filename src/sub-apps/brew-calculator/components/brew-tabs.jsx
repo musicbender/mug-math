@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { teal800 } from 'material-ui/styles/colors';
-import CalcMode from './calc-mode.jsx';
+import Modes from './modes.jsx';
 
 export default (props) => {
 
@@ -21,13 +21,13 @@ export default (props) => {
       onChange={handleTabChange}
     >
       <Tab label="Find Ratio" value="findRatio" className="tab brew-tab-1">
-        <CalcMode {...props} />
+        <Modes {...props} />
       </Tab>
       <Tab label="Find Water" value="findWater" className="tab brew-tab-2">
-        <CalcMode {...props} />
+        <Modes {...props} />
       </Tab>
       <Tab label="Find Coffee" value="findCoffee" className="tab brew-tab-3">
-        <CalcMode {...props} />
+        <Modes {...props} />
       </Tab>
     </Tabs>
   );

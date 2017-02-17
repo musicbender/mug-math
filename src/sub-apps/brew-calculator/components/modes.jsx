@@ -1,7 +1,7 @@
 import React from 'react';
 import 'array.prototype.move';
 import BrewBlock from './block.jsx';
-import '../style/calc-modes.scss';
+import '../style/modes.scss';
 
 export default (props) => {
 
