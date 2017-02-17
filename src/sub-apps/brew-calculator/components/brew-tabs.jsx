@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { teal800 } from 'material-ui/styles/colors';
-import CalcMode from '../components/calc-mode.jsx';
+import CalcMode from './calc-mode.jsx';
 
 export default (props) => {
 

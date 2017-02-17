@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeMode, changeBlock, changeNum, clearNum } from '../actions/index';
-import BrewTabs from './brew-tabs.jsx';
+import BrewTabs from '../components/brew-tabs.jsx';
 import '../style/top-section.scss';
 
 class TopSection extends Component {
