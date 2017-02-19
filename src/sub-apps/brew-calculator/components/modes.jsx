@@ -37,7 +37,7 @@ export default (props) => {
   });
 
   return (
-    <div>
+    <div className="block-outer">
         {blockList}
     </div>
   )

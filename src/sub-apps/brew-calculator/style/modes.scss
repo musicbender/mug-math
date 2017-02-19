@@ -23,13 +23,17 @@
   float: left;
 }
 
+.block-outer {
+  background-color: $offwhite;
+}
+
 
 /*******Input Blocks*******/
 
 .brew-block:not(:nth-child(3)) {
   display: inline-block;
-  width: 50%;
-  height: 66.66%;
+  width: calc(50% - 1.5em);
+  height: calc(66.66% - 2em);
   background-color: material-color('teal', '500');
 
   * {
@@ -58,6 +62,14 @@
   &:focus {
     cursor: pointer;
   }
+}
+
+.brew-block:first-child {
+  margin: 1em 0.5em 1em 1em;
+}
+
+.brew-block:nth-child(2) {
+  margin: 1em 1em 1em 0.5em;
 }
 
 .brew-block.selected {
