@@ -74,10 +74,12 @@
 
 .brew-block.selected {
     background-color: material-color('teal','400');
-
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: $fast $easeOut;
+    
     .brew-value {
       font-size: $extra-large;
-      transition: 0.3s $easeOut;
+      transition: $fast $easeOut;
     }
 }
 
