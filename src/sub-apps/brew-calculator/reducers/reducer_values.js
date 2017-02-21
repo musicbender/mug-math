@@ -1,4 +1,5 @@
 import { NUM_CHANGE, NUM_CLEAR } from '../constants/index';
+import calculate from '../util/calculate';
 
 const initialState = {
   coffee: 0,
@@ -103,89 +104,7 @@ export default function values(state = initialState, action) {
         }
       }
 
-      const calculate = {
-        findRatio: function(c, w) {
-          let sum = Math.round((parseFloat(w) / parseFloat(c)) * 10) / 10;
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-        },
-
-        findWater: function(c, r) {
-          const sum = Math.round(c * r);
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-        },
-
-        findCoffee: function(w, r) {
-          const sum = Math.round((parseFloat(w) / parseFloat(r)) * 10) / 10;
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-          return;
-        },
-
-        result: function() {
-          switch (action.mode) {
-            case "findRatio": {
-              var coffee, water;
-
-              if (action.block === "coffee") {
-                coffee = newNum.getNum();
-                water = state.water;
-              } else if ( action.block === "water") {
-                coffee = state.coffee;
-                water = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                ratio: this.findRatio(coffee, water)
-              }
-
-              return result;
-            }
-
-            case "findWater": {
-              var coffee, ratio;
-
-              if (action.block === "coffee") {
-                coffee = newNum.getNum();
-                ratio = state.ratio;
-              } else if ( action.block === "ratio") {
-                coffee = state.coffee;
-                ratio = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                water: this.findWater(coffee, ratio)
-              }
-
-              return result;
-            }
-
-            case "findCoffee": {
-              var water, ratio;
-
-              if (action.block === "water") {
-                water = newNum.getNum();
-                ratio = state.ratio;
-              } else if ( action.block === "ratio") {
-                water = state.water;
-                ratio = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                coffee: this.findCoffee(water, ratio)
-              }
-
-              return result;
-            }
-          }
-        }
-      }
-
-      const output = calculate.result();
+      const output = calculate.result(newNum.getNum(), action.mode, action.block, state);
       return {...state, ...output}
 
     case NUM_CLEAR:
