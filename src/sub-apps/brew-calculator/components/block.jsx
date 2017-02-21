@@ -22,10 +22,7 @@ export default (props) => {
     return (name === block && notResult()) ? "selected" : '';
   }
 
-  const numAdjust = (direction) => {
-    console.log(`Number adjusted: ${direction}`)
-    props.adjustNum(direction);
-  }
+  const numAdjust = (direction) => { props.adjustNum(direction); }
 
   const getContent = () => {
     if (notResult()) {
