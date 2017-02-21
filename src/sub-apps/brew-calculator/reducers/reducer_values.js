@@ -107,12 +107,17 @@ export default function values(state = initialState, action) {
       const output = calculate.result(newNum.getNum(), action.mode, action.block, state);
       return {...state, ...output}
 
-    case NUM_INCREMENT:
-      console.log(`block: ${action.block}. mode: ${action.mode}.`);
-      return {...state, [action.block]: state[action.block] + 1}
+    case NUM_INCREMENT: {
+      const newValue = Number(state[action.block]) + 1;
+      console.log(newValue);
+      return {...state, [action.block]: newValue.toString()}
+    }
 
-    case NUM_DECREMENT:
-      return {...state, [action.block]: state[action.block] - 1}
+    case NUM_DECREMENT: {
+      const newValue = Number(state[action.block]) - 1;
+      console.log(newValue);
+      return {...state, [action.block]: newValue.toString()}
+    }
 
     case NUM_CLEAR:
       return {
