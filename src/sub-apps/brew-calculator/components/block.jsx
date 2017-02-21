@@ -22,6 +22,11 @@ export default (props) => {
     return (name === block && notResult()) ? "selected" : '';
   }
 
+  const numAdjust = (direction) => {
+    console.log(`Number adjusted: ${direction}`)
+    props.adjustNum(direction);
+  }
+
   const getContent = () => {
     if (notResult()) {
       return (
@@ -30,10 +35,10 @@ export default (props) => {
           <div className="brew-value">
             {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="brew-unit">{unit}</span>
           </div>
-          <IconButton style={iconStyles.plus} iconStyle={iconStyles.icon}>
+          <IconButton style={iconStyles.plus} iconStyle={iconStyles.icon} onClick={() => numAdjust(1)}>
             <ContentAdd color={iconColor} />
           </IconButton>
-          <IconButton style={iconStyles.minus} iconStyle={iconStyles.icon}>
+          <IconButton style={iconStyles.minus} iconStyle={iconStyles.icon} onClick={() => numAdjust(-1)}>
             <ContentRemove color={iconColor} />
           </IconButton>
         </div>

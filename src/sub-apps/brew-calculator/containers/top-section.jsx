@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeMode, changeBlock, changeNum, clearNum } from '../actions/index';
+import { changeMode, changeBlock, changeNum, increaseNum, decreaseNum, clearNum } from '../actions/index';
 import BrewTabs from '../components/brew-tabs.jsx';
 import '../style/top-section.scss';
 
@@ -10,11 +10,18 @@ class TopSection extends Component {
     super(props);
 
     this.modeChange = this.modeChange.bind(this);
+    this.adjustNum = this.adjustNum.bind(this);
   }
 
   modeChange(value) {
     this.props.changeMode(value);
     this.props.clearNum();
+  }
+
+  adjustNum(direction) {
+    const {increaseNum, decreaseNum, block, mode} = this.props;
+
+    direction === 1 ? increaseNum(mode, block) : decreaseNum(mode, block);
   }
 
   render() {
@@ -29,7 +36,12 @@ class TopSection extends Component {
 
     return (
         <section className="section section-top withtabs">
-          <BrewTabs className="tabs-container" onTab={this.modeChange}{...propsObj} />
+          <BrewTabs
+            className="tabs-container"
+            onTab={this.modeChange}
+            adjustNum={this.adjustNum}
+            {...propsObj}
+          />
         </section>
     )
   }
@@ -52,6 +64,8 @@ function mapDispatchToProps(dispatch) {
     changeMode,
     changeBlock,
     changeNum,
+    increaseNum,
+    decreaseNum,
     clearNum
   }, dispatch)
 }

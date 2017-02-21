@@ -108,6 +108,7 @@ export default function values(state = initialState, action) {
       return {...state, ...output}
 
     case NUM_INCREMENT:
+      console.log(`block: ${action.block}. mode: ${action.mode}.`);
       return {...state, [action.block]: state[action.block] + 1}
 
     case NUM_DECREMENT:
