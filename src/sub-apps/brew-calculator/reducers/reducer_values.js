@@ -1,4 +1,4 @@
-import { NUM_CHANGE, NUM_CLEAR } from '../constants/index';
+import { NUM_CHANGE, NUM_INCREMENT, NUM_DECREMENT, NUM_CLEAR } from '../constants/index';
 import calculate from '../util/calculate';
 
 const initialState = {
@@ -106,6 +106,12 @@ export default function values(state = initialState, action) {
 
       const output = calculate.result(newNum.getNum(), action.mode, action.block, state);
       return {...state, ...output}
+
+    case NUM_INCREMENT:
+      return {...state, [action.block]: state[action.block] + 1}
+
+    case NUM_DECREMENT:
+      return {...state, [action.block]: state[action.block] - 1}
 
     case NUM_CLEAR:
       return {
