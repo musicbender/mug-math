@@ -18,7 +18,9 @@ const calculate = {
     return;
   },
 
-  result: function(num, mode, block, state) {
+  result: function(num, action, state) {
+    const {mode, block} = action;
+    
     switch (mode) {
       case "findRatio": {
         var coffee, water;

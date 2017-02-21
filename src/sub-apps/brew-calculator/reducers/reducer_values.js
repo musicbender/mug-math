@@ -8,8 +8,9 @@ const initialState = {
 }
 
 export default function values(state = initialState, action) {
+
   switch(action.type) {
-    case NUM_CHANGE:
+    case NUM_CHANGE: {
 
       const newNum = {
 
@@ -104,19 +105,22 @@ export default function values(state = initialState, action) {
         }
       }
 
-      const output = calculate.result(newNum.getNum(), action.mode, action.block, state);
-      return {...state, ...output}
+      const output = calculate.result(newNum.getNum(), action, state);
 
+      return {...state, ...output}
+    }
     case NUM_INCREMENT: {
       const newValue = Number(state[action.block]) + 1;
-      console.log(newValue);
-      return {...state, [action.block]: newValue.toString()}
+      const output = calculate.result(newValue.toString(), action, state);
+
+      return {...state, ...output}
     }
 
     case NUM_DECREMENT: {
       const newValue = Number(state[action.block]) - 1;
-      console.log(newValue);
-      return {...state, [action.block]: newValue.toString()}
+      const output = calculate.result(newValue.toString(), action, state);
+
+      return {...state, ...output}
     }
 
     case NUM_CLEAR:
