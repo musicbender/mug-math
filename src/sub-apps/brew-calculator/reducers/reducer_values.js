@@ -8,12 +8,10 @@ const initialState = {
 }
 
 export default function values(state = initialState, action) {
-
   switch(action.type) {
     case NUM_CHANGE: {
 
       const newNum = {
-
         //check for multiple decimals
         onlyOneDecimal: function(current) {
           return current.indexOf('.') > -1 ? false : true;
@@ -30,38 +28,6 @@ export default function values(state = initialState, action) {
             newInput = c;
           }
           return newInput;
-        },
-
-        //find our max number limit
-        findMax: function(current) {
-          const decimal = current.indexOf(".");
-          var max;
-          var b = action.block;
-
-          switch(decimal) {
-            case -1:
-              max = b === "water" ? 4 : 3;
-              break;
-            case 1:
-              max = 3;
-              break;
-            case 2:
-              max = 4;
-              break;
-            case 3:
-              max = 5;
-              break;
-            case 4:
-              max = 6;
-              break;
-          }
-
-          return max;
-        },
-
-        //check if number is maxed out
-        isNotMax: function(current) {
-          return current.length >= this.findMax(current) ? false : true;
         },
 
         //what our number will be based on input and current number
@@ -89,7 +55,8 @@ export default function values(state = initialState, action) {
               output = current;
               break;
             case (input !== "." && input !== "delete"):
-              output = this.isNotMax(current) ? `${current}${input}` : current;
+              const maximum = calculate.findMax(current, action.block);
+              output = calculate.isNotMax.numpad(current, maximum) ? `${current}${input}` : current;
               break;
             default:
               console.error('output error to default');
@@ -106,19 +73,21 @@ export default function values(state = initialState, action) {
       }
 
       const output = calculate.result(newNum.getNum(), action, state);
-
       return {...state, ...output}
     }
+
     case NUM_INCREMENT: {
-      const newValue = Number(state[action.block]) + 1;
-      const output = calculate.result(newValue.toString(), action, state);
+      let value = Number(state[action.block]) + 1;
+      value = calculate.isNotMax.plusMinus(value, action.block) ? value : state[action.block];
+      let output = calculate.result(value.toString(), action, state);
 
       return {...state, ...output}
     }
 
     case NUM_DECREMENT: {
-      const newValue = Number(state[action.block]) - 1;
-      const output = calculate.result(newValue.toString(), action, state);
+      let value = Number(state[action.block]) - 1;
+      value = calculate.isNotMax.plusMinus(value, action.block) ? value : state[action.block];
+      let output = calculate.result(value.toString(), action, state);
 
       return {...state, ...output}
     }

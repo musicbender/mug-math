@@ -18,9 +18,48 @@ const calculate = {
     return;
   },
 
+  findMax: function(current, block) {
+    const decimal = current.indexOf(".");
+    var max;
+
+    switch(decimal) {
+      case -1:
+        max = block === "water" ? 4 : 3;
+        break;
+      case 1:
+        max = 3;
+        break;
+      case 2:
+        max = 4;
+        break;
+      case 3:
+        max = 5;
+        break;
+      case 4:
+        max = 6;
+        break;
+    }
+
+    return max;
+  },
+
+  //check if number is maxed out
+  isNotMax: {
+    numpad: function(current, max) {
+      return current.length >= max ? false : true;
+    },
+    plusMinus: function(value, block) {
+      if (block === "water") {
+        return value >= 0 && value < 10000;
+      } else {
+        return value >= 0 && value < 1000;
+      }
+    }
+  },
+
   result: function(num, action, state) {
     const {mode, block} = action;
-    
+
     switch (mode) {
       case "findRatio": {
         var coffee, water;
