@@ -77,19 +77,23 @@ export default function values(state = initialState, action) {
     }
 
     case NUM_INCREMENT: {
-      let value = Number(state[action.block]) + 1;
-      value = calculate.isNotMax.plusMinus(value, action.block) ? value : state[action.block];
-      let output = calculate.result(value.toString(), action, state);
+      const { plusMinus } = calculate.isNotMax;
+      const blk = action.block
 
-      return {...state, ...output}
+      let value = Number(state[blk]) + 1;
+      value = plusMinus(value, blk) ? value : state[blk];
+
+      return {...state, ...calculate.result(value.toString(), action, state)}
     }
 
     case NUM_DECREMENT: {
-      let value = Number(state[action.block]) - 1;
-      value = calculate.isNotMax.plusMinus(value, action.block) ? value : state[action.block];
-      let output = calculate.result(value.toString(), action, state);
+      const { plusMinus } = calculate.isNotMax;
+      const blk = action.block;
 
-      return {...state, ...output}
+      let value = Number(state[blk]) - 1;
+      value = plusMinus(value, blk) ? value : state[blk];
+
+      return {...state, ...calculate.result(value.toString(), action, state)}
     }
 
     case NUM_CLEAR:
