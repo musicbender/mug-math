@@ -10,7 +10,7 @@ export default (props) => {
       {name: "coffee", unit: "g", resultText: "of coffee"},
       {name: "water", unit: "g", resultText: "of water"},
       {name: "ratio", unit: "", resultText: "Ratio of"}
-    ]
+    ];
 
     switch(props.mode) {
       case "findRatio":
