@@ -11,7 +11,7 @@ export default (props) => {
 
   const handleClick = (e) => {
     if (name !== block && notResult()) {
-      e.stopPropagation();
+      // e.stopPropagation();
       changeBlock(name);
     }
   }
@@ -25,8 +25,9 @@ export default (props) => {
   }
 
   const numAdjust = (direction, e) => {
-
-    props.adjustNum(direction);
+    setTimeout(() => {
+      props.adjustNum(direction);
+    }, 0);
   }
 
   const getContent = () => {
