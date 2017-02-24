@@ -7,11 +7,10 @@ import '../../../style/components/input-blocks.scss';
 
 export default (props) => {
   const { block, changeBlock, name, unit, text, order } = props;
-  const iconColor = 'rgba(0, 77, 64, 0.9)';
+  const iconColor = 'rgba(0, 0, 0, 0.42)';
 
   const handleClick = (e) => {
     if (name !== block && notResult()) {
-      // e.stopPropagation();
       changeBlock(name);
     }
   }
@@ -25,9 +24,7 @@ export default (props) => {
   }
 
   const numAdjust = (direction, e) => {
-    setTimeout(() => {
-      props.adjustNum(direction);
-    }, 0);
+    setTimeout(() => { props.adjustNum(direction); }, 0);
   }
 
   const getContent = () => {

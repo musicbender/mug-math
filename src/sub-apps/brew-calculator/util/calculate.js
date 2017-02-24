@@ -48,13 +48,22 @@ const calculate = {
     numpad: function(current, max) {
       return current.length >= max ? false : true;
     },
-    plusMinus: function(value, block) {
+    pm: function(value, block) {
       if (block === "water") {
         return value >= 0 && value < 10000;
       } else {
         return value >= 0 && value < 1000;
       }
     }
+  },
+
+  isInt: function(n) {
+    return n % 1 === 0;
+  },
+
+  getValue: function(n, c, b) {
+    let value = this.isInt(n) ? n : n.toFixed(1);
+    return this.isNotMax.pm(value, b) ? value : c;
   },
 
   result: function(num, action, state) {
