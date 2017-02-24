@@ -81,7 +81,7 @@ export default function values(state = initialState, action) {
       const blk = action.block
 
       let value = Number(state[blk]) + 1;
-      value = plusMinus(value, blk) ? value : state[blk];
+      value = plusMinus(value, blk) ? value.toFixed(1) : state[blk];
 
       return {...state, ...calculate.result(value.toString(), action, state)}
     }
@@ -91,7 +91,7 @@ export default function values(state = initialState, action) {
       const blk = action.block;
 
       let value = Number(state[blk]) - 1;
-      value = plusMinus(value, blk) ? value : state[blk];
+      value = plusMinus(value, blk) ? value.toFixed(1) : state[blk];
 
       return {...state, ...calculate.result(value.toString(), action, state)}
     }
