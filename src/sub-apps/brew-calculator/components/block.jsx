@@ -2,10 +2,11 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ContentRemove from 'material-ui/svg-icons/content/remove'
-import iconStyles from '../style/icons';
+import blkIconStyles from '../../../style/components/block-icon-styles';
+import '../../../style/components/input-blocks.scss';
 
 export default (props) => {
-  const { mode, block, changeBlock, name, unit, text, order} = props;
+  const { block, changeBlock, name, unit, text, order } = props;
   const iconColor = 'rgba(0, 77, 64, 0.9)';
 
   const handleClick = () => {
@@ -27,23 +28,23 @@ export default (props) => {
   const getContent = () => {
     if (notResult()) {
       return (
-        <div className="brew-block-div">
-          <div className="brew-name">{name}</div>
-          <div className="brew-value">
-            {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="brew-unit">{unit}</span>
+        <div className="block-div">
+          <div className="block-name">{name}</div>
+          <div className="block-value">
+            {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="block-unit">{unit}</span>
           </div>
-          <IconButton style={iconStyles.plus} iconStyle={iconStyles.icon} onClick={() => numAdjust(1)}>
+          <IconButton style={blkIconStyles.plus} iconStyle={blkIconStyles.icon} onClick={() => numAdjust(1)}>
             <ContentAdd color={iconColor} />
           </IconButton>
-          <IconButton style={iconStyles.minus} iconStyle={iconStyles.icon} onClick={() => numAdjust(-1)}>
+          <IconButton style={blkIconStyles.minus} iconStyle={blkIconStyles.icon} onClick={() => numAdjust(-1)}>
             <ContentRemove color={iconColor} />
           </IconButton>
         </div>
       )
     } else {
         return (
-          <div className="brew-block-div">
-            <div className="brew-result">
+          <div className="block-result-div">
+            <div className="block-result">
               {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
             </div>
           </div>
@@ -52,7 +53,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`brew-block-${mode} brew-block brew-${name} ${selected()}`} onClick={() => handleClick()}>
+    <div className={`brew-block block brew-${name} ${selected()}`} onClick={() => handleClick()}>
         {getContent()}
     </div>
   )

@@ -2,98 +2,13 @@
 @import '../../../style/helpers/_mixins';
 @import '../../../style/helpers/_placeholders';
 
-.brew-block-container {
-  height: 100%;
-
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-.brew-block-div {
-  @extend %full-position;
-  color: $black;
-}
-
-.brew-block {
-  position: relative;
-  width: 100%;
-  float: left;
-}
-
-.block-outer {
-  background-color: $offwhite;
-}
-
 
 /*******Input Blocks*******/
 
 .brew-block:not(:nth-child(3)) {
-  display: inline-block;
-  width: calc(50% - 1.5em);
-  height: calc(66.66% - 2em);
   background-color: material-color('teal', '500');
-
-  * {
-    color: $white;
-  }
-
-  .brew-name {
-    @include super-center($top: 15%, $left: 15%);
-    font-size: $tiny;
-    color: rgba(0, 77, 64, 0.9);
-    text-transform: uppercase;
-    padding-bottom: 0.3em;
-  }
-
-  .brew-value {
-    @include super-center();
-    font-size: $very-large;
-    transition: 0.3s $easeOut;
-  }
-
-  .brew-unit {
-    font-size: 0.4em;
-  }
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-  }
-}
-
-.brew-block:first-child {
-  margin: 1em 0.5em 1em 1em;
-}
-
-.brew-block:nth-child(2) {
-  margin: 1em 1em 1em 0.5em;
 }
 
 .brew-block.selected {
     background-color: material-color('teal','400');
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    transition: box-shadow $fast $easeOut;
-
-    .brew-value {
-      font-size: $extra-large;
-      transition: $fast $easeOut;
-    }
-}
-
-
-/*******Result Block*******/
-
-.brew-block:nth-child(3) {
-  display: block;
-  background-color: $offwhite;
-  width: 100%;
-  height: 33.33%;
-
-  .brew-result {
-    @include super-center();
-    font-size: $medium;
-  }
 }

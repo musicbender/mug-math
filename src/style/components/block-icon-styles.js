@@ -1,4 +1,4 @@
-const iconStyles = {
+const blkIconStyles = {
   plus: {
     position: 'absolute',
     top: '15%',
@@ -13,8 +13,8 @@ const iconStyles = {
   },
   icon: {
     fontSize: '1em',
-    color: 'rgba(0, 77, 64, 0.9)'
+    fill: 'rgba(0,0,0,0.42)'
   }
 }
 
-export default iconStyles;
+export default blkIconStyles;

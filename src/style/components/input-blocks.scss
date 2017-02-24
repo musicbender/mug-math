@@ -1,0 +1,89 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+@import '../helpers/_placeholders';
+
+.block-div {
+  @extend %full-position;
+  color: $black;
+}
+
+.block-container {
+  background-color: $offwhite;
+  height: 100%;
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+}
+
+.block {
+  position: relative;
+  width: 100%;
+  float: left;
+  display: inline-block;
+  width: calc(50% - 1.5em);
+  height: calc(66.66% - 2em);
+
+  .block-name {
+    @include super-center($top: 15%, $left: 15%);
+    @extend %unselectable;
+    font-size: $tiny;
+    text-transform: uppercase;
+    padding-bottom: 0.3em;
+    color: rgba($matteblack, 0.42);
+  }
+
+  .block-value {
+    @include super-center();
+    @extend %unselectable;
+    font-size: $very-large;
+    color: $white;
+    transition: 0.3s $easeOut;
+  }
+
+  .block-unit {
+    @extend %unselectable;
+    font-size: 0.4em;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
+
+.block:first-child {
+  margin: 1em 0.5em 1em 1em;
+}
+
+.block:nth-child(2) {
+  margin: 1em 1em 1em 0.5em;
+}
+
+.block.selected {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: box-shadow $fast $easeOut;
+
+    .brew-value {
+      @extend %unselectable;
+      font-size: $extra-large;
+      transition: $fast $easeOut;
+    }
+}
+
+/*******Result Block*******/
+
+.block:nth-child(3) {
+  display: block;
+  background-color: $offwhite;
+  width: 100%;
+  height: 33.33%;
+
+  .block-result {
+    @include super-center();
+    font-size: $medium;
+    color: $black;
+  }
+}

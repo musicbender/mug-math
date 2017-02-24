@@ -6,22 +6,22 @@ A progressive web app that contains several "mini apps" of various coffee-relate
 
 ###Version 1 - MVP
 
-[X] Start project scaffolding
-[X] Cold brew drip calculator
-[X] Brew calculator
-[ ] Roast moisture calculator
-[ ] Roast Development calculator
-[ ] Test, stage, and release
+- [X] Start project scaffolding
+- [X] Cold brew drip calculator
+- [X] Brew calculator
+- [ ] Roast moisture calculator
+- [ ] Roast Development calculator
+- [ ] Test, stage, and release
 
 ###Version 2 - Add more mini-apps
 
-[ ] Brew extraction calculator
-[ ] Roast color calculator
-[ ] EZ Brew calculator
-[ ] Caffeine calculator
+- [ ] Brew extraction calculator
+- [ ] Roast color calculator
+- [ ] EZ Brew calculator
+- [ ] Caffeine calculator
 
 ###Version 3 - Add MERN Stack
 
-[ ] Rebuild on MERN Stack
-[ ] Add login
-[ ] Save favorite settings and recipes
+- [ ] Rebuild on MERN Stack
+- [ ] Add login
+- [ ] Save favorite settings and recipes
