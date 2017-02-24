@@ -9,8 +9,9 @@ export default (props) => {
   const { block, changeBlock, name, unit, text, order } = props;
   const iconColor = 'rgba(0, 77, 64, 0.9)';
 
-  const handleClick = () => {
-    if (notResult()) {
+  const handleClick = (e) => {
+    if (name !== block && notResult()) {
+      e.stopPropagation();
       changeBlock(name);
     }
   }
@@ -23,7 +24,10 @@ export default (props) => {
     return (name === block && notResult()) ? "selected" : '';
   }
 
-  const numAdjust = (direction) => { props.adjustNum(direction); }
+  const numAdjust = (direction, e) => {
+
+    props.adjustNum(direction);
+  }
 
   const getContent = () => {
     if (notResult()) {
@@ -33,10 +37,10 @@ export default (props) => {
           <div className="block-value">
             {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="block-unit">{unit}</span>
           </div>
-          <IconButton style={blkIconStyles.plus} iconStyle={blkIconStyles.icon} onClick={() => numAdjust(1)}>
+          <IconButton style={blkIconStyles.plus} iconStyle={blkIconStyles.icon} onClick={(e) => numAdjust(1,e)}>
             <ContentAdd color={iconColor} />
           </IconButton>
-          <IconButton style={blkIconStyles.minus} iconStyle={blkIconStyles.icon} onClick={() => numAdjust(-1)}>
+          <IconButton style={blkIconStyles.minus} iconStyle={blkIconStyles.icon} onClick={(e) => numAdjust(-1,e)}>
             <ContentRemove color={iconColor} />
           </IconButton>
         </div>
@@ -53,7 +57,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`brew-block block brew-${name} ${selected()}`} onClick={() => handleClick()}>
+    <div className={`brew-block block brew-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
         {getContent()}
     </div>
   )
