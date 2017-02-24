@@ -1,4 +1,5 @@
-import { NUM_CHANGE, NUM_CLEAR } from '../constants/index';
+import { NUM_CHANGE, NUM_INCREMENT, NUM_DECREMENT, NUM_CLEAR } from '../constants/index';
+import calculate from '../util/calculate';
 
 const initialState = {
   coffee: 0,
@@ -8,7 +9,7 @@ const initialState = {
 
 export default function values(state = initialState, action) {
   switch(action.type) {
-    case NUM_CHANGE:
+    case NUM_CHANGE: {
 
       const newNum = {
         //check for multiple decimals
@@ -27,34 +28,6 @@ export default function values(state = initialState, action) {
             newInput = c;
           }
           return newInput;
-        },
-
-        //find our max number limit
-        findMax: function(current) {
-          const decimal = current.indexOf(".");
-          var max;
-
-          switch(decimal) {
-            case -1:
-              max = 3;
-              break;
-            case 1:
-              max = 4;
-              break;
-            case 2:
-              max = 5;
-              break;
-            case 3:
-              max = 6;
-              break;
-          }
-
-          return max;
-        },
-
-        //check if number is maxed out
-        isNotMax: function(current) {
-          return current.length >= this.findMax(current) ? false : true;
         },
 
         //what our number will be based on input and current number
@@ -82,7 +55,8 @@ export default function values(state = initialState, action) {
               output = current;
               break;
             case (input !== "." && input !== "delete"):
-              output = this.isNotMax(current) ? `${current}${input}` : current;
+              const maximum = calculate.findMax(current, action.block);
+              output = calculate.isNotMax.numpad(current, maximum) ? `${current}${input}` : current;
               break;
             default:
               console.error('output error to default');
@@ -98,90 +72,25 @@ export default function values(state = initialState, action) {
         }
       }
 
-      const calculate = {
-        findRatio: function(c, w) {
-          let sum = Math.round((parseFloat(w) / parseFloat(c)) * 10) / 10;
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-        },
-
-        findWater: function(c, r) {
-          const sum = Math.round(c * r);
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-        },
-
-        findCoffee: function(w, r) {
-          const sum = Math.round((parseFloat(w) / parseFloat(r)) * 10) / 10;
-
-          return sum !== Infinity && !isNaN(sum) ? sum : "0";
-          return;
-        },
-
-        result: function() {
-          switch (action.mode) {
-            case "findRatio": {
-              var coffee, water;
-
-              if (action.block === "coffee") {
-                coffee = newNum.getNum();
-                water = state.water;
-              } else if ( action.block === "water") {
-                coffee = state.coffee;
-                water = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                ratio: this.findRatio(coffee, water)
-              }
-
-              return result;
-            }
-
-            case "findWater": {
-              var coffee, ratio;
-
-              if (action.block === "coffee") {
-                coffee = newNum.getNum();
-                ratio = state.ratio;
-              } else if ( action.block === "ratio") {
-                coffee = state.coffee;
-                ratio = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                water: this.findWater(coffee, ratio)
-              }
-
-              return result;
-            }
-
-            case "findCoffee": {
-              var water, ratio;
-
-              if (action.block === "water") {
-                water = newNum.getNum();
-                ratio = state.ratio;
-              } else if ( action.block === "ratio") {
-                water = state.water;
-                ratio = newNum.getNum();
-              }
-
-              const result = {
-                [action.block]: newNum.getNum(),
-                coffee: this.findCoffee(water, ratio)
-              }
-
-              return result;
-            }
-          }
-        }
-      }
-
-      const output = calculate.result();
+      const output = calculate.result(newNum.getNum(), action, state);
       return {...state, ...output}
+    }
+
+    case NUM_INCREMENT: {
+      const blk = action.block;
+      const current = state[blk];
+
+      let value = calculate.getValue(Number(current) + 1, current, blk);
+      return {...state, ...calculate.result(value.toString(), action, state)};
+    }
+
+    case NUM_DECREMENT: {
+      const blk = action.block;
+      const current = state[blk];
+
+      let value = calculate.getValue(Number(current) - 1, current, blk);
+      return {...state, ...calculate.result(value.toString(), action, state)};
+    }
 
     case NUM_CLEAR:
       return {
@@ -192,7 +101,6 @@ export default function values(state = initialState, action) {
       }
 
     default:
-    console.log("NUM_CHANGE: default");
       return state;
   }
 }

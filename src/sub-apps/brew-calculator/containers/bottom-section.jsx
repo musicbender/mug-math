@@ -2,47 +2,37 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeNum } from '../actions/index';
-import ContentBackspace from 'material-ui/svg-icons/content/backspace';
+import KeyPad from '../../../components/key-pad.jsx';
 import '../style/bottom-section.scss';
 
-const LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", '.', "delete"];
 
 class BottomSection extends Component {
-  handleClick(num) {
+  constructor(props) {
+    super(props);
+
+    this.changeNumber = this.changeNumber.bind(this);
+  }
+
+  changeNumber(num) {
     const {mode, block} = this.props;
     this.props.changeNum(num, mode, block);
   }
-  render() {
-    const createDelete = () => { return <ContentBackspace /> ;}
-    const labelList = LABELS.map((label, index) => {
-        return (
-          <div className="number-btn" key={index} onClick={() => this.handleClick(label)}>
-            <div className="number-btn-num">{label === "delete" ? createDelete() : label}</div>
-          </div>
-        );
-      }
-    );
 
+  render() {
     return (
       <section className="section section-bottom withtabs">
-        <div className="number-container">
-          {labelList}
-        </div>
+        <KeyPad clickHandle={this.changeNumber} />
       </section>
     )
   }
 }
 
-function mapStateToProps({brewCalc}) {
-    const { mode, block } = brewCalc.navigation;
-    const { coffee, water, ratio } = brewCalc.values;
+function mapStateToProps(state) {
+    const { mode, block } = state.brewCalc.navigation;
 
     return {
       mode,
-      block,
-      coffee,
-      water,
-      ratio
+      block
     }
 }
 
