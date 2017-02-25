@@ -3,7 +3,7 @@ import IconButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ContentRemove from 'material-ui/svg-icons/content/remove'
 import blkIconStyles from '../../../style/components/block-icon-styles';
-import '../../../style/components/input-blocks.scss';
+import '../style/input-blocks.scss';
 
 export default (props) => {
   const { block, changeBlock, name, unit, text, order } = props;
@@ -55,7 +55,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`brew-block block brew-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
+    <div className={`moist-block block brew-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
         {getContent()}
     </div>
   )

@@ -19,7 +19,7 @@ class BottomSection extends Component {
 
   render() {
     return (
-      <section className="section section-bottom withtabs">
+      <section className="section section-bottom">
         <KeyPad clickHandle={this.changeNumber} />
       </section>
     )
