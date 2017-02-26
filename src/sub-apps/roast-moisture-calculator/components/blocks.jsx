@@ -47,7 +47,7 @@ export default (props) => {
         return (
           <div className="block-result-div">
             <div className="block-result">
-              {`${props[name]}${unit} ${text}`}
+              {`${props[name]}${unit} of mositure loss`}
             </div>
           </div>
         )

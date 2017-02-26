@@ -3,7 +3,8 @@ import calculate from '../util/calculate';
 
 const initialState = {
   preWeight: 0,
-  postWeight: 0
+  postWeight: 0,
+  moistureLoss: 0
 }
 
 export default function values(state = initialState, action) {
@@ -78,11 +79,10 @@ export default function values(state = initialState, action) {
     case NUM_INCREMENT: {
       const blk = action.block;
       const current = state[blk];
+
       console.log(`${blk} ${current}`);
       let value = calculate.getValue(Number(current) + 1, current, blk);
-      console.log(`${value} ${blk} ${current}`);
 
-      console.log('moisture reducer fired');
       return {...state, ...calculate.result(value, action, state)};
     }
 
@@ -98,7 +98,8 @@ export default function values(state = initialState, action) {
       return {
         ...state,
         preWeight: 0,
-        postWeight: 0
+        postWeight: 0,
+        moistureLoss: 0
       }
 
     default:

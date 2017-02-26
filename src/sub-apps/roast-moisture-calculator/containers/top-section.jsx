@@ -19,13 +19,6 @@ class TopSection extends Component {
   }
 
   buildBlocks() {
-    const propsObj = {
-      block: this.props.block,
-      changeBlock: this.props.changeBlock,
-      preWeight: this.props.preWeight,
-      postWeight: this.props.postWeight
-    }
-
     const blockArray = [
       {name: "preWeight", unit: "g"},
       {name: "postWeight", unit: "g"},
@@ -35,7 +28,7 @@ class TopSection extends Component {
     const blockList = blockArray.map((block, index) => {
       return (
         <Block
-          {...propsObj}
+          {...this.props}
           name={block.name}
           key={block.name}
           order={index}
@@ -49,6 +42,7 @@ class TopSection extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
         <section className="section section-top">
           <div className="block-container">
@@ -61,11 +55,12 @@ class TopSection extends Component {
 
 function mapStateToProps({roastMoistureCalc}) {
   const { block } = roastMoistureCalc.navigation;
-  const { preWeight, postWeight } = roastMoistureCalc.values;
+  const { preWeight, postWeight, moistureLoss } = roastMoistureCalc.values;
   return {
     block,
     preWeight,
-    postWeight
+    postWeight,
+    moistureLoss
   }
 }
 

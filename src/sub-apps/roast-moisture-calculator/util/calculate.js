@@ -69,7 +69,7 @@ const calculate = {
 
         const result = {
             [block]: num,
-            ratio: this.findLoss(pre, post)
+            moistureLoss: this.findLoss(pre, post)
         }
 
         return result;
