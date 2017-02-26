@@ -1,10 +1,8 @@
 const calculate = {
-    findLoss: function (c, w) {
-        let sum = Math.round((parseFloat(w) / parseFloat(c)) * 10) / 10;
+    findLoss: function (pre, post) {
+        let sum = Math.round((100 - ((post / pre) * 100)) * 10) / 10;
 
-        return sum !== Infinity && !isNaN(sum)
-            ? sum
-            : "0";
+        return sum !== Infinity && !isNaN(sum) ? sum : "0";
     },
 
     findMax: function (current, block) {

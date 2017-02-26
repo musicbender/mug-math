@@ -33,7 +33,7 @@ export default (props) => {
         <div className="block-div">
           <div className="block-name">{name}</div>
           <div className="block-value">
-            {name === "ratio" ? `1:${props[name]}` : `${props[name]}`}<span className="block-unit">{unit}</span>
+            {`${props[name]}`}<span className="block-unit">{unit}</span>
           </div>
           <IconButton style={blkIconStyles.plus} iconStyle={blkIconStyles.icon} onClick={(e) => numAdjust(1,e)}>
             <ContentAdd color={iconColor} />
@@ -47,7 +47,7 @@ export default (props) => {
         return (
           <div className="block-result-div">
             <div className="block-result">
-              {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
+              {`${props[name]}${unit} ${text}`}
             </div>
           </div>
         )

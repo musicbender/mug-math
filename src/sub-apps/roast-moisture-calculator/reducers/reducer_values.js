@@ -78,9 +78,12 @@ export default function values(state = initialState, action) {
     case NUM_INCREMENT: {
       const blk = action.block;
       const current = state[blk];
-
+      console.log(`${blk} ${current}`);
       let value = calculate.getValue(Number(current) + 1, current, blk);
-      return {...state, ...calculate.result(value.toString(), action, state)};
+      console.log(`${value} ${blk} ${current}`);
+
+      console.log('moisture reducer fired');
+      return {...state, ...calculate.result(value, action, state)};
     }
 
     case NUM_DECREMENT: {

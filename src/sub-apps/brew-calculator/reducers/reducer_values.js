@@ -79,7 +79,7 @@ export default function values(state = initialState, action) {
     case NUM_INCREMENT: {
       const blk = action.block;
       const current = state[blk];
-
+      console.log('brew reducer fired');
       let value = calculate.getValue(Number(current) + 1, current, blk);
       return {...state, ...calculate.result(value.toString(), action, state)};
     }
