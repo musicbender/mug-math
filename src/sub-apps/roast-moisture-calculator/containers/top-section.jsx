@@ -42,7 +42,6 @@ class TopSection extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
         <section className="section section-top">
           <div className="block-container">
@@ -53,7 +52,7 @@ class TopSection extends Component {
   }
 }
 
-function mapStateToProps({roastMoistureCalc}) {
+function mapStateToProps({roastMoistureCalc}) { 
   const { block } = roastMoistureCalc.navigation;
   const { preWeight, postWeight, moistureLoss } = roastMoistureCalc.values;
   return {
