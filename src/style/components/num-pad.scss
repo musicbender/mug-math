@@ -1,6 +1,6 @@
-@import '../../../style/helpers/_variables';
-@import '../../../style/helpers/_mixins';
-@import '../../../style/helpers/_placeholders';
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+@import '../helpers/_placeholders';
 
 .number-container {
   @extend %full-position;

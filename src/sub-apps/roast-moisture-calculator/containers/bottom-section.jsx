@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeNum } from '../actions/index';
 import KeyPad from '../../../components/key-pad.jsx';
-import '../style/bottom-section.scss';
+import '../../../style/components/num-pad.scss';
 
 
 class BottomSection extends Component {

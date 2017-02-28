@@ -8,25 +8,25 @@ import {
 
 
 export function changeBlock(block) {
-    return {
-      type: BLOCK_CHANGE,
-      block
-    }
+  return {
+    type: BLOCK_CHANGE,
+    block
+  }
 }
 
 export function changeNum(input, block) {
-    return {
-      type: NUM_CHANGE,
-      input,
-      block
-    }
+  return {
+    type: NUM_CHANGE,
+    input,
+    block
+  }
 }
 
 export function increaseNum(block) {
-    return {
-      type: NUM_INCREMENT,
-      block
-    }
+  return {
+    type: NUM_INCREMENT,
+    block
+  }
 }
 
 export function decreaseNum(block) {
@@ -37,7 +37,7 @@ export function decreaseNum(block) {
 }
 
 export function clearNum() {
-    return {
-      type: NUM_CLEAR
-    }
+  return {
+    type: NUM_CLEAR
+  }
 }
