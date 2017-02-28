@@ -9,7 +9,7 @@ A progressive web app that contains several "mini apps" of various coffee-relate
 - [X] Start project scaffolding
 - [X] Cold brew drip calculator
 - [X] Brew calculator
-- [ ] Roast moisture calculator
+- [X] Roast moisture calculator
 - [ ] Roast Development calculator
 - [ ] Test, stage, and release
 

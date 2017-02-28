@@ -9,18 +9,17 @@ import '../../../style/components/num-pad.scss';
 class BottomSection extends Component {
   constructor(props) {
     super(props);
-
     this.changeNumber = this.changeNumber.bind(this);
   }
 
   changeNumber(num) {
-    const {mode, block} = this.props;
-    this.props.changeNum(num, mode, block);
+    const {block} = this.props;
+    this.props.changeNum(num, block);
   }
 
   render() {
     return (
-      <section className="section section-bottom withtabs">
+      <section className="section section-bottom">
         <KeyPad clickHandle={this.changeNumber} />
       </section>
     )
@@ -28,10 +27,8 @@ class BottomSection extends Component {
 }
 
 function mapStateToProps(state) {
-    const { mode, block } = state.brewCalc.navigation;
-
+    const { block } = state.roastMoistureCalc.navigation;
     return {
-      mode,
       block
     }
 }

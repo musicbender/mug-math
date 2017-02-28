@@ -1,6 +1,6 @@
-export const MODE_CHANGE = "MODE_CHANGE";
-export const BLOCK_CHANGE = "BLOCK_CHANGE"
-export const NUM_CHANGE = "NUM_CHANGE";
-export const NUM_CLEAR = "NUM_CLEAR";
-export const NUM_INCREMENT = "NUM_INCREMENT";
-export const NUM_DECREMENT = "NUM_DECREMENT";
+export const MODE_CHANGE = "BRW::MODE_CHANGE";
+export const BLOCK_CHANGE = "BRW::BLOCK_CHANGE"
+export const NUM_CHANGE = "BRW::NUM_CHANGE";
+export const NUM_CLEAR = "BRW::NUM_CLEAR";
+export const NUM_INCREMENT = "BRW::NUM_INCREMENT";
+export const NUM_DECREMENT = "BRW::NUM_DECREMENT";

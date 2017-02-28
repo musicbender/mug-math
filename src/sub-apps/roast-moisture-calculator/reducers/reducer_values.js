@@ -3,16 +3,15 @@ import numpad from '../../../util/numpad';
 import calculate from '../../../util/calculate';
 
 const initialState = {
-  coffee: 0,
-  water: 0,
-  ratio: 0
+  preWeight: 0,
+  postWeight: 0,
+  moistureLoss: 0
 }
 
 export default function values(state = initialState, action) {
   const block = action.block,
         current = state[block],
-        mode = action.mode,
-        app = "brewCalc";
+        app = "moistureCalc";
 
   switch(action.type) {
     case NUM_CHANGE: {
@@ -20,7 +19,6 @@ export default function values(state = initialState, action) {
         value: numpad.getNum(action.input, current, block),
         block,
         state,
-        mode,
         app
       })};
     }
@@ -32,7 +30,6 @@ export default function values(state = initialState, action) {
         value: value.toString(),
         block,
         state,
-        mode,
         app
       })};
     }
@@ -44,7 +41,6 @@ export default function values(state = initialState, action) {
         value: value.toString(),
         block,
         state,
-        mode,
         app
       })};
     }
@@ -52,10 +48,11 @@ export default function values(state = initialState, action) {
     case NUM_CLEAR:
       return {
         ...state,
-        coffee: 0,
-        water: 0,
-        ratio: 0
+        preWeight: 0,
+        postWeight: 0,
+        moistureLoss: 0
       }
+
 
     default:
       return state;
