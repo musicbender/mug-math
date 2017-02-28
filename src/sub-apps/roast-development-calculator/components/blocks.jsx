@@ -1,4 +1,5 @@
 import React from 'react';
+import TimePicker from 'material-ui/TimePicker';
 import IconButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ContentRemove from 'material-ui/svg-icons/content/remove'
@@ -32,8 +33,13 @@ export default (props) => {
       return (
         <div className="block-div">
           <div className="block-name">{name}</div>
-          <div className="block-value">
-            {`${props[name]}`}<span className="block-unit">{unit}</span>
+          <div className="block-value-time">
+            <TimePicker
+              format="24hr"
+              hintText="24hr Format"
+              value={this.props}
+              onChange={this.handleChangeTimePicker24}
+            />
           </div>
           <IconButton style={blkIconStyles.plus} iconStyle={blkIconStyles.icon} onClick={(e) => numAdjust(1,e)}>
             <ContentAdd color={iconColor} />
