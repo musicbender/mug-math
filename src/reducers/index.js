@@ -6,6 +6,7 @@ import speed from '../sub-apps/cold-drip-timer/reducers/reducer_speed';
 import range from '../sub-apps/cold-drip-timer/reducers/reducer_range';
 import brewCalc from '../sub-apps/brew-calculator/reducers/index';
 import roastMoistureCalc from '../sub-apps/roast-moisture-calculator/reducers/index'
+import roastDevCalc from '../sub-apps/roast-development-calculator/reducers/index'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   dripTimer_speed: speed,
   dripTimer_range: range,
   brewCalc,
-  roastMoistureCalc
+  roastMoistureCalc,
+  roastDevCalc
 });
 
 export default rootReducer;

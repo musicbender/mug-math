@@ -21,6 +21,9 @@ class HomeMenu extends Component {
           Brew Calculator
         </Link>
         <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
+          Roast Development Calculator
+        </Link>
+        <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
           Roast Moisture Calculator
         </Link>
       </div>
