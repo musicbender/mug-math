@@ -6,10 +6,10 @@
 
 /*******Input Blocks*******/
 
-.moist-block:not(:nth-child(3)) {
+.rdev-block:not(:nth-child(3)) {
   background-color: material-color('orange', '500');
 }
 
-.moist-block.selected {
+.rdev-block.selected {
   background-color: material-color('orange','400');
 }

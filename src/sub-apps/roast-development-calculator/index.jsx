@@ -25,7 +25,7 @@ class BrewCalculator extends Component {
       <div>
         <div className="sub-app">
           <AppBar
-            title="Roast Moisture Calculator"
+            title="Roast Developer Calculator"
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"

@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeBlock, changeNum, increaseNum, decreaseNum } from '../actions/index';
+import { changeBlock, changeTime } from '../actions/index';
 import Block from '../components/blocks.jsx';
 import '../style/top-section.scss';
 
 class TopSection extends Component {
   constructor(props) {
     super(props);
-
-    this.adjustNum = this.adjustNum.bind(this);
-  }
-
-  adjustNum(direction) {
-    const {block} = this.props;
-
-    direction === 1 ? increaseNum(block) : decreaseNum(block);
   }
 
   buildBlocks() {
@@ -33,7 +25,7 @@ class TopSection extends Component {
           key={block.name}
           order={index}
           unit={block.unit}
-          adjustNum={this.adjustNum}
+          handleTime={this.handleTime}
         />
       )
     });
@@ -54,18 +46,18 @@ class TopSection extends Component {
 
 function mapStateToProps({roastMoistureCalc}) {
   const { block } = roastDevCalc.navigation;
-  const { fcTime, totalTime, development } = roastDevCalc.values;
+  const { fcTime, totalTime } = roastDevCalc.values;
   return {
     block,
     fcTime,
-    totalTime,
-    development
+    totalTime
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     changeBlock,
+    changeTime
   }, dispatch)
 }
 

@@ -25,3 +25,9 @@ A progressive web app that contains several "mini apps" of various coffee-relate
 - [ ] Rebuild on MERN Stack
 - [ ] Add login
 - [ ] Save favorite settings and recipes
+
+###Version 4 - More apps
+
+- [ ] Cupping app
+- [ ] Espresso compass
+- [ ] Coffee compass

@@ -14,29 +14,15 @@ export function changeBlock(block) {
   }
 }
 
-export function changeNum(input, block) {
+export function changeTime(input, block) {
   return {
-    type: NUM_CHANGE,
-    input,
+    type: TIME_CHANGE,
+    inpout,
     block
   }
 }
 
-export function increaseNum(block) {
-  return {
-    type: NUM_INCREMENT,
-    block
-  }
-}
-
-export function decreaseNum(block) {
-  return {
-    type: NUM_DECREMENT,
-    block
-  }
-}
-
-export function clearNum() {
+export function clearTime() {
   return {
     type: NUM_CLEAR
   }

@@ -20,7 +20,7 @@ class HomeMenu extends Component {
         <Link to='sub-apps/brew-calculator/' className="home-app-btn" onlyActiveOnIndex>
           Brew Calculator
         </Link>
-        <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
+        <Link to='sub-apps/roast-development-calculator/' className="home-app-btn" onlyActiveOnIndex>
           Roast Development Calculator
         </Link>
         <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
