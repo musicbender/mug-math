@@ -6,7 +6,7 @@
   "repository": "git@github.com:musicbender/mug-math.git",
   "scripts": {
     "dev": "webpack",
-    "start": "webpack-dev-server  --inline --hot",
+    "start": "webpack-dev-server  --inline",
     "build": "webpack -p"
   },
   "keywords": [],

@@ -8,13 +8,18 @@ import '../style/top-section.scss';
 class TopSection extends Component {
   constructor(props) {
     super(props);
+
+    this.props.handleTime = this.props.handleTime.bind(this);
+  }
+
+  handleTime(time, block) {
+    this.props.changeTime(time, block);
   }
 
   buildBlocks() {
     const blockArray = [
-      {name: "fcTime", unit: null},
-      {name: "totalTime", unit: null},
-      {name: "development", unit: "%"}
+      {name: "fcTime"},
+      {name: "totalTime"},
     ];
 
     const blockList = blockArray.map((block, index) => {
@@ -24,7 +29,6 @@ class TopSection extends Component {
           name={block.name}
           key={block.name}
           order={index}
-          unit={block.unit}
           handleTime={this.handleTime}
         />
       )
@@ -44,7 +48,7 @@ class TopSection extends Component {
   }
 }
 
-function mapStateToProps({roastMoistureCalc}) {
+function mapStateToProps({roastDevCalc}) {
   const { block } = roastDevCalc.navigation;
   const { fcTime, totalTime } = roastDevCalc.values;
   return {
@@ -58,7 +62,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     changeBlock,
     changeTime
-  }, dispatch)
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopSection);

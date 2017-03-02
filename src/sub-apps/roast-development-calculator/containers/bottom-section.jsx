@@ -11,6 +11,11 @@ class BottomSection extends Component {
   render() {
     return (
       <section className="section section-bottom">
+        <div className="block-result-div">
+          <div className="block-result">
+            test
+          </div>
+        </div>
       </section>
     )
   }

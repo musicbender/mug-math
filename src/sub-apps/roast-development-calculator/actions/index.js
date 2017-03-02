@@ -1,9 +1,7 @@
 import {
     BLOCK_CHANGE,
-    NUM_CHANGE,
-    NUM_CLEAR,
-    NUM_INCREMENT,
-    NUM_DECREMENT
+    TIME_CHANGE,
+    TIME_CLEAR
 } from '../constants/index';
 
 
@@ -17,13 +15,13 @@ export function changeBlock(block) {
 export function changeTime(input, block) {
   return {
     type: TIME_CHANGE,
-    inpout,
+    input,
     block
   }
 }
 
 export function clearTime() {
   return {
-    type: NUM_CLEAR
+    type: TIME_CLEAR
   }
 }
