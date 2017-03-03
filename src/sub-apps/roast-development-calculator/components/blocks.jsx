@@ -22,7 +22,7 @@ export default (props) => {
   }
 
   const getValue = () => {
-    return block === "fcTime" ? fcTime : totalTime;
+     return name === "fcTime" ? fcTime : totalTime;
   }
 
   return (
@@ -31,10 +31,11 @@ export default (props) => {
         <div className="block-name">{name}</div>
         <div className="block-value-time">
           <TimePicker
-            format="24hr"
-            hintText="0:00"
-            autoOk
-          />
+          format="24hr"
+          hintText="0:00"
+          value={getValue()}
+          onChange={handleTimePicker}
+        />
         </div>
       </div>
     </div>

@@ -45,7 +45,8 @@ var config = {
     ],
     output: {
         path: PATHS.dist,
-        filename: 'dist.js'
+        filename: 'dist.js',
+        publicPath: '/'
     },
     module: {
         loaders: [
@@ -62,6 +63,7 @@ var config = {
     ],
     devServer: {
       historyApiFallback: true,
+      port: 8081
     },
     watch: true
 }

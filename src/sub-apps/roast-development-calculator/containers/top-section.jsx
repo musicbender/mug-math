@@ -9,7 +9,7 @@ class TopSection extends Component {
   constructor(props) {
     super(props);
 
-    this.props.handleTime = this.props.handleTime.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   }
 
   handleTime(time, block) {
@@ -45,7 +45,7 @@ class TopSection extends Component {
           </div>
         </section>
     )
-  }
+  } 
 }
 
 function mapStateToProps({roastDevCalc}) {

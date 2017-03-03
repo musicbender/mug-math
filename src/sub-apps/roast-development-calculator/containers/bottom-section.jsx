@@ -4,16 +4,12 @@ import { connect } from 'react-redux';
 
 
 class BottomSection extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <section className="section section-bottom">
         <div className="block-result-div">
           <div className="block-result">
-            test
+            {`${this.props.development}% development`}
           </div>
         </div>
       </section>
@@ -23,8 +19,11 @@ class BottomSection extends Component {
 
 function mapStateToProps(state) {
     const { block } = state.roastDevCalc.navigation;
+    const { development } = state.roastDevCalc.values;
+
     return {
-      block
+      block,
+      development
     }
 }
 
