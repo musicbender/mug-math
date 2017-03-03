@@ -26,7 +26,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`rdev-block block big rdev-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
+    <div className={`rdev-block block stacked rdev-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
       <div className="block-div">
         <div className="block-name">{name}</div>
         <div className="block-value-time">

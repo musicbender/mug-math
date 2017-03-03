@@ -39,7 +39,7 @@ class TopSection extends Component {
 
   render() {
     return (
-        <section className="section section-top big-top">
+        <section className="section section-top stacked big-top">
           <div className="block-container">
               {this.buildBlocks()}
           </div>

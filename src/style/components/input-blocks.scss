@@ -25,12 +25,16 @@
   background-color: $white;
 }
 
+
 /******* BLOCK *******/
+
 .block {
   position: relative;
   width: 100%;
   float: left;
   display: inline-block;
+  width: calc(50% - 1.5em);
+  height: calc(66.66% - 2em);
 
   .block-name {
     @include super-center($top: 15%, $left: 15%);
@@ -79,15 +83,19 @@
     }
 }
 
-/*******BLOCK TYPES*******/
 
-.block {
-  width: calc(50% - 1.5em);
-  height: calc(66.66% - 2em);
-}
+/*******BLOCK: STACKED*******/
 
-.block.big {
-  height: calc(100% - 2em);
+.block.stacked {
+  display: block;
+  height: calc(50% - 2em);
+  width: calc(100% - 2em);
+  &:first-child {
+    margin: 1em 1em 0.5em 1em;
+  }
+  &:nth-child(2) {
+    margin: 0.5em 1em 1em 1em;
+  }
 }
 
 
