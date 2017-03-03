@@ -2,6 +2,9 @@
 @import '../helpers/_mixins';
 @import '../helpers/_placeholders';
 
+
+/******* CONTAINERS *******/
+
 .block-div {
   @extend %full-position;
   color: $black;
@@ -18,6 +21,11 @@
     }
 }
 
+.big-top .block-container {
+  background-color: $white;
+}
+
+/******* BLOCK *******/
 .block {
   position: relative;
   width: 100%;
