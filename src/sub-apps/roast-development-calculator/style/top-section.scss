@@ -2,20 +2,5 @@
 @import '../../../style/helpers/_mixins';
 @import '../../../style/helpers/_placeholders';
 
-.brew-section-top {
-  background-color: $grey;
-}
-
 
 /*******Tabs*******/
-
-.brew-tabs {
-  height: 100%;
-}
-
-.brew-tabs > div:nth-child(3) {
-  height: calc(100% - 48px);
-  > div {
-    height: 100%;
-  }
-}

@@ -101,6 +101,16 @@ h1 {
   top: -3em;
 }
 
+.section-top.big-top {
+  height: calc(60% - 45px);
+  background-color: $white;
+}
+
+.section-bottom.big-top {
+  height: 40.1%;
+  background-color: $white;
+}
+
 
 
 /*******MEDIA QUERIES*******/

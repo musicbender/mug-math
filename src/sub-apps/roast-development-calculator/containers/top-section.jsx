@@ -39,13 +39,13 @@ class TopSection extends Component {
 
   render() {
     return (
-        <section className="section section-top">
+        <section className="section section-top big-top">
           <div className="block-container">
               {this.buildBlocks()}
           </div>
         </section>
     )
-  } 
+  }
 }
 
 function mapStateToProps({roastDevCalc}) {

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class BottomSection extends Component {
   render() {
     return (
-      <section className="section section-bottom">
+      <section className="section section-bottom big-top">
         <div className="block-result-div">
           <div className="block-result">
             {`${this.props.development}% development`}

@@ -23,8 +23,6 @@
   width: 100%;
   float: left;
   display: inline-block;
-  width: calc(50% - 1.5em);
-  height: calc(66.66% - 2em);
 
   .block-name {
     @include super-center($top: 15%, $left: 15%);
@@ -72,6 +70,18 @@
       transition: $fast $easeOut;
     }
 }
+
+/*******BLOCK TYPES*******/
+
+.block {
+  width: calc(50% - 1.5em);
+  height: calc(66.66% - 2em);
+}
+
+.block.big {
+  height: calc(100% - 2em);
+}
+
 
 /*******Result Block*******/
 
