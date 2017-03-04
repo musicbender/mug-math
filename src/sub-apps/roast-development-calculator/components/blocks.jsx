@@ -1,10 +1,11 @@
 import React from 'react';
 import TimePicker from 'material-ui/TimePicker';
 import blkIconStyles from '../../../style/components/block-icon-styles';
+import pickerStyles from '../style/time-picker';
 import '../style/input-blocks.scss';
 
 export default (props) => {
-  const { block, changeBlock, handleTime, changeTime, name, order, fcTime, totalTime } = props;
+  const { block, changeBlock, handleTime, name, text, fcTime, totalTime } = props;
   const iconColor = 'rgba(0, 0, 0, 0.42)';
 
   const handleClick = (e) => {
@@ -26,17 +27,20 @@ export default (props) => {
   }
 
   return (
-    <div className={`rdev-block block stacked rdev-${name} ${selected()}`} onClickCapture={(e) => handleClick(e)}>
+    <div className={`rdev-block rdev-${name} block stacked ${selected()}`} onClickCapture={(e) => handleClick(e)}>
       <div className="block-div">
-        <div className="block-name">{name}</div>
-        <div className="block-value-time">
+        <div className="block-name">{text}</div>
+        <div className="block-value time">
           <TimePicker
-          format="24hr"
-          hintText="0:00"
-          autoOk
-          value={getValue()}
-          onChange={handleTimePicker}
-        />
+            className="time-picker"
+            format="24hr"
+            hintText="minutes : seconds"
+            autoOk
+            value={getValue()}
+            style={pickerStyles.style}
+            textFieldStyle={pickerStyles.textFieldStyle}
+            onChange={handleTimePicker}
+          />
         </div>
       </div>
     </div>

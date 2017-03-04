@@ -13,3 +13,18 @@
 .rdev-block.selected {
   background-color: material-color('orange','400');
 }
+
+
+/*******TIME PICKER*******/
+
+.rdev-block .time-picker {
+  height: 1.3em !important;
+  color: $white !important;
+  font-size: 4rem !important;
+
+  > div:first-child { font-size: 1.5rem }
+  > input { color: $white !important; }
+  hr {
+    border-bottom: 1px solid material-color('yellow', 'a200') !important;
+  }
+}

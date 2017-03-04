@@ -21,10 +21,6 @@
     }
 }
 
-.big-top .block-container {
-  background-color: $white;
-}
-
 
 /******* BLOCK *******/
 
@@ -83,6 +79,12 @@
     }
 }
 
+/******* BLOCK: BIG-TOP *******/
+
+.big-top .block-container {
+  background-color: $white;
+}
+
 
 /*******BLOCK: STACKED*******/
 
@@ -90,6 +92,14 @@
   display: block;
   height: calc(50% - 2em);
   width: calc(100% - 2em);
+
+  .block-name {
+    @include super-center(50%, 10%, 0%);
+    color: material-color('yellow', 'a200');
+  }
+  .block-value {
+    @include super-center($left: 70%);
+  }
   &:first-child {
     margin: 1em 1em 0.5em 1em;
   }

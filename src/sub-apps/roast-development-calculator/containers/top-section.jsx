@@ -18,8 +18,8 @@ class TopSection extends Component {
 
   buildBlocks() {
     const blockArray = [
-      {name: "fcTime"},
-      {name: "totalTime"},
+      {name: "fcTime", text: "start of first crack: "},
+      {name: "totalTime", text: "total roast time: "},
     ];
 
     const blockList = blockArray.map((block, index) => {
@@ -28,6 +28,7 @@ class TopSection extends Component {
           {...this.props}
           name={block.name}
           key={block.name}
+          text={block.text}
           order={index}
           handleTime={this.handleTime}
         />
