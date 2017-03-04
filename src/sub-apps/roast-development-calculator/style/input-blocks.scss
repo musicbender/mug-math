@@ -2,29 +2,33 @@
 @import '../../../style/helpers/_mixins';
 @import '../../../style/helpers/_placeholders';
 @import '../../../style/components/input-blocks.scss';
-
-
 /*******Input Blocks*******/
-
 .rdev-block:not(:nth-child(3)) {
-  background-color: material-color('orange', '500');
+    background-color: material-color('orange', '500');
 }
 
 .rdev-block.selected {
-  background-color: material-color('orange','400');
+    background-color: material-color('orange','400');
 }
 
 
 /*******TIME PICKER*******/
 
 .rdev-block .time-picker {
-  height: 1.3em !important;
-  color: $white !important;
-  font-size: 4rem !important;
+    height: 1.3em !important;
+    color: $white !important;
+    font-size: 4rem !important;
 
-  > div:first-child { font-size: 1.5rem }
-  > input { color: $white !important; }
-  hr {
-    border-bottom: 1px solid material-color('yellow', 'a200') !important;
-  }
+    > div:first-child {
+        font-size: 3rem !important;
+        bottom: 25% !important;
+    }
+
+    > input {
+        color: $white !important;
+    }
+
+    hr {
+        border-bottom: 1px solid material-color('yellow', 'a200') !important;
+    }
 }
