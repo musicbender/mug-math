@@ -16,19 +16,27 @@
 
 .rdev-block .time-picker {
     height: 1.3em !important;
-    color: $white !important;
+    color: $matteblack !important;
     font-size: 4rem !important;
 
     > div:first-child {
-        font-size: 3rem !important;
+        font-size: 1.5rem !important;
         bottom: 25% !important;
     }
 
     > input {
-        color: $white !important;
+        color: $matteblack !important;
+
     }
 
     hr {
         border-bottom: 1px solid material-color('yellow', 'a200') !important;
     }
+}
+
+
+/*******TIME PICKER DIALOG*******/
+
+.dialog > div > div > div > div > div > div:first-child {
+  background-color: material-color('orange', '700') !important;
 }

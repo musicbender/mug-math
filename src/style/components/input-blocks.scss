@@ -94,8 +94,8 @@
   width: calc(100% - 2em);
 
   .block-name {
-    @include super-center(50%, 10%, 0%);
-    color: material-color('yellow', 'a200');
+    @include super-center(25%, 5%, 0%);
+    color: $matteblack;
     font-size: 1.1rem;
   }
   .block-value {

@@ -1,12 +1,20 @@
+const orange = '#F57C00';
+
 const pickerStyles = {
   style: {
     fontSize: '1em',
     height: '60px',
-    color: '#fff'
+    color: '#000'
   },
   textFieldStyle: {
-    color: '#fff',
+    color: '#000',
     fontSize: '20px'
+  },
+  dialogStyle: {
+    backgroundColor: orange
+  },
+  dialogBodyStyle: {
+    backgroundColor: orange
   }
 }
 
