@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
+import MenuItem from '../components/menu-item.jsx';
+import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
   isHome() {
@@ -22,7 +25,7 @@ class HomeMenu extends Component {
           Cold Drip Timer
         </Link>
         <Link to='sub-apps/brew-calculator/' className="home-app-btn" onlyActiveOnIndex>
-          Brew Calculator
+          <MenuItem title="Brew Calculator" icon='<IconCoffee />' />
         </Link>
         <Link to='sub-apps/roast-development-calculator/' className="home-app-btn" onlyActiveOnIndex>
           Roast Development Calculator
@@ -30,6 +33,7 @@ class HomeMenu extends Component {
         <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
           Roast Moisture Calculator
         </Link>
+
       </div>
     )
   }
