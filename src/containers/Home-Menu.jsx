@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
+import IconColdDrip from 'material-ui/svg-icons/action/opacity';
+import IconMoisture from 'material-ui/svg-icons/image/blur-on';
+import IconFire from 'material-ui/svg-icons/social/whatshot';
 import MenuItem from '../components/menu-item.jsx';
 import '../style/components/home-menu.scss';
 
@@ -21,21 +24,16 @@ class HomeMenu extends Component {
     return (
       <div className={`home-container ${this.isHome()}`}>
         <h1>Mug Math</h1>
-        <Link to='sub-apps/cold-drip-timer/' className="home-app-btn" onlyActiveOnIndex>
-          Cold Drip Timer
-        </Link>
-        <Link to='sub-apps/brew-calculator/' className="home-app-btn" onlyActiveOnIndex>
-          <MenuItem title="Brew Calculator" icon='<IconCoffee />' />
-        </Link>
-        <Link to='sub-apps/roast-development-calculator/' className="home-app-btn" onlyActiveOnIndex>
-          Roast Development Calculator
-        </Link>
-        <Link to='sub-apps/roast-moisture-calculator/' className="home-app-btn" onlyActiveOnIndex>
-          Roast Moisture Calculator
-        </Link>
-
+        <div className="menu-container">
+          <div className="menu-row">
+            <MenuItem title="Cold Drip Timer" url="/cold-drip-timer"><IconColdDrip /></MenuItem>
+            <MenuItem title="Brew Calculator" url="/brew-calculator"><IconCoffee /></MenuItem>
+            <MenuItem title="Roast Development" url="/roast-development-calculator"><IconFire /></MenuItem>
+            <MenuItem title="Roast Moisture" url="/roast-moisture-calculator"><IconMoisture /></MenuItem>
+          </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 

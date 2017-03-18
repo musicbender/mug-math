@@ -1,8 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default (props) => (
-  <div className="menu-item-container">
-    <div className="menu-circle">{props.icon}</div>
-    <h6>{props.title}</h6>
-  </div>
+  <Link to={`sub-apps${props.url}/`} className="menu-item-container" onlyActiveOnIndex>
+    <div className="menu-circle">
+      {props.children}
+      <svg className="menu-text" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
+          <defs>
+              <path id="criclePath" d="M 150, 150 m -120, 0 a 120,120 0 0,1 240,0 a 120,120 0 0,1 -240,0 "/>
+          </defs>
+          <g>
+              <use href="#criclePath" fill="none"/>
+              <text fill="#000">
+                  <textPath href="#criclePath">{props.title}</textPath>
+              </text>
+          </g>
+      </svg>
+    </div>
+  </Link>
 );

@@ -2,33 +2,81 @@
 @import '../helpers/_mixins';
 @import '../helpers/_placeholders';
 
+
 /******* HOME MENU *******/
 
-.menu-item {
-  position: relative;
+.menu-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 5em auto;
 }
 
-.menu-circle {
+.menu-row {
   position: relative;
-  width: 15em;
-  height: 15em;
-  margin: 5em auto;
-  border-radius: 20em;
-  overflow: hidden;
-  background-color: $black;
+  margin: 0 auto;
+  width: calc(100% - 5em);
+  max-width: 70em;
+  height: 12em;
 
-  svg {
-    position: absolute;
-    top: 4%;
-    left: 9%;
-    width: 9em !important;
-    height: 15em !important;
-    color: $white !important;
+  &:after {
+      content: "";
+      display: table;
+      clear: both;
   }
+}
 
-  h6 {
-    font-size: 4em;
-    color: $black;
 
+/******* MENU ITEMS *******/
+
+.menu-item-container {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+    float: left;
+
+    .menu-circle {
+        @include super-center();
+        width: $circle-size;
+        height: $circle-size;
+        border-radius: 20em;
+        overflow: hidden;
+        background-color: $black;
+    }
+
+    svg:not(.menu-text) {
+        position: absolute;
+        top: 38%;
+        left: 15%;
+        width: 45% !important;
+        height: 45% !important;
+        color: $white !important;
+    }
+
+    .menu-text {
+        position: absolute;
+        top: -23%;
+        left: -0.5em;
+        font-size: 1em;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+}
+
+
+/******* MEDIA QUERIES *******/
+
+@media only screen and (max-width: 960px) {
+  .menu-item-container .menu-circle {
+    $size: $circle-size - 3em;
+    width: $size;
+    height:: $size;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .menu-item-container {
+    width: 50%;
   }
 }
