@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const PATHS = {
     src: './src/index.jsx',
@@ -13,7 +14,6 @@ const PATHS = {
 }
 
 var config = {
-    devtool: 'cheap-module-eval-source-map',
     entry: {
       app: [
         PATHS.src,
@@ -28,13 +28,8 @@ var config = {
         filename: 'dist.js',
     },
     module: {
-        rules: [
-            {
-              test: /\.jsx?$/,
-              include: __dirname + '/src',
-              loader: "babel-loader",
-              exclude: /node_modules/,
-             },
+        loaders: [
+            { test: /\.jsx?$/, include: __dirname + '/src', loader: "babel-loader" },
             { test: /\.scss$/, loader: "style-loader!css-loader!autoprefixer-loader!sass-loader" },
             { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
@@ -54,27 +49,41 @@ var config = {
           '*.html'
           ]
       }),
+      new FaviconsWebpackPlugin({
+          logo: PATHS.images + 'favicon.png',
+          title: 'Cold Drip Timer',
+          prefix: 'assets/',
+          statsFilename: 'icon-stats.json'
+      }),
       new CopyWebpackPlugin([
-        {from: 'src/manifest.json', to: 'manifest.json'}
+        {
+          from: 'src/manifest.json',
+          to: 'manifest.json'
+        }
       ]),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: Infinity,
         filename: 'vendor.js',
       }),
+      new webpack.optimize.UglifyJsPlugin({
+        compressor: {
+          warnings: false,
+        }
+      }),
+      new CompressionPlugin({
+          test: /\.(js|html)$/,
+      }),
       new webpack.DefinePlugin({
         'process.env': {
-          CLIENT: JSON.stringify(true),
-          'NODE_ENV': JSON.stringify('development'),
+          'NODE_ENV': JSON.stringify('production'),
         }
       }),
     ],
-
     devServer: {
       historyApiFallback: true,
       port: 8085
     },
-
     watch: true
 }
 

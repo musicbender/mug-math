@@ -68,10 +68,17 @@
 /******* MEDIA QUERIES *******/
 
 @media only screen and (max-width: 960px) {
-  .menu-item-container .menu-circle {
-    $size: $circle-size - 3em;
-    width: $size;
-    height:: $size;
+  .menu-item-container {
+    .menu-circle {
+      $size: $circle-size - 3em;
+      width: $size;
+      height:: $size;
+    }
+    .menu-text {
+      top: -73%;
+      left: -7.5em;
+      font-size: 0.8em;
+    }
   }
 }
 
