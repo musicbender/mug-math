@@ -41,7 +41,6 @@
         width: $circle-size;
         height: $circle-size;
         border-radius: 20em;
-        overflow: hidden;
         background-color: $black;
     }
 
@@ -56,11 +55,12 @@
 
     .menu-text {
         position: absolute;
-        top: -23%;
-        left: -0.5em;
+        top: -44%;
+        left: -4.5em;
         font-size: 1em;
         font-weight: 100;
         text-transform: uppercase;
+        transform: rotate(75deg);
     }
 }
 
