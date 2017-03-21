@@ -1,6 +1,8 @@
 var fs = require('fs');
 var path = require('path');
 var ExternalsPlugin = require('webpack-externals-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
 
@@ -38,8 +40,19 @@ module.exports = {
             'es2015',
             'stage-0',
           ],
+          plugins: [
+            [
+              'babel-plugin-webpack-loaders', {
+                'config': './webpack.config.babel.js',
+                "verbose": false
+              }
+            ]
+          ]
         },
-      }, {
+      },
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader!css-loader!autoprefixer-loader!sass-loader") },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader!css-loader") },
+      {
         test: /\.json$/,
         loader: 'json-loader',
       },

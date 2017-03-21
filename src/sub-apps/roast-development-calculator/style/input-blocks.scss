@@ -1,7 +1,7 @@
 @import '../../../style/helpers/_variables';
-@import '../../../style/helpers/_mixins';
-@import '../../../style/helpers/_placeholders';
 @import '../../../style/components/input-blocks.scss';
+
+
 /*******Input Blocks*******/
 .rdev-block:not(:nth-child(3)) {
     background-color: material-color('orange', '500');

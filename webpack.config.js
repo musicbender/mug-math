@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 const PATHS = {
     src: './src/index.jsx',
@@ -35,17 +37,23 @@ var config = {
               loader: "babel-loader",
               exclude: /node_modules/,
              },
-            { test: /\.scss$/, loader: "style-loader!css-loader!autoprefixer-loader!sass-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" }
+            {
+              test: /\.scss$/,
+              loader: ExtractTextPlugin.extract("style-loader!css-loader!autoprefixer-loader!sass-loader")
+            },
+            {
+              test: /\.css$/,
+              loader: ExtractTextPlugin.extract("style-loader!css-loader")
+            }
         ]
     },
     plugins: [
-      new HtmlWebpackPlugin({
-          template: PATHS.html,
-          filename: 'index.html',
-          inject: 'body',
-          title: 'Mug Math'
-      }),
+      // new HtmlWebpackPlugin({
+      //     template: PATHS.html,
+      //     filename: 'index.html',
+      //     inject: 'body',
+      //     title: 'Mug Math'
+      // }),
       new ServiceWorkerWebpackPlugin({
           entry: path.join(__dirname, 'src/sw.js'),
           excludes: [
