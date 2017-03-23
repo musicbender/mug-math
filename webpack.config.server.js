@@ -4,7 +4,7 @@ var ExternalsPlugin = require('webpack-externals-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
-module.exports = {
+const configServer = {
 
   entry: path.resolve(__dirname, 'server/server.js'),
 
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     modules: [
       'client',
       'node_modules',
@@ -31,7 +31,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -50,8 +50,15 @@ module.exports = {
           ]
         },
       },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader!css-loader!autoprefixer-loader!sass-loader") },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader!css-loader") },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(["style-loader", "css-loader",
+      "autoprefixer-loader", "sass-loader"])
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
+      },
       {
         test: /\.json$/,
         loader: 'json-loader',
@@ -59,9 +66,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExternalsPlugin({
-      type: 'commonjs',
-      include: path.join(__dirname, './node_modules/'),
-    }),
+    // new ExternalsPlugin({
+    //   type: 'commonjs',
+    //   include: path.join(__dirname, './node_modules/'),
+    // }),
   ],
 };
+
+module.exports = configServer;

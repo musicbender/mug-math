@@ -35,12 +35,12 @@ var config = {
         ]
     },
     plugins: [
-      new HtmlWebpackPlugin({
-          template: PATHS.html,
-          filename: 'index.html',
-          inject: 'body',
-          title: 'Mug Math'
-      }),
+      // new HtmlWebpackPlugin({
+      //     template: PATHS.html,
+      //     filename: 'index.html',
+      //     inject: 'body',
+      //     title: 'Mug Math'
+      // }),
       new ServiceWorkerWebpackPlugin({
           entry: path.join(__dirname, 'src/sw.js'),
           excludes: [

@@ -16,18 +16,11 @@ const PATHS = {
 
 var config = {
     devtool: 'cheap-module-eval-source-map',
-    entry: {
-      app: [
-        PATHS.src,
-      ],
-      vendor: [
-        'react',
-        'react-dom',
-      ],
-    },
+    entry: [ PATHS.src ],
     output: {
         path: PATHS.dist,
         filename: 'dist.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -39,11 +32,11 @@ var config = {
              },
             {
               test: /\.scss$/,
-              loader: ExtractTextPlugin.extract("style-loader!css-loader!autoprefixer-loader!sass-loader")
+              loader: ExtractTextPlugin.extract(["style-loader", "css-loader" , "autoprefixer-loader", "sass-loader"])
             },
             {
               test: /\.css$/,
-              loader: ExtractTextPlugin.extract("style-loader!css-loader")
+              loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
             }
         ]
     },
@@ -65,14 +58,14 @@ var config = {
       new CopyWebpackPlugin([
         {from: 'src/manifest.json', to: 'manifest.json'}
       ]),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: Infinity,
-        filename: 'vendor.js',
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'vendor',
+      //   minChunks: Infinity,
+      //   filename: 'vendor.js',
+      // }),
       new webpack.DefinePlugin({
         'process.env': {
-          CLIENT: JSON.stringify(true),
+           CLIENT: JSON.stringify(true),
           'NODE_ENV': JSON.stringify('development'),
         }
       }),

@@ -2,27 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+// import { Router, browserHistory } from 'react-router';
+// import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
-import routes from './routes.jsx';
+// import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+// import routes from './routes.jsx';
 import reducers from './reducers';
-import './style/base.scss';
+// import './style/base.scss';
 
-if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
-}
+//*** temp
+import App from './containers/App.jsx';
+//***
+
+
+// if ('serviceWorker' in navigator) {
+//   const registration = runtime.register();
+// }
+
+const preloadedState = window.__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
+console.log(preloadedState);
 
 injectTapEventPlugin();
 
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-const history = syncHistoryWithStore(browserHistory, store)
+// const history = syncHistoryWithStore(browserHistory, store)
+window.onload = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+    , document.getElementById('app')
+  );
 
-ReactDOM.render(
-  <Provider store={store}>
-      <Router history={history} routes={routes} />
-  </Provider>
-  , document.getElementById('app')
-);
+}
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//       <Router history={history} routes={routes} />
+//   </Provider>
+//   , document.getElementById('app')
+// );

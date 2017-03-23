@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config webpack.config.server.js",
+    "build:server": "cross-env NODE_ENV=production BABEL_DISABLE_CACHE=1 webpack --config webpack.config.server.js",
     "bs": "npm run clean && npm run build && npm run build:server && npm run start:prod",
     "clean": "rimraf dist"
   },
@@ -51,7 +51,9 @@
     "serviceworker-webpack-plugin": "^0.2.1",
     "style-loader": "^0.14.1",
     "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.2",
-    "webpack-externals-plugin": "^1.0.0"
+    "webpack-externals-plugin": "^1.0.0",
+    "webpack-hot-middleware": "^2.17.1"
   }
 }
