@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { StaticServer } from 'react-router';
 import reducers from '../src/reducers/index.js';
 import App from '../src/containers/App.jsx';
 import { renderToString } from 'react-dom/server';
@@ -24,19 +25,15 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(handleRender);
 
-
-
 function handleRender(req, res) {
   //create new redux store instance
-
-  const initialState= {
-    open: false
-  }
   const store = createStore(reducers);
-
+  const context = {};
   const html = renderToString(
     <Provider store={store}>
-      <App />
+      <StaticServer location={req.url} context={context}>
+        <App />
+      </StaticServer>
     </Provider>
   );
 
@@ -46,7 +43,7 @@ function handleRender(req, res) {
 }
 
 function renderFullPage(html, preloadedState) {
-  return (`
+  return `
     <!doctype html>
     <html>
       <head>
@@ -54,7 +51,6 @@ function renderFullPage(html, preloadedState) {
       </head>
       <body>
         <div id="app">${html}</div>
-        <div>goats</div>
         <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
@@ -63,7 +59,7 @@ function renderFullPage(html, preloadedState) {
         <script src="dist.js"></script>
       </body>
     </html>
-    `)
+    `
 }
 
 app.listen(PORT, err => {

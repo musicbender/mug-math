@@ -9,18 +9,19 @@ class App extends Component {
     const muiTheme = getMuiTheme({
       slider: {
         handleSize: 20,
-        // selectionColor: this.props.speed.color,
+        selectionColor: this.props.speed.color,
         handleColorZero: 'rgb(70, 50, 42)',
         handleFillColor: 'rgb(70, 50, 42)',
-        // rippleColor: this.props.speed.color
-      }
+        rippleColor: this.props.speed.color
+      },
+      userAgent: 'all'
     });
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-container">
-          <HomeMenu />
-          Woohoo!
+          <HomeMenu location={this.props.location} />
+          {this.props.children}
         </div>
       </MuiThemeProvider>
     )
@@ -34,13 +35,3 @@ function mapStateToProps({dripTimer_speed}) {
 }
 
 export default connect(mapStateToProps)(App);
-
-
-// return (
-//   <MuiThemeProvider muiTheme={muiTheme}>
-//     <div className="app-container">
-//       <HomeMenu location={this.props.location} />
-//       {this.props.children}
-//     </div>
-//   </MuiThemeProvider>
-// )
