@@ -52,13 +52,15 @@ const configServer = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(["style-loader", "css-loader",
-      "autoprefixer-loader", "sass-loader"])
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader" , "autoprefixer-loader", "sass-loader"]
+        })
       },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
-      },
+      // {
+      //   test: /\.css$/,
+      //   loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
+      // },
       {
         test: /\.json$/,
         loader: 'json-loader',
@@ -66,6 +68,7 @@ const configServer = {
     ],
   },
   plugins: [
+    new ExtractTextPlugin('bundle.css'),
     // new ExternalsPlugin({
     //   type: 'commonjs',
     //   include: path.join(__dirname, './node_modules/'),

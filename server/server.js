@@ -28,6 +28,7 @@ app.use(handleRender);
 function handleRender(req, res) {
   //create new redux store instance
   const store = createStore(reducers);
+
   const context = {};
   const html = renderToString(
     <Provider store={store}>
@@ -37,9 +38,17 @@ function handleRender(req, res) {
     </Provider>
   );
 
-  const preloadedState = store.getState();
+  if (context.url) {
+    res.writeHead(301, {
+      Location: context.url
+    })
+    res.end()
+  } else {
+    const preloadedState = store.getState();
 
-  res.send(renderFullPage(html, preloadedState));
+    res.send(renderFullPage(html, preloadedState));
+    res.end()
+  }
 }
 
 function renderFullPage(html, preloadedState) {

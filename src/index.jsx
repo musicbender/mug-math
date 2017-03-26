@@ -6,7 +6,7 @@ import { BrowserRouter, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // import runtime from 'serviceworker-webpack-plugin/lib/runtime';
-import routes from './routes.jsx';
+// import routes from './routes.jsx';
 import reducers from './reducers';
 // import './style/base.scss';
 

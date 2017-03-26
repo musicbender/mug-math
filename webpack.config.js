@@ -27,26 +27,32 @@ var config = {
             {
               test: /\.jsx?$/,
               include: __dirname + '/src',
-              loader: "babel-loader",
+              use: "babel-loader",
               exclude: /node_modules/,
              },
             {
               test: /\.scss$/,
-              loader: ExtractTextPlugin.extract(["style-loader", "css-loader" , "autoprefixer-loader", "sass-loader"])
-            },
-            {
-              test: /\.css$/,
-              loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
+              use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ["css-loader" , "autoprefixer-loader", "sass-loader"]
+              })
             }
+            // {
+            //   test: /\.css$/,
+            //   loader: ExtractTextPlugin.extract(["style-loader", "css-loader"])
+            // }
         ]
     },
     plugins: [
+      new ExtractTextPlugin('bundle.css'),
+
       // new HtmlWebpackPlugin({
       //     template: PATHS.html,
       //     filename: 'index.html',
       //     inject: 'body',
       //     title: 'Mug Math'
       // }),
+
       new ServiceWorkerWebpackPlugin({
           entry: path.join(__dirname, 'src/sw.js'),
           excludes: [

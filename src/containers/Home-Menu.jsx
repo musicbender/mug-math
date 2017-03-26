@@ -5,7 +5,7 @@ import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
 import MenuItem from '../components/menu-item.jsx';
-import '../style/components/home-menu.scss';
+// import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
   isHome() {
@@ -43,5 +43,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(HomeMenu);
-
-export default HomeMenu;

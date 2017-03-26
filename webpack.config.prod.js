@@ -5,6 +5,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const PATHS = {
     src: './src/index.jsx',
@@ -14,27 +15,28 @@ const PATHS = {
 }
 
 var config = {
-    entry: {
-      app: [
-        PATHS.src,
-      ],
-      vendor: [
-        'react',
-        'react-dom',
-      ],
-    },
+    devtool: 'cheap-module-eval-source-map',
+    entry: [ PATHS.src ],
     output: {
         path: PATHS.dist,
         filename: 'dist.js',
+        publicPath: '/'
     },
     module: {
         loaders: [
             { test: /\.jsx?$/, include: __dirname + '/src', loader: "babel-loader" },
-            { test: /\.scss$/, loader: "style-loader!css-loader!autoprefixer-loader!sass-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" }
+            {
+              test: /\.scss$/,
+              use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ["css-loader" , "autoprefixer-loader", "sass-loader"]
+              })
+            }
+            // { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },
     plugins: [
+      new ExtractTextPlugin('bundle.css'),
       // new HtmlWebpackPlugin({
       //     template: PATHS.html,
       //     filename: 'index.html',
