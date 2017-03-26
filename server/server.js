@@ -23,7 +23,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
-app.use(handleRender);
+app.sendFile(path.resolve(__dirname, '../dist/index.html'));
+// app.use(handleRender);
 
 function handleRender(req, res) {
   //create new redux store instance

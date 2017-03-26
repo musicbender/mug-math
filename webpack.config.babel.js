@@ -14,18 +14,22 @@ module.exports = {
   },
   module: {
     loaders: [
-      // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract({
-      //     fallback: "style-loader",
-      //     use: ["css-loader" , "autoprefixer-loader", "sass-loader"]
-      //   })
-      //  }
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader" , "autoprefixer-loader", "sass-loader"]
+        })
+       }
       // {
       //   test: /\.css$/,
       //   exclude: /node_modules/,
       //   loader: ExtractTextPlugin.extract("style-loader!css-loader")
       // }
     ],
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('bundle.css')
+  ]
 };
