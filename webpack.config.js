@@ -1,31 +1,33 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const node_env = process.env.NODE_ENV || 'dev';
 
 const PATHS = {
-    src: './src/index.jsx',
+    entry: './src/index.jsx',
     html: __dirname + '/src/index.html',
     dist: __dirname + '/dist',
     images: __dirname + '/src/assets/images/'
 }
 
 var config = {
-    devtool: 'cheap-module-eval-source-map',
-    entry: {
-      app: [
-        PATHS.src,
-      ],
-      vendor: [
-        'react',
-        'react-dom',
-      ],
+    devtool: node_env == 'prod' ? false : "#eval-source-map",
+    resolve: {
+      alias: {
+        "~": path.join(__dirname, './src')
+      },
+      extensions: ['.js', '.jsx']
     },
+    entry: PATHS.entry,
     output: {
         path: PATHS.dist,
         filename: 'dist.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -40,6 +42,9 @@ var config = {
         ]
     },
     plugins: [
+      new webpack.DefinePlugin({
+        ONSERVER: false
+      }),
       new HtmlWebpackPlugin({
           template: PATHS.html,
           filename: 'index.html',
@@ -68,13 +73,15 @@ var config = {
           'NODE_ENV': JSON.stringify('development'),
         }
       }),
+      new ExtractTextPlugin({
+  			filename: 'style.css',
+  			allChunks: true
+  		})
     ],
-
     devServer: {
       historyApiFallback: true,
       port: 8085
     },
-
     watch: true
 }
 
