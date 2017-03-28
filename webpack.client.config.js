@@ -34,8 +34,14 @@ var config = {
               loader: "babel-loader",
               exclude: /node_modules/,
              },
-            { test: /\.scss$/, loader: "style-loader!css-loader!autoprefixer-loader!sass-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" }
+            {
+              test: /\.scss$/,
+              loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
+            },
+            {
+              test: /\.css$/,
+              loader: "style-loader!css-loader"
+            }
         ]
     },
     plugins: [

@@ -12,7 +12,7 @@ module.exports = {
     alias: {
 			"~": path.join(__dirname, './src')
 		},
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json']
   },
   entry: path.join(__dirname, './server/server.js'),
   output: {

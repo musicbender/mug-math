@@ -75,7 +75,6 @@ app.use((req, res) => {
   }
 });
 
-server.listen(PORT, (err) => {
-  if (err) { console.error(err); }
-  console.log(`MugMath avaliable at ${PORT}!`);
-});
+server.listen(PORT);
+
+console.log(`MugMath avaliable at ${PORT}!`);
