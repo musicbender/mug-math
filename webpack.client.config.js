@@ -18,9 +18,6 @@ const PATHS = {
 var config = {
     devtool: node_env == 'prod' ? false : "#eval-source-map",
     resolve: {
-      alias: {
-        "~": path.join(__dirname, './src')
-      },
       extensions: ['.js', '.jsx']
     },
     entry: PATHS.entry,
@@ -30,9 +27,9 @@ var config = {
         publicPath: '/'
     },
     module: {
-        rules: [
+        loaders: [
             {
-              test: /\.jsx?$/,
+              test: /\.jsx*$/,
               include: __dirname + '/src',
               loader: "babel-loader",
               exclude: /node_modules/,
@@ -51,28 +48,22 @@ var config = {
           inject: 'body',
           title: 'Mug Math'
       }),
-      new ServiceWorkerWebpackPlugin({
-          entry: path.join(__dirname, 'src/sw.js'),
-          excludes: [
-          '**/.*',
-          '**/*.map',
-          '*.html'
-          ]
-      }),
-      new CopyWebpackPlugin([
-        {from: 'src/manifest.json', to: 'manifest.json'}
-      ]),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: Infinity,
-        filename: 'vendor.js',
-      }),
-      new webpack.DefinePlugin({
-        'process.env': {
-          CLIENT: JSON.stringify(true),
-          'NODE_ENV': JSON.stringify('development'),
-        }
-      }),
+      // new ServiceWorkerWebpackPlugin({
+      //     entry: path.join(__dirname, 'src/sw.js'),
+      //     excludes: [
+      //     '**/.*',
+      //     '**/*.map',
+      //     '*.html'
+      //     ]
+      // }),
+      // new CopyWebpackPlugin([
+      //   {from: 'src/manifest.json', to: 'manifest.json'}
+      // ]),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'vendor',
+      //   minChunks: Infinity,
+      //   filename: 'vendor.js',
+      // }),
       new ExtractTextPlugin({
   			filename: 'style.css',
   			allChunks: true
@@ -80,7 +71,7 @@ var config = {
     ],
     devServer: {
       historyApiFallback: true,
-      port: 8085
+      port: 8087
     },
     watch: true
 }
