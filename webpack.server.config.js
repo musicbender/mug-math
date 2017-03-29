@@ -4,7 +4,7 @@ const path = require('path');
 const node_env = process.env.NODE_ENV || 'dev';
 
 module.exports = {
-  devtool: node_env == 'prod' ? false : "#source-map",
+  devtool: node_env == 'production' ? false : "#source-map",
   target: "node",
   cache: false,
   context: __dirname,
@@ -22,8 +22,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx*$/,
-        include: __dirname + '/src',
+        test: /\.jsx?$/,
         // loader: "babel-loader",
         loaders: ["babel-loader?presets[]=es2015&presets[]=stage-0&presets[]=react"],
         exclude: /(node_modules|bower_components)/

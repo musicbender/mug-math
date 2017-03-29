@@ -16,9 +16,9 @@ const PATHS = {
 }
 
 var config = {
-    devtool: node_env == 'prod' ? false : "#eval-source-map",
+    devtool: node_env == 'production' ? false : "#eval-source-map",
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx', 'json']
     },
     entry: PATHS.entry,
     output: {

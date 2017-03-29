@@ -9,6 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import reducers from './reducers';
 import App from './containers/App.jsx';
+// import Test from '../test/test.jsx';
 // import './style/base.scss';
 
 
@@ -25,11 +26,13 @@ const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTE
 
 const history = syncHistoryWithStore(browserHistory, store)
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter history={history} routes={routes}>
-      <App />
-    </BrowserRouter>
-  </Provider>
-  , document.getElementById('app')
-);
+if(window !== undefined) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter history={history} routes={routes}>
+        <App />
+      </BrowserRouter>
+    </Provider>
+    , document.getElementById('app')
+  );
+}

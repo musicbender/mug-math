@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const r = 90;
 
 export default (props) => (
-  <Link to={`sub-apps${props.url}/`} className="menu-item-container" onlyActiveOnIndex>
+  <Link to={`sub-apps${props.url}/`} className="menu-item-container">
     <div className="menu-circle">
       {props.children}
       <svg className="menu-text" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300">
