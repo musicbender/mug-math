@@ -4,7 +4,7 @@ const path = require('path');
 const node_env = process.env.NODE_ENV || 'dev';
 
 module.exports = {
-  devtool: node_env == 'production' ? false : "#source-map",
+  devtool: 'cheap-eval-source-map',
   target: "node",
   cache: false,
   context: __dirname,

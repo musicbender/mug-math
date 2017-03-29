@@ -17,11 +17,11 @@ const PORT = process.env.PORT || 3001;
 const app = new express();
 const server = new http.Server(app);
 
-app.use(express.static('../dist'));
-
 app.use((req, res) => {
+  console.log('boom');
   const store = createStore(reducers);
   const context = {};
+
   console.log(`store loaded? ${store !== 'undefined'}`);
 
   // const html;
@@ -34,6 +34,8 @@ app.use((req, res) => {
   );
 
   if (context.url) {
+    console.log('this one');
+
     res.writeHead(301, {
       Location: context.url
     })
@@ -41,19 +43,24 @@ app.use((req, res) => {
   } else {
     const preloadedState = store.getState();
 
-    res.write(index.replace(
-        /<div id="root"><\/div>/,
-		'<div id="root">' + html + '</div>'
-    ));
+    console.log('rendering html...');
 
     res.write(index.replace(
-        /<script>window\.__PRELOADED_STATE__;<\/script>/,
-		`<script>window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')} </script>`
+        /<div id="app"><\/div>/,
+		'<div id="app">' + html + '</div>'
+    ));
+
+
+    res.write(index.replace(
+        /window\.__PRELOADED_STATE__;/,
+		`window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}`
     ));
 
     res.end();
   }
 });
+
+app.use(express.static('dist'));
 
 server.listen(PORT);
 

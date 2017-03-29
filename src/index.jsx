@@ -29,8 +29,8 @@ const history = syncHistoryWithStore(browserHistory, store)
 if(window !== undefined) {
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter history={history} routes={routes}>
-        <App />
+      <BrowserRouter>
+        <App/>
       </BrowserRouter>
     </Provider>
     , document.getElementById('app')
