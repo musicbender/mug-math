@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Link, browserHistory } from 'react-router';
-import {onRange, offRange} from './actions/index';
+import { onRange, offRange } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -63,4 +64,4 @@ function mapStateToProps({dripTimer_speed, dripTimer_range}) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer));

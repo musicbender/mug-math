@@ -40,6 +40,7 @@ class TopSection extends Component {
             className="tabs-container"
             onTab={this.modeChange}
             adjustNum={this.adjustNum}
+            location={this.props.location}
             {...propsObj}
           />
         </section>
