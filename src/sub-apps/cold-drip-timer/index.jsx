@@ -13,7 +13,7 @@ import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
 import barStyle from '../../style/app-bar-style';
 
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+var audioContext;
 
 const barStyleObj = {
   height: barStyle.bar.height,
@@ -21,6 +21,10 @@ const barStyleObj = {
 }
 
 class ColdDripTimer extends Component {
+  componentDidMount() {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  
   handleBackButton() {
     browserHistory.push('/');
   }

@@ -1,7 +1,4 @@
 import express from 'express';
-import http from 'http';
-import { createServer } from 'http';
-import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -11,13 +8,9 @@ import reducers from '../src/reducers/index.js';
 import routes from '../src/routes.jsx';
 import { match, RouterContext } from 'react-router';
 
-// const index = fs.readFileSync('dist/index.html', 'utf8');
 const PORT = process.env.PORT || 3001;
-
 const app = new express();
-// const server = new http.Server(app);
 
-console.log('serving static files...');
 app.use(express.static('dist'));
 
 app.use((req, res) => {
@@ -37,7 +30,6 @@ app.use((req, res) => {
     const store = createStore(reducers);
     const context = {};
 
-    console.log('rendering react...');
     const html = renderToString(
       <Provider store={store}>
         <RouterContext {...renderProps} />
@@ -45,7 +37,6 @@ app.use((req, res) => {
     );
 
     const preloadedState = store.getState();
-    console.log('boomshakalaka');
 
     res
       .set('Content-Type', 'text/html')
@@ -88,15 +79,3 @@ app.listen(PORT, err => {
 
   console.log(`MugMath avaliable at ${PORT}!`);
 });
-
-
-// res.write(index.replace(
-//     /<div id="app"><\/div>/,
-// '<div id="app">' + html + '</div>'
-// ));
-//
-//
-// res.write(index.replace(
-//     /window\.__PRELOADED_STATE__;/,
-// `window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}`
-// ));
