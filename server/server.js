@@ -1,54 +1,61 @@
 import express from 'express';
 import http from 'http';
-import { createServer } from 'http'
+import { createServer } from 'http';
 import fs from 'fs';
+import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from '../src/reducers/index.js';
-import { StaticRouter } from 'react-router';
-import App from '../src/containers/App.jsx';
-// import Test from '../test/test.jsx';
+import routes from '../src/routes.jsx';
+import { match, RouterContext } from 'react-router';
 
 // const index = fs.readFileSync('dist/index.html', 'utf8');
 const PORT = process.env.PORT || 3001;
 
 const app = new express();
-const server = new http.Server(app);
+// const server = new http.Server(app);
 
-app.use((req, res, next) => {
-  console.log('boom');
-  const store = createStore(reducers);
-  const context = {};
+console.log('serving static files...');
+app.use(express.static('dist'));
 
-  console.log(`store loaded? ${store !== 'undefined'}`);
+app.use((req, res) => {
+  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    if (err) {
+      return res.status(500).end();
+    }
 
-  // const html;
-  const html = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
-    </Provider>
-  );
+    if (redirectLocation) {
+      return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    }
 
-  if (context.url) {
-    res.writeHead(301, {
-      Location: context.url
-    })
-    res.end();
-  } else {
+    if (!renderProps) {
+      return next();
+    }
+
+    const store = createStore(reducers);
+    const context = {};
+
+    console.log('rendering react...');
+    const html = renderToString(
+      <Provider store={store}>
+        <RouterContext {...renderProps} />
+      </Provider>
+    );
+
     const preloadedState = store.getState();
+    console.log('boomshakalaka');
+
     res
       .set('Content-Type', 'text/html')
       .status(200)
       .end(renderFullPage(html, preloadedState));
-  }
-  next();
+  });
 });
 
 const renderFullPage = (html, initialState) => {
+  console.log('rendering full page...');
   return `
     <!doctype html>
     <html>
@@ -68,19 +75,19 @@ const renderFullPage = (html, initialState) => {
         <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          console.log('initial state injected');
         </script>
-        <script src='http://localhost:3001/dist/dist.js'></script>
+        <script type="text/javascript" src="/dist.js"></script>
       </body>
     </html>
   `;
 };
 
+app.listen(PORT, err => {
+  if (err) { console.error(err); }
 
-app.use(express.static('../dist/dist.js'));
-
-app.listen(PORT);
-
-console.log(`MugMath avaliable at ${PORT}!`);
+  console.log(`MugMath avaliable at ${PORT}!`);
+});
 
 
 // res.write(index.replace(

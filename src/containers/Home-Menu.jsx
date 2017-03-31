@@ -12,10 +12,10 @@ class HomeMenu extends Component {
   isHome() {
     const {pathname} = this.props;
     if (pathname !== "/") {
-      document.body.classList.add('body-blur');
+      // document.body.classList.add('body-blur');
       return "home-blur";
     } else {
-      document.body.classList.remove('body-blur');
+      // document.body.classList.remove('body-blur');
       return;
     }
   }
