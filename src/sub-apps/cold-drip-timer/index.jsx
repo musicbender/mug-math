@@ -24,7 +24,7 @@ class ColdDripTimer extends Component {
   componentDidMount() {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
   }
-  
+
   handleBackButton() {
     browserHistory.push('/');
   }
@@ -68,4 +68,4 @@ function mapStateToProps({dripTimer_speed, dripTimer_range}) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer));
+export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);

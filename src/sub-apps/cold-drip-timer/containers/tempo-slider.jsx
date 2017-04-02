@@ -40,7 +40,7 @@ class TempoSlider extends Component {
 
     this.stopSound();
 
-    if (a == "up") {
+    if (a === "up") {
       changeTempo(currentTempo + 1);
     } else {
       changeTempo(currentTempo - 1);
@@ -62,7 +62,8 @@ class TempoSlider extends Component {
             onDragStart={() => this.stopSound()}
             value={this.props.speed.tempo}
             onChange={this.handleSlider}
-            className="tempo-slider"/>
+            className="tempo-slider"
+          />
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>

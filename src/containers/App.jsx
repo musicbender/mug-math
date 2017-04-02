@@ -4,11 +4,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
 import HomeMenu from './Home-Menu.jsx';
 
-
+var muiTheme;
 
 class App extends Component {
-  render() {
-    const muiTheme = getMuiTheme({
+  componentDidMount() {
+    muiTheme = getMuiTheme({
       slider: {
         handleSize: 20,
         selectionColor: this.props.speed.color,
@@ -18,7 +18,9 @@ class App extends Component {
       },
       userAgent: 'all'
     });
+  }
 
+  render() {
     return (
       <MuiThemeProvider muiTheme={ muiTheme }>
         <div className="app-container">
@@ -37,16 +39,3 @@ function mapStateToProps({ dripTimer_speed }) {
 }
 
 export default connect(mapStateToProps)(App);
-
-
-// return (
-//   <MuiThemeProvider muiTheme={ muiTheme }>
-//     <div className="app-container">
-//       <HomeMenu />
-//       <Route path="sub-apps/brew-calculator/" component={ BrewCalculator }/>
-//       <Route path="sub-apps/cold-drip-timer/" component={ ColdDripTimer }/>
-//       <Route path="sub-apps/roast-moisture-calculator/" component={ RoastMoistureCalculator }/>
-//       <Route path="sub-apps/roast-development-calculator/" component={ RoastDevCalculator }/>
-//     </div>
-//   </MuiThemeProvider>
-// )
