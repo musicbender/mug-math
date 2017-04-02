@@ -22,7 +22,7 @@ class BrewCalculator extends Component {
 
   render() {
     return (
-      <div>
+      <div className="transition-item">
         <div className="sub-app">
           <AppBar
             title="Roast Moisture Calculator"

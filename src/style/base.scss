@@ -45,10 +45,10 @@ h1 {
     @include super-center;
     @include box-shadow(2);
     margin: 0 auto;
-    height: 46em;
+    height: $app-height;
     padding: 0;
     width: 100%;
-    max-width: 52em;
+    max-width: $app-width;
     overflow: hidden;
     background-color: $white;
     z-index: 10;

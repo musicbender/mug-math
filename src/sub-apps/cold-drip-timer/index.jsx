@@ -31,7 +31,7 @@ class ColdDripTimer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="transition-item">
         <div className="sub-app">
           <AppBar
             title="Cold Drip Coffee Timer"

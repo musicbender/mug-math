@@ -1,0 +1,17 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+@import '../../../style/helpers/_placeholders';
+
+
+.sub-open {
+  .menu-row {
+    position: static;
+  }
+  .menu-circle {
+    width: 100%
+    max-width: $app-width;
+    height: $app-height;
+    border-radius: 0;
+    transform: translate(50%,90%);
+  }
+}

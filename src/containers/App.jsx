@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
+import PageTransition from 'react-router-page-transition';
 import HomeMenu from './Home-Menu.jsx';
 
 var muiTheme;
@@ -25,7 +26,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={ muiTheme }>
         <div className="app-container">
           <HomeMenu location={this.props.location} />
-         {this.props.children}
+            {this.props.children}
         </div>
       </MuiThemeProvider>
     )

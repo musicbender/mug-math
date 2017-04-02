@@ -1,12 +1,12 @@
 import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import { teal800 } from 'material-ui/styles/colors';
+import { grey900 } from 'material-ui/styles/colors';
 import Modes from './modes.jsx';
 
 export default (props) => {
 
   const tabStyle = {
-    backgroundColor: teal800
+    backgroundColor: grey900
   }
 
   const handleTabChange = (value) => {

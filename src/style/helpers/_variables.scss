@@ -7,12 +7,26 @@
 
 /*******Color*******/
 
-$black:       rgb(0, 0, 0);
+/******* Greyscale *******/
+
 $white:       #fff;
-$offwhite:    rgb(245,245,245);
-$lightgrey:   rgb(225,225,225);
-$grey:        rgb(189,189,189);
-$matteblack:  rgb(0,0,0);
+$black:       #000;
+
+$_50:          #FAFAFA;
+$_100:         #F5F5F5;
+$_200:         #EEEEEE;
+$_300:         #E0E0E0;
+$_400:         #BDBDBD;
+$_500:         #9E9E9E;
+$_600:         #757575;
+$_700:         #616161;
+$_800:         #424242;
+$_900:         #212121;
+
+$matteblack:  $black;
+$offwhite:    $_100;
+$lightgrey:   $_300;
+$grey:        $_400;
 
 
 /*******Font*******/
@@ -42,4 +56,6 @@ $fast: 0.3s;
 
 /******* Size *******/
 
+$app-width: 52em;
+$app-height: 46em;
 $circle-size: 10em;

@@ -11,7 +11,7 @@
 }
 
 .block-container {
-  background-color: $offwhite;
+  background-color: $_100;
   height: 100%;
 
     &:after {
@@ -22,7 +22,7 @@
 }
 
 
-/******* BLOCK *******/
+/******* BLOCK: DEFAULT *******/
 
 .block {
   position: relative;
@@ -31,6 +31,7 @@
   display: inline-block;
   width: calc(50% - 1.5em);
   height: calc(66.66% - 2em);
+  background-color: $_800;
 
   .block-name {
     @include super-center($top: 15%, $left: 15%);
@@ -38,7 +39,7 @@
     font-size: $tiny;
     text-transform: uppercase;
     padding-bottom: 0.3em;
-    color: rgba($matteblack, 0.42);
+    color: rgba($white, 0.42);
   }
 
   .block-value {
@@ -69,14 +70,15 @@
 }
 
 .block.selected {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    transition: box-shadow $fast $easeOut;
+  background-color: $_700;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: box-shadow $fast $easeOut;
 
-    .brew-value {
-      @extend %unselectable;
-      font-size: $extra-large;
-      transition: $fast $easeOut;
-    }
+  .brew-value {
+    @extend %unselectable;
+    font-size: $extra-large;
+    transition: $fast $easeOut;
+  }
 }
 
 /******* BLOCK: BIG-TOP *******/
@@ -95,7 +97,7 @@
 
   .block-name {
     @include super-center(25%, 5%, 0%);
-    color: $matteblack;
+    color: $black;
     font-size: 1.1rem;
   }
   .block-value {
@@ -121,11 +123,11 @@
 }
 
 
-/*******Result Block*******/
+/******* RESULT SECTION *******/
 
 .block:nth-child(3) {
   display: block;
-  background-color: $offwhite;
+  background-color: $_100;
   width: 100%;
   height: 33.33%;
 

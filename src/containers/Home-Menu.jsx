@@ -10,19 +10,22 @@ import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
   isHome() {
-    const {pathname} = this.props;
-    if (pathname !== "/") {
-      // document.body.classList.add('body-blur');
-      return "home-blur";
+    return this.props.pathname === '/' ? true : false;
+  }
+
+  subOpen() {
+    if (this.isHome()) {
+      document.body.classList.remove('body-blur');
+      return '';
     } else {
-      // document.body.classList.remove('body-blur');
-      return;
+      document.body.classList.add('body-blur');
+      return "sub-open home-blur";
     }
   }
 
   render() {
     return (
-      <div className={`home-container ${this.isHome()}`}>
+      <div className={`home-container ${this.subOpen()}`}>
         <h1>Mug Math</h1>
         <div className="menu-container">
           <div className="menu-row">

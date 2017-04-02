@@ -47,6 +47,7 @@
     "html-webpack-plugin": "^2.26.0",
     "node-sass": "^4.3.0",
     "null-loader": "^0.1.1",
+    "react-router-page-transition": "^3.0.2",
     "sass-loader": "^6.0.3",
     "sass-material-colors": "0.0.5",
     "serviceworker-webpack-plugin": "^0.2.1",

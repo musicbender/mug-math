@@ -3,7 +3,7 @@ import { Link, browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
-import { teal800 } from 'material-ui/styles/colors';
+import { grey900 } from 'material-ui/styles/colors';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
@@ -11,7 +11,7 @@ import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
   height: barStyle.bar.height,
-  backgroundColor: teal800,
+  backgroundColor: grey900,
   boxShadow: barStyle.bar.shadow
 }
 
@@ -22,7 +22,7 @@ class BrewCalculator extends Component {
 
   render() {
     return (
-      <div>
+      <div className="transition-item">
         <div className="sub-app">
           <AppBar
             title="Brew Ratio Calculator"
