@@ -10,6 +10,7 @@
     margin: 0 auto 1px;
 }
 
+
 /******* MENU ITEMS *******/
 
 .menu-item-container {
@@ -71,9 +72,6 @@
 .menu-item-container.active {
   transform: translate(-50%,-50%);
   transition: all $app-speed;
-  animation: container-expand $app-speed $easeOut;
-  animation-delay: $app-delay;
-  animation-fill-mode: forwards;
   z-index: 2;
 
   .menu-circle {
@@ -97,15 +95,15 @@
     border-radius: $circle-size;
   }
   100% {
-    width: 100%;
-    height: 100%;
+    width: $app-width;
+    height: $app-height;
     border-radius: 0;
   }
 }
 @keyframes circle-close {
   0% {
-    width: 100%;
-    height: 100%;
+    width: $app-width;
+    height: $app-height;
     border-radius: 0;
   }
   100% {
@@ -114,26 +112,7 @@
     border-radius: $circle-size;
   }
 }
-@keyframes container-expand {
-  0% {
-    width: 25%;
-    height: 25em;
-  }
-  100% {
-    width: $app-width;
-    height: $app-height;
-  }
-}
-@keyframes container-close {
-  0% {
-    width: $app-width;
-    height: $app-height;
-  }
-  100% {
-    width: 25%;
-    height: 25em;
-  }
-}
+
 
 /******* MEDIA QUERIES *******/
 
