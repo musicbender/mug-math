@@ -7,6 +7,7 @@ import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
 import MenuItem from '../components/menu-item.jsx';
 import '../style/components/home-menu.scss';
+import '../style/transitions.scss';
 
 class HomeMenu extends Component {
   isHome() {
@@ -19,22 +20,20 @@ class HomeMenu extends Component {
       return '';
     } else {
       document.body.classList.add('body-blur');
-      return "sub-open home-blur";
+      return 'sub-open';
     }
   }
 
   render() {
     return (
       <div className={`home-container ${this.subOpen()}`}>
-        <h1>Mug Math</h1>
+        <h1 className="title">Mug Math</h1>
         <div className="menu-container">
-          <div className="menu-row">
             <MenuItem title="Cold Drip Timer" url="/cold-drip-timer"><IconColdDrip /></MenuItem>
             <MenuItem title="Brew Calculator" url="/brew-calculator"><IconCoffee /></MenuItem>
             <MenuItem title="Roast Development" url="/roast-development-calculator"><IconFire /></MenuItem>
             <MenuItem title="Roast Moisture" url="/roast-moisture-calculator"><IconMoisture /></MenuItem>
           </div>
-        </div>
       </div>
     );
   }
