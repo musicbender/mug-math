@@ -33,7 +33,7 @@ h1 {
 }
 
 
-/*******MAIN*******/
+/******* SUB APP *******/
 
 .app-container {
     position: relative;
@@ -42,8 +42,6 @@ h1 {
 }
 
 .sub-app {
-    $speed: 600ms;
-
     @include super-center;
     @include box-shadow(2);
     margin: 0 auto;
@@ -54,8 +52,8 @@ h1 {
     opacity: 0;
     overflow: hidden;
     background-color: $white;
-    animation: appOpen $speed ease-in;
-    animation-delay: $speed;
+    animation: appOpen 300ms ease-in;
+    animation-delay: 700ms;
     animation-fill-mode: forwards;
     z-index: 10;
 }
@@ -67,6 +65,9 @@ h1 {
 
 .home-container {
     @extend %full-position;
+    background-color: rgba($white, 0);
+    filter: blur(0px);
+    transition: 1000ms filter easeOut;
     z-index: 1;
 }
 
@@ -80,12 +81,18 @@ h1 {
 }
 
 .home-blur {
-  filter: blur(15px);
   background-color: rgba($white, 0.05);
+
+  .menu-item-container:not(.active),
+  .title {
+    animation: blur 1000ms;
+    animation-delay: 600ms;
+    animation-fill-mode: forwards;
+  }
 }
 
 
-/*******Sections*******/
+/******* SECTIONS *******/
 
 .section {
   position: relative;
@@ -133,20 +140,23 @@ h1 {
 @keyframes appOpen {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
   }
-  // 0% {
-  //   opacity: 0;
-  //   transform: translate(-50%, -50%) scale(1);
-  // }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(15px);
   }
 }
 
 
-/*******MEDIA QUERIES*******/
+/******* MEDIA QUERIES *******/
 
 @media only screen and (max-width: 767px) {
   .sub-app {

@@ -20,7 +20,7 @@ class HomeMenu extends Component {
       return '';
     } else {
       document.body.classList.add('body-blur');
-      return 'sub-open';
+      return 'sub-open home-blur';
     }
   }
 
@@ -46,5 +46,3 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps)(HomeMenu);
-
-// export default HomeMenu;

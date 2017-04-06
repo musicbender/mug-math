@@ -19,7 +19,7 @@
     left: 50%;
     display: inline-block;
     width: 25%;
-    height: 25em;
+    height: 12em;
     transition: all $app-speed $easeOut;
 
     .menu-circle {
@@ -41,6 +41,9 @@
         width: 45% !important;
         height: 45% !important;
         color: $white !important;
+        opacity: 1;
+        transition: all $app-speed !important;
+        transition-delay: 300ms;
     }
 
     .menu-text {
@@ -51,6 +54,7 @@
         font-weight: 100;
         text-transform: uppercase;
         transform: rotate(75deg);
+        transition: all $app-speed;
     }
 }
 
@@ -58,8 +62,6 @@
 /******* MENU ITEMS GRID LAYOUT *******/
 
 .menu-item-container {
-  // &:nth-child(n+1):nth-child(-n+4):not(.active) { top: 10%; }
-
   &:nth-child(1) { transform: translate(-200%, -100%); }
   &:nth-child(2) { transform: translate(-100%, -100%); }
   &:nth-child(3) { transform: translate(0%, -100%); }
@@ -76,12 +78,20 @@
 
   .menu-circle {
     z-index: 12;
-    animation: circle-expand $app-speed;
+    animation: circle-expand $app-speed + 0.6s;
     animation-delay: $app-delay;
     animation-fill-mode: forwards;
   }
-  svg {
-    display: none !important;
+
+  svg:not(.menu-text) {
+    opacity: 0;
+    transition: opacity 300ms !important;
+  }
+
+  .menu-text {
+    opacity: 0;
+    transform: rotate(215deg);
+    transition: opacity 300ms, transform $app-speed;
   }
 }
 
@@ -93,11 +103,16 @@
     width: $circle-size;
     height: $circle-size;
     border-radius: $circle-size;
+    opacity: 1;
   }
-  100% {
+  70% {
     width: $app-width;
     height: $app-height;
     border-radius: 0;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0
   }
 }
 @keyframes circle-close {

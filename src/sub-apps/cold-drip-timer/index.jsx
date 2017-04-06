@@ -22,6 +22,7 @@ const barStyleObj = {
 
 class ColdDripTimer extends Component {
   componentDidMount() {
+    console.log('mounting audio context');
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
   }
 

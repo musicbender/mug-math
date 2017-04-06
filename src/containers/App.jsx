@@ -40,3 +40,13 @@ function mapStateToProps({ dripTimer_speed }) {
 }
 
 export default connect(mapStateToProps)(App);
+
+// 
+// palette: {
+//   primary1Color: darkBlack,
+//   primary2Color: grey900,
+//   primary3Color: grey800,
+//   pickerColor: darkBlack,
+//   textColor: darkBlack,
+//   alternateTextColor: white,
+// },
