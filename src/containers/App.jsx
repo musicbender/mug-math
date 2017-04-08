@@ -10,6 +10,15 @@ var muiTheme;
 class App extends Component {
   componentDidMount() {
     muiTheme = getMuiTheme({
+      palette: {
+        primary1Color: fullBlack,
+        primary2Color: grey900,
+        primary3Color: grey500,
+        accent1Color: white,
+        accent2Color: grey100,
+        accent3Color: grey500,
+        pickerHeaderColor: grey600,
+      },
       slider: {
         handleSize: 20,
         selectionColor: this.props.speed.color,
@@ -40,13 +49,3 @@ function mapStateToProps({ dripTimer_speed }) {
 }
 
 export default connect(mapStateToProps)(App);
-
-// 
-// palette: {
-//   primary1Color: darkBlack,
-//   primary2Color: grey900,
-//   primary3Color: grey800,
-//   pickerColor: darkBlack,
-//   textColor: darkBlack,
-//   alternateTextColor: white,
-// },

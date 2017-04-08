@@ -1,6 +1,7 @@
 @import './helpers/_variables';
 @import './helpers/_mixins';
 @import './helpers/_placeholders';
+@import './section-types';
 
 
 /*******GLOBALS*******/
@@ -42,6 +43,7 @@ h1 {
 }
 
 .sub-app {
+    $speed: $app-speed - 100ms;
     @include super-center;
     @include box-shadow(2);
     margin: 0 auto;
@@ -52,8 +54,8 @@ h1 {
     opacity: 0;
     overflow: hidden;
     background-color: $white;
-    animation: appOpen 300ms ease-in;
-    animation-delay: 700ms;
+    animation: appOpen $speed $easeOut;
+    animation-delay: $speed + 375ms;
     animation-fill-mode: forwards;
     z-index: 10;
 }
@@ -64,10 +66,12 @@ h1 {
 }
 
 .home-container {
+    $speed: $app-speed + 400ms;
+
     @extend %full-position;
     background-color: rgba($white, 0);
     filter: blur(0px);
-    transition: 1000ms filter easeOut;
+    animation: unblur $speed $easeOut;
     z-index: 1;
 }
 
@@ -85,53 +89,12 @@ h1 {
 
   .menu-item-container:not(.active),
   .title {
-    animation: blur 1000ms;
-    animation-delay: 600ms;
+    $speed: $app-speed + 400ms;
+
+    animation: blur $speed;
+    animation-delay: $app-speed;
     animation-fill-mode: forwards;
   }
-}
-
-
-/******* SECTIONS *******/
-
-.section {
-  position: relative;
-  top: 0;
-}
-
-.section-top {
-  height: calc(50% - 45px);
-}
-
-.section-bottom {
-  height: 50%;
-}
-
-.section-top.withtabs {
-  height: calc(60% - 45px);
-}
-
-.section-bottom.withtabs {
-  height: 40%;
-}
-
-.section-top.withcolorfade {
-  height: calc(50% - 45px + 3em);
-  top: -3em;
-}
-
-.section-bottom.withcolorfade {
-  top: -3em;
-}
-
-.section-top.big-top {
-  height: calc(60% - 45px);
-  background-color: $white;
-}
-
-.section-bottom.big-top {
-  height: 40.1%;
-  background-color: $white;
 }
 
 
@@ -146,12 +109,36 @@ h1 {
   }
 }
 
+@keyframes appOpen2 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(0.5);
+  }
+  30% {
+    opacity: 0.2;
+    transform: translate(-50%,-50%) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+  }
+}
+
 @keyframes blur {
   0% {
     filter: blur(0px);
   }
   100% {
     filter: blur(15px);
+  }
+}
+
+@keyframes unblur {
+  0% {
+    filter: blur(15px);
+  }
+  100% {
+    filter: blur(0px);
   }
 }
 

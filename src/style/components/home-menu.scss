@@ -30,7 +30,8 @@
       width: $circle-size;
       height: $circle-size;
       border-radius: $circle-size;
-      background-color: $black;
+      background-color: $white;
+      @include box-shadow(1);
       animation: circle-close $app-speed $easeOut;
     }
 
@@ -40,7 +41,7 @@
         left: 15%;
         width: 45% !important;
         height: 45% !important;
-        color: $white !important;
+        color: $black !important;
         opacity: 1;
         transition: all $app-speed !important;
         transition-delay: 300ms;
@@ -78,7 +79,7 @@
 
   .menu-circle {
     z-index: 12;
-    animation: circle-expand $app-speed + 0.6s;
+    animation: circle-expand $app-speed + 0.6s $easeInOut;
     animation-delay: $app-delay;
     animation-fill-mode: forwards;
   }
@@ -112,9 +113,13 @@
     opacity: 1;
   }
   100% {
-    opacity: 0
+    width: $app-width;
+    height: $app-height;
+    border-radius: 0;
+    opacity: 0;
   }
 }
+
 @keyframes circle-close {
   0% {
     width: $app-width;

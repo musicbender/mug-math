@@ -1,36 +1,30 @@
 @import '../../../style/helpers/_variables';
-@import '../../../style/helpers/_mixins';
-@import '../../../style/helpers/_placeholders';
-@import '../../../style/components/input-blocks.scss';
-/*******Input Blocks*******/
-.rdev-block:not(:nth-child(3)) {
-    background-color: material-color('orange', '500');
-}
-
-.rdev-block.selected {
-    background-color: material-color('orange','400');
-}
-
+// @import '../../../style/helpers/_mixins';
+// @import '../../../style/helpers/_placeholders';
+// @import '../../../style/components/input-blocks.scss';
 
 /*******TIME PICKER*******/
 
 .rdev-block .time-picker {
+    $text: $white;
+
     height: 1.3em !important;
-    color: $matteblack !important;
+    color: $text !important;
     font-size: 3rem !important;
 
     > div:first-child {
         font-size: 1.5rem !important;
         bottom: 25% !important;
+        color: rgba($text, 0.5) !important;
     }
 
-    > input {
-        color: $matteblack !important;
+    > input[type="text"] {
+        color: $text !important;
 
     }
 
     hr {
-        border-bottom: 1px solid material-color('yellow', 'a200') !important;
+        border-bottom: 1px solid $text !important;
     }
 }
 

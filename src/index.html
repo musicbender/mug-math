@@ -11,7 +11,16 @@
     <title>Mug Math</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet" defer>
-
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'veg4mxa',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
 </head>
 <body>
   <script>window.__PRELOADED_STATE__;</script>
@@ -19,5 +28,6 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="app"></div>
+
 </body>
 </html>

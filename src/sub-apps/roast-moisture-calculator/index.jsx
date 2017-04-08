@@ -3,7 +3,7 @@ import { Link, browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
-import { blue800 } from 'material-ui/styles/colors';
+import { black } from 'material-ui/styles/colors';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
@@ -11,7 +11,7 @@ import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
   height: barStyle.bar.height,
-  backgroundColor: blue800,
+  backgroundColor: black,
   boxShadow: barStyle.bar.shadow
 }
 
