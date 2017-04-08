@@ -16,7 +16,7 @@ export default (props) => {
   return (
     <Tabs
       tabItemContainerStyle={tabStyle}
-      className="brew-tabs"
+      className="brew-tabs tabs"
       value={props.mode}
       onChange={handleTabChange}
     >

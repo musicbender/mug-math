@@ -5,4 +5,8 @@
   @include super-center($top: 100%, $left: auto, $x: 0);
   right: 10%;
   z-index: 20;
+
+  svg {
+    fill: $action-btn-text !important;
+  }
 }

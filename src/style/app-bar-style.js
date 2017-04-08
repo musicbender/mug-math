@@ -3,7 +3,7 @@ const appBarStyle = {
     textAlign: "left",
     fontSize: 18,
     fontWeight: 100,
-    color: "rgba(255, 255, 255, 0.6)",
+    color: "rgba(255, 255, 255, 1)",
     lineHeight: '45px'
   },
   bar: {

@@ -17,7 +17,7 @@ var audioContext;
 
 const barStyleObj = {
   height: barStyle.bar.height,
-  backgroundColor: "rgba(78, 52, 46, 0.4)"
+  backgroundColor: "rgba(0, 0, 0, 0.4)"
 }
 
 class ColdDripTimer extends Component {

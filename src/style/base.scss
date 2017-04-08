@@ -33,6 +33,13 @@ h1 {
     text-align: center;
 }
 
+/******* COMPONENTS *******/
+
+/*tab selector bar*/
+.tabs > div:nth-child(2) > div  {
+  background-color: $_400 !important;
+}
+
 
 /******* SUB APP *******/
 

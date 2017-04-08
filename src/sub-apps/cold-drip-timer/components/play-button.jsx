@@ -9,7 +9,7 @@ export default (props) => {
 
   return (
     <div className="play-button-div">
-      <FloatingActionButton onClick={() => props.click()}>
+      <FloatingActionButton backgroundColor="white" onClick={() => props.click()}>
         {playStateIcon}
       </FloatingActionButton>
     </div>

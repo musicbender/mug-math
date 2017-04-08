@@ -2,28 +2,46 @@ import React, { Component } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
-import PageTransition from 'react-router-page-transition';
+import {
+  black,
+  grey900,
+  grey700,
+  grey500,
+  grey100,
+  white
+} from 'material-ui/styles/colors';
 import HomeMenu from './Home-Menu.jsx';
 
 var muiTheme;
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     muiTheme = getMuiTheme({
       palette: {
-        primary1Color: fullBlack,
+        primary1Color: black,
         primary2Color: grey900,
         primary3Color: grey500,
-        accent1Color: white,
+        accent1Color: black,
         accent2Color: grey100,
         accent3Color: grey500,
-        pickerHeaderColor: grey600,
+        pickerHeaderColor: grey700,
+      },
+      appBar: {
+        height: 45,
+        shadow: "none",
+        color: black
+      },
+      tabs: {
+        color: black
+      },
+      tab: {
+        color: black
       },
       slider: {
+        handleColorZero: white,
+        handleFillColor: this.props.speed.color,
         handleSize: 20,
         selectionColor: this.props.speed.color,
-        handleColorZero: 'rgb(70, 50, 42)',
-        handleFillColor: 'rgb(70, 50, 42)',
         rippleColor: this.props.speed.color
       },
       userAgent: 'all'

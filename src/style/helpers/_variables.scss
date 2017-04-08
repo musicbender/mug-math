@@ -67,8 +67,8 @@ $circle-size: 10em;
 
 /******* Components *******/
 
-$primary:             $white;
-$secondary:           $black;
+$primary:                 $white;
+$secondary:               $black;
 
 $app-bg:                  $primary;
 $block-color:             $secondary;
@@ -80,3 +80,6 @@ $keypad-color:            $primary;
 $keypad-hover-color:      $_300;
 $keypad-border-color:     $keypad-hover-color;
 $keypad-text-color:       $secondary;
+
+$action-btn-bg:           $primary;
+$action-btn-text:         $secondary;

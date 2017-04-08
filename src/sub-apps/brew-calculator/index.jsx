@@ -9,12 +9,6 @@ import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
 import barStyle from '../../style/app-bar-style';
 
-const barStyleObj = {
-  height: barStyle.bar.height,
-  backgroundColor: grey900,
-  boxShadow: barStyle.bar.shadow
-}
-
 class BrewCalculator extends Component {
   handleBackButton() {
     browserHistory.push('/');
@@ -27,7 +21,7 @@ class BrewCalculator extends Component {
           <AppBar
             title="Brew Ratio Calculator"
             titleStyle={barStyle.title}
-            style={barStyleObj}
+
             className="app-bar"
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             iconStyleLeft={barStyle.iconLeft}
