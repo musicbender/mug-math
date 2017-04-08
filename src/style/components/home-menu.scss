@@ -8,6 +8,7 @@
 .menu-container {
     @extend %full-position;
     margin: 0 auto 1px;
+    max-width: 75em;
 }
 
 
@@ -63,10 +64,19 @@
 /******* MENU ITEMS GRID LAYOUT *******/
 
 .menu-item-container {
-  &:nth-child(1) { transform: translate(-200%, -100%); }
-  &:nth-child(2) { transform: translate(-100%, -100%); }
-  &:nth-child(3) { transform: translate(0%, -100%); }
-  &:nth-child(4) { transform: translate(100%, -100%); }
+  &:nth-child(1) { transform: translate( -200% ,  -100% ); }
+  &:nth-child(2) { transform: translate( -100% ,  -100% ); }
+  &:nth-child(3) { transform: translate( 0%    ,  -100% ); }
+  &:nth-child(4) { transform: translate( 100%  ,  -100% ); }
+}
+
+@media only screen and (max-width: 767px) {
+  .menu-item-container {
+    &:nth-child(1) { transform: translate( -100% , -100% ); }
+    &:nth-child(2) { transform: translate( 0%    , -100% ); }
+    &:nth-child(3) { transform: translate( -100% , -0%   ); }
+    &:nth-child(4) { transform: translate( 0%    , 0%    ); }
+  }
 }
 
 

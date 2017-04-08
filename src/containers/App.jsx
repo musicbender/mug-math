@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
-import {
-  black,
-  grey900,
-  grey700,
-  grey500,
-  grey100,
-  white
-} from 'material-ui/styles/colors';
+import { black, grey900, grey700, grey500, grey100, white } from 'material-ui/styles/colors';
 import HomeMenu from './Home-Menu.jsx';
 
 var muiTheme;
 
 class App extends Component {
   componentWillMount() {
+    const initColor = 'rgb(40,40,40)';
+
     muiTheme = getMuiTheme({
       palette: {
         primary1Color: black,
@@ -38,11 +33,11 @@ class App extends Component {
         color: black
       },
       slider: {
-        handleColorZero: white,
-        handleFillColor: this.props.speed.color,
+        handleColorZero: 'transparent',
+        handleFillColor: initColor,
         handleSize: 20,
-        selectionColor: this.props.speed.color,
-        rippleColor: this.props.speed.color
+        selectionColor: initColor,
+        rippleColor: initColor
       },
       userAgent: 'all'
     });
@@ -56,14 +51,8 @@ class App extends Component {
             {this.props.children}
         </div>
       </MuiThemeProvider>
-    )
+    );
   }
 }
 
-function mapStateToProps({ dripTimer_speed }) {
-  return {
-    speed: dripTimer_speed
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
