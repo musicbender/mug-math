@@ -1,0 +1,25 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+
+
+/******* TITLE *******/
+
+.title-container {
+  position: relative;
+  height: 8.5%;
+  width: 100%;
+  background-color: $black;
+  overflow: hidden;
+}
+
+.title {
+  @include super-center($left: 76%);
+  margin: 0;
+  text-transform: uppercase;
+  font-size: $title;
+  color: $white;
+
+  span {
+    font-weight: 100;
+  }
+}

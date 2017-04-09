@@ -21,7 +21,8 @@
     display: inline-block;
     width: 25%;
     height: 12em;
-    transition: all $app-speed $easeOut;
+    transition: all $app-speed $easeInOut;
+    transition-delay: 400ms;
 
     .menu-circle {
       position: relative;
@@ -33,7 +34,7 @@
       border-radius: $circle-size;
       background-color: $white;
       @include box-shadow(1);
-      animation: circle-close $app-speed $easeOut;
+      animation: circle-close $app-speed $easeInOut;
     }
 
     svg:not(.menu-text) {
@@ -43,9 +44,9 @@
         width: 45% !important;
         height: 45% !important;
         color: $black !important;
-        opacity: 1;
-        transition: all $app-speed !important;
-        transition-delay: 300ms;
+        opacity: 1 !important;
+        transition: opacity 75ms $easeOut!important;
+        transition-delay: $app-speed + 150ms !important;
     }
 
     .menu-text {
@@ -57,11 +58,12 @@
         text-transform: uppercase;
         transform: rotate(75deg);
         transition: all $app-speed;
+        transition-delay: 400ms;
     }
 }
 
 
-/******* MENU ITEMS GRID LAYOUT *******/
+/******* MENU ITEMS TRANSFORM-GRID LAYOUT *******/
 
 .menu-item-container {
   &:nth-child(1) { transform: translate( -200% ,  -100% ); }
@@ -84,7 +86,7 @@
 
 .menu-item-container.active {
   transform: translate(-50%,-50%);
-  transition: all $app-speed;
+  transition: transform $app-speed;
   z-index: 2;
 
   .menu-circle {
@@ -95,8 +97,8 @@
   }
 
   svg:not(.menu-text) {
-    opacity: 0;
-    transition: opacity 300ms !important;
+    opacity: 0 !important;
+    transition: opacity 200ms $easeOut !important;
   }
 
   .menu-text {
@@ -135,11 +137,32 @@
     width: $app-width;
     height: $app-height;
     border-radius: 0;
+    opacity: 1;
   }
+
   100% {
     width: $circle-size;
     height: $circle-size;
     border-radius: $circle-size;
+    opacity: 1;
+  }
+}
+
+@keyframes content-show {
+  0% {
+    opacity: 0 !important;
+  }
+  100% {
+    opacity: 1 !important;
+  }
+}
+
+@keyframes content-hide {
+  0% {
+    opacity: 1 !important;
+  }
+  100% {
+    opacity: 0 !important;
   }
 }
 

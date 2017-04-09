@@ -29,9 +29,13 @@
   width: 100%;
   float: left;
   display: inline-block;
+  opacity: 0;
   width: calc(50% - 1.5em);
   height: calc(66.66% - 2em);
   background-color: $block-color;
+  // animation: block-open $app-speed $easeInOut;
+  // animation-fill-mode: forwards;
+
 
   .block-name {
     @include super-center($top: 15%, $left: 15%);
@@ -135,5 +139,23 @@
     @include super-center();
     font-size: $medium;
     color: $result-text-color;
+  }
+}
+
+
+/******* ANIMATIONS *******/
+
+@keyframes block-open {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

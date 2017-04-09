@@ -6,6 +6,7 @@ import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
 import MenuItem from '../components/menu-item.jsx';
+import Title from '../components/title.jsx';
 import '../style/components/home-menu.scss';
 import '../style/transitions.scss';
 
@@ -27,7 +28,7 @@ class HomeMenu extends Component {
   render() {
     return (
       <div className={`home-container ${this.subOpen()}`}>
-        <h1 className="title">Mug Math</h1>
+        <Title />
         <div className="menu-container">
             <MenuItem title="Cold Drip Timer" url="/cold-drip-timer"><IconColdDrip /></MenuItem>
             <MenuItem title="Brew Calculator" url="/brew-calculator"><IconCoffee /></MenuItem>
