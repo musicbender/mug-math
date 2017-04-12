@@ -24,11 +24,16 @@
     transition: all $app-speed $easeInOut;
     transition-delay: 400ms;
 
-    .menu-circle {
+    .menu-item-link {
+      @extend %full-position;
       position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      display: block;
+      z-index: 1;
+    }
+
+    .menu-circle {
+      @include super-center();
+      margin: 0;
       width: $circle-size;
       height: $circle-size;
       border-radius: $circle-size;
@@ -51,14 +56,15 @@
 
     .menu-text {
         position: absolute;
-        top: -44%;
-        left: -4.5em;
+        top: -30%;
+        left: 0;
         font-size: 1em;
         font-weight: 100;
         text-transform: uppercase;
         transform: rotate(75deg);
         transition: all $app-speed;
         transition-delay: 400ms;
+        z-index: -1;
     }
 }
 
@@ -113,20 +119,17 @@
 
 @keyframes circle-expand {
   0% {
-    width: $circle-size;
-    height: $circle-size;
+    transform: translate(-50%, -50%) scale(1);
     border-radius: $circle-size;
     opacity: 1;
   }
   70% {
-    width: $app-width;
-    height: $app-height;
+    transform: translate(-50%, -50%) scale(4);
     border-radius: 0;
     opacity: 1;
   }
   100% {
-    width: $app-width;
-    height: $app-height;
+    transform: translate(-50%, -50%) scale(4);
     border-radius: 0;
     opacity: 0;
   }
@@ -134,15 +137,13 @@
 
 @keyframes circle-close {
   0% {
-    width: $app-width;
-    height: $app-height;
+    transform: translate(-50%, -50%) scale(4);
     border-radius: 0;
     opacity: 1;
   }
 
   100% {
-    width: $circle-size;
-    height: $circle-size;
+    transform: translate(-50%, -50%) scale(1);
     border-radius: $circle-size;
     opacity: 1;
   }

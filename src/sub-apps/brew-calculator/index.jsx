@@ -16,7 +16,7 @@ class BrewCalculator extends Component {
 
   render() {
     return (
-      <div className="transition-item">
+      <div className="sub-app-container">
         <div className="sub-app">
           <AppBar
             title="Brew Ratio Calculator"

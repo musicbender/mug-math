@@ -29,13 +29,9 @@
   width: 100%;
   float: left;
   display: inline-block;
-  opacity: 0;
   width: calc(50% - 1.5em);
   height: calc(66.66% - 2em);
   background-color: $block-color;
-  // animation: block-open $app-speed $easeInOut;
-  // animation-fill-mode: forwards;
-
 
   .block-name {
     @include super-center($top: 15%, $left: 15%);
@@ -63,27 +59,25 @@
   &:focus {
     cursor: pointer;
   }
-}
 
-.block:first-child {
-  margin: 1em 0.5em 1em 1em;
-}
+  &:nth-child(1) { margin: 1em 0.5em 1em 1em; }
+  &:nth-child(2) { margin: 1em 1em 1em 0.5em; }
 
-.block:nth-child(2) {
-  margin: 1em 1em 1em 0.5em;
-}
+  &.selected {
+    background-color: $block-selected-color;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: box-shadow $fast $easeOut;
 
-.block.selected {
-  background-color: $block-selected-color;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: box-shadow $fast $easeOut;
-
-  .brew-value {
-    @extend %unselectable;
-    font-size: $extra-large;
-    transition: $fast $easeOut;
+    .brew-value {
+      @extend %unselectable;
+      font-size: $extra-large;
+      transition: $fast $easeOut;
+    }
   }
 }
+
+
+/*******//**//** MODIFIERS **//**//*******/
 
 /******* BLOCK: BIG-TOP *******/
 
