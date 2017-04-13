@@ -119,17 +119,20 @@
 
 @keyframes circle-expand {
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    width: $circle-size;
+    height: $circle-size;
     border-radius: $circle-size;
     opacity: 1;
   }
   70% {
-    transform: translate(-50%, -50%) scale(4);
+    width: $app-width;
+    height: $app-height;
     border-radius: 0;
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) scale(4);
+    width: $app-width;
+    height: $app-height;
     border-radius: 0;
     opacity: 0;
   }
@@ -137,13 +140,15 @@
 
 @keyframes circle-close {
   0% {
-    transform: translate(-50%, -50%) scale(4);
+    width: $app-width;
+    height: $app-height;
     border-radius: 0;
     opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(1);
+    width: $circle-size;
+    height: $circle-size;
     border-radius: $circle-size;
     opacity: 1;
   }
