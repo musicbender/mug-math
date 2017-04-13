@@ -1,4 +1,11 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, RANGE_ON, RANGE_OFF } from '../constants/index';
+import { AUDIO_MOUNT, SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, RANGE_ON, RANGE_OFF } from '../constants/index';
+
+export function mountAudio(payload) {
+  return {
+    type: AUDIO_MOUNT,
+    payload
+  }
+}
 
 export function soundOn() {
   return {
