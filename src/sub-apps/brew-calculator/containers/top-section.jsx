@@ -48,7 +48,7 @@ class TopSection extends Component {
   }
 }
 
-function mapStateToProps({brewCalc}) {
+function mapStateToProps({ brewCalc }) {
   const { mode, block } = brewCalc.navigation;
   const { coffee, water, ratio } = brewCalc.values;
   return {
@@ -56,7 +56,7 @@ function mapStateToProps({brewCalc}) {
     block,
     coffee,
     water,
-    ratio
+    ratio,
   }
 }
 
@@ -67,7 +67,7 @@ function mapDispatchToProps(dispatch) {
     changeNum,
     increaseNum,
     decreaseNum,
-    clearNum
+    clearNum,
   }, dispatch)
 }
 

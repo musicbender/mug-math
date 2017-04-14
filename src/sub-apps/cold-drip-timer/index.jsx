@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link, browserHistory } from 'react-router';
-import { mountAudio, onRange, offRange } from './actions/index';
+import { mountAudio, onSweetspot, offSweetspot } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -21,11 +21,11 @@ const barStyleObj = {
 class ColdDripTimer extends Component {
   componentDidMount() {
     try {
-      var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
       this.props.mountAudio(audioContext);
     }
     catch(err) {
-      console.log(`Web Audio API is not supported in this browser: ${err}`);
+      console.error(`Web Audio API is not supported in this browser: ${err}`);
     }
   }
 
@@ -47,31 +47,33 @@ class ColdDripTimer extends Component {
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
-              <DropdownMenu range={this.props.range} onRange={this.props.onRange} offRange={this.props.offRange}/>
+              <DropdownMenu sweetspot={this.props.sweetspot} onsweetspot={this.props.onSweetspot} offsweetspot={this.props.offSweetspot}/>
             } />
-          <PlaybackControls audioContext={ this.props.sound.audioContext } />
-          <TempoSlider audioContext={ this.props.soundaudioContext } />
+          <PlaybackControls audioContext={ this.props.audioContext } />
+          <TempoSlider audioContext={ this.props.audioContext } />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
-    )
+    );
   }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        onRange,
-        offRange,
+        onSweetspot,
+        offSweetspot,
         mountAudio,
     }, dispatch);
 }
 
-function mapStateToProps({dripTimer_speed, dripTimer_range, dripTimer_sound}) {
+function mapStateToProps({coldDripTimer}) {
+    const { audioContext } = coldDripTimer.sound;
+    const { sweetspot } = coldDripTimer.sweetspot;
+
     return {
-    speed: dripTimer_speed,
-    range: dripTimer_range,
-    sound: dripTimer_sound,
-  };
+      sweetspot,
+      audioContext,
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);

@@ -1,7 +1,7 @@
-export const AUDIO_MOUNT = 'AUDIO_MOUNT';
-export const SOUND_ON = 'SOUND_ON';
-export const SOUND_OFF = 'SOUND_OFF';
-export const CHANGE_TEMPO = 'CHANGE_TEMPO';
-export const CHANGE_RIPPLE = 'CHANGE_RIPPLE';
-export const RANGE_ON = 'RANGE_ON';
-export const RANGE_OFF = 'RANGE_OFF';
+export const AUDIO_MOUNT = 'CDT::AUDIO_MOUNT';
+export const SOUND_ON = 'CDT::SOUND_ON';
+export const SOUND_OFF = 'CDT::SOUND_OFF';
+export const CHANGE_TEMPO = 'CDT::CHANGE_TEMPO';
+export const CHANGE_RIPPLE = 'CDT::CHANGE_RIPPLE';
+export const SWEETSPOT_ON = 'CDT::SWEETSPOT_ON';
+export const SWEETSPOT_OFF = 'CDT::SWEETSPOT_OFF';

@@ -1,4 +1,4 @@
-import { AUDIO_MOUNT, SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, RANGE_ON, RANGE_OFF } from '../constants/index';
+import { AUDIO_MOUNT, SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, SWEETSPOT_ON, SWEETSPOT_OFF } from '../constants/index';
 
 export function mountAudio(payload) {
   return {
@@ -32,14 +32,14 @@ export function changeRipple() {
   }
 }
 
-export function onRange() {
+export function onSweetspot() {
   return {
-    type: RANGE_ON
+    type: SWEETSPOT_ON
   }
 }
 
-export function offRange() {
+export function offSweetspot() {
   return {
-    type: RANGE_OFF
+    type: SWEETSPOT_OFF
   }
 }

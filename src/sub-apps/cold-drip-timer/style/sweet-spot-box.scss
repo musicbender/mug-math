@@ -1,6 +1,6 @@
 @import '../../../style/helpers/_variables';
 
-#range {
+#sweetspot {
   display: block;
   position: absolute;
   top: -7%;
@@ -13,22 +13,22 @@
   z-index: -1;
 }
 
-.range-show {
+.sweetspot-show {
   opacity: 1;
-  animation: open-range 0.15s ease-in;
+  animation: open-sweetspot 0.15s ease-in;
 }
 
-.range-hide {
+.sweetspot-hide {
   opacity: 0;
-  animation: close-range 0.15s ease-in;
+  animation: close-sweetspot 0.15s ease-in;
 }
 
-@keyframes open-range {
+@keyframes open-sweetspot {
   from {transform: scale(0);}
   to {transform: scale(1);}
 }
 
-@keyframes close-range {
+@keyframes close-sweetspot {
   from {transform: scale(1);}
   to {transform: scale(0);}
 }
@@ -37,14 +37,14 @@
 /*******MEDIA QUERIES*******/
 
 @media only screen and (max-width: 450px) {
-  #range {
+  #sweetspot {
     left: 25%;
     width: 21%;
   }
 }
 
 @media only screen and (max-width: 385px) {
-  #range {
+  #sweetspot {
     left: 27%;
     width: 19%;
   }

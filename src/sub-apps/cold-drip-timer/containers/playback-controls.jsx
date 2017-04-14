@@ -10,33 +10,33 @@ import '../style/playback-controls.scss';
 
 class PlaybackControls extends Component {
     handleClick() {
-        const {sound, soundOff, soundOn, audioContext} = this.props;
-        if (sound.playing) {
+        const {playing, soundOff, soundOn, audioContext} = this.props;
+        if (playing) {
             soundOff(audioContext);
-        } else if (!sound.playing) {
+        } else if (!playing) {
             soundOn(audioContext);
         }
     }
 
     renderTick() {
-      const {sound, speed, audioContext} = this.props;
-      if (sound.playing) {
+      const { playing, tempo, audioContext, changeRipple } = this.props;
+      if (playing) {
           return (
             <Tick
             ctx={audioContext}
-            tempo={speed.tempo}
-            changeRipple={this.props.changeRipple} />
+            tempo={tempo}
+            changeRipple={changeRipple} />
         )
       }
     }
 
     render() {
-      const styles = { backgroundColor: this.props.speed.color }
+      const styles = { backgroundColor: this.props.color }
       return (
           <section id="playback-controls" className="section section-top playback-controls-div withcolorfade" style={styles}>
-            <TempoView tempo={this.props.speed.tempo} />
-            <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            <Ripple rippleState={this.props.speed.ripple}/>
+            <TempoView tempo={this.props.tempo} />
+            <PlayButton playing={this.props.playing} click={() => this.handleClick()} />
+            <Ripple rippleState={this.props.ripple}/>
             {this.renderTick()}
           </section>
       )
@@ -47,15 +47,21 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         soundOn,
         soundOff,
-        changeRipple
+        changeRipple,
     }, dispatch);
 }
 
-function mapStateToProps({dripTimer_sound, dripTimer_speed}) {
-    return {
-      sound: dripTimer_sound,
-      speed: dripTimer_speed
-    };
+function mapStateToProps({coldDripTimer}) {
+
+  const { tempo, ripple, color } = coldDripTimer.speed;
+  const { playing } = coldDripTimer.sound;
+
+  return {
+    tempo,
+    ripple,
+    color,
+    playing,
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);

@@ -17,11 +17,11 @@ export default (props) => {
   }
 
   const handleToggle = () => {
-    const range = props.range.range;
-    if (range) {
-      props.offRange();
-    } else if (!range) {
-      props.onRange();
+    const sweetspot = props.sweetspot.sweetspot;
+    if (sweetspot) {
+      props.offsweetspot();
+    } else if (!sweetspot) {
+      props.onsweetspot();
     }
   }
 
@@ -38,10 +38,10 @@ export default (props) => {
           disableTouchRipple
           primaryText={
             <Toggle
-            className="range-toggle"
+            className="sweetspot-toggle"
             label="Sweet Spot"
             style={style.toggle}
-            toggled={props.range.range}
+            toggled={props.sweetspot.sweetspot}
             onToggle={() => handleToggle()}
              />
         } />
