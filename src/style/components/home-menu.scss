@@ -40,18 +40,18 @@
       background-color: $white;
       @include box-shadow(1);
       animation: circle-close $app-speed $easeInOut;
+      will-change: width, height, border-radius, opacity;
     }
 
     svg:not(.menu-text) {
-        position: absolute;
-        top: 38%;
-        left: 15%;
+        @include super-center();
         width: 45% !important;
         height: 45% !important;
         color: $black !important;
         opacity: 1 !important;
         transition: opacity 75ms $easeOut!important;
         transition-delay: $app-speed + 150ms !important;
+        will-change: opacity;
     }
 
     .menu-text {
@@ -64,7 +64,18 @@
         transform: rotate(75deg);
         transition: all $app-speed;
         transition-delay: 400ms;
+        will-change: opacity, transform;
         z-index: -1;
+    }
+
+    /* icon adjustment */
+    .cbt,
+    .brw {
+      .menu-cricle svg:not(.menu-text) { left: 49.1%; }
+    }
+
+    .moi {
+      .menu-cricle svg:not(.menu-text) { left: 50.05%; }
     }
 }
 

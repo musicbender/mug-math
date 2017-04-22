@@ -1,12 +1,12 @@
 {
   "name": "Mug Math",
   "short_name": "Mug Math",
-  "description": null,
+  "description": "null",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
-  "start_url": "/",
+  "start_url": ".",
   "theme_color": "#533a11",
   "background_color": "#fff",
   "icons": [
@@ -54,6 +54,5 @@
       "src": "assets//android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
-  ]
+    }]
 }

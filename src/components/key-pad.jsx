@@ -2,6 +2,8 @@ import React from 'react';
 import ContentBackspace from 'material-ui/svg-icons/content/backspace';
 '../style/key-pad.scss';
 
+console.log('testing');
+
 export default (props) => {
   const LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", '.', "delete"];
 
@@ -21,7 +23,7 @@ export default (props) => {
       );
     });
 
-  return ( 
+  return (
     <div className="number-container">
       {labelList}
     </div>

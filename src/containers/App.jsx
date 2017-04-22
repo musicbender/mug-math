@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { connect } from 'react-redux';
 import muithemeStyle from '../style/muitheme-style';
 import HomeMenu from './Home-Menu.jsx';
 
-var muiTheme;
+let muiTheme;
 
 class App extends Component {
   componentWillMount() {
@@ -14,7 +13,7 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={ muiTheme }>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-container">
           <HomeMenu location={this.props.location} />
             {this.props.children}

@@ -69,6 +69,7 @@ h1 {
     animation: appOpen $speed $easeOut;
     animation-delay: $speed + 375ms;
     animation-fill-mode: forwards;
+    will-change: opacity;
     z-index: 10;
 }
 
@@ -95,9 +96,8 @@ h1 {
   background-color: rgba($white, 0.05);
 
   .menu-item-container:not(.active),
-  .title {
+  .title-container {
     $speed: $app-speed + 400ms;
-
     animation: blur $speed;
     animation-delay: $app-speed;
     animation-fill-mode: forwards;

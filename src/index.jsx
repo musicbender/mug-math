@@ -5,18 +5,20 @@ import { createStore } from 'redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import reducers from './reducers';
 import routes from './routes.jsx';
 import './style/base.scss';
 
-
-// if ('serviceWorker' in navigator) {
-//   const registration = runtime.register();
-// }
+if ('serviceWorker' in navigator) {
+  const registration = runtime.register();
+}
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
+
+
+console.log(process.env);
 
 injectTapEventPlugin();
 
@@ -24,11 +26,11 @@ const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTE
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-if(window !== undefined) {
+if (document !== undefined) {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history} routes={routes} />
     </Provider>
-    , document.getElementById('app')
+    , document.getElementById('app'),
   );
 }

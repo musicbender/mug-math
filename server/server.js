@@ -13,7 +13,7 @@ const app = new express();
 
 app.use(express.static('dist'));
 
-app.use((req, res) => {
+app.use((req, res, next) => {
   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
     if (err) {
       return res.status(500).end();
