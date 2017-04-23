@@ -56,6 +56,7 @@ h1 {
 
 .sub-app {
     $speed: $app-speed - 100ms;
+
     @include super-center;
     @include box-shadow(2);
     margin: 0 auto;
@@ -65,11 +66,10 @@ h1 {
     max-width: $app-width;
     opacity: 0;
     overflow: hidden;
-    background-color: $white;
+    background-color: transparent;
     animation: appOpen $speed $easeOut;
-    animation-delay: $speed + 375ms;
+    animation-delay: $speed + 775ms;
     animation-fill-mode: forwards;
-    will-change: opacity;
     z-index: 10;
 }
 
@@ -98,6 +98,7 @@ h1 {
   .menu-item-container:not(.active),
   .title-container {
     $speed: $app-speed + 400ms;
+    will-change: filter;
     animation: blur $speed;
     animation-delay: $app-speed;
     animation-fill-mode: forwards;

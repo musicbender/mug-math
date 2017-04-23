@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import Perf from 'react-addons-perf';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import reducers from './reducers';
@@ -26,11 +27,24 @@ const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTE
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-if (document !== undefined) {
+if (process.env.NODE_ENV === "development") {
+  console.log('perf enabled');
+	Perf.start();
+}
+
+if (!process.env.ONSERVER) {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history} routes={routes} />
     </Provider>
     , document.getElementById('app'),
   );
+}
+
+if (process.env.NODE_ENV === "development") {
+  console.log('perf stopped');
+  Perf.stop();
+  Perf.printInclusive();
+  Perf.printExclusive();
+  Perf.printWasted();
 }

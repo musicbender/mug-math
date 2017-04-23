@@ -15,13 +15,16 @@
 /******* MENU ITEMS *******/
 
 .menu-item-container {
+    $menu-ease: cubic-bezier(0.700, 0.000, 0.000, 0.700);
+
     position: absolute;
     top: 50%;
     left: 50%;
     display: inline-block;
     width: 25%;
     height: 12em;
-    transition: all $app-speed $easeInOut;
+    will-change: transform;
+    transition: $app-speed $easeInOut;
     transition-delay: 400ms;
 
     .menu-item-link {
@@ -39,19 +42,20 @@
       border-radius: $circle-size;
       background-color: $white;
       @include box-shadow(1);
+      // will-change: width, height, opacity, border-radius;
       animation: circle-close $app-speed $easeInOut;
-      will-change: width, height, border-radius, opacity;
     }
 
     svg:not(.menu-text) {
-        @include super-center();
+        position: absolute;
+        top: 50%;
+        left: 50%;
         width: 45% !important;
         height: 45% !important;
         color: $black !important;
         opacity: 1 !important;
-        transition: opacity 75ms $easeOut!important;
-        transition-delay: $app-speed + 150ms !important;
-        will-change: opacity;
+        transform: translate(-50%, -50%) scale(1);
+        animation: icon-show $app-speed $easeInOut;
     }
 
     .menu-text {
@@ -63,22 +67,10 @@
         text-transform: uppercase;
         transform: rotate(75deg);
         transition: all $app-speed;
-        transition-delay: 400ms;
-        will-change: opacity, transform;
+        transition-delay: 450ms;
         z-index: -1;
     }
-
-    /* icon adjustment */
-    .cbt,
-    .brw {
-      .menu-cricle svg:not(.menu-text) { left: 49.1%; }
-    }
-
-    .moi {
-      .menu-cricle svg:not(.menu-text) { left: 50.05%; }
-    }
 }
-
 
 /******* MENU ITEMS TRANSFORM-GRID LAYOUT *******/
 
@@ -103,19 +95,20 @@
 
 .menu-item-container.active {
   transform: translate(-50%,-50%);
-  transition: transform $app-speed;
+  transition: 0.5s $easeInOut;
   z-index: 2;
 
   .menu-circle {
     z-index: 12;
-    animation: circle-expand $app-speed + 0.6s $easeInOut;
-    animation-delay: $app-delay;
+    animation: circle-expand $app-speed $easeInOut;
+    animation-delay: $app-delay + 275ms;
     animation-fill-mode: forwards;
   }
 
   svg:not(.menu-text) {
-    opacity: 0 !important;
-    transition: opacity 200ms $easeOut !important;
+    animation: icon-hide 500ms $easeInOut;
+    animation-delay: 10ms;
+    animation-fill-mode: forwards;
   }
 
   .menu-text {
@@ -123,6 +116,18 @@
     transform: rotate(215deg);
     transition: opacity 300ms, transform $app-speed;
   }
+}
+
+
+/******* ICON ADJUSTMENT *******/
+
+.cbt,
+.brw {
+  .menu-cricle svg:not(.menu-text) { left: 49.1%; }
+}
+
+.moi {
+  .menu-cricle svg:not(.menu-text) { left: 50.05%; }
 }
 
 
@@ -145,7 +150,7 @@
     width: $app-width;
     height: $app-height;
     border-radius: 0;
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -180,6 +185,28 @@
   }
   100% {
     opacity: 0 !important;
+  }
+}
+
+@keyframes icon-show {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+  }
+}
+
+@keyframes icon-hide {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(90deg);
   }
 }
 
