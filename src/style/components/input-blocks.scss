@@ -153,3 +153,22 @@
     transform: scale(1);
   }
 }
+
+
+/******* MEDIA QUERIES *******/
+
+@media only screen and (max-width: 767px) {
+  .block {
+    .block-value {
+      top: 75%;
+      left: 25%;
+      font-size: 4em;
+    }
+    .block-name {
+      left: 25%;
+    }
+    button {
+      left: 85% !important;
+    }
+  }
+}

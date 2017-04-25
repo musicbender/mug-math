@@ -31,12 +31,12 @@
 
 @media only screen and (max-width: 767px) {
   .title-container {
-    height: 5.5%;
+    height: 5em;
   }
   .title {
-    $font: $title - 3em;
+    $font: $title - 4em;
 
-    @include super-center();
+    @include super-center($left: 70%);
     right: inherit;
     font-size: $font;
   }
@@ -44,10 +44,10 @@
 
 @media only screen and (max-width: 500px) {
   .title-container {
-    height: 4.35%;
+    height: 4em;
   }
   .title {
-    $font: $title - 4em;
+    $font: $title - 5em;
 
     font-size: $font;
   }
