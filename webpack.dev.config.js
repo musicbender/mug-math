@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+var OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 const config = {
   devtool: 'eval',
@@ -46,14 +46,11 @@ const config = {
       inject: 'body',
       title: 'Mug Math',
     }),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
-      publicPath: './',
-      excludes: [
-        '**/.*',
-        '**/*.map',
-        '*.html',
-      ],
+    new OfflinePlugin({
+      publicPath: '/',
+      ServiceWorker: {
+        navigateFallbackURL: '/'
+      }
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

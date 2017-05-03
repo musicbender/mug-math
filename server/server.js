@@ -46,7 +46,6 @@ app.use((req, res, next) => {
 });
 
 const renderFullPage = (html, initialState) => {
-  console.log('rendering full page...');
   return `
     <!doctype html>
     <html>
@@ -76,6 +75,5 @@ const renderFullPage = (html, initialState) => {
 
 app.listen(PORT, err => {
   if (err) { console.error(err); }
-
   console.log(`MugMath avaliable at ${PORT}!`);
 });

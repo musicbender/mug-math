@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
+var OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -61,14 +61,11 @@ const config = {
       inject: 'body',
       title: 'Mug Math',
     }),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
+    new OfflinePlugin({
       publicPath: '/',
-      excludes: [
-        '**/.*',
-        '**/*.map',
-        '*.html',
-      ],
+      ServiceWorker: {
+        navigateFallbackURL: '/'
+      }
     }),
     new CopyWebpackPlugin([{
       from: 'src/manifest.json',

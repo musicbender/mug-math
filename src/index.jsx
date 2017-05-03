@@ -6,22 +6,18 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import Perf from 'react-addons-perf';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+// import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import reducers from './reducers';
 import routes from './routes.jsx';
 import './style/base.scss';
 
-if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
-}
+OfflinePluginRuntime.install();
+
+injectTapEventPlugin();
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
-
-
-console.log(process.env);
-
-injectTapEventPlugin();
 
 const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

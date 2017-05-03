@@ -16,7 +16,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-container">
           <HomeMenu location={this.props.location} />
-            {this.props.children}
+          {this.props.children}
         </div>
       </MuiThemeProvider>
     );

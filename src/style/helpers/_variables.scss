@@ -5,8 +5,6 @@
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
 
 
-/*******Color*******/
-
 /******* Greyscale *******/
 
 $white:        #fff;
@@ -31,7 +29,6 @@ $grey:         $_400;
 
 /*******Font*******/
 
-$title:        8em;
 $extra-large:  3.5em;
 $very-large:   3em;
 $large:        2em;
@@ -39,10 +36,11 @@ $medium:       1.5em;
 $small:        1em;
 $tiny:         0.8em;
 
+$title:        $large;
+
 $h1-size:      $extra-large;
 $p-size:       $small;
 
-$depot:        "depot-new-condensed-web",sans-serif;
 $roboto:       'Roboto Condensed', sans-serif;
 $font:         $roboto;
 
@@ -65,6 +63,7 @@ $app-width:   52em;
 $app-height:  46em;
 $circle-size: 10em;
 $circle-size-small: $circle-size - 3em;
+$title-container-height: 4em;
 
 
 /******* Components *******/

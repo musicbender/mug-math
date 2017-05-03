@@ -8,6 +8,7 @@ import IconFire from 'material-ui/svg-icons/social/whatshot';
 import { openApp, closeApp } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
 import Title from '../components/title.jsx';
+import Footer from '../components/footer.jsx';
 import menuData from '../util/menu-data';
 import '../style/components/home-menu.scss';
 import '../style/transitions.scss';
@@ -74,9 +75,8 @@ class HomeMenu extends Component {
     return (
       <div className={`home-container ${this.subOpen()}`}>
         <Title />
-        <div className="menu-container">
-          { this.getMenu() }
-        </div>
+        <div className="menu-container">{this.getMenu()}</div>
+        <Footer />
       </div>
     );
   }
