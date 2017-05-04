@@ -7,10 +7,11 @@
 
 .menu-container {
     $height: $title-container-height * 2;
-    position: relative;
+
+    // position: relative;
     height: calc(100vh - #{$height});
-    margin: 0 auto 1px;
     max-width: 75em;
+    overflow: hidden;
 }
 
 
@@ -26,8 +27,8 @@
     width: 50%;
     height: 12em;
     will-change: transform;
-    transition: $app-speed $easeInOut;
-    transition-delay: 400ms;
+    transition: $app-speed;
+    transition-delay: 100ms;
 
     .menu-item-link {
       @extend %full-position;
@@ -47,7 +48,7 @@
       background-color: $white;
       @include box-shadow(1);
       // will-change: width, height, opacity, border-radius;
-      animation: circle-close $app-speed $easeInOut;
+      animation: circle-close $app-speed;
     }
 
     svg:not(.menu-text) {
@@ -76,21 +77,22 @@
     }
 }
 
+
 /******* MENU ITEMS TRANSFORM-GRID LAYOUT *******/
 
 .menu-item-container {
-  &:nth-child(1) { transform: translate( -200% ,  -100% ); }
-  &:nth-child(2) { transform: translate( -100% ,  -100% ); }
-  &:nth-child(3) { transform: translate( 0%    ,  -100% ); }
-  &:nth-child(4) { transform: translate( 100%  ,  -100% ); }
+  &:nth-child(1) { transform: translate( -100% , -115% ); }
+  &:nth-child(2) { transform: translate( 0%    , -115% ); }
+  &:nth-child(3) { transform: translate( -100% , -15%   ); }
+  &:nth-child(4) { transform: translate( 0%    , -15%    ); }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 767px) {
   .menu-item-container {
-    &:nth-child(1) { transform: translate( -100% , -100% ); }
-    &:nth-child(2) { transform: translate( 0%    , -100% ); }
-    &:nth-child(3) { transform: translate( -100% , -0%   ); }
-    &:nth-child(4) { transform: translate( 0%    , 0%    ); }
+    &:nth-child(1) { transform: translate( -200% ,  -100% ); }
+    &:nth-child(2) { transform: translate( -100% ,  -100% ); }
+    &:nth-child(3) { transform: translate( 0%    ,  -100% ); }
+    &:nth-child(4) { transform: translate( 100%  ,  -100% ); }
   }
 }
 
@@ -99,26 +101,24 @@
 
 .menu-item-container.active {
   transform: translate(-50%,-50%);
-  transition: 0.5s $easeInOut;
+  transition: 0.5s;
   z-index: 2;
 
   .menu-circle {
     z-index: 12;
-    animation: circle-expand $app-speed $easeInOut;
-    animation-delay: $app-delay + 275ms;
+    animation: circle-expand $app-speed;
     animation-fill-mode: forwards;
   }
 
   svg:not(.menu-text) {
-    animation: icon-hide 500ms $easeInOut;
-    animation-delay: 10ms;
+    animation: icon-hide 50ms $easeInOut;
     animation-fill-mode: forwards;
   }
 
   .menu-text {
     opacity: 0;
     transform: translate(-50%,-50%) rotate(215deg);
-    transition: opacity 300ms, transform $app-speed;
+    transition: opacity 200ms, transform $app-speed;
   }
 }
 

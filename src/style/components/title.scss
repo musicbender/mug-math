@@ -15,7 +15,7 @@
 .title {
   @include super-center($left: inherit, $x: 0%);
   @extend %unselectable;
-  right: 7%;
+  right: 1em;
   margin: 0;
   text-transform: lowercase;
   font-size: $title;
@@ -31,10 +31,7 @@
 
 @media only screen and (min-width: 500px) {
   .title {
-    $font: $title + 2em;
-
-    @include super-center($left: 70%);
-    right: inherit;
+    $font: $title + 1em;
     font-size: $font;
   }
 }

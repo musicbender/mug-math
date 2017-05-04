@@ -11,7 +11,7 @@
 }
 
 .block-container {
-  background-color: transparent;
+  background-color: $white;
   height: 100%;
 
     &:after {
@@ -34,7 +34,7 @@
   background-color: $block-color;
 
   .block-name {
-    @include super-center($top: 15%, $left: 15%);
+    @include super-center($top: 15%, $left: 25%);
     @extend %unselectable;
     font-size: $tiny;
     text-transform: uppercase;
@@ -43,16 +43,21 @@
   }
 
   .block-value {
-    @include super-center();
+    @include super-center($top: 75%, $left: 25%);
     @extend %unselectable;
     font-size: $very-large;
     color: $white;
     transition: 0.3s $easeOut;
+    width: 1em;
   }
 
   .block-unit {
     @extend %unselectable;
     font-size: 0.4em;
+  }
+
+  button {
+    left: 85% !important;
   }
 
   &:hover,
@@ -99,7 +104,7 @@
     font-size: 1.1rem;
   }
   .block-value {
-    @include super-center($left: 70%);
+    @include super-center(38%, 66%);
   }
   &:first-child {
     margin: 1em 1em 0.5em 1em;
@@ -157,18 +162,18 @@
 
 /******* MEDIA QUERIES *******/
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 767px) {
   .block {
     .block-value {
-      top: 75%;
-      left: 25%;
-      font-size: 4em;
+      top: 50%;
+      left: 50%;
+      width: auto;
     }
     .block-name {
-      left: 25%;
+      left: 15%;
     }
     button {
-      left: 85% !important;
+      left: 90% !important;
     }
   }
 }
