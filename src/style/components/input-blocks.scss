@@ -104,7 +104,7 @@
     font-size: 1.1rem;
   }
   .block-value {
-    @include super-center(38%, 66%);
+    @include super-center(66%, 40%);
   }
   &:first-child {
     margin: 1em 1em 0.5em 1em;

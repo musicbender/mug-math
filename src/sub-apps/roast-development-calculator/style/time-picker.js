@@ -11,10 +11,10 @@ const pickerStyles = {
     fontSize: '20px'
   },
   dialogStyle: {
-    backgroundColor: orange
+    backgroundColor: '#fff'
   },
   dialogBodyStyle: {
-    backgroundColor: orange
+    padding: '0'
   }
 }
 

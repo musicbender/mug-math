@@ -37,6 +37,7 @@ export default (props) => {
             hintText="minutes : seconds"
             autoOk
             value={getValue()}
+            dialogBodyStyle={pickerStyles.dialogBodyStyle}
             textFieldStyle={pickerStyles.textFieldStyle}
             onChange={handleTimePicker}
           />

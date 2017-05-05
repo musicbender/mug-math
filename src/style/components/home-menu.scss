@@ -30,6 +30,7 @@
     will-change: transform;
     transition: $app-speed;
     transition-delay: 100ms;
+    z-index: 1;
 
     .menu-item-link {
       @extend %full-position;
@@ -101,10 +102,10 @@
 /******* OPEN MODE *******/
 
 .menu-item-container.active {
-  z-index: 2;
+  z-index: 25;
 
   .menu-circle {
-    z-index: 12;
+    z-index: 24;
     animation: circle-expand $app-speed;
     animation-fill-mode: forwards;
   }
