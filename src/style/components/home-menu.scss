@@ -7,10 +7,11 @@
 
 .menu-container {
     $height: $title-container-height * 2;
-
+    @include super-center();
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
     margin: 0 auto;
-    height: calc(100vh - #{$height});
-    max-width: 75em;
     overflow: hidden;
 }
 
@@ -100,8 +101,6 @@
 /******* OPEN MODE *******/
 
 .menu-item-container.active {
-  transform: translate(-50%,-50%);
-  transition: 0.5s;
   z-index: 2;
 
   .menu-circle {
@@ -139,32 +138,29 @@
 
 @keyframes circle-expand {
   0% {
-    width: $circle-size;
-    height: $circle-size;
-    border-radius: $circle-size;
-    opacity: 1;
+    @include box-shadow(1);
+    transform: translate(-50%,-50%) scale(1);
+  }
+  1% {
+    box-shadow: none;
   }
   100% {
-    width: $app-width;
-    height: $app-height;
-    border-radius: 0;
-    opacity: 1;
+    box-shadow: none;
+    transform: translate(-50%,-50%) scale(16);
   }
 }
 
 @keyframes circle-close {
   0% {
-    width: $app-width;
-    height: $app-height;
-    border-radius: 0;
-    opacity: 1;
+    box-shadow: none;
+    transform: translate(-50%,-50%) scale(16);
   }
-
+  99%{
+    box-shadow: none;
+  }
   100% {
-    width: $circle-size;
-    height: $circle-size;
-    border-radius: $circle-size;
-    opacity: 1;
+    @include box-shadow(1);
+    transform: translate(-50%,-50%) scale(1);
   }
 }
 
@@ -224,12 +220,11 @@
 }
 
 @media only screen and (min-width: 767px) {
+  .menu-container {
+    width: $app-width;
+    height: $app-height;
+  }
   .menu-item-container {
     width: 25%;
-
-    .menu-circle {
-      max-width: $app-width;
-      max-height: $app-height;
-    }
   }
 }

@@ -65,6 +65,7 @@ h1 {
     width: 100.5%;
     max-width: $app-width;
     opacity: 0;
+    overflow: hidden;
     background-color: transparent;
     animation: appOpen $speed $easeOut;
     animation-delay: $speed;
