@@ -45,7 +45,6 @@ class ColdDripTimer extends Component {
             iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}
-            onClick={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu sweetspot={this.props.sweetspot} onsweetspot={this.props.onSweetspot} offsweetspot={this.props.offSweetspot}/>

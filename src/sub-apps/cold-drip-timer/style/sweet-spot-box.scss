@@ -1,20 +1,21 @@
 @import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
 
 #sweetspot {
+  @include stripes-1;
   display: block;
   position: absolute;
   top: -7%;
   left: 22%;
   width: 9em;
   height: 3em;
-  background-color: rgba(0, 188, 212, 0.2);
   -webkit-transition: 0.5s;
   transition: 0.2s;
   z-index: -1;
 }
 
 .sweetspot-show {
-  opacity: 1;
+  opacity: 0.55;
   animation: open-sweetspot 0.15s ease-in;
 }
 

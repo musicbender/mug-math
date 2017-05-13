@@ -17,7 +17,7 @@ export default (props) => {
   }
 
   const handleToggle = () => {
-    const sweetspot = props.sweetspot.sweetspot;
+    const sweetspot = props.sweetspot;
     if (sweetspot) {
       props.offsweetspot();
     } else if (!sweetspot) {
@@ -41,7 +41,7 @@ export default (props) => {
             className="sweetspot-toggle"
             label="Sweet Spot"
             style={style.toggle}
-            toggled={props.sweetspot.sweetspot}
+            toggled={props.sweetspot}
             onToggle={() => handleToggle()}
              />
         } />
