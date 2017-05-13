@@ -55,7 +55,7 @@ h1 {
 }
 
 .sub-app {
-    $speed: $app-speed;
+    $speed: $app-speed - 125ms;
 
     @include super-center;
     @include box-shadow(2);

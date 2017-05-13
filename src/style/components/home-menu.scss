@@ -41,6 +41,7 @@
 
     .menu-circle {
       @include super-center();
+      @include box-shadow(1);
       margin: 0;
       max-width: 100vw;
       max-height: 100vh;
@@ -48,8 +49,7 @@
       height: $circle-size-small;
       border-radius: $circle-size;
       background-color: $white;
-      @include box-shadow(1);
-      // will-change: width, height, opacity, border-radius;
+      will-change: width, height, opacity, border-radius;
       animation: circle-close $app-speed;
     }
 
@@ -67,15 +67,29 @@
 
     .menu-text {
         position: absolute;
-        top: 60%;
-        left: 47%;
+        transform-origin: 63% 69%;
+        top: 38%;
+        left: 41%;
         font-size: 0.8em;
         font-weight: 100;
         text-transform: uppercase;
         transform: translate(-50%,-50%) rotate(75deg);
         transition: all $app-speed;
-        transition-delay: 450ms;
+        transition-delay: 240ms;
         z-index: -1;
+
+        &:after {
+          content: 'x';
+          width: 4em;
+          height: 4em;
+          background-color: red;
+          font-size: 5em;
+          position: absolute;
+          display: block;
+          color: blue;
+          top: 50%;
+          left: 50%;
+        }
     }
 }
 
@@ -83,10 +97,10 @@
 /******* MENU ITEMS TRANSFORM-GRID LAYOUT *******/
 
 .menu-item-container {
-  &:nth-child(1) { transform: translate( -100% , -115% ); }
-  &:nth-child(2) { transform: translate( 0%    , -115% ); }
-  &:nth-child(3) { transform: translate( -100% , -15%   ); }
-  &:nth-child(4) { transform: translate( 0%    , -15%    ); }
+  &:nth-child(1) { transform: translate( -100% , -90% ); }
+  &:nth-child(2) { transform: translate( 0%    , -90% ); }
+  &:nth-child(3) { transform: translate( -100% , 10%   ); }
+  &:nth-child(4) { transform: translate( 0%    , 10%    ); }
 }
 
 @media only screen and (min-width: 767px) {
@@ -117,7 +131,7 @@
 
   .menu-text {
     opacity: 0;
-    transform: translate(-50%,-50%) rotate(215deg);
+    transform: translate(-50%, -50%) rotate(215deg);
     transition: opacity 200ms, transform $app-speed;
   }
 }
@@ -186,22 +200,26 @@
 @keyframes icon-show {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    transform: translate(-50%, -50%) scale(0);
+  }
+  85% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1) rotate(0);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 @keyframes icon-hide {
   0% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    transform: translate(-50%, -50%) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0) rotate(90deg);
+    transform: translate(-50%, -50%) scale(0);
   }
 }
 
