@@ -70,13 +70,21 @@
 
   &.selected {
     background-color: $block-selected-color;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    transition: box-shadow $fast $easeOut;
 
     .brew-value {
       @extend %unselectable;
       font-size: $extra-large;
       transition: $fast $easeOut;
+    }
+
+    &:after {
+      @include stripes-1;
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      display: block;
+      width: 100%;
+      height: 10px;
     }
   }
 }
