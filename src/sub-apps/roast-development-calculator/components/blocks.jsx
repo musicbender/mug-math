@@ -19,7 +19,7 @@ export default (props) => {
   }
 
   const handleTimePicker = (event, time) => {
-    props.handleTime(time, block);
+    props.handleTime(time, name);
   }
 
   const getValue = () => {

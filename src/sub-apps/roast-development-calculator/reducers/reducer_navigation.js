@@ -1,7 +1,7 @@
 import { BLOCK_CHANGE } from '../constants/index';
 
 const initialState = {
-  block: "preWeight"
+  block: "fcTime"
 }
 
 export default function navigation(state = initialState, action) {
