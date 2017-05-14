@@ -3,7 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link, browserHistory } from 'react-router';
-import { mountAudio, onSweetspot, offSweetspot } from './actions/index';
+import {
+  mountAudio,
+  onSweetspot,
+  offSweetspot,
+  openDialog,
+  closeDialog,
+  openHelp,
+  closeHelp
+} from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -47,8 +55,19 @@ class ColdDripTimer extends Component {
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
-              <DropdownMenu sweetspot={this.props.sweetspot} onsweetspot={this.props.onSweetspot} offsweetspot={this.props.offSweetspot}/>
-            } />
+              <DropdownMenu
+                sweetspot={this.props.sweetspot}
+                onsweetspot={this.props.onSweetspot}
+                offsweetspot={this.props.offSweetspot}
+                dialog={this.props.dialog}
+                openDialog={this.props.openDialog}
+                closeDialog={this.props.closeDialog}
+                help={this.props.help}
+                openHelp={this.props.openHelp}
+                closeHelp={this.props.closeHelp}
+              />
+            }
+          />
           <PlaybackControls audioContext={ this.props.audioContext } />
           <TempoSlider audioContext={ this.props.audioContext } />
         </div>
@@ -63,16 +82,23 @@ function mapDispatchToProps(dispatch) {
         onSweetspot,
         offSweetspot,
         mountAudio,
+        openDialog,
+        closeDialog,
+        openHelp,
+        closeHelp,
     }, dispatch);
 }
 
-function mapStateToProps({coldDripTimer}) {
+function mapStateToProps({ coldDripTimer }) {
     const { audioContext } = coldDripTimer.sound;
     const { sweetspot } = coldDripTimer.sweetspot;
+    const { dialog, help } = coldDripTimer.dialog;
 
     return {
       sweetspot,
       audioContext,
+      dialog,
+      help,
     };
 }
 

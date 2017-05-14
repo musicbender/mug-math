@@ -22,8 +22,8 @@
     $menu-ease: cubic-bezier(0.700, 0.000, 0.000, 0.700);
 
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0%;
+    left: 0%;
     display: inline-block;
     width: 50%;
     height: 12em;
@@ -97,18 +97,18 @@
 /******* MENU ITEMS TRANSFORM-GRID LAYOUT *******/
 
 .menu-item-container {
-  &:nth-child(1) { transform: translate( -100% , -90% ); }
-  &:nth-child(2) { transform: translate( 0%    , -90% ); }
-  &:nth-child(3) { transform: translate( -100% , 10%   ); }
-  &:nth-child(4) { transform: translate( 0%    , 10%    ); }
+  &:nth-child(1) { transform: translate( $column-1 , $row-1 ); }
+  &:nth-child(2) { transform: translate( $column-2 , $row-1 ); }
+  &:nth-child(3) { transform: translate( $column-1 , $row-2 ); }
+  &:nth-child(4) { transform: translate( $column-2 , $row-2 ); }
 }
 
 @media only screen and (min-width: 767px) {
   .menu-item-container {
-    &:nth-child(1) { transform: translate( -200% ,  -100% ); }
-    &:nth-child(2) { transform: translate( -100% ,  -100% ); }
-    &:nth-child(3) { transform: translate( 0%    ,  -100% ); }
-    &:nth-child(4) { transform: translate( 100%  ,  -100% ); }
+    &:nth-child(1) { transform: translate( $column-1 , $row-1 ); }
+    &:nth-child(2) { transform: translate( $column-2 , $row-1 ); }
+    &:nth-child(3) { transform: translate( $column-3 , $row-1 ); }
+    &:nth-child(4) { transform: translate( $column-4 , $row-1 ); }
   }
 }
 

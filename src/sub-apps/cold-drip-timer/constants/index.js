@@ -5,3 +5,7 @@ export const CHANGE_TEMPO = 'CDT::CHANGE_TEMPO';
 export const CHANGE_RIPPLE = 'CDT::CHANGE_RIPPLE';
 export const SWEETSPOT_ON = 'CDT::SWEETSPOT_ON';
 export const SWEETSPOT_OFF = 'CDT::SWEETSPOT_OFF';
+export const DIALOG_OPEN = 'CDT::DIALOG_OPEN';
+export const DIALOG_CLOSE = 'CDT::DIALOG_CLOSE';
+export const HELP_OPEN = 'CDT::HELP_OPEN';
+export const HELP_CLOSE = 'CDT::HELP_CLOSE';
