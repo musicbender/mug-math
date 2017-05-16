@@ -3,6 +3,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Dialogs from './dialogs.jsx';
 
 export default (props) => {
   const style = {
@@ -11,19 +12,29 @@ export default (props) => {
       padding: '12px 0 0'
     }
   }
-  const links = {
-    kyoto: "https://www.washingtonpost.com/news/going-out-guide/wp/2015/08/04/kyoto-cold-brew-coffee-is-good-to-the-last-drop-if-youre-patient/"
+  const handleHelp = () => {
+    props.openHelp();
   }
 
   return (
-    <IconMenu touchTapCloseDelay={0}
-      iconButtonElement=
-      {<IconButton iconStyle={style}><MoreVertIcon/></IconButton>}
-          targetOrigin={{horizontal: 'right',vertical: 'top'}}
-          anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
+    <div>
+      <IconMenu
+        touchTapCloseDelay={500}
+        iconButtonElement=
+        {
+          <IconButton iconStyle={style}>
+            <MoreVertIcon/>
+          </IconButton>
+        }
+        targetOrigin={{horizontal: 'right',vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right',vertical: 'top'}}
+      >
         <MenuItem
-          onTouchTap={() => window.open(links.kyoto,"_blank")}
-          primaryText="What is Cold Drip Coffee?" />
-    </IconMenu>
+          onTouchTap={() => handleHelp()}
+          primaryText="Help"
+        />
+      </IconMenu>
+      <Dialogs {...props} />
+  </div>
   )
 };

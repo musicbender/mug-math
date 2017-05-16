@@ -3,7 +3,9 @@ import {
     NUM_CHANGE,
     NUM_CLEAR,
     NUM_INCREMENT,
-    NUM_DECREMENT
+    NUM_DECREMENT,
+    HELP_OPEN,
+    HELP_CLOSE,
 } from '../constants/index';
 
 
@@ -38,6 +40,18 @@ export function decreaseNum(block) {
 
 export function clearNum() {
   return {
-    type: NUM_CLEAR
+    type: NUM_CLEAR,
+  }
+}
+
+export function openHelp() {
+  return {
+    type: HELP_OPEN,
+  }
+}
+
+export function closeHelp() {
+  return {
+    type: HELP_CLOSE,
   }
 }
