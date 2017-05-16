@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import { grey900 } from 'material-ui/styles/colors';
+import { openHelp, closeHelp } from './actions/index';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
@@ -28,7 +31,11 @@ class BrewCalculator extends Component {
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
-              <DropdownMenu />
+              <DropdownMenu
+                help={this.props.help}
+                openHelp={this.props.openHelp}
+                closeHelp={this.props.closeHelp}
+              />
             }
           />
           <TopSection />
@@ -40,4 +47,19 @@ class BrewCalculator extends Component {
   }
 }
 
-export default BrewCalculator;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    openHelp,
+    closeHelp,
+  }, dispatch);
+}
+
+function mapStateToProps({ brewCalc }) {
+  const { help } = brewCalc.dialog;
+
+  return {
+    help,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
