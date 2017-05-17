@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { openHelp, closeHelp } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -34,7 +37,11 @@ class BrewCalculator extends Component {
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
-              <DropdownMenu />
+              <DropdownMenu 
+                help={this.props.help}
+                openHelp={this.props.openHelp}
+                closeHelp={this.props.closeHelp}
+              />
             }
           />
           <TopSection />
@@ -46,4 +53,18 @@ class BrewCalculator extends Component {
   }
 }
 
-export default BrewCalculator;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    openHelp,
+    closeHelp,
+  }, dispatch);
+}
+
+function mapStateToProps({ roastDevCalc }) {
+  const { help } = roastDevCalc.dialog;
+  return {
+    help,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
