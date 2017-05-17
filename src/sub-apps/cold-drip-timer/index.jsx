@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link, browserHistory } from 'react-router';
 import {
-  mountAudio,
   onSweetspot,
   offSweetspot,
   openDialog,
@@ -27,16 +26,6 @@ const barStyleObj = {
 }
 
 class ColdDripTimer extends Component {
-  componentDidMount() {
-    try {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      this.props.mountAudio(audioContext);
-    }
-    catch(err) {
-      console.error(`Web Audio API is not supported in this browser: ${err}`);
-    }
-  }
-
   handleBackButton() {
     browserHistory.push('/');
   }
@@ -86,7 +75,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         onSweetspot,
         offSweetspot,
-        mountAudio,
         openDialog,
         closeDialog,
         openHelp,
@@ -94,10 +82,10 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({ coldDripTimer }) {
-    const { audioContext } = coldDripTimer.sound;
+function mapStateToProps({ coldDripTimer, subApp }) {
     const { sweetspot } = coldDripTimer.sweetspot;
     const { dialog, help } = coldDripTimer.dialog;
+    const { audioContext } = subApp;
 
     return {
       sweetspot,

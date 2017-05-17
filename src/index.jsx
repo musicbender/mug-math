@@ -7,7 +7,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import Perf from 'react-addons-perf';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-// import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import reducers from './reducers';
 import routes from './routes.jsx';
 import './style/base.scss';

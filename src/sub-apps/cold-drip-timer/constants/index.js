@@ -1,4 +1,3 @@
-export const AUDIO_MOUNT = 'CDT::AUDIO_MOUNT';
 export const SOUND_ON = 'CDT::SOUND_ON';
 export const SOUND_OFF = 'CDT::SOUND_OFF';
 export const CHANGE_TEMPO = 'CDT::CHANGE_TEMPO';

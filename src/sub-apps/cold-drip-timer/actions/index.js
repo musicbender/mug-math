@@ -1,5 +1,4 @@
 import {
-  AUDIO_MOUNT,
   SOUND_ON,
   SOUND_OFF,
   CHANGE_TEMPO,
@@ -11,13 +10,6 @@ import {
   HELP_OPEN,
   HELP_CLOSE,
 } from '../constants/index';
-
-export function mountAudio(payload) {
-  return {
-    type: AUDIO_MOUNT,
-    payload,
-  }
-}
 
 export function soundOn() {
   return {
