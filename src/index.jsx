@@ -24,7 +24,6 @@ const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTE
 const history = syncHistoryWithStore(browserHistory, store);
 
 if (process.env.NODE_ENV === "development") {
-  console.log('perf enabled');
 	Perf.start();
 }
 
@@ -38,7 +37,6 @@ if (!process.env.ONSERVER) {
 }
 
 if (process.env.NODE_ENV === "development") {
-  console.log('perf stopped');
   Perf.stop();
   Perf.printInclusive();
   Perf.printExclusive();

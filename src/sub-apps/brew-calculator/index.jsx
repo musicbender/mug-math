@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { grey900 } from 'material-ui/styles/colors';
 import { openHelp, closeHelp } from './actions/index';
 import TopSection from './containers/top-section.jsx';
@@ -24,13 +24,18 @@ class BrewCalculator extends Component {
           <AppBar
             title="Brew Ratio Calculator"
             titleStyle={barStyle.title}
-
             className="app-bar"
-            iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
+            iconElementLeft=
+            {
+              <IconButton>
+                <NavigationClose />
+              </IconButton>
+            }
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
-            iconElementRight={
+            iconElementRight=
+            {
               <DropdownMenu
                 help={this.props.help}
                 openHelp={this.props.openHelp}

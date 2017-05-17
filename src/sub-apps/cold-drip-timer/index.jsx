@@ -14,7 +14,7 @@ import {
 } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { brown800 } from 'material-ui/styles/colors';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
@@ -50,7 +50,12 @@ class ColdDripTimer extends Component {
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"
-            iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
+            iconElementLeft=
+            {
+              <IconButton>
+                <NavigationClose />
+              </IconButton>
+            }
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}

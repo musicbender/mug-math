@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { openHelp, closeHelp } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { black } from 'material-ui/styles/colors';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
@@ -32,7 +32,7 @@ class BrewCalculator extends Component {
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"
-            iconElementLeft={<IconButton><NavigationArrowBack /></IconButton>}
+            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
             iconStyleLeft={barStyle.iconLeft}
             onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
