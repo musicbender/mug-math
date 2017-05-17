@@ -16,13 +16,14 @@
   width: 33.33%;
   height: 25%;
   float: left;
-  border-color: $lightgrey;
+  background-color: $keypad-color;
+  border-color: $keypad-border-color;
   border-style: solid;
   border-width: 1px 1px 0 1px;
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: $offwhite;
+    background-color: $keypad-hover-color;
   }
   &:nth-child(3n+2) {
     border-width: 1px 0 0 0;
@@ -34,5 +35,5 @@
   @extend %unselectable;
   font-family: $font;
   font-size: 1.3em;
-  color: $black;
+  color: $keypad-text-color;
 }

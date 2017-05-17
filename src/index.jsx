@@ -4,25 +4,40 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import Perf from 'react-addons-perf';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
-import routes from './routes.jsx';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import reducers from './reducers';
+import routes from './routes.jsx';
 import './style/base.scss';
 
-if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
-}
+OfflinePluginRuntime.install();
 
 injectTapEventPlugin();
 
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const preloadedState = window.__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
 
-const history = syncHistoryWithStore(browserHistory, store)
+const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-ReactDOM.render(
-  <Provider store={store}>
+const history = syncHistoryWithStore(browserHistory, store);
+
+if (process.env.NODE_ENV === "development") {
+	Perf.start();
+}
+
+if (!process.env.ONSERVER) {
+  ReactDOM.render(
+    <Provider store={store}>
       <Router history={history} routes={routes} />
-  </Provider>
-  , document.getElementById('app')
-);
+    </Provider>
+    , document.getElementById('app'),
+  );
+}
+
+if (process.env.NODE_ENV === "development") {
+  Perf.stop();
+  Perf.printInclusive();
+  Perf.printExclusive();
+  Perf.printWasted();
+}

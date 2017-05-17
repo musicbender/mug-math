@@ -1,6 +1,10 @@
 @import '../../../style/helpers/_variables';
 @import '../../../style/helpers/_mixins';
 
+.tempo-slider-section {
+  background-color: $offwhite;
+}
+
 .tempo-slider-div {
   @include super-center;
   width: 75%;
@@ -13,7 +17,7 @@
   width: calc(100% - 100px);
 }
 
-.tempo-slider > div > div > div:first-child {
+.tempo-slider > div > div:first-child {
   background-color: $grey !important;
 }
 

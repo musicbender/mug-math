@@ -1,0 +1,27 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+
+.footer-container {
+  height: auto;
+  width: 100%;
+  padding: 4em 0;
+  background-color: $black;
+
+  .footer-list {
+    list-style: none;
+  }
+
+  li {
+    margin: 0.5em 0;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

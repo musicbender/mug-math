@@ -2,13 +2,16 @@
 @import '../helpers/_mixins';
 @import '../helpers/_placeholders';
 
+
+/******* CONTAINERS *******/
+
 .block-div {
   @extend %full-position;
   color: $black;
 }
 
 .block-container {
-  background-color: $offwhite;
+  background-color: $white;
   height: 100%;
 
     &:after {
@@ -18,6 +21,9 @@
     }
 }
 
+
+/******* BLOCK: DEFAULT *******/
+
 .block {
   position: relative;
   width: 100%;
@@ -25,22 +31,24 @@
   display: inline-block;
   width: calc(50% - 1.5em);
   height: calc(66.66% - 2em);
+  background-color: $block-color;
 
   .block-name {
-    @include super-center($top: 15%, $left: 15%);
+    @include super-center($top: 15%, $left: 25%);
     @extend %unselectable;
     font-size: $tiny;
     text-transform: uppercase;
     padding-bottom: 0.3em;
-    color: rgba($matteblack, 0.42);
+    color: rgba($white, 0.42);
   }
 
   .block-value {
-    @include super-center();
+    @include super-center($top: 75%, $left: 25%);
     @extend %unselectable;
     font-size: $very-large;
     color: $white;
     transition: 0.3s $easeOut;
+    width: 1em;
   }
 
   .block-unit {
@@ -48,42 +56,132 @@
     font-size: 0.4em;
   }
 
+  button {
+    left: 85% !important;
+  }
+
   &:hover,
   &:focus {
     cursor: pointer;
   }
-}
 
-.block:first-child {
-  margin: 1em 0.5em 1em 1em;
-}
+  &:nth-child(1) { margin: 1em 0.5em 1em 1em; }
+  &:nth-child(2) { margin: 1em 1em 1em 0.5em; }
 
-.block:nth-child(2) {
-  margin: 1em 1em 1em 0.5em;
-}
-
-.block.selected {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    transition: box-shadow $fast $easeOut;
+  &.selected {
+    background-color: $block-selected-color;
 
     .brew-value {
       @extend %unselectable;
       font-size: $extra-large;
       transition: $fast $easeOut;
     }
+
+    &:after {
+      @include stripes-1;
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      display: block;
+      width: 100%;
+      height: 10px;
+    }
+  }
 }
 
-/*******Result Block*******/
+
+/*******//**//** MODIFIERS **//**//*******/
+
+/******* BLOCK: BIG-TOP *******/
+
+.big-top .block-container {
+  background-color: $white;
+}
+
+
+/*******BLOCK: STACKED*******/
+
+.section.stacked .block {
+  display: block;
+  height: calc(50% - 2em);
+  width: calc(100% - 2em);
+
+  .block-name {
+    @include super-center(25%, 5%, 0%);
+    color: $block-text-color;
+    font-size: 1.1rem;
+  }
+  .block-value {
+    @include super-center(66%, 66%);
+  }
+  &:first-child {
+    margin: 1em 1em 0.5em 1em;
+  }
+  &:nth-child(2) {
+    margin: 0.5em 1em 1em 1em;
+  }
+}
+
+.section.stacked .block-result-div {
+  @extend %full-position;
+}
+
+.section.stacked .block-result {
+  @include super-center($top: calc(50% - 0.5em));
+  font-size: 2.33rem;
+  width: 10em;
+  text-align: center;
+}
+
+
+/******* RESULT SECTION *******/
 
 .block:nth-child(3) {
   display: block;
-  background-color: $offwhite;
+  background-color: transparent;
   width: 100%;
   height: 33.33%;
 
   .block-result {
     @include super-center();
     font-size: $medium;
-    color: $black;
+    color: $result-text-color;
+  }
+}
+
+
+/******* ANIMATIONS *******/
+
+@keyframes block-open {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/******* MEDIA QUERIES *******/
+
+@media only screen and (min-width: 767px) {
+  .block {
+    .block-value {
+      top: 50%;
+      left: 50%;
+      width: auto;
+    }
+    .block-name {
+      left: 15%;
+    }
+    button {
+      left: 90% !important;
+    }
   }
 }

@@ -1,38 +1,73 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, RANGE_ON, RANGE_OFF } from '../constants/index';
+import {
+  SOUND_ON,
+  SOUND_OFF,
+  CHANGE_TEMPO,
+  CHANGE_RIPPLE,
+  SWEETSPOT_ON,
+  SWEETSPOT_OFF,
+  DIALOG_OPEN,
+  DIALOG_CLOSE,
+  HELP_OPEN,
+  HELP_CLOSE,
+} from '../constants/index';
 
 export function soundOn() {
   return {
-    type: SOUND_ON
+    type: SOUND_ON,
   }
 }
 
 export function soundOff() {
   return {
-    type: SOUND_OFF
+    type: SOUND_OFF,
   }
 }
 
 export function changeTempo(value) {
   return {
     type: CHANGE_TEMPO,
-    value
+    value,
   }
 }
 
 export function changeRipple() {
   return {
-    type: CHANGE_RIPPLE
+    type: CHANGE_RIPPLE,
   }
 }
 
-export function onRange() {
+export function onSweetspot() {
   return {
-    type: RANGE_ON
+    type: SWEETSPOT_ON,
   }
 }
 
-export function offRange() {
+export function offSweetspot() {
   return {
-    type: RANGE_OFF
+    type: SWEETSPOT_OFF,
+  }
+}
+
+export function openDialog() {
+  return {
+    type: DIALOG_OPEN
+  }
+}
+
+export function closeDialog() {
+  return {
+    type: DIALOG_CLOSE
+  }
+}
+
+export function openHelp() {
+  return {
+    type: HELP_OPEN
+  }
+}
+
+export function closeHelp() {
+  return {
+    type: HELP_CLOSE
   }
 }

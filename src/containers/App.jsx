@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { mountAudio } from '../actions/index';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { connect } from 'react-redux';
+import muithemeStyle from '../style/muitheme-style';
 import HomeMenu from './Home-Menu.jsx';
-import '../style/header.scss';
+
+let muiTheme;
 
 class App extends Component {
-  render() {
-    const muiTheme = getMuiTheme({
-      slider: {
-        handleSize: 20,
-        selectionColor: this.props.speed.color,
-        handleColorZero: 'rgb(70, 50, 42)',
-        handleFillColor: 'rgb(70, 50, 42)',
-        rippleColor: this.props.speed.color
-      }
-    });
+  componentWillMount() {
+    muiTheme = getMuiTheme(muithemeStyle);
+    try {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      this.props.mountAudio(audioContext);
+    }
+    catch(err) {
+      console.error(`Web Audio API is not supported in this browser: ${err}`);
+    }
+  }
 
+  render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-container">
@@ -24,14 +29,14 @@ class App extends Component {
           {this.props.children}
         </div>
       </MuiThemeProvider>
-    )
+    );
   }
 }
 
-function mapStateToProps({dripTimer_speed}) {
-  return {
-    speed: dripTimer_speed
-  };
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        mountAudio,
+    }, dispatch);
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

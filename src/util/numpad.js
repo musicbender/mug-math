@@ -1,8 +1,8 @@
 import calculate from './calculate';
 
 const numpad = {
-  //check for multiple decimals
-  onlyOneDecimal: function(current) {
+  // check for multiple decimals
+  onlyOneDecimal(current) {
     return current.indexOf('.') > -1 ? false : true;
   },
 

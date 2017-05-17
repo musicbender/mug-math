@@ -5,7 +5,7 @@ import { soundOn, soundOff, changeTempo } from '../actions/index';
 import Slider from 'material-ui/Slider';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
-import RangeBox from '../components/range-box.jsx';
+import SweetSpotBox from '../components/sweet-spot-box.jsx';
 import '../style/tempo-slider.scss';
 
 const config = {
@@ -23,24 +23,21 @@ class TempoSlider extends Component {
     this.handleIcon = this.handleIcon.bind(this);
   }
   stopSound() {
-    const {sound, soundOff, audioContext} = this.props;
-    if(sound.playing) {
-      soundOff(audioContext);
-    }
+    const {playing, soundOff, audioContext} = this.props;
+    if(playing) { soundOff(audioContext); }
   }
 
   handleSlider(e, value) {
-    const {changeTempo} = this.props;
-    changeTempo(value);
+    this.props.changeTempo(value);
   }
 
   handleIcon(a) {
-    const {changeTempo, speed} = this.props;
-    const currentTempo = speed.tempo;
+    const { changeTempo, tempo } = this.props;
+    const currentTempo = tempo;
 
     this.stopSound();
 
-    if (a == "up") {
+    if (a === "up") {
       changeTempo(currentTempo + 1);
     } else {
       changeTempo(currentTempo - 1);
@@ -48,8 +45,8 @@ class TempoSlider extends Component {
   }
 
   render() {
-    var bgColor = {backgroundColor: this.props.speed.color};
-    var iconColor = {color: this.props.speed.color};
+    var bgColor = {backgroundColor: this.props.color};
+    var iconColor = {color: this.props.color};
 
     return (
       <section className="section section-bottom tempo-slider-section withcolorfade">
@@ -60,13 +57,14 @@ class TempoSlider extends Component {
           <Slider
             {...config}
             onDragStart={() => this.stopSound()}
-            value={this.props.speed.tempo}
+            value={this.props.tempo}
             onChange={this.handleSlider}
-            className="tempo-slider"/>
+            className="tempo-slider"
+          />
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>
-          <RangeBox range={this.props.range} />
+          <SweetSpotBox sweetspot={this.props.sweetspot} />
         </div>
       </section>
     )
@@ -77,16 +75,21 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
       soundOn,
       soundOff,
-      changeTempo
+      changeTempo,
     }, dispatch);
 }
 
-function mapStateToProps({dripTimer_sound, dripTimer_speed, dripTimer_range}) {
-    return {
-      sound: dripTimer_sound,
-      speed: dripTimer_speed,
-      range: dripTimer_range
-    };
+function mapStateToProps({coldDripTimer}) {
+  const { tempo, color } = coldDripTimer.speed;
+  const { playing } = coldDripTimer.sound;
+  const { sweetspot } = coldDripTimer.sweetspot;
+
+  return {
+    tempo,
+    color,
+    playing,
+    sweetspot,
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TempoSlider);

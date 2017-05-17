@@ -1,0 +1,55 @@
+@import './helpers/_variables';
+@import './helpers/_mixins';
+@import './helpers/_placeholders';
+
+/******* SECTIONS *******/
+
+.section {
+  position: relative;
+  top: 0;
+}
+
+.section-top {
+  height: calc(50% - 45px);
+}
+
+.section-bottom {
+  height: 50%;
+}
+
+
+/******* WITH TABS *******/
+
+.section-top.withtabs {
+  height: calc(60% - 45px);
+}
+
+.section-bottom.withtabs {
+  height: 40%;
+}
+
+
+/******* WITH COLOR FADE *******/
+
+
+.section-top.withcolorfade {
+  height: calc(50% - 45px + 3em);
+  top: -3em;
+}
+
+.section-bottom.withcolorfade {
+  top: -3em;
+}
+
+
+/******* BIG TOP *******/
+
+.section-top.big-top {
+  height: calc(60% - 45px);
+  background-color: $white;
+}
+
+.section-bottom.big-top {
+  height: 40.1%;
+  background-color: $white;
+}

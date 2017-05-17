@@ -1,0 +1,37 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+@import '../helpers/_placeholders';
+
+
+/******* TITLE *******/
+
+.title-container {
+  position: relative;
+  height: $title-container-height;
+  width: 100%;
+  background-color: $black;
+}
+
+.title {
+  @include super-center($left: inherit, $x: 0%);
+  @extend %unselectable;
+  right: 1em;
+  margin: 0;
+  text-transform: lowercase;
+  font-size: $title;
+  color: $white;
+
+  span {
+    font-weight: 100;
+  }
+}
+
+
+/******* MEDIA QUERIES *******/
+
+@media only screen and (min-width: 500px) {
+  .title {
+    $font: $title + 1em;
+    font-size: $font;
+  }
+}

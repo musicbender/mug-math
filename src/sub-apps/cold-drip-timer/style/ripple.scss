@@ -13,6 +13,7 @@
 .ripple-1,
 .ripple-2,
 .ripple-3 {
+  will-change: transform, opacity;
   @extend %ripple;
   @extend %ripple-animate;
 }
@@ -22,11 +23,11 @@
 }
 
 @include keyframes(ripple-animation) {
-    from {
+    0% {
       transform: scale(0.5);
       opacity: 0.4;
     }
-    to {
+    100% {
       transform: scale(10);
       opacity: 0;
     }

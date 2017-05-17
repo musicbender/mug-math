@@ -1,18 +1,23 @@
 @import './helpers/_variables';
 @import './helpers/_mixins';
 @import './helpers/_placeholders';
+@import './section-types';
 
 
 /*******GLOBALS*******/
 
 *, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  font-family: $font;
+    font-family: $font;
+}
+
+html {
+    background-color: $black;
 }
 
 body,
@@ -24,6 +29,7 @@ html {
 
 body {
     background-color: $offwhite;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'><g fill-rule='evenodd'><g id='hexagons' fill='%23e8e8e8' fill-opacity='0.4' fill-rule='nonzero'><path d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/></g></g></svg>");
 }
 
 h1 {
@@ -32,7 +38,15 @@ h1 {
 }
 
 
-/*******MAIN*******/
+/******* COMPONENTS *******/
+
+/*tab selector bar*/
+.tabs > div:nth-child(2) > div  {
+  background-color: $_400 !important;
+}
+
+
+/******* SUB APP *******/
 
 .app-container {
     position: relative;
@@ -41,15 +55,21 @@ h1 {
 }
 
 .sub-app {
+    $speed: $app-speed - 125ms;
+
     @include super-center;
     @include box-shadow(2);
     margin: 0 auto;
-    height: 46em;
+    height: $app-height;
     padding: 0;
-    width: 100%;
-    max-width: 52em;
+    width: 100.5%;
+    max-width: $app-width;
+    opacity: 0;
     overflow: hidden;
-    background-color: #fff;
+    background-color: transparent;
+    animation: appOpen $speed $easeOut;
+    animation-delay: $speed;
+    animation-fill-mode: forwards;
     z-index: 10;
 }
 
@@ -59,55 +79,81 @@ h1 {
 }
 
 .home-container {
+    $speed: $app-speed;
+
     @extend %full-position;
+    position: relative;
+    height: 100%;
+    background-color: rgba($white, 0);
+    filter: blur(0px);
+    animation: unblur $speed $easeOut;
     z-index: 1;
 }
 
+.body-blur {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'><defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='3' /></filter></defs><g fill-rule='evenodd'><g id='hexagons' fill='%23e8e8e8' fill-opacity='0.4' fill-rule='nonzero'><path d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z' filter='url(#f1)'/></g></g></svg>");
+}
+
 .home-blur {
-  filter: blur(15px);
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba($white, 0.05);
+
+  .menu-item-container:not(.active),
+  .title-container {
+    $speed: $app-speed + 400ms;
+    will-change: filter;
+    animation: blur $speed;
+    animation-fill-mode: forwards;
+  }
 }
 
 
-/*******Sections*******/
+/******* ANIMATIONS *******/
 
-.section {
-  position: relative;
-  top: 0;
+@keyframes appOpen {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.section-top {
-  height: calc(50% - 45px);
+@keyframes blur {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(15px);
+  }
 }
 
-.section-bottom {
-  height: 50%;
-}
-
-.section-top.withtabs {
-  height: calc(60% - 45px);
-}
-
-.section-bottom.withtabs {
-  height: 40%;
-}
-
-.section-top.withcolorfade {
-  height: calc(50% - 45px + 3em);
-  top: -3em;
-}
-
-.section-bottom.withcolorfade {
-  top: -3em;
+@keyframes unblur {
+  0% {
+    filter: blur(15px);
+  }
+  100% {
+    filter: blur(0px);
+  }
 }
 
 
-
-/*******MEDIA QUERIES*******/
+/******* MEDIA QUERIES *******/
 
 @media only screen and (max-width: 767px) {
   .sub-app {
-    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    transform: translate(0,0);
+    margin: 0;
+  }
+  .sub-app-outter {
+    display: none;
+    z-index: -1;
   }
   .section,
   .section.withtabs {
@@ -117,6 +163,9 @@ h1 {
     height: calc(50% - 22.5px + 3em);
   }
   .home-blur {
-    filter: none;
+    .menu-item-container:not(.active),
+    .title-container {
+      animation: none;
+    }
   }
 }

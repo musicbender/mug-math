@@ -40,6 +40,7 @@ class TopSection extends Component {
             className="tabs-container"
             onTab={this.modeChange}
             adjustNum={this.adjustNum}
+            location={this.props.location}
             {...propsObj}
           />
         </section>
@@ -47,7 +48,7 @@ class TopSection extends Component {
   }
 }
 
-function mapStateToProps({brewCalc}) {
+function mapStateToProps({ brewCalc }) {
   const { mode, block } = brewCalc.navigation;
   const { coffee, water, ratio } = brewCalc.values;
   return {
@@ -55,7 +56,7 @@ function mapStateToProps({brewCalc}) {
     block,
     coffee,
     water,
-    ratio
+    ratio,
   }
 }
 
@@ -66,7 +67,7 @@ function mapDispatchToProps(dispatch) {
     changeNum,
     increaseNum,
     decreaseNum,
-    clearNum
+    clearNum,
   }, dispatch)
 }
 

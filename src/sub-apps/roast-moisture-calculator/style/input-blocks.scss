@@ -5,11 +5,3 @@
 
 
 /*******Input Blocks*******/
-
-.moist-block:not(:nth-child(3)) {
-  background-color: material-color('blue', '500');
-}
-
-.moist-block.selected {
-  background-color: material-color('blue','400');
-}
