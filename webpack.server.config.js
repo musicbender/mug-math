@@ -33,5 +33,10 @@ module.exports = {
     new webpack.DefinePlugin({
       ONSERVER: true,
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+      },
+    }),
   ],
 };
