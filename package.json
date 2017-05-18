@@ -10,7 +10,7 @@
     "dev": "export NODE_ENV=development; webpack-dev-server --hot --progress --host 0.0.0.0 --port 8087 --config webpack.dev.config.js",
     "bs": "export NODE_ENV=production; webpack --config webpack.server.config.js",
     "bc": "export NODE_ENV=production; webpack --config webpack.prod.config.js",
-    "build": "concurrently \"npm run bc\" \"npm run bs\"  \"nodemon index.js\"",
+    "build": "npm run clean && npm run bc && npm run bs && nodemon index.js",
     "start": "node index.js"
   },
   "keywords": [],
