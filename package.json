@@ -16,6 +16,9 @@
   "keywords": [],
   "author": "Pat Jacobs",
   "license": "ISC",
+  "engines": {
+    "node": "7.0.0"
+  },
   "dependencies": {
     "array.prototype.move": "0.0.3",
     "express": "^4.15.2",
