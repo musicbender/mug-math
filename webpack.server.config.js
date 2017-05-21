@@ -32,6 +32,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       ONSERVER: true,
+      'PORT': 3001
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

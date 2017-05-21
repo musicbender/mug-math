@@ -52,7 +52,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env': {
         'ONSERVER': false,
-        'NODE_ENV': JSON.stringify('production'),
+        'NODE_ENV': JSON.stringify('production')
       },
     }),
     new HtmlWebpackPlugin({
