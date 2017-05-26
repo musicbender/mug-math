@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
-
-/*******Material Color*******/
-
-@import 'node_modules/sass-material-colors/sass/sass-material-colors';
 
 
 /******* Greyscale *******/
@@ -61,23 +56,23 @@ $app-delay: 450ms;
 
 /******* Size *******/
 
-$app-width:   52em;
-$app-height:  46em;
-$circle-size: 10em;
-$circle-size-small: $circle-size - 3em;
-$title-container-height: 4em;
+$app-width:                        52em;
+$app-height:                       46em;
+$circle-size:                      10em;
+$circle-size-small:                $circle-size - 3em;
+$title-container-height:           4em;
 
 
 /******* HOME GRID *******/
 
-$row-1: 7em;
-$row-2: 21em;
-$row-3: 35em;
+$row-1:     6em;
+$row-2:     19em;
+$row-3:     32em;
 
-$column-1: 0%;
-$column-2: 100%;
-$column-3: 200%;
-$column-4: 300%;
+$column-1:  0%;
+$column-2:  100%;
+$column-3:  200%;
+$column-4:  300%;
 
 
 /******* Components *******/

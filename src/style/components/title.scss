@@ -6,7 +6,8 @@
 /******* TITLE *******/
 
 .title-container {
-  position: relative;
+  position: absolute;
+  top: 0;
   height: $title-container-height;
   width: 100%;
   background-color: $black;
@@ -18,12 +19,26 @@
   right: 1em;
   margin: 0;
   text-transform: lowercase;
-  font-size: $title;
-  color: $white;
+  font-weight: 100;
 
   span {
     font-weight: 100;
+    color: rgba($white, 0.5);
   }
+}
+
+.title {
+  top: 50%;
+  font-size: $title;
+  color: $white;
+}
+
+.version {
+  top: 75%;
+  right: 2em;
+  font-weight: 100;
+  color: rgba($white, 0.5);
+  font-size: 1em;
 }
 
 

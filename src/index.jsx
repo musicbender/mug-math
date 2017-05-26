@@ -37,7 +37,7 @@ if (!process.env.ONSERVER) {
 
 if (process.env.NODE_ENV === "development") {
   Perf.stop();
-  Perf.printInclusive();
-  Perf.printExclusive();
-  Perf.printWasted();
+  // Perf.printInclusive();
+  // Perf.printExclusive();
+  // Perf.printWasted();
 }
