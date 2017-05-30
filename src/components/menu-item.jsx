@@ -9,9 +9,13 @@ export default (props) => {
     return props.currentPath === thisPath ? 'active' : '';
   };
 
+  const testLink = () => {
+    console.log(`link clicked: ${props.url}`)
+  }
+
   return (
     <div className={`menu-item-container ${props.id} ${isActive()}`}>
-      <Link to={thisPath} className="menu-circle" onlyActiveOnIndex>
+      <Link to={thisPath} onClick={() => testLink() } className="menu-circle" onlyActiveOnIndex>
         {props.children}
       </Link>
       <svg className="menu-text" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="125px" height="125px" viewBox="50 50 125 125">

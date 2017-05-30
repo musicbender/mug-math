@@ -64,7 +64,6 @@
     "null-loader": "^0.1.1",
     "offline-plugin": "^4.7.0",
     "react-addons-perf": "^15.4.2",
-    "react-router-page-transition": "^3.0.2",
     "sass-loader": "^6.0.3",
     "sass-material-colors": "0.0.5",
     "serviceworker-webpack-plugin": "^0.2.1",

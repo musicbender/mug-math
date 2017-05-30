@@ -41,12 +41,11 @@ class ColdDripTimer extends Component {
             className="app-bar"
             iconElementLeft=
             {
-              <IconButton>
+              <IconButton onClick={this.handleBackButton}>
                 <NavigationClose />
               </IconButton>
             }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu

@@ -32,9 +32,12 @@ class BrewCalculator extends Component {
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"
-            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+            iconElementLeft={
+              <IconButton onClick={this.handleBackButton}>
+                <NavigationClose />
+              </IconButton>
+            }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu

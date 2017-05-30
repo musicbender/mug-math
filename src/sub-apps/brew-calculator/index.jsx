@@ -13,8 +13,14 @@ import DropdownMenu from './components/dropdown-menu.jsx';
 import barStyle from '../../style/app-bar-style';
 
 class BrewCalculator extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+
   handleBackButton() {
-    browserHistory.push('/');
+    browserHistory.goBack();
   }
 
   render() {
@@ -27,12 +33,11 @@ class BrewCalculator extends Component {
             className="app-bar"
             iconElementLeft=
             {
-              <IconButton>
+              <IconButton onClick={this.handleBackButton}>
                 <NavigationClose />
               </IconButton>
             }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight=
             {
@@ -61,7 +66,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps({ brewCalc }) {
   const { help } = brewCalc.dialog;
-
   return {
     help,
   }
