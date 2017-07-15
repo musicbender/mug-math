@@ -76,8 +76,6 @@ class HomeMenu extends Component {
   }
 
   render() {
-    console.log(this.props.loaded);
-
     return (
       <div className={`home-container ${this.subOpen()}`}>
         <Title />

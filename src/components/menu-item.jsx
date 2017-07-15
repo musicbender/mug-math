@@ -18,7 +18,7 @@ export default (props) => {
   }
 
   return (
-    <div className={`menu-item-container ${props.id} ${isActive()}${isPageLoaded()}`}>
+    <div className={`menu-item-container ${props.id} ${isActive()} ${isPageLoaded()}`}>
       <Link to={thisPath} onClick={() => testLink() } className="menu-circle" onlyActiveOnIndex>
         {props.children}
       </Link>

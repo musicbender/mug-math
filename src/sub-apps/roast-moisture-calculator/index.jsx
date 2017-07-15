@@ -38,7 +38,6 @@ class BrewCalculator extends Component {
               </IconButton>
             }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu
