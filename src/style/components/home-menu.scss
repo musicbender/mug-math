@@ -106,10 +106,15 @@
 
 @media only screen and (min-width: 767px) {
   .menu-item-container {
-    &:nth-child(1) { transform: translate( $column-1 , $row-1 ); }
-    &:nth-child(2) { transform: translate( $column-2 , $row-1 ); }
-    &:nth-child(3) { transform: translate( $column-3 , $row-1 ); }
-    &:nth-child(4) { transform: translate( $column-4 , $row-1 ); }
+    $offset: 6em;
+    &:nth-child(1) { transform: translate( $column-1 , $row-1 + $offset); }
+    &:nth-child(2) { transform: translate( $column-2 , $row-1 + $offset); }
+    &:nth-child(3) { transform: translate( $column-3 , $row-1 + $offset); }
+    &:nth-child(4) { transform: translate( $column-4 , $row-1 + $offset); }
+
+    /*testing*/
+    &:nth-child(5) { transform: translate( $column-1 , $row-2 + $offset); }
+    &:nth-child(6) { transform: translate( $column-2 , $row-2 + $offset); }
   }
 }
 

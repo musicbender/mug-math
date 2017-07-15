@@ -9,12 +9,16 @@ export default (props) => {
     return props.currentPath === thisPath ? 'active' : '';
   };
 
+  const isPageLoaded = () => {
+    return props.loaded ? 'not-loaded' : 'loaded';
+  }
+
   const testLink = () => {
     console.log(`link clicked: ${props.url}`)
   }
 
   return (
-    <div className={`menu-item-container ${props.id} ${isActive()}`}>
+    <div className={`menu-item-container ${props.id} ${isActive()}${isPageLoaded()}`}>
       <Link to={thisPath} onClick={() => testLink() } className="menu-circle" onlyActiveOnIndex>
         {props.children}
       </Link>

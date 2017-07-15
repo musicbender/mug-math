@@ -1,4 +1,4 @@
-import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT } from '../constants/index';
+import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED } from '../constants/index';
 
 export function openApp() {
   return {
@@ -16,5 +16,11 @@ export function mountAudio(payload) {
   return {
     type: AUDIO_MOUNT,
     payload,
+  }
+}
+
+export function loadedMenu() {
+  return {
+    type: MENU_LOADED,
   }
 }

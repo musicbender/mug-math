@@ -7,12 +7,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
-    "dev": "export NODE_ENV=development; webpack-dev-server --hot --progress --host 0.0.0.0 --port 8087 --config webpack.dev.config.js",
+    "start": "export NODE_ENV=development; webpack-dev-server --hot --progress --host 0.0.0.0 --port 8087 --config webpack.dev.config.js",
     "bs": "export NODE_ENV=production; webpack --config webpack.server.config.js",
     "bc": "export NODE_ENV=production; webpack --config webpack.prod.config.js",
     "build": "npm run clean && npm run bc && npm run bs",
     "build-run": "export PORT=3001; npm run clean && npm run bc && npm run bs && nodemon index.js",
-    "start": "export PORT=49152; export NODE_ENV=production; forever -c nodemon --exitcrash index.js"
+    "deploy": "export PORT=49152; export NODE_ENV=production; forever -c nodemon --exitcrash index.js"
   },
   "keywords": [],
   "author": "Pat Jacobs",
