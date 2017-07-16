@@ -41,6 +41,7 @@ export default (props) => {
         actions={actions.help}
         modal={false}
         open={props.help}
+        autoScrollBodyContent
         onRequestClose={() => props.closeHelp()}
       >
         {content.helpText()}
