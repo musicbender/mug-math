@@ -80,7 +80,7 @@ class HomeMenu extends Component {
       <div className={`home-container ${this.subOpen()}`}>
         <Title />
         <div className="menu-container">{this.getMenu()}</div>
-        <Footer />
+        <Footer appOpen={this.props.appOpen}/>
       </div>
     );
   }
@@ -98,6 +98,7 @@ function mapStateToProps({ subApp }, ownProps) {
   return {
     pathname: ownProps.location.pathname,
     loaded: subApp.loaded,
+    appOpen: subApp.open,
   };
 }
 

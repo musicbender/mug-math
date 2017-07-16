@@ -3,7 +3,7 @@
 
 .footer-container {
   position: relative;
-  height: 4em;
+  height: $footer-height;
   width: 100%;
   background-color: $black;
 
@@ -15,5 +15,14 @@
     top: 50%;
     color: rgba($white, 0.5);
     font-size: 1em;
+  }
+
+
+  /* MODIFIERS */
+
+  &.app-open {
+    position: fixed;
+    bottom: 0;
+    z-index: 25;
   }
 }
