@@ -11,8 +11,10 @@
     "bs": "export NODE_ENV=production; webpack --config webpack.server.config.js",
     "bc": "export NODE_ENV=production; webpack --config webpack.prod.config.js",
     "build": "npm run clean && npm run bc && npm run bs",
-    "build-run": "export PORT=3001; npm run clean && npm run bc && npm run bs && nodemon index.js",
-    "deploy": "export PORT=49152; export NODE_ENV=production; forever -c nodemon --exitcrash index.js"
+    "open:dist": "export PORT=3001; npm run clean && npm run bc && npm run bs && nodemon index.js",
+    "start:live": "export PORT=49152; export NODE_ENV=production; forever -w --watchDirectory ./dist start index.js",
+    "deploy:package": "rsync -av package.json patjacobs:/home/patjacob/mug-math/ --delete",
+    "deploy": "rsync -avz dist/ patjacobs:/home/patjacob/mug-math/dist/ --delete"
   },
   "keywords": [],
   "author": "Pat Jacobs",

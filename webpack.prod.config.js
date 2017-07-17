@@ -71,14 +71,14 @@ const config = {
       from: 'src/manifest.json',
       to: 'manifest.json',
     }]),
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/images/favicon.png',
-      prefix: 'icons-[hash]/',
-      emitStats: true,
-      persisentCache: true,
-      background: '#fff',
-      inject: true,
-    }),
+    // new FaviconsWebpackPlugin({
+    //   logo: './src/assets/images/favicon.png',
+    //   prefix: 'icons-[hash]/',
+    //   emitStats: true,
+    //   persisentCache: true,
+    //   background: '#fff',
+    //   inject: true,
+    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
