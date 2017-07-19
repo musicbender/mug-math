@@ -27,9 +27,9 @@ export default (props) => {
           <path id="criclePath" d={`M 150, 150 m -${r}, 0 a ${r},${r} 0 0,1 ${r*2},0 a ${r},${r} 0 0,1 -${r*2},0`} />
         </defs>
         <g>
-          <use href="#criclePath" fill="none" />
-          <text fill="#000">
-            <textPath href="#criclePath">{props.title}</textPath>
+          <use xlinkHref="#criclePath" fill="none"></use>
+          <text fill="#000" width="auto" height="auto">
+            <textPath xlinkHref="#criclePath">{props.title}</textPath>
           </text>
         </g>
       </svg>
