@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-var OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {

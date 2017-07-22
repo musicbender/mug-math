@@ -77,7 +77,7 @@ class HomeMenu extends Component {
 
   render() {
     return (
-      <div className={`home-container ${this.subOpen()}`}>
+      <div className={`home-container ${() => this.subOpen()}`}>
         <Title />
         <div className="menu-container">{this.getMenu()}</div>
         <Footer appOpen={this.props.appOpen}/>

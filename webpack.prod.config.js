@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 var OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -71,14 +70,6 @@ const config = {
       from: 'src/manifest.json',
       to: 'manifest.json',
     }]),
-    // new FaviconsWebpackPlugin({
-    //   logo: './src/assets/images/favicon.png',
-    //   prefix: 'icons-[hash]/',
-    //   emitStats: true,
-    //   persisentCache: true,
-    //   background: '#fff',
-    //   inject: true,
-    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
