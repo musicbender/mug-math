@@ -49,10 +49,10 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        'ONSERVER': false,
-        'NODE_ENV': JSON.stringify('production')
-      },
+        'process.env': {
+          'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+          'ONSERVER': false
+        }
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index.html'),

@@ -31,8 +31,11 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      ONSERVER: true,
-      'PORT': 3001
+      'PORT': 3001,
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        ONSERVER: "true",
+      }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

@@ -55,29 +55,31 @@ class HomeMenu extends Component {
     return this.props.pathname === '/';
   }
 
-  subOpen() {
+  componentDidUpdate() {
     if (this.isHome()) {
       this.props.closeApp();
-
-      if (process.env.ONSERVER === false) {
-        document.body.classList.remove('body-blur');
-      }
-
-      return '';
     } else {
       this.props.openApp();
+    }
+  }
 
-      if (process.env.ONSERVER === false) {
+  toggleBlur() {
+    if (this.isHome()) {
+      if (!process.env.ONSERVER) {
+        document.body.classList.remove('body-blur');
+      }
+      return '';
+    } else {
+      if (!process.env.ONSERVER) {
         document.body.classList.add('body-blur');
       }
-
       return 'sub-open home-blur';
     }
   }
 
   render() {
     return (
-      <div className={`home-container ${() => this.subOpen()}`}>
+      <div className={`home-container ${this.toggleBlur()}`}>
         <Title />
         <div className="menu-container">{this.getMenu()}</div>
         <Footer appOpen={this.props.appOpen}/>

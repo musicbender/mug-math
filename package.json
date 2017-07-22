@@ -11,7 +11,9 @@
     "bs": "export NODE_ENV=production; webpack --env=prod --config webpack.server.config.js",
     "bc": "export NODE_ENV=production; webpack --env=prod --config webpack.prod.config.js",
     "build": "npm run clean && npm run bc && npm run bs",
-    "open:dist": "export PORT=3001; npm run clean && npm run bc && npm run bs && nodemon index.js",
+    "open:dist": "export PORT=3001; nodemon index.js",
+    "open:dev": "export NODE_ENV=development; babel-node index.js --presets es2015,stage-2",
+    "build:open": "npm run build && npm run open:dist",
     "start:live": "export PORT=49152; export NODE_ENV=production; forever -w --watchDirectory ./dist start index.js",
     "deploy:package": "rsync -av package.json patjacobs:/home/patjacob/mug-math/ --delete",
     "deploy": "rsync -avz dist/ patjacobs:/home/patjacob/mug-math/dist/ --delete"
@@ -25,6 +27,7 @@
   "dependencies": {
     "array.prototype.move": "0.0.3",
     "express": "^4.15.2",
+    "express-https-redirect": "^1.0.0",
     "history": "^4.6.1",
     "material-ui": "^0.18.6",
     "react": "^15.4.2",
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^7.1.1",

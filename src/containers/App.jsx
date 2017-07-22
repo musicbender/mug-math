@@ -11,13 +11,18 @@ let muiTheme;
 
 class App extends Component {
   componentWillMount() {
+    console.log(`on server? ${process.env.ONSERVER}`);
     muiTheme = getMuiTheme(muithemeStyle);
-    try {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      this.props.mountAudio(audioContext);
-    }
-    catch(err) {
-      console.error(`Web Audio API is not supported in this browser: ${err}`);
+    if (typeof window !== 'undefined') {
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        this.props.mountAudio(audioContext);
+      }
+      catch(err) {
+        console.error(`Web Audio API is not supported in this browser: ${err}`);
+      }
+    } else {
+      GLOBAL.window = {};
     }
   }
 
@@ -26,7 +31,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-container">
           <HomeMenu location={this.props.location} />
-          {this.props.children}
+          {!process.env.ONSERVER && this.props.children}
         </div>
       </MuiThemeProvider>
     );

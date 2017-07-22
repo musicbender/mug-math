@@ -1,19 +1,23 @@
 import express from 'express';
 import path from 'path';
 import React from 'react';
+import httpsRedirect from 'express-https-redirect';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { match, RouterContext } from 'react-router';
 import reducers from '../src/reducers/index.js';
 import routes from '../src/routes.jsx';
-import { match, RouterContext } from 'react-router';
 
 const PORT = process.env.PORT || 3001;
 const app = new express();
 
-app.use(express.static('dist'));
+console.log(process.env.NODE_ENV);
+console.log('huh?');
+// app.use('/', httpsRedirect(true));
 
 app.use((req, res, next) => {
+  console.log('react server rendering');
   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
     if (err) {
       return res.status(500).end();
@@ -37,6 +41,14 @@ app.use((req, res, next) => {
     );
 
     const preloadedState = store.getState();
+
+    // if (!req.secure && process.env.NODE_ENV === 'production') {
+    //   console.log('moving to https?');
+    //   const secureUrl = "https://" + req.headers['host'] + req.url;
+    //   res.writeHead(301, { "Location":  secureUrl });
+    // } else {
+    //   console.log('did not redirect');
+    // }
 
     res
       .set('Content-Type', 'text/html')
@@ -73,7 +85,9 @@ const renderFullPage = (html, initialState) => {
   `;
 };
 
+app.use(express.static('dist'));
+
 app.listen(PORT, err => {
   if (err) { console.error(err); }
-  console.log(`MugMath avaliable at ${PORT}!`);
+  console.log(`MugMath aaaaavaliable at ${PORT}!`);
 });
