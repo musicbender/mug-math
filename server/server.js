@@ -1,4 +1,6 @@
 import express from 'express';
+import https from 'https';
+import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import httpsRedirect from 'express-https-redirect';
@@ -10,15 +12,17 @@ import reducers from '../src/reducers/index.js';
 import routes from '../src/routes.jsx';
 
 const PORT = process.env.PORT || 3001;
+console.log(process.env.LIVE);
 const app = new express();
 
-console.log(process.env.NODE_ENV);
-console.log('huh?');
 // app.use('/', httpsRedirect(true));
 
+app.use(express.static('dist'));
+
 app.use((req, res, next) => {
-  console.log('react server rendering');
   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    console.log('react server rendering');
+
     if (err) {
       return res.status(500).end();
     }
@@ -28,6 +32,7 @@ app.use((req, res, next) => {
     }
 
     if (!renderProps) {
+      console.log('not rendered');
       return next();
     }
 
@@ -42,13 +47,14 @@ app.use((req, res, next) => {
 
     const preloadedState = store.getState();
 
-    // if (!req.secure && process.env.NODE_ENV === 'production') {
-    //   console.log('moving to https?');
-    //   const secureUrl = "https://" + req.headers['host'] + req.url;
-    //   res.writeHead(301, { "Location":  secureUrl });
-    // } else {
-    //   console.log('did not redirect');
-    // }
+    console.log('https time...');
+    if (!req.secure && process.env.NODE_ENV === 'production') {
+      console.log('moving to https?');
+      const secureUrl = "https://" + req.headers['host'] + req.url;
+      res.writeHead(301, { "Location":  secureUrl });
+    } else {
+      console.log('did not redirect');
+    }
 
     res
       .set('Content-Type', 'text/html')
@@ -85,9 +91,20 @@ const renderFullPage = (html, initialState) => {
   `;
 };
 
-app.use(express.static('dist'));
+if (!process.env.LIVE) {
+  const options = {
+      key: fs.readFileSync(path.join(__dirname, '/key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, '/cert.pem')),
+      requestCert: false,
+      rejectUnauthorized: false
+  };
 
-app.listen(PORT, err => {
-  if (err) { console.error(err); }
-  console.log(`MugMath aaaaavaliable at ${PORT}!`);
-});
+  const server = https.createServer(options, app).listen(PORT, () => {
+    console.log(`Mugmath local server started at port ${PORT}`);
+  });
+} else {
+  app.listen(PORT, err => {
+    if (err) { console.error(err); }
+    console.log(`MugMath now live at ${PORT}!`);
+  });
+}

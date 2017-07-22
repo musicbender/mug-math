@@ -36,7 +36,8 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        ONSERVER: false,
+        'ONSERVER': false,
+        'LIVE': false,
         'NODE_ENV': JSON.stringify('development'),
         'VERSION': JSON.stringify('0.8.1'),
       },

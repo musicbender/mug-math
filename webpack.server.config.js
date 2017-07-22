@@ -34,7 +34,8 @@ module.exports = {
       'PORT': 3001,
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        ONSERVER: "true",
+        'ONSERVER': "true",
+        'LIVE': false,
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
