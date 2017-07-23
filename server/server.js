@@ -83,7 +83,6 @@ const renderFullPage = (html, initialState) => {
         <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-          console.log('initial state injected');
         </script>
         <script type="text/javascript" src="/dist.js"></script>
       </body>
@@ -93,8 +92,8 @@ const renderFullPage = (html, initialState) => {
 
 if (!process.env.LIVE) {
   const options = {
-      key: fs.readFileSync(path.join(__dirname, '/key.pem')),
-      cert: fs.readFileSync(path.join(__dirname, '/cert.pem')),
+      key: fs.readFileSync('/Users/patrickj/server.key'),
+      cert: fs.readFileSync('/Users/patrickj/server.crt'),
       requestCert: false,
       rejectUnauthorized: false
   };
