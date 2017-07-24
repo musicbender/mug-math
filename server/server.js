@@ -9,22 +9,23 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import reducers from '../src/reducers/index.js';
-import routes from '../src/routes.jsx';
+import routes from '../src/routes.js';
 
 const PORT = process.env.PORT || 3001;
-console.log(process.env.LIVE);
+console.log(`live? ${process.env.LIVE}`);
 const app = new express();
 
 // app.use('/', httpsRedirect(true));
 
-app.use(express.static('dist'));
-
-app.use((req, res, next) => {
-  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
-    console.log('react server rendering');
+app.use('/', (req, res, next) => {
+  match({ routes: routes.default, location: req.url }, (err, redirectLocation, renderProps) => {
+    console.log('react server rendering. Here is routes...');
+    console.log(routes.default);
+    console.log(req.url);
 
     if (err) {
       return res.status(500).end();
+      console.log(err);
     }
 
     if (redirectLocation) {
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
     }
 
     if (!renderProps) {
-      console.log('not rendered');
+      console.log(`not render because renderProps is: ${renderProps}`);
       return next();
     }
 
@@ -90,6 +91,8 @@ const renderFullPage = (html, initialState) => {
   `;
 };
 
+app.use(express.static('dist'));
+
 if (!process.env.LIVE) {
   const options = {
       key: fs.readFileSync('/Users/patrickj/server.key'),
@@ -98,6 +101,7 @@ if (!process.env.LIVE) {
       rejectUnauthorized: false
   };
 
+  console.log(`app stack: ${app}`);
   const server = https.createServer(options, app).listen(PORT, () => {
     console.log(`Mugmath local server started at port ${PORT}`);
   });

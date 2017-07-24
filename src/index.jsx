@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import Perf from 'react-addons-perf';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import reducers from './reducers';
-import routes from './routes.jsx';
+import Routes from './routes.js';
 import './style/base.scss';
 
 OfflinePluginRuntime.install();
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "development") {
 if (!process.env.ONSERVER) {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Routes history={history} />
     </Provider>
     , document.getElementById('app'),
   );
