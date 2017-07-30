@@ -14,6 +14,7 @@ import './style/base.scss';
 OfflinePluginRuntime.install();
 
 injectTapEventPlugin();
+console.log(Routes);
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;

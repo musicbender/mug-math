@@ -9,7 +9,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import reducers from '../src/reducers/index.js';
-import routes from '../src/routes.js';
+import routes from '../src/routes';
+// const routes = require('./routes.js');
 
 const PORT = process.env.PORT || 3001;
 console.log(`live? ${process.env.LIVE}`);
@@ -18,10 +19,13 @@ const app = new express();
 // app.use('/', httpsRedirect(true));
 
 app.use('/', (req, res, next) => {
-  match({ routes: routes.default, location: req.url }, (err, redirectLocation, renderProps) => {
-    console.log('react server rendering. Here is routes...');
-    console.log(routes.default);
-    console.log(req.url);
+  match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
+
+    /*** debugging **/
+    console.log(__dirname);
+    console.log(routes);
+
+    /***************/
 
     if (err) {
       return res.status(500).end();
@@ -101,7 +105,6 @@ if (!process.env.LIVE) {
       rejectUnauthorized: false
   };
 
-  console.log(`app stack: ${app}`);
   const server = https.createServer(options, app).listen(PORT, () => {
     console.log(`Mugmath local server started at port ${PORT}`);
   });

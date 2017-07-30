@@ -1,11 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   target: "node",
+  node: {
+    __dirname: false,
+    __filename: false
+  },
+  externals: [ nodeExternals() ],
   cache: false,
-  context: __dirname,
   resolve: {
     alias: {
 	     "~": path.join(__dirname, './src'),
