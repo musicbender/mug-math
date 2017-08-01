@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openHelp, closeHelp } from './actions/index';
@@ -19,8 +19,14 @@ const barStyleObj = {
 }
 
 class BrewCalculator extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+  
   handleBackButton() {
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {

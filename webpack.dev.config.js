@@ -61,7 +61,7 @@ const config = {
     }),
   ],
   devServer: {
-    historyApiFallback: true,
+    // historyApiFallback: true,
     port: 8087,
   },
   watch: true,

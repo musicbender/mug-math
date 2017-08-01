@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { Link, browserHistory } from 'react-router';
+// import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   onSweetspot,
   offSweetspot,
@@ -14,7 +14,6 @@ import {
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import { brown800 } from 'material-ui/styles/colors';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
@@ -26,8 +25,14 @@ const barStyleObj = {
 }
 
 class ColdDripTimer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+  
   handleBackButton() {
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {

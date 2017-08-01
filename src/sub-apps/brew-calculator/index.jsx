@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
@@ -20,7 +20,7 @@ class BrewCalculator extends Component {
   }
 
   handleBackButton() {
-    browserHistory.goBack();
+    this.props.history.push('/');
   }
 
   render() {

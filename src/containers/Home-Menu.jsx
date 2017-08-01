@@ -13,6 +13,10 @@ import menuData from '../util/menu-data';
 import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.loadedMenu();
   }
@@ -52,7 +56,7 @@ class HomeMenu extends Component {
   }
 
   isHome() {
-    return this.props.pathname === '/';
+    return this.props.location.pathname === '/';
   }
 
   componentDidUpdate() {
@@ -96,9 +100,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-function mapStateToProps({ subApp }, ownProps) {
+function mapStateToProps({ subApp }) {
   return {
-    pathname: ownProps.location.pathname,
     loaded: subApp.loaded,
     appOpen: subApp.open,
   };
