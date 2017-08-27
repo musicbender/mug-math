@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { soundOn, soundOff, changeTempo } from '../actions/index';
 import Slider from 'material-ui/Slider';
 import IconButton from 'material-ui/IconButton';
@@ -92,4 +93,4 @@ function mapStateToProps({coldDripTimer}) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TempoSlider);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TempoSlider));

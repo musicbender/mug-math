@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openHelp, closeHelp } from './actions/index';
@@ -24,7 +24,7 @@ class BrewCalculator extends Component {
 
     this.handleBackButton = this.handleBackButton.bind(this);
   }
-  
+
   handleBackButton() {
     this.props.history.push('/');
   }
@@ -76,4 +76,4 @@ function mapStateToProps({ roastMoistureCalc }) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BrewCalculator));

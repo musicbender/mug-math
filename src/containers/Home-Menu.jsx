@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Route, withRouter, Link } from 'react-router-dom';
 import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
 import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
@@ -42,7 +43,7 @@ class HomeMenu extends Component {
         <MenuItem
           title={item.title}
           url={item.url}
-          currentPath={this.props.pathname}
+          currentPath={this.props.location.pathname}
           key={item.id}
           id={item.id}
           loaded={this.props.loaded}
@@ -107,4 +108,4 @@ function mapStateToProps({ subApp }) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeMenu);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeMenu));

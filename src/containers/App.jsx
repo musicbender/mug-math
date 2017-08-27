@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import { mountAudio } from '../actions/index';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muithemeStyle from '../style/muitheme-style';
 
 // Pages
-import HomeMenu from './Home-Menu.jsx';
 import BrewCalculator from '../sub-apps/brew-calculator/index.jsx';
 import ColdDripTimer from '../sub-apps/cold-drip-timer/index.jsx';
 import RoastMoistureCalculator from '../sub-apps/roast-moisture-calculator/index.jsx';
 import RoastDevCalculator from '../sub-apps/roast-development-calculator/index.jsx';
-
+import HomeMenu from './Home-Menu.jsx';
 let muiTheme;
 
 class App extends Component {
@@ -34,18 +33,19 @@ class App extends Component {
   }
 
   render() {
+    console.log(`app rendered`);
     return (
+      <div>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <BrowserRouter>
-          <div className="app-container">
-            <Route path="/" component={HomeMenu} />
-            <Route path="/sub-apps/brew-calculator/" component={BrewCalculator} />
-            <Route path="/sub-apps/cold-drip-timer/" component={ColdDripTimer} />
-            <Route path="/sub-apps/roast-moisture-calculator/" component={RoastMoistureCalculator} />
-            <Route path="/sub-apps/roast-development-calculator/" component={RoastDevCalculator} />
-          </div>
-        </BrowserRouter>
+        <div className="app-container">
+          <HomeMenu />
+          <Route path="/sub-apps/brew-calculator" component={BrewCalculator} />
+          <Route path="/sub-apps/cold-drip-timer" component={ColdDripTimer} />
+          <Route path="/sub-apps/roast-moisture-calculator" component={RoastMoistureCalculator} />
+          <Route path="/sub-apps/roast-development-calculator" component={RoastDevCalculator} />
+        </div>
       </MuiThemeProvider>
+      </div>
     );
   }
 }
@@ -56,6 +56,7 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
 
-// <HomeMenu location={this.props.location} />
+// <Route path="/" component={HomeMenu} />
+// <Link to="/sub-apps/brew-calculator">TEST</Link>

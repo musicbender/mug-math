@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter} from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { changeMode, changeBlock, changeNum, increaseNum, decreaseNum, clearNum } from '../actions/index';
 import BrewTabs from '../components/brew-tabs.jsx';
@@ -71,4 +72,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopSection));

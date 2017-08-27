@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   onSweetspot,
   offSweetspot,
@@ -30,7 +30,7 @@ class ColdDripTimer extends Component {
 
     this.handleBackButton = this.handleBackButton.bind(this);
   }
-  
+
   handleBackButton() {
     this.props.history.push('/');
   }
@@ -99,4 +99,4 @@ function mapStateToProps({ coldDripTimer, subApp }) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer));

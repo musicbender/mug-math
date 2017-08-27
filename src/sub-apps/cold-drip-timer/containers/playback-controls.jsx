@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter} from 'react-router-dom';
 import { soundOn, soundOff, changeRipple } from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
@@ -64,4 +65,4 @@ function mapStateToProps({coldDripTimer}) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlaybackControls));

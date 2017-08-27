@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default (props) => {
   const r = 90;
-  const thisPath = `sub-apps${props.url}/`;
+  const thisPath = `/sub-apps${props.url}`;
 
   const isActive = () => {
     return props.currentPath === thisPath ? 'active' : '';
@@ -15,7 +15,7 @@ export default (props) => {
 
   return (
     <div className={`menu-item-container ${props.id} ${isActive()} ${isPageLoaded()}`}>
-      <Link to={thisPath} className="menu-circle">
+      <Link to="/sub-apps/brew-calculator" className="menu-circle">
         {props.children}
       </Link>
       <svg className="menu-text" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="125px" height="125px" viewBox="50 50 125 125">

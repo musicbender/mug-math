@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-
+import { withRouter } from 'react-router-dom';
 
 class BottomSection extends Component {
   render() {
@@ -27,4 +26,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(BottomSection);
+export default withRouter(connect(mapStateToProps)(BottomSection));

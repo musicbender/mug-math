@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
@@ -15,7 +15,6 @@ import barStyle from '../../style/app-bar-style';
 class BrewCalculator extends Component {
   constructor(props) {
     super(props);
-
     this.handleBackButton = this.handleBackButton.bind(this);
   }
 
@@ -71,4 +70,4 @@ function mapStateToProps({ brewCalc }) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BrewCalculator));
