@@ -24,8 +24,8 @@ $grey:         $_400;
 
 $extra-large:  3.5em;
 $very-large:   3em;
-$large:        2em;
-$medium:       1.5em;
+$large:        2.2em;
+$medium:       1.75em;
 $small:        1em;
 $tiny:         0.8em;
 
@@ -37,6 +37,8 @@ $p-size:       $small;
 $slabo:        'Slabo 27px', serif;
 $roboto:       'Roboto Condensed', sans-serif;
 $font:         $slabo;
+
+$text-gradient: 'linear-gradient(to right,#23966c, #faaa54, #e23b4a, #db0768, #360670)';
 
 
 /*******Animation*******/
@@ -63,6 +65,7 @@ $app-height-mobile:                100vh;
 $circle-size:                      10em;
 $circle-size-small:                $circle-size - 3em;
 $title-container-height:           4em;
+$border-radius:                    12px;
 
 
 /******* HOME GRID *******/
@@ -83,8 +86,8 @@ $primary:                 $white;
 $secondary:               $black;
 
 $app-bg:                  $primary;
-$block-color:             $secondary;
-$block-selected-color:    $_800;
+$block-color:             rgba($_900, 0.8);
+$block-selected-color:    $secondary;
 $block-text-color:        $primary;
 $result-text-color:       $secondary;
 

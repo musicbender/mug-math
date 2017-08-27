@@ -7,8 +7,10 @@ class BottomSection extends Component {
     return (
       <section className="section section-bottom stacked big-top">
         <div className="block-result-div">
-          <div className="block-result rdev-result">
-            {`${this.props.development}% development`}
+          <div className="inner-wrapper">
+            <div className="block-result rdev-result">
+              {`${this.props.development}% development`}
+            </div>
           </div>
         </div>
       </section>

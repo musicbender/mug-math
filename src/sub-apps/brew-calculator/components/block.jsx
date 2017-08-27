@@ -46,8 +46,10 @@ export default (props) => {
     } else {
         return (
           <div className="block-result-div">
-            <div className="block-result">
-              {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
+            <div className="inner-wrapper">
+              <div className="block-result">
+                {name === "ratio" ? `${text} 1:${props[name]}` : `${props[name]}${unit} ${text}`}
+              </div>
             </div>
           </div>
         )

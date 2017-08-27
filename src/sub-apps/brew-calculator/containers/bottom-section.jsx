@@ -30,7 +30,6 @@ class BottomSection extends Component {
 
 function mapStateToProps(state) {
     const { mode, block } = state.brewCalc.navigation;
-
     return {
       mode,
       block
