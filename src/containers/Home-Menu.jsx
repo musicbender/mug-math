@@ -87,7 +87,7 @@ class HomeMenu extends Component {
       <div className={`home-container ${this.toggleBlur()}`}>
         <Title />
         <div className="menu-container">{this.getMenu()}</div>
-        <Footer appOpen={this.props.appOpen}/>
+        <Footer appOpen={this.props.appOpen} type="outside"/>
       </div>
     );
   }

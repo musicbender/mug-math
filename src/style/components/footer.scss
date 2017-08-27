@@ -6,6 +6,10 @@
   height: $footer-height;
   width: 100%;
   background-color: $black;
+  @media (min-width: 767px) {
+    position: fixed;
+    bottom: 0;
+  }
 
   .version {
     @include super-center($left: 3em, $x: 0%);
@@ -20,9 +24,16 @@
 
   /* MODIFIERS */
 
-  &.app-open {
-    position: fixed;
-    bottom: 0;
-    z-index: 25;
+  &.inside {
+    display: block;
+    @media (min-width: 767px) {
+      display: none
+    }
+  }
+  &.outside.app-open {
+    display: none;
+    @media (min-width: 767px) {
+      display: block;
+    }
   }
 }

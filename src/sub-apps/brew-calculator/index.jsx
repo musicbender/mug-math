@@ -10,6 +10,7 @@ import { openHelp, closeHelp } from './actions/index';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 class BrewCalculator extends Component {
@@ -49,6 +50,7 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
+          <Footer type="inside" />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

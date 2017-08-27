@@ -17,6 +17,7 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
@@ -29,6 +30,14 @@ class ColdDripTimer extends Component {
     super(props);
 
     this.handleBackButton = this.handleBackButton.bind(this);
+  }
+
+  componentDidMount() {
+    document.body.classList.add('cold-drip-timer');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('cold-drip-timer');
   }
 
   handleBackButton() {
@@ -68,6 +77,7 @@ class ColdDripTimer extends Component {
           />
           <PlaybackControls audioContext={ this.props.audioContext } />
           <TempoSlider audioContext={ this.props.audioContext } />
+          <Footer type="inside withcolorfade" />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

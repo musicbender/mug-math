@@ -57,8 +57,7 @@ h1 {
 
 .sub-app {
     $speed: $app-speed - 125ms;
-
-    @include super-center;
+    @include super-center($top: 53%);
     @include box-shadow(2);
     margin: 0 auto;
     height: $app-height;
@@ -81,14 +80,17 @@ h1 {
 
 .home-container {
     $speed: $app-speed;
-
     @extend %full-position;
     position: relative;
+    min-height: 100%;
     height: 100%;
     background-color: rgba($white, 0);
     filter: blur(0px);
     animation: unblur $speed $easeOut;
     z-index: 1;
+    @media (min-width: 767px) {
+      min-height: 100vh;
+    }
 }
 
 .body-blur {
@@ -156,13 +158,13 @@ h1 {
     display: none;
     z-index: -1;
   }
-  .section,
-  .section.withtabs {
-    height: calc(50% - 22.5px);
-  }
-  .section.withcolorfade {
-    height: calc(50% - 22.5px + 3em);
-  }
+  // .section,
+  // .section.withtabs {
+  //   height: calc(50% - 22.5px);
+  // }
+  // .section.withcolorfade {
+  //   height: calc(50% - 22.5px + 3em);
+  // }
   .home-blur {
     .menu-item-container:not(.active),
     .title-container {

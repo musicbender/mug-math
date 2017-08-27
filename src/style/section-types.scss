@@ -10,22 +10,34 @@
 }
 
 .section-top {
-  height: calc(50% - 45px);
+  height: calc(50% - #{$app-bar-height} - #{$mobile-footer-offset});
+  @media (min-width: 767px) {
+    height: calc(50% - #{$app-bar-height});
+  }
 }
 
 .section-bottom {
-  height: 50%;
+  height: calc(50% - #{$mobile-footer-offset});
+  @media (min-width: 767px) {
+    height: 50%;
+  }
 }
 
 
 /******* WITH TABS *******/
 
 .section-top.withtabs {
-  height: calc(60% - 45px);
+  height: calc(60% - #{$app-bar-height} - #{$mobile-footer-offset});
+  @media (min-width: 767px) {
+    height: calc(60% - #{$app-bar-height});
+  }
 }
 
 .section-bottom.withtabs {
-  height: 40%;
+  height: calc(40% - #{$mobile-footer-offset});
+  @media (min-width: 767px) {
+    height: 40%;
+  }
 }
 
 
@@ -33,11 +45,18 @@
 
 
 .section-top.withcolorfade {
-  height: calc(50% - 45px + 3em);
+  height: calc(50% - #{$app-bar-height} + 3em - #{$mobile-footer-offset});
   top: -3em;
+  @media (min-width: 767px) {
+    height: calc(50% - #{$app-bar-height} + 3em);
+  }
 }
 
 .section-bottom.withcolorfade {
+  top: -3em;
+}
+
+.footer-container.inside.withcolorfade {
   top: -3em;
 }
 
@@ -45,11 +64,17 @@
 /******* BIG TOP *******/
 
 .section-top.big-top {
-  height: calc(60% - 45px);
+  height: calc(60% - #{$app-bar-height} - #{$mobile-footer-offset});
   background-color: $white;
+  @media (min-width: 767px) {
+    height: calc(60% - #{$app-bar-height});
+  }
 }
 
 .section-bottom.big-top {
-  height: 40.1%;
+  height: calc(40.1% - #{$mobile-footer-offset});
   background-color: $white;
+  @media (min-width: 767px) {
+    height: 40.1%;
+  }
 }

@@ -10,6 +10,7 @@ import { black } from 'material-ui/styles/colors';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
@@ -25,13 +26,21 @@ class BrewCalculator extends Component {
     this.handleBackButton = this.handleBackButton.bind(this);
   }
 
+  componentDidMount() {
+    document.body.classList.add('roast-dev');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('roast-dev');
+  }
+
   handleBackButton() {
     this.props.history.push('/');
   }
 
   render() {
     return (
-      <div className="transition-item">
+      <div>
         <div className="sub-app">
           <AppBar
             title="Roast Developer Calculator"
@@ -55,6 +64,7 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
+          <Footer type="inside" />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

@@ -15,7 +15,7 @@ export default (props) => {
 
   return (
     <div className={`menu-item-container ${props.id} ${isActive()} ${isPageLoaded()}`}>
-      <Link to="/sub-apps/brew-calculator" className="menu-circle">
+      <Link to={thisPath} className="menu-circle">
         {props.children}
       </Link>
       <svg className="menu-text" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="125px" height="125px" viewBox="50 50 125 125">
