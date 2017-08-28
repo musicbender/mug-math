@@ -24,17 +24,14 @@ const store = createStore(reducers, preloadedState, window.__REDUX_DEVTOOLS_EXTE
 // }
 
 const Index = () => (
-	<BrowserRouter basename="/">
 	<Provider store={store}>
-
-    		<App />
-
-  </Provider>
-	</BrowserRouter>
+		<BrowserRouter basename="/">
+	    <App />
+		</BrowserRouter>
+	</Provider>
 )
 
 render(<Index />, document.getElementById('app'));
-
 
 if (process.env.NODE_ENV === "development") {
   // Perf.stop();

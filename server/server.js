@@ -7,52 +7,41 @@ import httpsRedirect from 'express-https-redirect';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { match, RouterContext } from 'react-router';
-import reducers from '../src/reducers/index.js';
-import routes from '../src/routes';
-// const routes = require('./routes.js');
+import { StaticRouter } from 'react-router';
+import App from '../src/containers/App.jsx';
+import reducers from '../src/reducers/index';
 
 const PORT = process.env.PORT || 3001;
 console.log(`live? ${process.env.LIVE}`);
+console.log(`process:, ${process.env.NODE_ENV}`);
 const app = new express();
 
 // app.use('/', httpsRedirect(true));
 
 app.use('/', (req, res, next) => {
-  match({ routes: routes, location: req.url }, (err, redirectLocation, renderProps) => {
+  const store = createStore(reducers);
+  const context = {};
 
-    /*** debugging **/
-    console.log(__dirname);
-    console.log(routes);
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    </Provider>
+  );
 
-    /***************/
+    // if (err) {
+    //   console.log(err);
+    //   return res.status(500).end();
+    // }
 
-    if (err) {
-      return res.status(500).end();
-      console.log(err);
+    if (context.url) {
+      res.redirect(301, context.url);
+      res.end()
     }
-
-    if (redirectLocation) {
-      return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
-
-    if (!renderProps) {
-      console.log(`not render because renderProps is: ${renderProps}`);
-      return next();
-    }
-
-    const store = createStore(reducers);
-    const context = {};
-
-    const html = renderToString(
-      <Provider store={store}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    );
 
     const preloadedState = store.getState();
 
-    console.log('https time...');
     if (!req.secure && process.env.NODE_ENV === 'production') {
       console.log('moving to https?');
       const secureUrl = "https://" + req.headers['host'] + req.url;
@@ -64,8 +53,8 @@ app.use('/', (req, res, next) => {
     res
       .set('Content-Type', 'text/html')
       .status(200)
-      .end(renderFullPage(html, preloadedState));
-  });
+      .send(renderFullPage(html, preloadedState))
+      .end();
 });
 
 const renderFullPage = (html, initialState) => {
@@ -89,6 +78,7 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
+        <p>wuuuut</p>
         <script type="text/javascript" src="/dist.js"></script>
       </body>
     </html>

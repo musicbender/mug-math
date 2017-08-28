@@ -18,8 +18,9 @@ let muiTheme;
 class App extends Component {
   componentWillMount() {
     console.log(`on server? ${process.env.ONSERVER}`);
+
     muiTheme = getMuiTheme(muithemeStyle);
-    if (typeof window !== 'undefined') {
+    if (!process.env.ONSERVER) {
       try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         this.props.mountAudio(audioContext);
@@ -57,6 +58,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(App));
-
-// <Route path="/" component={HomeMenu} />
-// <Link to="/sub-apps/brew-calculator">TEST</Link>
