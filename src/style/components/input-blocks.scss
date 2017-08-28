@@ -149,10 +149,11 @@
   > .inner-wrapper {
     @include super-center();
     > .block-result {
-      @include gradient-text($text-gradient);
+      // @include gradient-text($text-gradient);
       position: relative;
-      font-size: $medium;
+      font-size: $small;
       font-weight: bold;
+      font-family: 'Stalinist One';
       text-align: center;
       display: inline-block;
       width: auto !important;
@@ -163,6 +164,10 @@
       margin: 0 auto;
       top: auto;
       transform: translate(-50%, 0%);
+      > span {
+        font-size: 2em;
+        font-family: 'Stalinist One';
+      }
     }
   }
 }

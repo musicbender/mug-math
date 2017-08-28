@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom';
 
 class BottomSection extends Component {
   render() {
+    const { development } = this.props;
     return (
       <section className="section section-bottom stacked big-top">
         <div className="block-result-div">
           <div className="inner-wrapper">
-            <div className="block-result rdev-result">
-              {`${this.props.development}% development`}
+            <div className={`block-result rdev-result ${development > 0}`}>
+              <span>{`${development}%`}</span> development
             </div>
           </div>
         </div>
