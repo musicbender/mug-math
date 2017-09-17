@@ -39,11 +39,13 @@ class HomeMenu extends Component {
 
   getMenu() {
     const menu = menuData.map((item) => {
+      const thisPath = `/sub-apps${item.url}`;
       return (
         <MenuItem
           title={item.title}
           url={item.url}
-          currentPath={this.props.location.pathname}
+          active={this.props.location.pathname === thisPath}
+          path={thisPath}
           key={item.id}
           id={item.id}
           loaded={this.props.loaded}
@@ -58,14 +60,6 @@ class HomeMenu extends Component {
 
   isHome() {
     return this.props.location.pathname === '/';
-  }
-
-  componentDidUpdate() {
-    if (this.isHome()) {
-      this.props.closeApp();
-    } else {
-      this.props.openApp();
-    }
   }
 
   toggleBlur() {
@@ -87,7 +81,7 @@ class HomeMenu extends Component {
       <div className={`home-container ${this.toggleBlur()}`}>
         <Title />
         <div className="menu-container">{this.getMenu()}</div>
-        <Footer appOpen={this.props.appOpen} type="outside"/>
+        <Footer location={this.props.location.pathname} type="outside"/>
       </div>
     );
   }
@@ -95,8 +89,6 @@ class HomeMenu extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    openApp,
-    closeApp,
     loadedMenu,
   }, dispatch);
 }
@@ -104,7 +96,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({ subApp }) {
   return {
     loaded: subApp.loaded,
-    appOpen: subApp.open,
   };
 }
 

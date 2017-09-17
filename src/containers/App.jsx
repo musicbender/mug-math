@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
+import ReactPerfTool from 'react-perf-tool';
+import Perf from 'react-addons-perf';
 import { mountAudio } from '../actions/index';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -13,12 +15,14 @@ import ColdDripTimer from '../sub-apps/cold-drip-timer/index.jsx';
 import RoastMoistureCalculator from '../sub-apps/roast-moisture-calculator/index.jsx';
 import RoastDevCalculator from '../sub-apps/roast-development-calculator/index.jsx';
 import HomeMenu from './Home-Menu.jsx';
+
 let muiTheme;
+
+window.Perf = Perf;
 
 class App extends Component {
   componentWillMount() {
     console.log(`on server? ${process.env.ONSERVER}`);
-
     muiTheme = getMuiTheme(muithemeStyle);
     if (!process.env.ONSERVER) {
       try {
@@ -34,18 +38,17 @@ class App extends Component {
   }
 
   render() {
-    console.log(`app rendered`);
     return (
       <div>
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div className="app-container">
-          <HomeMenu />
-          <Route path="/sub-apps/brew-calculator" component={BrewCalculator} />
-          <Route path="/sub-apps/cold-drip-timer" component={ColdDripTimer} />
-          <Route path="/sub-apps/roast-moisture-calculator" component={RoastMoistureCalculator} />
-          <Route path="/sub-apps/roast-development-calculator" component={RoastDevCalculator} />
-        </div>
-      </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div className="app-container">
+            <HomeMenu />
+            <Route path="/sub-apps/brew-calculator" component={BrewCalculator} />
+            <Route path="/sub-apps/cold-drip-timer" component={ColdDripTimer} />
+            <Route path="/sub-apps/roast-moisture-calculator" component={RoastMoistureCalculator} />
+            <Route path="/sub-apps/roast-development-calculator" component={RoastDevCalculator} />
+          </div>
+        </MuiThemeProvider>
       </div>
     );
   }

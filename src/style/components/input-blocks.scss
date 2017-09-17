@@ -36,6 +36,13 @@
   height: calc(66.66% - 2em);
   background-color: $block-color;
 
+  &:not(:nth-child(3)) {
+    @include box-shadow(1);
+    // transition-property: box-shadow, background-color;
+    // transition-duration: $fast;
+    // transition-timing-function: $easeInOut;
+  }
+
   .block-name {
     @include super-center($top: 15%, $left: 25%);
     @extend %unselectable;
@@ -72,24 +79,16 @@
   &:nth-child(2) { margin: 1em 1em 1em 0.5em; }
 
   &.selected {
+    // @include stripe-shadow();
+    @include box-shadow(3);
     background-color: $block-selected-color;
-
+    transition-property: box-shadow, background-color;
+    transition-duration: $moderate;
+    transition-timing-function: $easeOut;
     .brew-value {
       @extend %unselectable;
       font-size: $extra-large;
       transition: $fast $easeOut;
-    }
-
-    &:after {
-      $size: 100%;
-      @include super-center($top: calc(50% + 0.5em));
-      @include stripes-1;
-      content: '';
-      display: block;
-      width: calc(#{$size} - 2px);
-      height: $size;
-      border-radius: $border-radius;
-      z-index: -1;
     }
   }
 }
@@ -151,9 +150,9 @@
     > .block-result {
       // @include gradient-text($text-gradient);
       position: relative;
-      font-size: $small;
+      font-size: $medium;
       font-weight: bold;
-      font-family: 'Stalinist One';
+      font-family: $slabo;
       text-align: center;
       display: inline-block;
       width: auto !important;
@@ -165,8 +164,7 @@
       top: auto;
       transform: translate(-50%, 0%);
       > span {
-        font-size: 2em;
-        font-family: 'Stalinist One';
+        font-size: $medium;
       }
     }
   }

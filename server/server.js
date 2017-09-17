@@ -10,10 +10,14 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 import App from '../src/containers/App.jsx';
 import reducers from '../src/reducers/index';
+require('babel-core/register')({
+    presets: ['es2015', 'react']
+});
 
 const PORT = process.env.PORT || 3001;
 console.log(`live? ${process.env.LIVE}`);
 console.log(`process:, ${process.env.NODE_ENV}`);
+console.log(__dirname);
 const app = new express();
 
 // app.use('/', httpsRedirect(true));
@@ -54,7 +58,8 @@ app.use('/', (req, res, next) => {
       .set('Content-Type', 'text/html')
       .status(200)
       .send(renderFullPage(html, preloadedState))
-      .end();
+      // .end();
+      next();
 });
 
 const renderFullPage = (html, initialState) => {
@@ -78,8 +83,7 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <p>wuuuut</p>
-        <script type="text/javascript" src="/dist.js"></script>
+
       </body>
     </html>
   `;

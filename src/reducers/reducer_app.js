@@ -19,7 +19,7 @@ export default function subApp(state = initialState, action) {
 
     case MENU_LOADED:
         return { ...state, loaded: true, }
-        
+
     default:
       return state;
   }
