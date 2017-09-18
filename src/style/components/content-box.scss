@@ -1,0 +1,30 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+
+.content-box {
+  @include super-center($top: 80%);
+  @include box-shadow(1);
+  width: 90%;
+  max-width: 40em;
+  height: auto;
+  margin: 0 auto;
+  background-color: $white;
+  @media (min-width: 767px) {
+    top: 75%;
+  }
+  > h5 {
+    font-size: $medium;
+    background-color: $_100;
+    color: $_800;
+    padding: 1em 1em 1em 0.7em;
+    width: 100%;
+    margin: 0;
+  }
+  > p {
+    font-size: $small;
+    color: $_600;
+    line-height: 1.6;
+    padding: 2em 1em;
+    margin: 0;
+  }
+}

@@ -7,7 +7,7 @@
 
 .menu-container {
     position: relative;
-    height: 46em;
+    height: $menu-height;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -17,7 +17,6 @@
 
 .menu-item-container {
     $menu-ease: cubic-bezier(0.700, 0.000, 0.000, 0.700);
-
     position: absolute;
     top: 0%;
     left: 0%;

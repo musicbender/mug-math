@@ -10,6 +10,7 @@ import { openApp, closeApp, loadedMenu } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
 import Title from '../components/title.jsx';
 import Footer from '../components/footer.jsx';
+import ContentBox from '../components/content-box';
 import menuData from '../util/menu-data';
 import '../style/components/home-menu.scss';
 
@@ -80,7 +81,10 @@ class HomeMenu extends Component {
     return (
       <div className={`home-container ${this.toggleBlur()}`}>
         <Title />
-        <div className="menu-container">{this.getMenu()}</div>
+        <div className="menu-container">
+          {this.getMenu()}
+          {this.props.contentBox && <ContentBox />}
+        </div>
         <Footer location={this.props.location.pathname} type="outside"/>
       </div>
     );
@@ -94,8 +98,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps({ subApp }) {
+  const { loaded, contentBox } = subApp;
   return {
-    loaded: subApp.loaded,
+    loaded,
+    contentBox,
   };
 }
 

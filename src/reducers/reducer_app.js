@@ -4,6 +4,7 @@ const initialState = {
   open: false,
   audioContext: null,
   loaded: false,
+  contentBox: true
 }
 
 export default function subApp(state = initialState, action) {
