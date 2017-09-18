@@ -38,9 +38,10 @@
 
   &:not(:nth-child(3)) {
     @include box-shadow(1);
-    // transition-property: box-shadow, background-color;
-    // transition-duration: $fast;
-    // transition-timing-function: $easeInOut;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
   }
 
   .block-name {
@@ -68,11 +69,6 @@
 
   button {
     left: 85% !important;
-  }
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
   }
 
   &:nth-child(1) { margin: 1em 0.5em 1em 1em; }

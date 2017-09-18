@@ -20,10 +20,12 @@
   border-color: $keypad-border-color;
   border-style: solid;
   border-width: 1px 1px 0 1px;
-  &:hover,
-  &:focus {
+  &:hover {
     cursor: pointer;
-    background-color: $keypad-hover-color;
+  }
+  &.clicked {
+    animation: touchBtn 250ms linear;
+    animation-fill-mode: forwards;
   }
   &:nth-child(3n+2) {
     border-width: 1px 0 0 0;
@@ -36,4 +38,10 @@
   font-family: $font;
   font-size: 1.3em;
   color: $keypad-text-color;
+}
+
+@keyframes touchBtn {
+  0% { background-color: $white; }
+  10% { background-color: $keypad-hover-color; }
+  100% { background-color: $white; }
 }
