@@ -1,10 +1,20 @@
 @import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
 
 /*******BLOCK INPUT*******/
 
-.rdev-block .time-picker {
-    $text: $white;
+.rdev-block,
+.rdev-block.selected {
+  @include box-shadow(1);
 
+&:nth-child(1) {
+  background-color: $block-color;
+}
+&:nth-child(2) {
+  background-color: $block-selected-color;
+}
+  .time-picker {
+    $text: $white;
     height: 1.3em !important;
     color: $text !important;
     font-size: 3rem !important;
@@ -23,4 +33,5 @@
     hr {
         border-bottom: 1px solid $text !important;
     }
+  }
 }
