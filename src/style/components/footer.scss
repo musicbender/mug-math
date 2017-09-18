@@ -5,7 +5,8 @@
   position: relative;
   height: $footer-height;
   width: 100%;
-  background-color: $white;
+  background-color: $_100;
+  border-top: 1px solid $_300;
   @media (min-width: 767px) {
     position: fixed;
     bottom: 0;
@@ -17,7 +18,7 @@
     line-height: $footer-height;
     margin: 0;
     margin-left: 0.5em;
-    color: rgba($black, 0.75);
+    color: rgba($black, 0.5);
   }
 
   > .title {
