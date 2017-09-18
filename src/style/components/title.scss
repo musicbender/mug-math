@@ -6,11 +6,12 @@
 /******* TITLE *******/
 
 .title-container {
+  @include box-shadow(1);
   position: absolute;
   top: 0;
   height: $title-container-height;
   width: 100%;
-  background-color: $black;
+  background-color: $white;
 }
 
 .title {
@@ -23,14 +24,14 @@
 
   span {
     font-weight: 100;
-    color: rgba($white, 0.5);
+    color: $black;
   }
 }
 
 .title {
   top: 50%;
   font-size: $title;
-  color: $white;
+  color: $black;
 }
 
 .version {
