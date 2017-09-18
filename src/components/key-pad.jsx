@@ -20,7 +20,7 @@ export default (props) => {
 
   const labelList = LABELS.map((label, index) => {
       return (
-        <div className="number-btn wut" key={index} onClick={(e) => handleClick(label, e)}>
+        <div className="number-btn" key={index} onClick={(e) => handleClick(label, e)}>
           <div className="number-btn-num">{label === "delete" ? createDelete() : label}</div>
         </div>
       );

@@ -64,7 +64,7 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
-          <Footer type="inside" />
+          <Footer type="inside" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

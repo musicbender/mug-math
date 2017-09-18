@@ -38,6 +38,7 @@
   font-family: $font;
   font-size: 1.3em;
   color: $keypad-text-color;
+  pointer-events: none;
 }
 
 @keyframes touchBtn {

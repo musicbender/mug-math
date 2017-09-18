@@ -77,7 +77,7 @@ class ColdDripTimer extends Component {
           />
           <PlaybackControls audioContext={ this.props.audioContext } />
           <TempoSlider audioContext={ this.props.audioContext } />
-          <Footer type="inside withcolorfade" />
+          <Footer type="inside withcolorfade" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

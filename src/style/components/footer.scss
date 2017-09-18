@@ -11,13 +11,24 @@
     bottom: 0;
   }
 
-  .version {
-    @include super-center($left: 3em, $x: 0%);
+  > .title,
+  > .version {
+    display: inline-block;
+    line-height: $footer-height;
     margin: 0;
+    margin-left: 0.5em;
+    color: rgba($white, 0.5);
+  }
+
+  > .title {
+    position: static;
+    transform: none;
+    font-size: 1.2em;
+  }
+
+  > .version {
     text-transform: lowercase;
     font-weight: 100;
-    top: 50%;
-    color: rgba($white, 0.5);
     font-size: 1em;
   }
 
