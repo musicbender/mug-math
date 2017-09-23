@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
-import ReactPerfTool from 'react-perf-tool';
 import Perf from 'react-addons-perf';
 import { mountAudio } from '../actions/index';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -18,7 +17,7 @@ import HomeMenu from './Home-Menu.jsx';
 
 let muiTheme;
 
-window.Perf = Perf;
+// window.Perf = Perf;
 
 class App extends Component {
   componentWillMount() {

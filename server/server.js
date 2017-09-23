@@ -14,7 +14,8 @@ require('babel-core/register')({
     presets: ['es2015', 'react']
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3011;
+console.log(process.env.PORT);
 console.log(`live? ${process.env.LIVE}`);
 console.log(`process:, ${process.env.NODE_ENV}`);
 console.log(__dirname);
@@ -33,11 +34,6 @@ app.use('/', (req, res, next) => {
       </StaticRouter>
     </Provider>
   );
-
-    // if (err) {
-    //   console.log(err);
-    //   return res.status(500).end();
-    // }
 
     if (context.url) {
       res.redirect(301, context.url);
@@ -58,7 +54,6 @@ app.use('/', (req, res, next) => {
       .set('Content-Type', 'text/html')
       .status(200)
       .send(renderFullPage(html, preloadedState))
-      // .end();
       next();
 });
 

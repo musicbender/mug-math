@@ -10,6 +10,10 @@
     height: $menu-height;
     margin: 0 auto;
     overflow: hidden;
+    @media (max-width: 380px) {
+      $height: $menu-height + 4em;
+      height: $height;
+    }
 }
 
 
@@ -19,7 +23,7 @@
     $menu-ease: cubic-bezier(0.700, 0.000, 0.000, 0.700);
     position: absolute;
     top: 0%;
-    left: 0%;
+    left: -1%;
     display: inline-block;
     width: 50%;
     height: 12em;

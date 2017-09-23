@@ -36,11 +36,11 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'PORT': 3001,
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'ONSERVER': "true",
         'LIVE': false,
+        'PORT': 3001
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
