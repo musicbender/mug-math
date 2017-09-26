@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 var OfflinePlugin = require('offline-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -15,9 +15,9 @@ const config = {
     vendor: ['react', 'react-dom'],
   },
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/dist/static'),
     filename: 'dist.js',
-    publicPath: '/',
+    publicPath: '/static',
   },
   module: {
     rules: [{
@@ -43,7 +43,7 @@ const config = {
             sourceMap: true,
           },
         },
-        publicPath: "../",
+        publicPath: "../static",
       }),
     }],
   },
@@ -55,12 +55,12 @@ const config = {
           'LIVE': false,
         }
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '/src/index.html'),
-      filename: 'index.html',
-      inject: 'body',
-      title: 'Mug Math',
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, '/src/index.html'),
+    //   filename: 'index.html',
+    //   inject: 'body',
+    //   title: 'Mug Math',
+    // }),
     new OfflinePlugin({
       publicPath: '/',
       ServiceWorker: {

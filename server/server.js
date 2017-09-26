@@ -14,16 +14,19 @@ require('babel-core/register')({
     presets: ['es2015', 'react']
 });
 
-const PORT = process.env.PORT || 3011;
-console.log(process.env.PORT);
-console.log(`live? ${process.env.LIVE}`);
-console.log(`process:, ${process.env.NODE_ENV}`);
-console.log(__dirname);
+const PORT = process.env.PORT || 3001;
 const app = new express();
 
+console.log(process.env.PORT);
+console.log(`live? ${process.env.LIVE}`);
+console.log(`process: ${process.env.NODE_ENV}`);
+console.log(__dirname);
+
 // app.use('/', httpsRedirect(true));
+app.use('/public', express.static(path.join(__dirname, '/static')));
 
 app.use('/', (req, res, next) => {
+  console.log(`getting store and react components...`);
   const store = createStore(reducers);
   const context = {};
 
@@ -49,18 +52,17 @@ app.use('/', (req, res, next) => {
     } else {
       console.log('did not redirect');
     }
-
+    console.log(`rendering html and store...`);
     res
       .set('Content-Type', 'text/html')
       .status(200)
       .send(renderFullPage(html, preloadedState))
-      next();
 });
 
 const renderFullPage = (html, initialState) => {
   return `
     <!doctype html>
-    <html>
+    <html class="no-js" lang="">
       <head>
         <meta charset="UTF-8">
         <link rel="manifest" href="manifest.json">
@@ -68,23 +70,39 @@ const renderFullPage = (html, initialState) => {
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="msapplication-starturl" content="/">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#000000"/>
         <title>Mug Math</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet" defer>
+          rel="stylesheet" defer></link>
+        <link href="/public/style.css" rel="stylesheet">
       </head>
       <body>
-        <div id="app">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
 
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="app">${html}</div>
+
+        <!-- <noscript>
+          <div class="no-script" style="position: absolute; left: 50%; top: 33%; transform: translate(-50%,-50%); width: 40em; height: 10em; background-color: #fff; padding: 2em; font-size: 1.2em">
+            <p>You have turned off javascript or your browser does not support it. You'll have to enable it or use a different browser to us MugMath! :( </p>
+          </div>
+        </noscript> -->
+
+        <div></div>
+        <div></div>
+
+        <script type="text/javascript" src="/public/vendor.js"></script>
+        <script type="text/javascript" src="/public/dist.js"></script>
       </body>
     </html>
   `;
 };
-
-app.use(express.static('dist'));
 
 if (!process.env.LIVE) {
   const options = {
