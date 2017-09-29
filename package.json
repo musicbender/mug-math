@@ -14,8 +14,8 @@
     "open:dist": "export PORT=3011; nodemon index.js",
     "build:open": "npm run build && npm run open:dist",
     "start:live": "export PORT=49152; export NODE_ENV=production; forever -w --watchDirectory ./dist start index.js",
-    "deploy:package": "rsync -av package.json patjacobs:/home/patjacob/mug-math/ --delete",
-    "deploy": "babel-node tools/deploy.js && rsync -avz dist/ patjacobs:/home/patjacob/mug-math/dist/ --delete"
+    "deploy:package": "babel-node tools/deploy-pkg.js",
+    "deploy": "babel-node tools/deploy.js"
   },
   "keywords": [],
   "author": "Pat Jacobs",
@@ -69,6 +69,7 @@
     "null-loader": "^0.1.1",
     "offline-plugin": "^4.7.0",
     "react-addons-perf": "^15.4.2",
+    "rsync": "^0.6.1",
     "sass-loader": "^6.0.3",
     "sass-material-colors": "0.0.5",
     "serviceworker-webpack-plugin": "^0.2.1",
