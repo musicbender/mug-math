@@ -53,7 +53,7 @@ app.use('/', (req, res, next) => {
     } else {
       console.log('did not redirect');
     }
-    console.log(`rendering html and store...`);
+
     res
       .set('Content-Type', 'text/html')
       .status(200)
@@ -62,8 +62,8 @@ app.use('/', (req, res, next) => {
 
 if (!process.env.LIVE) {
   const options = {
-      key: fs.readFileSync('/Users/patrickj/server.key'),
-      cert: fs.readFileSync('/Users/patrickj/server.crt'),
+      key: fs.readFileSync('/Users/pjacobs/server.key'),
+      cert: fs.readFileSync('/Users/pjacobs/server.crt'),
       requestCert: false,
       rejectUnauthorized: false
   };

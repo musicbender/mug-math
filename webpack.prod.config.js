@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 var OfflinePlugin = require('offline-plugin');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -49,28 +48,28 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-          'ONSERVER': false,
-          'LIVE': false,
-        }
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'ONSERVER': false,
+        'LIVE': false,
+      }
     }),
-    // new HtmlWebpackPlugin({
-    //   template: path.join(__dirname, '/src/index.html'),
-    //   filename: 'index.html',
-    //   inject: 'body',
-    //   title: 'Mug Math',
-    // }),
     new OfflinePlugin({
       publicPath: '/',
       ServiceWorker: {
         navigateFallbackURL: '/'
       }
     }),
-    new CopyWebpackPlugin([{
-      from: 'src/manifest.json',
-      to: 'manifest.json',
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/manifest.json',
+        to: '../manifest.json',
+      },
+      {
+        from: 'src/assets/favicons/*.png',
+        to: 'favicons/'
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
