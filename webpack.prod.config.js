@@ -14,9 +14,9 @@ const config = {
     vendor: ['react', 'react-dom'],
   },
   output: {
-    path: path.join(__dirname, '/dist/static'),
+    path: path.join(__dirname, '/dist/public'),
     filename: 'dist.js',
-    publicPath: '/static',
+    publicPath: '/public',
   },
   module: {
     rules: [{
@@ -42,7 +42,7 @@ const config = {
             sourceMap: true,
           },
         },
-        publicPath: "../static",
+        publicPath: "../public",
       }),
     }],
   },
@@ -61,14 +61,8 @@ const config = {
       }
     }),
     new CopyWebpackPlugin([
-      {
-        from: 'src/manifest.json',
-        to: '../manifest.json',
-      },
-      {
-        from: 'src/assets/favicons/*.png',
-        to: 'favicons/'
-      }
+      { from: 'src/manifest.json', to: '../static/manifest.json'},
+      { from: 'src/assets/favicons/*', to: 'favicons', flatten: true }
     ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

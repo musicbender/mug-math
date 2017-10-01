@@ -2,6 +2,7 @@ import express from 'express';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
+import bodyParser from 'body-parser';
 import React from 'react';
 import httpsRedirect from 'express-https-redirect';
 import { renderToString } from 'react-dom/server';
@@ -24,10 +25,12 @@ app.set('views', 'server/views');
 
 // app.use('/', httpsRedirect(true));
 
-app.use('/public', express.static(path.join(__dirname, '/static')));
+app.use('/*', express.static('static/'));
+app.use('/public', express.static(path.join(__dirname, 'public/')));
+// app.use('/public/favicons', express.static(path.join(__dirname, 'public/favicons/')));
+// app.use(bodyParser.json());
 
-app.use('/', (req, res, next) => {
-  console.log(`getting store and react components...`);
+app.get('*', (req, res, next) => {
   const store = createStore(reducers);
   const context = {};
 
@@ -59,6 +62,15 @@ app.use('/', (req, res, next) => {
       .status(200)
       .render('index', {html, preloadedState});
 });
+
+// app.get('/manifest.json', (req,res) => {
+//   console.log(`mf`);
+//   res.set('Content-Type', 'application/manifest+json')
+//      .status(200)
+//      .send('manifest.json');
+//
+//   // res.status(200).sendFile('manifest.json');
+// })
 
 if (!process.env.LIVE) {
   const options = {
