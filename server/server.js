@@ -25,10 +25,9 @@ app.set('views', 'server/views');
 
 // app.use('/', httpsRedirect(true));
 
-app.use('/*', express.static('static/'));
-app.use('/public', express.static(path.join(__dirname, 'public/')));
-// app.use('/public/favicons', express.static(path.join(__dirname, 'public/favicons/')));
-// app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'public/')));
+app.use(bodyParser.json());
 
 app.get('*', (req, res, next) => {
   const store = createStore(reducers);
@@ -71,6 +70,8 @@ app.get('*', (req, res, next) => {
 //
 //   // res.status(200).sendFile('manifest.json');
 // })
+
+app.use(express.static(path.join(__dirname, 'static/')));
 
 if (!process.env.LIVE) {
   const options = {

@@ -61,7 +61,7 @@ const config = {
       }
     }),
     new CopyWebpackPlugin([
-      { from: 'src/manifest.json', to: '../static/manifest.json'},
+      { from: 'static/*', to: './', flatten: true},
       { from: 'src/assets/favicons/*', to: 'favicons', flatten: true }
     ]),
     new webpack.optimize.CommonsChunkPlugin({
