@@ -9,7 +9,7 @@ import reducers from './reducers';
 import App from './containers/App.jsx';
 import './style/base.scss';
 
-// OfflinePluginRuntime.install();
+OfflinePluginRuntime.install();
 
 injectTapEventPlugin();
 

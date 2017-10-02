@@ -13,7 +13,7 @@
     "build": "npm run clean && npm run bc && npm run bs",
     "open:dist": "export PORT=3011; nodemon index.js",
     "build:open": "npm run build && npm run open:dist",
-    "start:live": "export PORT=49152; export NODE_ENV=production; forever -w --watchDirectory ./dist start index.js",
+    "start:live": "export PORT=49152; export HTTP_PORT=49153; export NODE_ENV=production; forever -w --watchDirectory ./dist start index.js",
     "deploy:package": "babel-node tools/deploy-pkg.js",
     "deploy": "babel-node tools/deploy.js"
   },
@@ -27,7 +27,6 @@
     "array.prototype.move": "0.0.4",
     "body-parser": "^1.18.2",
     "express": "^4.15.2",
-    "express-https-redirect": "^1.0.0",
     "history": "^4.6.1",
     "material-ui": "^0.19.0",
     "pug": "^0.1.0",

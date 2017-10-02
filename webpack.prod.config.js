@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-var OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('offline-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -57,8 +57,15 @@ const config = {
     new OfflinePlugin({
       publicPath: '/',
       ServiceWorker: {
-        navigateFallbackURL: '/'
-      }
+        navigateFallbackURL: '/offline.html'
+      },
+      externals: [
+        '/',
+        'static/index.html',
+        'static/manifest.json',
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        'https://fonts.googleapis.com/css?family=Slabo+27px'
+      ]
     }),
     new CopyWebpackPlugin([
       { from: 'static/*', to: './', flatten: true},

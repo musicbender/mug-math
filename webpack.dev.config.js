@@ -38,8 +38,7 @@ const config = {
       'process.env': {
         'ONSERVER': false,
         'LIVE': false,
-        'NODE_ENV': JSON.stringify('development'),
-        'VERSION': JSON.stringify('0.8.1'),
+        'NODE_ENV': JSON.stringify('development')
       },
     }),
     new HtmlWebpackPlugin({

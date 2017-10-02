@@ -49,3 +49,4 @@ jspm_packages
 .htaccess
 .DS_Store
 dist
+server/config
