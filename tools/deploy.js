@@ -1,25 +1,57 @@
-/* eslint-disable no-console */
+import webpack from 'webpack';
+import client_config from '../webpack.prod.config';
+import server_config from '../webpack.server.config';
 import Rsync from 'rsync';
+import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from './chalkConfig';
 
 process.env.NODE_ENV = 'production';
 process.env.LIVE = 'true';
 
-console.log('Deploying to live server. This will take a moment...');
+console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
-const rsync = new Rsync()
-  .flags('avz')
-  .source('dist/')
-  .destination('patjacobs:/home/patjacob/mug-math/dist/')
-  .set('delete');
+webpack([
+  client_config,
+  server_config
+], (error, stats) => {
+  if (error) {
+    console.log(chalkError(error));
+    return 1;
+  }
+
+  const jsonStats = stats.toJson();
+
+  if (jsonStats.hasErrors) {
+    return jsonStats.errors.map(error => console.log(chalkError(error)));
+  }
+
+  if (jsonStats.hasWarnings) {
+    console.log(chalkWarning('Webpack generated the following warnings: '));
+    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
+  }
+
+  console.log(`Webpack stats: ${stats}`);
+  console.log(chalkSuccess('Your app is compiled in production mode in /dist.'));
+  console.log(chalkProcessing('Deploying application...'));
+
+  const rsync = new Rsync()
+    .flags('avz')
+    .source('dist/')
+    .destination('patjacobs:/home/patjacob/mug-math/dist/')
+    .set('delete');
 
   rsync.execute((error, code, cmd) => {
       if (error) {
         console.log(error.message);
       }
-      console.log(`Rync of package.json a success!`);
+      console.log(`Rync a success!`);
       console.log(cmd);
-  }, (data) => {
+  },
+  (data) => {
     console.log(`OUT: ${data}`);
-  }, (data) => {
+  },
+  (data) => {
     console.log(`ERR: ${data}`);
   });
+
+  return 0;
+});

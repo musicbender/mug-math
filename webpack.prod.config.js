@@ -51,7 +51,7 @@ const config = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'ONSERVER': false,
-        'LIVE': false,
+        'LIVE:': JSON.stringify(process.env.LIVE)
       }
     }),
     new OfflinePlugin({
@@ -61,7 +61,7 @@ const config = {
       },
       externals: [
         '/',
-        'static/index.html',
+        'static/offline.html',
         'static/manifest.json',
         'https://fonts.googleapis.com/icon?family=Material+Icons',
         'https://fonts.googleapis.com/css?family=Slabo+27px'
