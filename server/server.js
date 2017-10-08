@@ -29,15 +29,15 @@ app.set('views', 'server/views');
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
-app.all('*', (req, res, next) => {
-  if (!req.secure) {
-    console.log('moving to https');
-    res.redirect('https://'+req.hostname+':' + PORT + req.url);
-  } else {
-    console.log('did not redirect');
-    next();
-  }
-})
+// app.all('*', (req, res, next) => {
+//   if (!req.secure) {
+//     console.log('moving to https');
+//     res.redirect('https://'+req.hostname+':' + PORT + req.url);
+//   } else {
+//     console.log('did not redirect');
+//     next();
+//   }
+// })
 
 app.get('*', (req, res) => {
   console.log(`Prerendering...`);
@@ -66,6 +66,7 @@ app.get('*', (req, res) => {
 });
 
 if (!process.env.LIVE) {
+  console.log(`local server`);
   const options = {
       key: fs.readFileSync('/Users/pjacobs/server.key'),
       cert: fs.readFileSync('/Users/pjacobs/server.crt'),
@@ -78,6 +79,7 @@ if (!process.env.LIVE) {
   });
 
 } else {
+  console.log(`not local server...`);
   app.listen(PORT, err => {
     if (err) { console.error(err); }
     console.log(`MugMath now live at ${PORT}!`);

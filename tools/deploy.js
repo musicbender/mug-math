@@ -4,9 +4,6 @@ import server_config from '../webpack.server.config';
 import Rsync from 'rsync';
 import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from './chalkConfig';
 
-process.env.NODE_ENV = 'production';
-process.env.LIVE = 'true';
-
 console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
 webpack([
@@ -36,6 +33,7 @@ webpack([
   const rsync = new Rsync()
     .flags('avz')
     .source('dist/')
+    .source('server/config/')
     .destination('patjacobs:/home/patjacob/mug-math/dist/')
     .set('delete');
 

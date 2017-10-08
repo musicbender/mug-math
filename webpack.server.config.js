@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -39,11 +40,14 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'ONSERVER': "true",
-        'LIVE': false,
-        'PORT': 3001,
-        'HTTP_PORT': 8002
+        'LIVE': process.env.LIVE,
+        'PORT': process.env.PORT,
+        'HTTP_PORT': process.env.HTTP_PORT,
       }
     }),
+    new CopyWebpackPlugin([
+      { from: 'server/views/', to: 'views', flatten: true}
+    ]),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
