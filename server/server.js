@@ -20,11 +20,12 @@ console.log(`live? ${process.env.LIVE}`);
 
 const PORT = process.env.PORT || 3001;
 const HTTP_PORT = process.env.HTTP_PORT || 8002;
+const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 
 const app = new express();
 
 app.set('view engine', 'pug');
-app.set('views', 'server/views');
+app.set('views', viewDir);
 
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
@@ -32,15 +33,17 @@ app.use(bodyParser.json());
 // app.all('*', (req, res, next) => {
 //   if (!req.secure) {
 //     console.log('moving to https');
-//     res.redirect('https://'+req.hostname+':' + PORT + req.url);
+//     if (process.env.LIVE) {
+//       res.redirect(`https://${req.hostname}${req.url}`)
+//     } else {
+//       res.redirect('https://'+req.hostname+':' + PORT + req.url)
+//     }
 //   } else {
-//     console.log('did not redirect');
 //     next();
 //   }
 // })
 
 app.get('*', (req, res) => {
-  console.log(`Prerendering...`);
   const store = createStore(reducers);
   const context = {};
 
@@ -66,7 +69,6 @@ app.get('*', (req, res) => {
 });
 
 if (!process.env.LIVE) {
-  console.log(`local server`);
   const options = {
       key: fs.readFileSync('/Users/pjacobs/server.key'),
       cert: fs.readFileSync('/Users/pjacobs/server.crt'),
@@ -79,7 +81,6 @@ if (!process.env.LIVE) {
   });
 
 } else {
-  console.log(`not local server...`);
   app.listen(PORT, err => {
     if (err) { console.error(err); }
     console.log(`MugMath now live at ${PORT}!`);
