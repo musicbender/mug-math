@@ -9,13 +9,18 @@ export default (props) => {
     return <ContentBackspace />;
   }
 
-  const handleClick = (num) => {
+  const handleClick = (num, e) => {
+    const btn = e.target.classList;
+    btn.remove('clicked');
+    setTimeout(() => {
+      btn.add('clicked');
+    },0)
     props.clickHandle(num);
   }
 
   const labelList = LABELS.map((label, index) => {
       return (
-        <div className="number-btn" key={index} onClick={() => handleClick(label)}>
+        <div className="number-btn" key={index} onClick={(e) => handleClick(label, e)}>
           <div className="number-btn-num">{label === "delete" ? createDelete() : label}</div>
         </div>
       );

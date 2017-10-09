@@ -46,8 +46,10 @@ export default (props) => {
     } else {
         return (
           <div className="block-result-div">
-            <div className="block-result">
-              {`${props[name]}${unit} of mositure loss`}
+            <div className="inner-wrapper">
+              <div className="block-result">
+                {`${props[name]}${unit} of mositure loss`}
+              </div>
             </div>
           </div>
         )

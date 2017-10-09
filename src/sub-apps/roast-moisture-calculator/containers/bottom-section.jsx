@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { changeNum } from '../actions/index';
 import KeyPad from '../../../components/key-pad.jsx';
 import '../../../style/components/num-pad.scss';
@@ -39,4 +40,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BottomSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BottomSection));

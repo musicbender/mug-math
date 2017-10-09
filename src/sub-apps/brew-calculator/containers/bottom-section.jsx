@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { changeNum } from '../actions/index';
 import KeyPad from '../../../components/key-pad.jsx';
@@ -29,7 +30,6 @@ class BottomSection extends Component {
 
 function mapStateToProps(state) {
     const { mode, block } = state.brewCalc.navigation;
-
     return {
       mode,
       block
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BottomSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BottomSection));

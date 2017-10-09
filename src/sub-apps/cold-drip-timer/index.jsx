@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { Link, browserHistory } from 'react-router';
+// import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   onSweetspot,
   offSweetspot,
@@ -14,10 +14,10 @@ import {
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import { brown800 } from 'material-ui/styles/colors';
 import PlaybackControls from './containers/playback-controls.jsx';
 import TempoSlider from './containers/tempo-slider.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
@@ -26,8 +26,22 @@ const barStyleObj = {
 }
 
 class ColdDripTimer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+
+  componentDidMount() {
+    document.body.classList.add('cold-drip-timer');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('cold-drip-timer');
+  }
+
   handleBackButton() {
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -41,12 +55,11 @@ class ColdDripTimer extends Component {
             className="app-bar"
             iconElementLeft=
             {
-              <IconButton>
+              <IconButton onClick={this.handleBackButton}>
                 <NavigationClose />
               </IconButton>
             }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu
@@ -64,6 +77,7 @@ class ColdDripTimer extends Component {
           />
           <PlaybackControls audioContext={ this.props.audioContext } />
           <TempoSlider audioContext={ this.props.audioContext } />
+          <Footer type="inside withcolorfade" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
@@ -95,4 +109,4 @@ function mapStateToProps({ coldDripTimer, subApp }) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ColdDripTimer));

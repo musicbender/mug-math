@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
@@ -10,11 +10,17 @@ import { openHelp, closeHelp } from './actions/index';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 class BrewCalculator extends Component {
+  constructor(props) {
+    super(props);
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+
   handleBackButton() {
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -27,12 +33,11 @@ class BrewCalculator extends Component {
             className="app-bar"
             iconElementLeft=
             {
-              <IconButton>
+              <IconButton onClick={this.handleBackButton}>
                 <NavigationClose />
               </IconButton>
             }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight=
             {
@@ -45,6 +50,7 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
+          <Footer type="inside" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
@@ -61,10 +67,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps({ brewCalc }) {
   const { help } = brewCalc.dialog;
-
   return {
     help,
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BrewCalculator));

@@ -7,9 +7,13 @@
 
 .menu-container {
     position: relative;
-    height: 46em;
+    height: $menu-height;
     margin: 0 auto;
     overflow: hidden;
+    @media (max-width: 380px) {
+      $height: $menu-height + 4em;
+      height: $height;
+    }
 }
 
 
@@ -17,10 +21,9 @@
 
 .menu-item-container {
     $menu-ease: cubic-bezier(0.700, 0.000, 0.000, 0.700);
-
     position: absolute;
     top: 0%;
-    left: 0%;
+    left: -1%;
     display: inline-block;
     width: 50%;
     height: 12em;
@@ -65,11 +68,12 @@
     .menu-text {
         position: absolute;
         transform-origin: 63% 69%;
-        top: 38%;
-        left: 41%;
+        top: 25%;
+        left: 46%;
         font-size: 0.8em;
         font-weight: 100;
         text-transform: uppercase;
+        -webkit-transform: translate(-50%,-50%) rotate(75deg);
         transform: translate(-50%,-50%) rotate(75deg);
         transition: all $app-speed;
         transition-delay: 240ms;
@@ -106,17 +110,23 @@
 
 @media only screen and (min-width: 767px) {
   .menu-item-container {
-    &:nth-child(1) { transform: translate( $column-1 , $row-1 ); }
-    &:nth-child(2) { transform: translate( $column-2 , $row-1 ); }
-    &:nth-child(3) { transform: translate( $column-3 , $row-1 ); }
-    &:nth-child(4) { transform: translate( $column-4 , $row-1 ); }
+    $offset: 4em;
+
+    &:nth-child(1) { transform: translate( $column-1 , $row-1 + $offset ); }
+    &:nth-child(2) { transform: translate( $column-2 , $row-1 + $offset ); }
+    &:nth-child(3) { transform: translate( $column-3 , $row-1 + $offset ); }
+    &:nth-child(4) { transform: translate( $column-4 , $row-1 + $offset ); }
+
+    /*testing*/
+    &:nth-child(5) { transform: translate( $column-1 , $row-2 + $offset ); }
+    &:nth-child(6) { transform: translate( $column-2 , $row-2 + $offset ); }
   }
 }
 
 
 /******* OPEN MODE *******/
 
-.menu-item-container.active {
+.menu-item-container.active-true {
   z-index: 25;
 
   .menu-circle {
@@ -243,6 +253,7 @@
   .menu-container {
     width: $app-width;
     height: $app-height;
+    transform: translate(0,6%);
   }
   .menu-item-container {
     width: 25%;

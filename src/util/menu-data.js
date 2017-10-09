@@ -18,17 +18,7 @@ const menuData = [
     title: "Roast Moisture",
     url: "/roast-moisture-calculator",
     id: "moi",
-  },
-  {
-    title: "Brew Calculator",
-    url: "/brew-calculator",
-    id: "test1",
-  },
-  {
-    title: "Brew Calculator",
-    url: "/brew-calculator",
-    id: "test2",
-  },
+  }
 ];
 
 export default menuData;

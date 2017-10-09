@@ -1,3 +1,6 @@
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
 @import './helpers/_variables';
 @import './helpers/_mixins';
 @import './helpers/_placeholders';
@@ -17,7 +20,7 @@
 }
 
 html {
-    background-color: $black;
+    background-color: $_100;
 }
 
 body,
@@ -54,8 +57,7 @@ h1 {
 
 .sub-app {
     $speed: $app-speed - 125ms;
-
-    @include super-center;
+    @include super-center();
     @include box-shadow(2);
     margin: 0 auto;
     height: $app-height;
@@ -78,14 +80,17 @@ h1 {
 
 .home-container {
     $speed: $app-speed;
-
     @extend %full-position;
     position: relative;
+    min-height: 100%;
     height: 100%;
     background-color: rgba($white, 0);
     filter: blur(0px);
     animation: unblur $speed $easeOut;
     z-index: 1;
+    @media (min-width: 767px) {
+      min-height: 100vh;
+    }
 }
 
 .body-blur {
@@ -96,7 +101,8 @@ h1 {
   background-color: rgba($white, 0.05);
 
   .menu-item-container:not(.active),
-  .title-container {
+  .title-container,
+  .footer-container {
     $speed: $app-speed + 400ms;
     will-change: filter;
     animation: blur $speed;
@@ -121,13 +127,13 @@ h1 {
     filter: blur(0px);
   }
   100% {
-    filter: blur(15px);
+    filter: blur(12px);
   }
 }
 
 @keyframes unblur {
   0% {
-    filter: blur(15px);
+    filter: blur(12px);
   }
   100% {
     filter: blur(0px);
@@ -144,21 +150,14 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100vh;
-    width: 100vw;
+    height: $app-height-mobile;
+    width: $app-width-mobile;
     transform: translate(0,0);
     margin: 0;
   }
   .sub-app-outter {
     display: none;
     z-index: -1;
-  }
-  .section,
-  .section.withtabs {
-    height: calc(50% - 22.5px);
-  }
-  .section.withcolorfade {
-    height: calc(50% - 22.5px + 3em);
   }
   .home-blur {
     .menu-item-container:not(.active),

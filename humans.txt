@@ -5,15 +5,14 @@
 
     Pat Jacobs - patjacobs.io
 
-# THANKS
-
-    <name>
 
 # TECHNOLOGY COLOPHON
 
     React
     Redux
+    React Router 4
     SCSS
     Material UI
     Webpack
-    
+    Express
+    Node

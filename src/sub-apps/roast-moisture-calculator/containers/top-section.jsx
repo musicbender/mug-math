@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { changeBlock, changeNum, increaseNum, decreaseNum } from '../actions/index';
 import Block from '../components/blocks.jsx';
 import '../style/top-section.scss';
@@ -52,7 +53,7 @@ class TopSection extends Component {
   }
 }
 
-function mapStateToProps({roastMoistureCalc}) { 
+function mapStateToProps({roastMoistureCalc}) {
   const { block } = roastMoistureCalc.navigation;
   const { preWeight, postWeight, moistureLoss } = roastMoistureCalc.values;
   return {
@@ -72,4 +73,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopSection));

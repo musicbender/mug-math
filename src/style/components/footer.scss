@@ -3,17 +3,49 @@
 
 .footer-container {
   position: relative;
-  height: 4em;
+  height: $footer-height;
   width: 100%;
-  background-color: $black;
+  background-color: $_100;
+  border-top: 1px solid $_300;
+  @media (min-width: 767px) {
+    position: fixed;
+    bottom: 0;
+  }
 
-  .version {
-    @include super-center($left: 3em, $x: 0%);
+  > .title,
+  > .version {
+    display: inline-block;
+    line-height: 39px;
     margin: 0;
+    margin-left: 0.5em;
+    color: rgba($black, 0.5);
+  }
+
+  > .title {
+    position: static;
+    transform: none;
+    font-size: 1.2em;
+  }
+
+  > .version {
     text-transform: lowercase;
     font-weight: 100;
-    top: 50%;
-    color: rgba($white, 0.5);
     font-size: 1em;
+  }
+
+
+  /* MODIFIERS */
+
+  &.inside {
+    display: block;
+    @media (min-width: 767px) {
+      display: none
+    }
+  }
+  &.outside.app-open {
+    display: none;
+    @media (min-width: 767px) {
+      display: block;
+    }
   }
 }

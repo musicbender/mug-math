@@ -1,79 +1,88 @@
 import express from 'express';
+import http from 'http';
+import https from 'https';
+import fs from 'fs';
 import path from 'path';
+import bodyParser from 'body-parser';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from '../src/reducers/index.js';
-import routes from '../src/routes.jsx';
-import { match, RouterContext } from 'react-router';
+import { StaticRouter } from 'react-router';
+import App from '../src/containers/App.jsx';
+import reducers from '../src/reducers/index';
+import config from './config/config';
+require('babel-core/register')({
+    presets: ['es2015', 'react']
+});
+
+console.log(`live? ${process.env.LIVE}`);
 
 const PORT = process.env.PORT || 3001;
+const HTTP_PORT = process.env.HTTP_PORT || 8002;
+const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
+
 const app = new express();
 
-app.use(express.static('dist'));
+app.set('view engine', 'pug');
+app.set('views', viewDir);
 
-app.use((req, res, next) => {
-  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
-    if (err) {
-      return res.status(500).end();
-    }
+app.use(express.static(path.join(__dirname, 'public/')));
+app.use(bodyParser.json());
 
-    if (redirectLocation) {
-      return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
+// app.all('*', (req, res, next) => {
+//   if (!req.secure) {
+//     console.log('moving to https');
+//     if (process.env.LIVE) {
+//       res.redirect(`https://${req.hostname}${req.url}`)
+//     } else {
+//       res.redirect('https://'+req.hostname+':' + PORT + req.url)
+//     }
+//   } else {
+//     next();
+//   }
+// })
 
-    if (!renderProps) {
-      return next();
-    }
+app.get('*', (req, res) => {
+  const store = createStore(reducers);
+  const context = {};
 
-    const store = createStore(reducers);
-    const context = {};
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    </Provider>
+  );
 
-    const html = renderToString(
-      <Provider store={store}>
-        <RouterContext {...renderProps} />
-      </Provider>
-    );
+  if (context.url) {
+    res.redirect(301, context.url);
+    res.end()
+  }
 
-    const preloadedState = store.getState();
+  const preloadedState = store.getState();
 
-    res
-      .set('Content-Type', 'text/html')
-      .status(200)
-      .end(renderFullPage(html, preloadedState));
+  res
+    .set('Content-Type', 'text/html')
+    .status(200)
+    .render('index', {html, preloadedState});
+});
+
+if (!process.env.LIVE) {
+  const options = {
+      key: fs.readFileSync('/Users/pjacobs/server.key'),
+      cert: fs.readFileSync('/Users/pjacobs/server.crt'),
+      requestCert: false,
+      rejectUnauthorized: false
+  };
+
+  https.createServer(options, app).listen(PORT, () => {
+    console.log(`Mugmath local server started at port ${PORT}`);
   });
-});
 
-const renderFullPage = (html, initialState) => {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <link rel="manifest" href="manifest.json">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="msapplication-starturl" content="/">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Mug Math</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet" defer>
-      </head>
-      <body>
-        <div id="app">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-          console.log('initial state injected');
-        </script>
-        <script type="text/javascript" src="/dist.js"></script>
-      </body>
-    </html>
-  `;
-};
-
-app.listen(PORT, err => {
-  if (err) { console.error(err); }
-  console.log(`MugMath avaliable at ${PORT}!`);
-});
+} else {
+  app.listen(PORT, err => {
+    if (err) { console.error(err); }
+    console.log(`MugMath now live at ${PORT}!`);
+  });
+}

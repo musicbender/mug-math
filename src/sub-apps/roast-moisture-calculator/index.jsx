@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openHelp, closeHelp } from './actions/index';
@@ -10,6 +10,7 @@ import { black } from 'material-ui/styles/colors';
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import Footer from '../../components/footer.jsx';
 import barStyle from '../../style/app-bar-style';
 
 const barStyleObj = {
@@ -19,8 +20,14 @@ const barStyleObj = {
 }
 
 class BrewCalculator extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleBackButton = this.handleBackButton.bind(this);
+  }
+
   handleBackButton() {
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -32,9 +39,12 @@ class BrewCalculator extends Component {
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"
-            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+            iconElementLeft={
+              <IconButton onClick={this.handleBackButton}>
+                <NavigationClose />
+              </IconButton>
+            }
             iconStyleLeft={barStyle.iconLeft}
-            onLeftIconButtonTouchTap={this.handleBackButton}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={
               <DropdownMenu
@@ -46,6 +56,7 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
+          <Footer type="inside" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
@@ -67,4 +78,4 @@ function mapStateToProps({ roastMoistureCalc }) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BrewCalculator);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BrewCalculator));

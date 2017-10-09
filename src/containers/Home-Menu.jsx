@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Route, withRouter, Link } from 'react-router-dom';
 import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
 import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
-import { openApp, closeApp } from '../actions/index';
+import { openApp, closeApp, loadedMenu } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
 import Title from '../components/title.jsx';
 import Footer from '../components/footer.jsx';
+import ContentBox from '../components/content-box';
 import menuData from '../util/menu-data';
 import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.loadedMenu();
+  }
+
   getIcon(item) {
     switch (item) {
       case "Cold Drip Timer":
@@ -30,13 +40,16 @@ class HomeMenu extends Component {
 
   getMenu() {
     const menu = menuData.map((item) => {
+      const thisPath = `/sub-apps${item.url}`;
       return (
         <MenuItem
           title={item.title}
           url={item.url}
-          currentPath={this.props.pathname}
+          active={this.props.location.pathname === thisPath}
+          path={thisPath}
           key={item.id}
           id={item.id}
+          loaded={this.props.loaded}
         >
           {this.getIcon(item.title)}
         </MenuItem>
@@ -47,35 +60,32 @@ class HomeMenu extends Component {
   }
 
   isHome() {
-    return this.props.pathname === '/';
+    return this.props.location.pathname === '/';
   }
 
-  subOpen() {
+  toggleBlur() {
     if (this.isHome()) {
-      this.props.closeApp();
-
-      if (process.env.ONSERVER === false) {
+      if (!process.env.ONSERVER) {
         document.body.classList.remove('body-blur');
       }
-
       return '';
     } else {
-      this.props.openApp();
-
-      if (process.env.ONSERVER === false) {
+      if (!process.env.ONSERVER) {
         document.body.classList.add('body-blur');
       }
-
       return 'sub-open home-blur';
     }
   }
 
   render() {
     return (
-      <div className={`home-container ${this.subOpen()}`}>
+      <div className={`home-container ${this.toggleBlur()}`}>
         <Title />
-        <div className="menu-container">{this.getMenu()}</div>
-        <Footer />
+        <div className="menu-container">
+          {this.getMenu()}
+          {this.props.contentBox && <ContentBox />}
+        </div>
+        <Footer location={this.props.location.pathname} type="outside"/>
       </div>
     );
   }
@@ -83,15 +93,16 @@ class HomeMenu extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    openApp,
-    closeApp,
+    loadedMenu,
   }, dispatch);
 }
 
-function mapStateToProps({ subApp }, ownProps) {
+function mapStateToProps({ subApp }) {
+  const { loaded, contentBox } = subApp;
   return {
-    pathname: ownProps.location.pathname,
+    loaded,
+    contentBox,
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeMenu);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeMenu));

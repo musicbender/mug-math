@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import subApp from './reducer_app';
 import coldDripTimer from '../sub-apps/cold-drip-timer/reducers/index';
 import brewCalc from '../sub-apps/brew-calculator/reducers/index';
@@ -7,7 +6,6 @@ import roastMoistureCalc from '../sub-apps/roast-moisture-calculator/reducers/in
 import roastDevCalc from '../sub-apps/roast-development-calculator/reducers/index'
 
 const rootReducer = combineReducers({
-  routing: routerReducer,
   subApp,
   coldDripTimer,
   brewCalc,

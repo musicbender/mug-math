@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { changeBlock, changeTime } from '../actions/index';
 import Block from '../components/blocks.jsx';
 import '../style/top-section.scss';
@@ -8,7 +9,6 @@ import '../style/top-section.scss';
 class TopSection extends Component {
   constructor(props) {
     super(props);
-
     this.handleTime = this.handleTime.bind(this);
   }
 
@@ -66,4 +66,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopSection);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopSection));

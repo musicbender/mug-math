@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-var OfflinePlugin = require('offline-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -16,9 +14,9 @@ const config = {
     vendor: ['react', 'react-dom'],
   },
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/dist/public'),
     filename: 'dist.js',
-    publicPath: '/',
+    publicPath: '/public',
   },
   module: {
     rules: [{
@@ -44,41 +42,35 @@ const config = {
             sourceMap: true,
           },
         },
-        publicPath: "../",
+        publicPath: "../public",
       }),
     }],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'ONSERVER': false,
-        'NODE_ENV': JSON.stringify('production')
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '/src/index.html'),
-      filename: 'index.html',
-      inject: 'body',
-      title: 'Mug Math',
+        'LIVE:': JSON.stringify(process.env.LIVE)
+      }
     }),
     new OfflinePlugin({
       publicPath: '/',
       ServiceWorker: {
-        navigateFallbackURL: '/'
-      }
+        navigateFallbackURL: '/offline.html'
+      },
+      externals: [
+        '/',
+        'static/offline.html',
+        'static/manifest.json',
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        'https://fonts.googleapis.com/css?family=Slabo+27px'
+      ]
     }),
-    new CopyWebpackPlugin([{
-      from: 'src/manifest.json',
-      to: 'manifest.json',
-    }]),
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/images/favicon.png',
-      prefix: 'icons-[hash]/',
-      emitStats: true,
-      persisentCache: true,
-      background: '#fff',
-      inject: true,
-    }),
+    new CopyWebpackPlugin([
+      { from: 'static/*', to: './', flatten: true},
+      { from: 'src/assets/favicons/*', to: 'favicons', flatten: true }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,

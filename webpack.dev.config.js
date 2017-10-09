@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-var OfflinePlugin = require('offline-plugin');
+const OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
@@ -36,9 +36,9 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        ONSERVER: false,
-        'NODE_ENV': JSON.stringify('development'),
-        'VERSION': JSON.stringify('0.8.1'),
+        'ONSERVER': false,
+        'LIVE': false,
+        'NODE_ENV': JSON.stringify('development')
       },
     }),
     new HtmlWebpackPlugin({
@@ -61,7 +61,7 @@ const config = {
   ],
   devServer: {
     historyApiFallback: true,
-    port: 8087,
+    port: 3777,
   },
   watch: true,
 };
