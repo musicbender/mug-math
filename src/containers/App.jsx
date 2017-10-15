@@ -36,6 +36,13 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    // disables any animations on page load
+    setTimeout(() => {
+      document.body.className = "";
+    }, 500);
+  }
+
   render() {
     return (
       <div>
