@@ -3,12 +3,14 @@ import {
   SOUND_OFF,
   CHANGE_TEMPO,
   CHANGE_RIPPLE,
+  INIT_RIPPLE,
   SWEETSPOT_ON,
   SWEETSPOT_OFF,
   DIALOG_OPEN,
   DIALOG_CLOSE,
   HELP_OPEN,
   HELP_CLOSE,
+  RESET
 } from '../constants/index';
 
 export function soundOn() {
@@ -36,6 +38,12 @@ export function changeRipple() {
   }
 }
 
+export function initRipple() {
+  return {
+    type: INIT_RIPPLE,
+  }
+}
+
 export function onSweetspot() {
   return {
     type: SWEETSPOT_ON,
@@ -50,24 +58,30 @@ export function offSweetspot() {
 
 export function openDialog() {
   return {
-    type: DIALOG_OPEN
+    type: DIALOG_OPEN,
   }
 }
 
 export function closeDialog() {
   return {
-    type: DIALOG_CLOSE
+    type: DIALOG_CLOSE,
   }
 }
 
 export function openHelp() {
   return {
-    type: HELP_OPEN
+    type: HELP_OPEN,
   }
 }
 
 export function closeHelp() {
   return {
-    type: HELP_CLOSE
+    type: HELP_CLOSE,
+  }
+}
+
+export function reset() {
+  return {
+    type: RESET,
   }
 }

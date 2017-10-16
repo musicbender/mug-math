@@ -2,15 +2,17 @@ import React from 'react';
 import '../style/ripple.scss';
 
 export default (props) => {
-    var rippleClass;
+    const { rippleState, initRipple, rippleIsInit } = props;
     const one = 'ripple-1';
     const two = 'ripple-2';
     const three = 'ripple-3';
     const hide = 'ripple-hide';
+    let rippleClass;
+    let started = false;
 
-    switch (props.rippleState) {
+    switch (rippleState) {
       case (0):
-        rippleClass = {one: hide, two, three};
+        rippleClass = {one: hide, two: hide, three: hide};
         break;
       case (1):
         rippleClass  = {one, two: hide, three};
@@ -19,7 +21,7 @@ export default (props) => {
         rippleClass = {one, two, three: hide};
         break;
       case (3):
-        rippleClass = {one: hide, two, three};
+        rippleClass = {one: hide, two: rippleIsInit ? two : hide, three};
         break;
       default:
         break;

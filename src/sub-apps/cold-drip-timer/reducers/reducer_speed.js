@@ -1,9 +1,10 @@
-import { CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/index';
+import { CHANGE_TEMPO, CHANGE_RIPPLE, INIT_RIPPLE, RESET } from '../constants/index';
 
 const initialState = {
     tempo: 40,
     color: "rgb(40,40,40)",
-    ripple: 0
+    ripple: 0,
+    rippleIsInit: false,
 }
 
 export default function speed(state = initialState, action) {
@@ -12,7 +13,6 @@ export default function speed(state = initialState, action) {
             function getTheColor(value) {
                 const color = value;
                 const rgb = `rgb(${color}, ${color}, ${color})`;
-
                 return (rgb);
             }
 
@@ -34,6 +34,12 @@ export default function speed(state = initialState, action) {
                 newNum = 1;
             }
             return { ...state, ripple: newNum };
+
+        case INIT_RIPPLE:
+          return { ...state, rippleIsInit: true };
+
+        case RESET:
+          return { ...state, ripple: 0}
 
         default:
             return state;

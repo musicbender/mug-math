@@ -9,7 +9,8 @@ import {
   openDialog,
   closeDialog,
   openHelp,
-  closeHelp
+  closeHelp,
+  reset
 } from './actions/index';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -38,6 +39,7 @@ class ColdDripTimer extends Component {
 
   componentWillUnmount() {
     document.body.classList.remove('cold-drip-timer');
+    this.props.reset();
   }
 
   handleBackButton() {
@@ -47,7 +49,7 @@ class ColdDripTimer extends Component {
   render() {
     return (
       <div className="transition-item">
-        <div className="sub-app">
+        <div className="sub-app preload">
           <AppBar
             title="Cold Drip Coffee Timer"
             titleStyle={barStyle.title}
@@ -93,6 +95,7 @@ function mapDispatchToProps(dispatch) {
         closeDialog,
         openHelp,
         closeHelp,
+        reset,
     }, dispatch);
 }
 
