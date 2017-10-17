@@ -7,6 +7,7 @@
   width: 100%;
   background-color: $_100;
   border-top: 1px solid $_300;
+  transition: background-color $app-speed-slow $easeOut;
   @media (min-width: 767px) {
     position: fixed;
     bottom: 0;

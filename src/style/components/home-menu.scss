@@ -48,9 +48,10 @@
       width: $circle-size-small;
       height: $circle-size-small;
       border-radius: $circle-size;
-      background-color: $white;
+      background-color: rgba($white, 1);
       will-change: width, height, opacity, border-radius;
       animation: circle-close $app-speed;
+      transition: background-color $app-speed-slow $easeOut;
     }
 
     svg:not(.menu-text) {

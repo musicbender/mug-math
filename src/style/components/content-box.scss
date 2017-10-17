@@ -9,6 +9,7 @@
   height: auto;
   margin: 0 auto;
   background-color: $white;
+  transition: background-color $app-speed-slow $easeOut;
   @media (max-width: 380px) {
     top: 78%;
   }
@@ -22,6 +23,7 @@
     padding: 1em 1em 1em 0.7em;
     width: 100%;
     margin: 0;
+    transition: background-color $app-speed-slow $easeOut;
   }
   > p {
     font-size: $small;

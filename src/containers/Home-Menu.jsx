@@ -73,7 +73,7 @@ class HomeMenu extends Component {
       if (!process.env.ONSERVER) {
         document.body.classList.add('body-blur');
       }
-      return 'sub-open home-blur';
+      return 'sub-open darken';
     }
   }
 

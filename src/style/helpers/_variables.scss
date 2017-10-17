@@ -52,6 +52,7 @@ $slow:      750ms;
 $moderate:  450ms;
 $fast:      300ms;
 $app-speed: 400ms;
+$app-speed-slow: $app-speed + 400ms;
 $app-delay: $moderate;
 
 
