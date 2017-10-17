@@ -5,7 +5,7 @@ import calculate from '../../../util/calculate';
 const initialState = {
   coffee: 0,
   water: 0,
-  ratio: 0
+  ratio: 0,
 }
 
 export default function values(state = initialState, action) {

@@ -21,8 +21,8 @@ let muiTheme;
 
 class App extends Component {
   componentWillMount() {
-    console.log(`on server? ${process.env.ONSERVER}`);
     muiTheme = getMuiTheme(muithemeStyle);
+    
     if (!process.env.ONSERVER) {
       try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();

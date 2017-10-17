@@ -19,6 +19,14 @@ class BrewCalculator extends Component {
     this.handleBackButton = this.handleBackButton.bind(this);
   }
 
+  componentDidMount() {
+    if (window.scrollY < 20 && window.innerWidth < 768) {
+      setTimeout(() => {
+        window.scrollTo(0,500);
+      }, 1000)
+    }
+  }
+
   handleBackButton() {
     this.props.history.push('/');
   }

@@ -7,7 +7,7 @@ class Tick extends Component {
 
   componentDidMount() {
     this.newOscillator();
-    this.interval = setInterval(()=>this.newOscillator(), this.convertTempo(this.props.tempo));
+    this.interval = setInterval(() => this.newOscillator(), this.convertTempo(this.props.tempo));
   }
 
   componentWillUnmount() {

@@ -13,25 +13,23 @@ class PlaybackControls extends Component {
     handleClick() {
         const {playing, soundOff, soundOn, audioContext, ripple, initRipple, rippleIsInit } = this.props;
         if (playing) {
-            soundOff(audioContext);
+            soundOff();
         } else if (!playing) {
-            if (ripple === 3 && !rippleIsInit) {
-              initRipple();
-            }
-            soundOn(audioContext);
+            if (ripple === 3 && !rippleIsInit) initRipple();
+            soundOn();
         }
     }
 
     renderTick() {
       const { playing, tempo, audioContext, changeRipple } = this.props;
       if (playing) {
-          return (
-            <Tick
-              ctx={audioContext}
-              tempo={tempo}
-              changeRipple={changeRipple}
-            />
-        )
+        return (
+          <Tick
+            ctx={audioContext}
+            tempo={tempo}
+            changeRipple={changeRipple}
+          />
+        );
       }
     }
 
