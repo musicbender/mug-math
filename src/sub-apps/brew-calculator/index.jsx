@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { grey900 } from 'material-ui/styles/colors';
 import { openHelp, closeHelp } from './actions/index';
+import { openApp, closeApp } from '../../actions/index'
 import TopSection from './containers/top-section.jsx';
 import BottomSection from './containers/bottom-section.jsx';
 import DropdownMenu from './components/dropdown-menu.jsx';
@@ -20,11 +21,11 @@ class BrewCalculator extends Component {
   }
 
   componentDidMount() {
-    if (window.scrollY < 20 && window.innerWidth < 768) {
-      setTimeout(() => {
-        window.scrollTo(0,500);
-      }, 1000)
-    }
+    this.props.openApp();
+  }
+
+  componentWillUnmount() {
+    this.props.closeApp();
   }
 
   handleBackButton() {
@@ -70,6 +71,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openHelp,
     closeHelp,
+    openApp,
+    closeApp,
   }, dispatch);
 }
 

@@ -49,7 +49,7 @@ class HomeMenu extends Component {
           path={thisPath}
           key={item.id}
           id={item.id}
-          loaded={this.props.loaded}
+          open={this.props.open}
         >
           {this.getIcon(item.title)}
         </MenuItem>
@@ -63,23 +63,17 @@ class HomeMenu extends Component {
     return this.props.location.pathname === '/';
   }
 
-  toggleBlur() {
+  toggleDarken() {
     if (this.isHome()) {
-      if (!process.env.ONSERVER) {
-        document.body.classList.remove('body-blur');
-      }
       return '';
     } else {
-      if (!process.env.ONSERVER) {
-        document.body.classList.add('body-blur');
-      }
       return 'sub-open darken';
     }
   }
 
   render() {
     return (
-      <div className={`home-container ${this.toggleBlur()}`}>
+      <div className={`home-container ${this.toggleDarken()}`}>
         <Title />
         <div className="menu-container">
           {this.getMenu()}
@@ -98,9 +92,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps({ subApp }) {
-  const { loaded, contentBox } = subApp;
+  const { loaded, contentBox, open } = subApp;
   return {
     loaded,
+    open,
     contentBox,
   };
 }
