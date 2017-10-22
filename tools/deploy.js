@@ -33,7 +33,7 @@ webpack([
   const rsync = new Rsync()
     .flags('avz')
     .source('dist/')
-    .source('server/config/')
+    .source('server/config.js')
     .destination('patjacobs:/home/patjacob/mug-math/dist/')
     .set('delete');
 

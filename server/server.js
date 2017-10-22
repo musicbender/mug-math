@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 import App from '../src/containers/App.jsx';
 import reducers from '../src/reducers/index';
-import config from './config/config';
+import config from './config';
 require('babel-core/register')({
     presets: ['es2015', 'react']
 });
@@ -19,7 +19,7 @@ require('babel-core/register')({
 console.log(`live? ${process.env.LIVE}`);
 
 const PORT = process.env.PORT || 3001;
-const HTTP_PORT = process.env.HTTP_PORT || 8002;
+// const HTTP_PORT = process.env.HTTP_PORT || 8002;
 const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 
 const app = new express();
@@ -30,23 +30,10 @@ app.set('views', viewDir);
 app.use(express.static(path.join(__dirname, 'public/')));
 app.use(bodyParser.json());
 
-// app.all('*', (req, res, next) => {
-//   if (!req.secure) {
-//     console.log('moving to https');
-//     if (process.env.LIVE) {
-//       res.redirect(`https://${req.hostname}${req.url}`)
-//     } else {
-//       res.redirect('https://'+req.hostname+':' + PORT + req.url)
-//     }
-//   } else {
-//     next();
-//   }
-// })
-
 app.get('*', (req, res) => {
   const store = createStore(reducers);
   const context = {};
-
+  console.log('prerendering...');
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
@@ -79,7 +66,9 @@ if (!process.env.LIVE) {
   https.createServer(options, app).listen(PORT, () => {
     console.log(`Mugmath local server started at port ${PORT}`);
   });
-
+  http.createServer(app).listen(3016, () => {
+    console.log(`app at local server at port 3016`);
+  })
 } else {
   app.listen(PORT, err => {
     if (err) { console.error(err); }
