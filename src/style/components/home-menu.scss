@@ -128,10 +128,10 @@
 /******* MODIFIERS *******/
 
 .menu-item-container.active-true {
-  z-index: 9999;
+  z-index: 26;
 
   .menu-circle {
-    animation: circle-expand $app-speed;
+    animation: circle-expand $app-speed $easeInOut;
     animation-fill-mode: forwards;
   }
 
@@ -145,10 +145,6 @@
     transform: translate(-50%, -50%) rotate(215deg);
     transition: opacity 200ms, transform $app-speed;
   }
-}
-
-.menu-item-container.closing {
-  z-index: 9999 !important;
 }
 
 .menu-item-container.active-false {
@@ -172,11 +168,8 @@
 
 @keyframes circle-expand {
   0% {
-    @include box-shadow(1);
-    transform: translate(-50%,-50%) scale(1);
-  }
-  1% {
     box-shadow: none;
+    transform: translate(-50%,-50%) scale(1);
   }
   100% {
     box-shadow: none;
@@ -186,18 +179,15 @@
 
 @keyframes circle-close {
   0% {
-    z-index: 9999;
     box-shadow: none;
     transform: translate(-50%,-50%) scale(16);
   }
   99%{
-    z-index: 9999;
     box-shadow: none;
   }
   100% {
     @include box-shadow(1);
     transform: translate(-50%,-50%) scale(1);
-    z-index: 0;
   }
 }
 
@@ -246,8 +236,8 @@
 }
 
 @keyframes close-z {
-  0% { z-index: 9999; }
-  99% { z-index: 9999; }
+  0% { z-index: 26; }
+  99% { z-index: 26; }
   100% { z-index: 1; }
 }
 
