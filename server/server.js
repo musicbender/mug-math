@@ -16,13 +16,8 @@ require('babel-core/register')({
     presets: ['es2015', 'react']
 });
 
-console.log(`live? ${process.env.LIVE}`);
-
-const PORT = process.env.PORT || 3001;
-// const HTTP_PORT = process.env.HTTP_PORT || 8002;
-const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
-
 const app = new express();
+const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 
 app.set('view engine', 'pug');
 app.set('views', viewDir);
@@ -33,7 +28,6 @@ app.use(bodyParser.json());
 app.get('*', (req, res) => {
   const store = createStore(reducers);
   const context = {};
-  console.log('prerendering...');
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
@@ -57,21 +51,21 @@ app.get('*', (req, res) => {
 
 if (!process.env.LIVE) {
   const options = {
-      key: fs.readFileSync('/Users/pjacobs/server.key'),
-      cert: fs.readFileSync('/Users/pjacobs/server.crt'),
+      key: fs.readFileSync(config.DEV_KEY),
+      cert: fs.readFileSync(config.DEV_CERT),
       requestCert: false,
       rejectUnauthorized: false
   };
 
-  https.createServer(options, app).listen(PORT, () => {
-    console.log(`Mugmath local server started at port ${PORT}`);
+  https.createServer(options, app).listen(config.DEV_PORT, () => {
+    console.log(`Mugmath local server started at port ${config.DEV_PORT}`);
   });
-  http.createServer(app).listen(3016, () => {
-    console.log(`app at local server at port 3016`);
+  http.createServer(app).listen(config.DEV_HTTP_PORT, () => {
+    console.log(`app at local server at port ${config.DEV_HTTP_PORT}`);
   })
 } else {
-  app.listen(PORT, err => {
+  app.listen(config.LIVE_PORT, err => {
     if (err) { console.error(err); }
-    console.log(`MugMath now live at ${PORT}!`);
+    console.log(`MugMath now live at ${config.LIVE_PORT}!`);
   });
 }
