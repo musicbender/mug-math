@@ -10,14 +10,14 @@
 }
 
 .section-top {
-  height: calc(50% - #{$app-bar-height} - #{$mobile-footer-offset});
+  height: calc(50% - #{$app-bar-height});
   @media (min-width: 767px) {
     height: calc(50% - #{$app-bar-height});
   }
 }
 
 .section-bottom {
-  height: calc(50% - #{$mobile-footer-offset});
+  height: 50%;
   @media (min-width: 767px) {
     height: 50%;
   }
@@ -27,14 +27,14 @@
 /******* WITH TABS *******/
 
 .section-top.withtabs {
-  height: calc(60% - #{$app-bar-height} - #{$mobile-footer-offset});
+  height: calc(60% - #{$app-bar-height});
   @media (min-width: 767px) {
     height: calc(60% - #{$app-bar-height});
   }
 }
 
 .section-bottom.withtabs {
-  height: calc(40% - #{$mobile-footer-offset});
+  height: 40%;
   @media (min-width: 767px) {
     height: 40%;
   }
@@ -45,7 +45,7 @@
 
 
 .section-top.withcolorfade {
-  height: calc(50% - #{$app-bar-height} + 3em - #{$mobile-footer-offset});
+  height: calc(50% - #{$app-bar-height} + 3em);
   top: -3em;
   @media (min-width: 767px) {
     height: calc(50% - #{$app-bar-height} + 3em);
@@ -64,7 +64,7 @@
 /******* BIG TOP *******/
 
 .section-top.big-top {
-  height: calc(60% - #{$app-bar-height} - #{$mobile-footer-offset});
+  height: calc(60% - #{$app-bar-height});
   background-color: $white;
   @media (min-width: 767px) {
     height: calc(60% - #{$app-bar-height});
@@ -72,7 +72,7 @@
 }
 
 .section-bottom.big-top {
-  height: calc(40.1% - #{$mobile-footer-offset});
+  height: 40.1%;
   background-color: $white;
   @media (min-width: 767px) {
     height: 40.1%;

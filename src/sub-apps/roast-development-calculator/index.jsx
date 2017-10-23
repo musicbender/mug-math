@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openHelp, closeHelp } from './actions/index';
+import { openApp, closeApp } from '../../actions/index'
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -27,11 +28,13 @@ class BrewCalculator extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.add('roast-dev');
+    document.body.classList.add('app-open');
+    this.props.openApp();
   }
 
   componentWillUnmount() {
-    document.body.classList.remove('roast-dev');
+    document.body.classList.remove('app-open');
+    this.props.closeApp();
   }
 
   handleBackButton() {
@@ -64,7 +67,6 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
-          <Footer type="inside" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
@@ -76,6 +78,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openHelp,
     closeHelp,
+    openApp,
+    closeApp,
   }, dispatch);
 }
 

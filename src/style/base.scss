@@ -37,6 +37,9 @@ body {
       animation-duration: 0s !important;
       transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
     }
+    &.app-open {
+      overflow: hidden;
+    }
 }
 
 h1 {
@@ -153,11 +156,5 @@ h1 {
   .sub-app-outter {
     display: none;
     z-index: -1;
-  }
-  .darken {
-    .menu-item-container:not(.active),
-    .title-container {
-
-    }
   }
 }

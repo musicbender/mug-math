@@ -12,6 +12,7 @@ import {
   closeHelp,
   reset
 } from './actions/index';
+import { openApp, closeApp } from '../../actions/index'
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -34,12 +35,13 @@ class ColdDripTimer extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.add('cold-drip-timer');
+    document.body.classList.add('app-open');
+    this.props.openApp();
   }
 
   componentWillUnmount() {
-    document.body.classList.remove('cold-drip-timer');
-    this.props.reset();
+    document.body.classList.remove('app-open');
+    this.props.closeApp();
   }
 
   handleBackButton() {
@@ -79,7 +81,6 @@ class ColdDripTimer extends Component {
           />
           <PlaybackControls audioContext={ this.props.audioContext } />
           <TempoSlider audioContext={ this.props.audioContext } />
-          <Footer type="inside withcolorfade" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
@@ -96,6 +97,8 @@ function mapDispatchToProps(dispatch) {
         openHelp,
         closeHelp,
         reset,
+        openApp,
+        closeApp,
     }, dispatch);
 }
 

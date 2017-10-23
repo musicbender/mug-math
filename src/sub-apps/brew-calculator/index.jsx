@@ -21,10 +21,12 @@ class BrewCalculator extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.add('app-open');
     this.props.openApp();
   }
 
   componentWillUnmount() {
+    document.body.classList.remove('app-open');
     this.props.closeApp();
   }
 
@@ -59,7 +61,6 @@ class BrewCalculator extends Component {
           />
           <TopSection />
           <BottomSection />
-          <Footer type="inside" location={this.props.location.pathname} />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>

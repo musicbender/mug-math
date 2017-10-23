@@ -1,3 +1,4 @@
 module.exports = {
-  version: 1.00
+  title: 'Mug Math',
+  version: '1.0.0'
 }
