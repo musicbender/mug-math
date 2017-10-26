@@ -25,10 +25,9 @@ html.no-js(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='theme-color', content='#000000')
     title Mug Math
-    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet', defer='')
     style.
       !{criticalCSS}
-    link(href='/style.css', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
   body.preload
     script.
       window.__INITIAL_STATE__ = !{JSON.stringify(preloadedState)}
@@ -48,5 +47,12 @@ html.no-js(lang='en')
       </noscript>
     div
     div
+    script.
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/style.css';
+      css.type = 'text/css';
+      var godefer = document.getElementsByTagName('link')[0];
+      godefer.parentNode.insertBefore(css, godefer);
     script(type='text/javascript', src='/vendor.js')
     script(type='text/javascript', src='/dist.js')
