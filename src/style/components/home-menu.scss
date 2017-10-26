@@ -10,6 +10,7 @@
     height: $menu-height;
     margin: 0 auto;
     overflow: hidden;
+    z-index: 1;
     @media (max-width: 380px) {
       $height: $menu-height + 4em;
       height: $height;

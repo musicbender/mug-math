@@ -1,8 +1,20 @@
+/******* Breakpoints *******/
+
+$largest-site-width:    1920px;
+$extra-large-width:     1600px;
+$site-max-width:        1320px;
+$desktop-odd-width:     1280px;
+$small-desktop-width:   1024px;
+$tablet-width:          768px;
+$mobile-width:          480px;
+$small-mobile-width:    414px;
+$tablet-only:           "(min-width: #{$mobile-width}) and (max-width: #{$tablet-width})";
+
+
 /******* Greyscale *******/
 
 $white:        #fff;
 $black:        #000;
-
 $_50:          #FAFAFA;
 $_100:         #F5F5F5;
 $_200:         #EEEEEE;
@@ -13,7 +25,6 @@ $_600:         #757575;
 $_700:         #616161;
 $_800:         #424242;
 $_900:         #212121;
-
 $matteblack:   $black;
 $offwhite:     $_100;
 $lightgrey:    $_300;
@@ -29,16 +40,12 @@ $medium:       1.5em;
 $small:        1em;
 $normal:       $small;
 $tiny:         0.8em;
-
 $title:        $large;
-
 $h1-size:      $extra-large;
 $p-size:       $small;
-
 $slabo:        'Slabo 27px', serif;
 $roboto:       'Roboto Condensed', sans-serif;
 $font:         $slabo;
-
 $text-gradient: 'linear-gradient(to right,#23966c, #faaa54, #e23b4a, #db0768, #360670)';
 
 
@@ -47,7 +54,6 @@ $text-gradient: 'linear-gradient(to right,#23966c, #faaa54, #e23b4a, #db0768, #3
 $easeOut   : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 $easeIn    : cubic-bezier(0.950, 0.050, 0.795, 0.035);
 $easeInOut : cubic-bezier(1.000, 0.000, 0.000, 1.000);
-
 $slow:      750ms;
 $moderate:  450ms;
 $fast:      300ms;
@@ -77,7 +83,6 @@ $menu-height:                      52em;
 $row-1:     6em;
 $row-2:     19em;
 $row-3:     32em;
-
 $column-1:  0%;
 $column-2:  100%;
 $column-3:  200%;
