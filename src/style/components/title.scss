@@ -6,12 +6,8 @@
 /******* TITLE *******/
 
 .title-container {
-  @include box-shadow(1);
-  position: absolute;
-  top: 0;
+  // some styles set on server render
   height: $title-container-height;
-  width: 100%;
-  background-color: rgba($white, 1);
   transition: background-color $app-speed-slow $easeOut;
 }
 

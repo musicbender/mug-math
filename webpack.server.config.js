@@ -29,10 +29,15 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ["babel-loader?presets[]=es2015&presets[]=stage-0&presets[]=react"],
         exclude: /(node_modules|bower_components)/,
-      }, {
+      },
+      {
         test: /\.scss$/,
         loader: 'css-loader/locals?modules&loacalIdentName=[name]--[local]--[hash:base64:5]!sass-loader',
       },
+      {
+        test: /\.css$/,
+        loader: 'css-loader' 
+      }
     ],
   },
   plugins: [

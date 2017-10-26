@@ -12,6 +12,7 @@ import { StaticRouter } from 'react-router';
 import App from '../src/containers/App.jsx';
 import reducers from '../src/reducers/index';
 import config from './config';
+const criticalCSS = require('./views/critical.css').toString();
 require('babel-core/register')({
     presets: ['es2015', 'react']
 });
@@ -42,11 +43,10 @@ app.get('*', (req, res) => {
   }
 
   const preloadedState = store.getState();
-
   res
     .set('Content-Type', 'text/html')
     .status(200)
-    .render('index', {html, preloadedState});
+    .render('index', {html, preloadedState, criticalCSS});
 });
 
 if (!process.env.LIVE) {

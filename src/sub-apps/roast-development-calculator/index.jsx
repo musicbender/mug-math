@@ -20,6 +20,8 @@ const barStyleObj = {
   boxShadow: barStyle.bar.shadow
 }
 
+const bodyClass = ['app-open', 'roast-dev'];
+
 class BrewCalculator extends Component {
   constructor(props) {
     super(props);
@@ -28,12 +30,12 @@ class BrewCalculator extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.add('app-open');
+    document.body.classList.add(...bodyClass);
     this.props.openApp();
   }
 
   componentWillUnmount() {
-    document.body.classList.remove('app-open');
+    document.body.classList.remove(...bodyClass);
     this.props.closeApp();
   }
 
