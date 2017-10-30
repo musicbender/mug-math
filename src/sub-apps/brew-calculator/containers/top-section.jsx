@@ -9,7 +9,6 @@ import '../style/top-section.scss';
 class TopSection extends Component {
   constructor(props) {
     super(props);
-
     this.modeChange = this.modeChange.bind(this);
     this.adjustNum = this.adjustNum.bind(this);
   }
@@ -21,7 +20,6 @@ class TopSection extends Component {
 
   adjustNum(direction) {
     const {increaseNum, decreaseNum, block, mode} = this.props;
-
     direction === 1 ? increaseNum(mode, block) : decreaseNum(mode, block);
   }
 

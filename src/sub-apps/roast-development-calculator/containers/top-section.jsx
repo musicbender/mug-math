@@ -12,6 +12,15 @@ class TopSection extends Component {
     this.handleTime = this.handleTime.bind(this);
   }
 
+  componentDidMount() {
+    const rdevBlock = document.getElementsByClassName('rdev-block');
+    for (let i = 0; i < rdevBlock.length; i++) {
+      let input = rdevBlock[i].getElementsByTagName('input')[0];
+      input.setAttribute('readonly', 'true');
+      console.log(input);
+    }
+  }
+
   handleTime(time, block) {
     this.props.changeTime(time, block);
   }

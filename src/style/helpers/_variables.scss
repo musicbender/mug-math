@@ -51,9 +51,11 @@ $text-gradient: 'linear-gradient(to right,#23966c, #faaa54, #e23b4a, #db0768, #3
 
 /*******Animation*******/
 
-$easeOut   : cubic-bezier(0.190, 1.000, 0.220, 1.000);
+// $easeOut   : cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$easeOut  : cubic-bezier(0.23, 1, 0.32, 1);
 $easeIn    : cubic-bezier(0.950, 0.050, 0.795, 0.035);
-$easeInOut : cubic-bezier(1.000, 0.000, 0.000, 1.000);
+// $easeInOut : cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$easeInOut : cubic-bezier(0.445, 0.05, 0.55, 0.95);
 $slow:      750ms;
 $moderate:  450ms;
 $fast:      300ms;

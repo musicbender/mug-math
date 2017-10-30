@@ -54,7 +54,8 @@ h1 {
 
 /*tab selector bar*/
 .tabs > div:nth-child(2) > div  {
-  background-color: $_400 !important;
+  background-color: $_200 !important;
+  @include stripes-1();
 }
 
 
