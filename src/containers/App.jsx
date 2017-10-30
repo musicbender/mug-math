@@ -22,7 +22,7 @@ let muiTheme;
 class App extends Component {
   componentWillMount() {
     muiTheme = getMuiTheme(muithemeStyle);
-    
+
     if (!process.env.ONSERVER) {
       try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -40,7 +40,7 @@ class App extends Component {
     // disables any animations on page load
     setTimeout(() => {
       document.body.className = "";
-    }, 500);
+    }, 1000);
   }
 
   render() {

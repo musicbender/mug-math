@@ -18,20 +18,26 @@ const config = {
     publicPath: '/',
   },
   module: {
-    rules: [{
-      test: /\.jsx*$/,
-      include: path.join(__dirname, '/src'),
-      loader: "babel-loader",
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.scss$/,
-      loader: "style-loader!css-loader!autoprefixer-loader!sass-loader",
-    },
-    {
-      test: /\.css$/,
-      loader: "style-loader!css-loader",
-    }],
+    rules: [
+      {
+        test: /\.jsx*$/,
+        include: path.join(__dirname, '/src'),
+        loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        loader: "style-loader!css-loader!autoprefixer-loader!sass-loader",
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader",
+      },
+      {
+        test: /\.pug/,
+        loader: "pug-loader",
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -44,7 +50,8 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index.html'),
       filename: 'index.html',
-      inject: 'body',
+      // inject: 'body',
+      template: 'server/views/index.pug',
       title: 'Mug Math',
     }),
     new OfflinePlugin({

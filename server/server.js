@@ -46,7 +46,12 @@ app.get('*', (req, res) => {
   res
     .set('Content-Type', 'text/html')
     .status(200)
-    .render('index', {html, preloadedState, criticalCSS});
+    .render('index', {
+      html,
+      preloadedState,
+      criticalCSS,
+      onServer: process.env.ONSERVER
+    });
 });
 
 if (!process.env.LIVE) {

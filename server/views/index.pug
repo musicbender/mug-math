@@ -54,5 +54,6 @@ html.no-js(lang='en')
       css.type = 'text/css';
       var godefer = document.getElementsByTagName('link')[0];
       godefer.parentNode.insertBefore(css, godefer);
-    script(type='text/javascript', src='/vendor.js')
-    script(type='text/javascript', src='/dist.js')
+    if !{onServer}
+      script(type='text/javascript', src='/vendor.js')
+      script(type='text/javascript', src='/dist.js')
