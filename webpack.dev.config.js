@@ -9,7 +9,7 @@ const config = {
     extensions: ['.js', '.jsx', 'json'],
   },
   entry: {
-    index: [path.join(__dirname, '/src/index.jsx')],
+    index: [path.join(__dirname, '/src/index.js')],
     vendor: ['react', 'react-dom'],
   },
   output: {
@@ -50,7 +50,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index.html'),
       filename: 'index.html',
-      // inject: 'body',
+      inject: 'body',
       template: 'server/views/index.pug',
       title: 'Mug Math',
     }),

@@ -10,7 +10,7 @@ const config = {
     extensions: ['.js', '.jsx', 'json'],
   },
   entry: {
-    index: [path.join(__dirname, '/src/index.jsx')],
+    index: [path.join(__dirname, '/src/index.js')],
     vendor: ['react', 'react-dom'],
   },
   output: {

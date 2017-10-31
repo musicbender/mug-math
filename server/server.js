@@ -17,6 +17,7 @@ require('babel-core/register')({
     presets: ['es2015', 'react']
 });
 
+console.log(process.env.ONSERVER);
 const app = new express();
 const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 
