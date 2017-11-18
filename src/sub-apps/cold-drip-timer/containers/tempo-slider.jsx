@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { soundOn, soundOff, changeTempo } from '../actions/index';
 import Slider from 'material-ui/Slider';
 import IconButton from 'material-ui/IconButton';
+import IconPlus from 'material-ui/svg-icons/content/add';
+import IconMinus from 'material-ui/svg-icons/content/remove';
 import FontIcon from 'material-ui/FontIcon';
 import SweetSpotBox from '../components/sweet-spot-box.jsx';
 import '../style/tempo-slider.scss';
@@ -53,7 +55,7 @@ class TempoSlider extends Component {
       <section className="section section-bottom tempo-slider-section withcolorfade">
         <div className="tempo-slider-div">
           <IconButton className="minus" onClick={() => this.handleIcon("down")} iconStyle={iconColor}>
-            <FontIcon className="material-icons">remove</FontIcon>
+            <IconMinus className="material-icon">-</IconMinus>
           </IconButton>
           <Slider
             {...config}
@@ -63,7 +65,7 @@ class TempoSlider extends Component {
             className="tempo-slider"
           />
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
-            <FontIcon className="material-icons">add</FontIcon>
+            <IconPlus className="material-icon">+</IconPlus>
           </IconButton>
           <SweetSpotBox sweetspot={this.props.sweetspot} />
         </div>

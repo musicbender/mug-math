@@ -25,18 +25,18 @@
 .minus {
   display: inline-block;
   position: absolute !important;
-  top: -11%;
+  top: -7%;
 }
 
 .plus {
-  right: -2%;
+  right: -5%;
 }
 
 .minus {
   left: -5%;
 }
 
-.plus .material-icons,
-.minus .material-icons {
+.plus .material-icon,
+.minus .material-icon {
   font-size: 32px !important;
 }
