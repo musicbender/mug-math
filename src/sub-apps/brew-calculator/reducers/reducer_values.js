@@ -13,6 +13,7 @@ export default function values(state = initialState, action) {
         current = state[block],
         mode = action.mode,
         app = "brewCalc";
+        console.log(`r block: ${block}`);
 
   switch(action.type) {
     case NUM_CHANGE: {

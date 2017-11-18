@@ -56,10 +56,13 @@
   .block-value {
     @include super-center($top: 75%, $left: 25%);
     @extend %unselectable;
-    font-size: $very-large;
+    font-size: $large;
     color: $white;
     transition: 0.3s $easeOut;
     width: 1em;
+    @media (min-width: $small-desktop-width) {
+      font-size: $very-large;
+    }
   }
 
   .block-unit {

@@ -57,7 +57,7 @@ const numpad = {
 
   //get final number result
   getNum: function(input, current, block) {
-    return this.output(input, current)
+    return this.output(input, current, block)
   }
 }
 
