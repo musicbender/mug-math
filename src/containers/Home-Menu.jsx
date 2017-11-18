@@ -52,6 +52,7 @@ class HomeMenu extends Component {
           open={this.props.open}
         >
           {this.getIcon(item.title)}
+          <p>{item.id}</p>
         </MenuItem>
       );
     });

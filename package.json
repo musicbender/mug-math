@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
-    "start": "export NODE_ENV=development; webpack-dev-server --env=dev --hot --https --progress --host 0.0.0.0 --config webpack.dev.config.js",
+    "start": "export NODE_ENV=development; webpack-dev-server --env=dev --hot --progress --host 0.0.0.0 --config webpack.dev.config.js",
     "bs": "export NODE_ENV=production; export LIVE=false; webpack --env=prod --config webpack.server.config.js",
     "bc": "export NODE_ENV=production; export LIVE=false; webpack --env=prod --config webpack.prod.config.js",
     "build": "npm run clean && npm run bc && npm run bs",
@@ -22,7 +22,7 @@
   "author": "Pat Jacobs",
   "license": "ISC",
   "engines": {
-    "node": "7.0.0"
+    "node": "5.3.0"
   },
   "dependencies": {
     "array.prototype.move": "0.0.4",

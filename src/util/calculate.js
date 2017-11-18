@@ -22,10 +22,9 @@ const calculate = {
   findMax(current, block) {
     const decimal = current.indexOf(".");
     let max;
-
     switch (decimal) {
       case -1:
-        max = block === "water" ? 4 : 3;
+        max = block === "water" ? 5 : 3;
         break;
       case 1:
         max = 3;
@@ -40,13 +39,14 @@ const calculate = {
         max = 6;
         break;
     }
-
+    console.log(`${current} : ${block} : ${max}`);
     return max;
   },
 
   // check if number is maxed out
   isNotMax: {
     numpad(current, max) {
+ 
       return !(current.length >= max);
     },
 

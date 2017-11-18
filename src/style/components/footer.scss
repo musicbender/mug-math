@@ -13,13 +13,12 @@
     bottom: 0;
   }
 
-  > .title,
   > .version {
     display: inline-block;
     line-height: 39px;
     margin: 0;
     margin-left: 0.5em;
-    color: rgba($black, 0.5);
+    color: rgba($black, 0.85);
   }
 
   > .title {
