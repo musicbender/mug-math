@@ -1,10 +1,11 @@
-import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED } from '../constants/index';
+import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED, INFO_MENU_OPEN, INFO_MENU_CLOSE } from '../constants/index';
 
 const initialState = {
   open: false,
   audioContext: null,
   loaded: false,
-  contentBox: true
+  contentBox: true,
+  infoMenuOpen: false
 }
 
 export default function subApp(state = initialState, action) {
@@ -16,10 +17,16 @@ export default function subApp(state = initialState, action) {
       return {...state, open: false,};
 
     case AUDIO_MOUNT:
-        return { ...state, audioContext: action.payload, }
+      return { ...state, audioContext: action.payload, }
 
     case MENU_LOADED:
-        return { ...state, loaded: true, }
+      return { ...state, loaded: true, }
+
+    case INFO_MENU_OPEN:
+      return { ...state, infoMenuOpen: true, }
+
+    case INFO_MENU_CLOSE:
+      return { ...state, infoMenuOpen: false, }
 
     default:
       return state;

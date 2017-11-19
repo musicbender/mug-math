@@ -8,7 +8,7 @@ import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
 import { openApp, closeApp, loadedMenu } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
-import Title from '../components/title.jsx';
+import TopBar from '../components/top-bar.js';
 import Footer from '../components/footer.jsx';
 import ContentBox from '../components/content-box';
 import menuData from '../util/menu-data';
