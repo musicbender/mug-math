@@ -1,11 +1,17 @@
 import React from 'react';
 import InfoMenu from './info-menu';
-import '../style/components/title.scss';
+import '../style/components/top-bar.scss';
 
-const TopBar = () => {
+const TopBar = (props) => {
+  const { handleInfoMenu, infoMenuOpen } = props;
+
+  const handleClick = () => {
+    handleInfoMenu();
+  }
+
   return (
-    <div className="title-container">
-      <div className="hamburger"></div>
+    <div className={`top-bar-container open-${infoMenuOpen}`}>
+      <div className="hamburger" onClick={() => handleClick()}>=</div>
       <h1 className="title"><span>mug</span>math</h1>
     </div>
   );

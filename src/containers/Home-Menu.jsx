@@ -6,7 +6,7 @@ import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
 import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
-import { openApp, closeApp, loadedMenu } from '../actions/index';
+import { loadedMenu, toggleInfoMenu } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
 import TopBar from '../components/top-bar.js';
 import Footer from '../components/footer.jsx';
@@ -72,10 +72,18 @@ class HomeMenu extends Component {
     }
   }
 
+  handleInfoMenu() {
+    console.log(`toggled`);
+    this.props.toggleInfoMenu();
+  }
+
   render() {
     return (
       <div className={`home-container ${this.toggleDarken()}`}>
-        <Title />
+        <TopBar
+          handleInfoMenu={this.handleInfoMenu}
+          infoMenuOpen={this.props.infoMenuOpen}
+        />
         <div className="menu-container">
           {this.getMenu()}
           {this.props.contentBox && <ContentBox />}
@@ -89,15 +97,17 @@ class HomeMenu extends Component {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     loadedMenu,
+    toggleInfoMenu,
   }, dispatch);
 }
 
 function mapStateToProps({ subApp }) {
-  const { loaded, contentBox, open } = subApp;
+  const { loaded, contentBox, open, infoMenuOpen } = subApp;
   return {
     loaded,
     open,
     contentBox,
+    infoMenuOpen,
   };
 }
 

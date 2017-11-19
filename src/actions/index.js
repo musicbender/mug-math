@@ -1,4 +1,4 @@
-import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED, INFO_MENU_OPEN } from '../constants/index';
+import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED, INFO_MENU_TOGGLE } from '../constants/index';
 
 export function openApp() {
   return {
@@ -25,14 +25,8 @@ export function loadedMenu() {
   }
 }
 
-export function openInfoMenu() {
+export function toggleInfoMenu() {
   return {
-    type: INFO_MENU_OPEN,
-  }
-}
-
-export function closeInfoMenu() {
-  return {
-    type: INFO_MENU_CLOSE,
+    type: INFO_MENU_TOGGLE,
   }
 }

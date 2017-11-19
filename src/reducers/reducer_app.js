@@ -1,4 +1,4 @@
-import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED, INFO_MENU_OPEN, INFO_MENU_CLOSE } from '../constants/index';
+import { APP_OPEN, APP_CLOSE, AUDIO_MOUNT, MENU_LOADED, INFO_MENU_TOGGLE } from '../constants/index';
 
 const initialState = {
   open: false,
@@ -22,11 +22,8 @@ export default function subApp(state = initialState, action) {
     case MENU_LOADED:
       return { ...state, loaded: true, }
 
-    case INFO_MENU_OPEN:
-      return { ...state, infoMenuOpen: true, }
-
-    case INFO_MENU_CLOSE:
-      return { ...state, infoMenuOpen: false, }
+    case INFO_MENU_TOGGLE:
+      return { ...state, infoMenuOpen: !state.infoMenuOpen, }
 
     default:
       return state;
