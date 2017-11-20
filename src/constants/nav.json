@@ -1,0 +1,41 @@
+{
+  "infoMenu": [
+    {
+      "id": "about",
+      "title": "About",
+      "url": "/about"
+    },
+    {
+      "id": "share",
+      "title": "Share",
+      "url": "https://twitter.com"
+    },
+    {
+      "id": "code",
+      "title": "Code",
+      "url": "https://github.com/musicbender/mug-math"
+    }
+  ],
+  "subApps": [
+    {
+      "id": "cdt",
+      "title": "Cold Drip Timer",
+      "url": "/cold-drip-timer"
+    },
+    {
+      "id": "brw",
+      "title": "Brew Calculator",
+      "url": "/brew-calculator"
+    },
+    {
+      "id": "dev",
+      "title": "Roast Development",
+      "url": "/roast-development-calculator"
+    },
+    {
+      "id": "moi",
+      "title": "Roast Moisture",
+      "url": "/roast-moisture-calculator"
+    }
+  ]
+}

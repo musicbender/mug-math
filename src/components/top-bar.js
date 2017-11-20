@@ -17,6 +17,7 @@ const TopBar = (props) => {
         { infoMenuOpen ? <IconClose className="icon-close"/> : <IconMenu className="icon-menu"/> }
       </div>
       <h1 className="title"><span>mug</span>math</h1>
+      { infoMenuOpen && <InfoMenu /> }
     </div>
   );
 };
