@@ -9,39 +9,67 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   position: absolute;
   top: 0;
-  height: 4em;
   width: 100%;
-  background-color: rgb(255,255,255);
+  background-color: $white;
   height: $title-container-height;
-  transition: background-color $app-speed-slow $easeOut;
+  z-index: 30;
+  transition: background-color $app-speed-slow $easeOut,
+              height $app-speed-slow $easeOut;
 
   .hamburger {
-    @include super-center($title-container-height / 2, 0);
-    height: 1em;
-    width: 1em;
+    $size: 2em;
+    @include super-center($title-container-height / 2, 1.5em);
+    height: $size;
+    width: $size;
     cursor: pointer;
     z-index: 5;
-  }
-}
 
-.title {
-  @include super-center($left: inherit, $x: 0%);
-  @extend %unselectable;
-  right: 1em;
-  margin: 0;
-  text-transform: lowercase;
-  font-weight: 100;
-  top: 50%;
-  font-size: $title;
-  color: $black;
-  @media only screen and (min-width: 500px) {
-    $font: $title + 1em;
-    font-size: $font;
+    > svg[class^="icon-"] {
+      @include super-center();
+    }
+
+    > svg.icon-close {
+      color: $white !important;
+    }
   }
 
-  span {
+  .title {
+    @include super-center(32px, inherit, 0%);
+    @extend %unselectable;
+    right: 1em;
+    margin: 0;
+    text-transform: lowercase;
     font-weight: 100;
+    font-size: $title;
     color: $black;
+
+    @media only screen and (min-width: 500px) {
+      $font: $title + 1em;
+      font-size: $font;
+    }
+
+    span {
+      font-weight: 100;
+      color: $black;
+    }
+  }
+
+  // modifiers
+  &.open-true {
+    position: fixed;
+    height: 100vh;
+    background-color: $black;
+    color: $white;
+    transition: background-color $app-speed-slow $easeOut,
+                height $app-speed-slow $easeOut;
+    .title,
+    .title > span {
+      color: $white;
+    }
+
+    .hamburger {
+      color: white;
+    }
   }
 }
 

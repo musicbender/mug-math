@@ -17,6 +17,7 @@ import '../style/components/home-menu.scss';
 class HomeMenu extends Component {
   constructor(props) {
     super(props);
+    this.handleInfoMenu = this.handleInfoMenu.bind(this);
   }
 
   componentDidMount() {
@@ -73,7 +74,6 @@ class HomeMenu extends Component {
   }
 
   handleInfoMenu() {
-    console.log(`toggled`);
     this.props.toggleInfoMenu();
   }
 

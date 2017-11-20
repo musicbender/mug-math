@@ -54,12 +54,6 @@ const config = {
       template: 'server/views/index.pug',
       title: 'Mug Math',
     }),
-    new OfflinePlugin({
-      publicPath: '/',
-      ServiceWorker: {
-        navigateFallbackURL: '/'
-      }
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
