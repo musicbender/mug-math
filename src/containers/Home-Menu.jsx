@@ -74,6 +74,10 @@ class HomeMenu extends Component {
   }
 
   handleInfoMenu() {
+    if (!this.props.infoMenuOpen) {
+      this.props.history.push('/');
+    }
+
     this.props.toggleInfoMenu();
   }
 

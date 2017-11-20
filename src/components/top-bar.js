@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 import InfoMenu from './info-menu';
 import IconMenu from 'material-ui/svg-icons/navigation/menu';
 import IconClose from 'material-ui/svg-icons/navigation/close';
@@ -13,11 +14,11 @@ const TopBar = (props) => {
 
   return (
     <div className={`top-bar-container open-${infoMenuOpen}`}>
-      <div className="hamburger" onClick={() => handleClick()}>
+      <Link to={infoMenuOpen ? '/' : '/info'} className="hamburger" onClick={() => handleClick()}>
         { infoMenuOpen ? <IconClose className="icon-close"/> : <IconMenu className="icon-menu"/> }
-      </div>
+      </Link>
       <h1 className="title"><span>mug</span>math</h1>
-      { infoMenuOpen && <InfoMenu /> }
+      <Route path="/info" component={InfoMenu} />
     </div>
   );
 };

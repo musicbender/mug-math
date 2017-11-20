@@ -10,9 +10,9 @@ export default (props) => {
         nav.infoMenu.map((item,index) => {
           switch (item.id) {
             case "about" :
-              return <Link to={item.url}>item.title</Link>;
+              return <Link to={item.url} key={Math.random()}>item.title</Link>;
             default:
-              return <a href={item.url} target="_blank">item.title</a>
+              return <a href={item.url} target="_blank" key={Math.random()}>item.title</a>
           }
         })
       }
