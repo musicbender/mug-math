@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import InfoMenu from './info-menu';
+import About from './about';
 import IconMenu from 'material-ui/svg-icons/navigation/menu';
 import IconClose from 'material-ui/svg-icons/navigation/close';
 import '../style/components/top-bar.scss';
@@ -18,7 +19,9 @@ const TopBar = (props) => {
         { infoMenuOpen ? <IconClose className="icon-close"/> : <IconMenu className="icon-menu"/> }
       </Link>
       <h1 className="title"><span>mug</span>math</h1>
-      <Route path="/info" component={InfoMenu} />
+
+      <Route strict path="/info" component={InfoMenu} />
+      <Route path="/info/about" component={About} />
     </div>
   );
 };
