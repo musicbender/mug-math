@@ -4,7 +4,7 @@ import nav from '../constants/nav.json';
 
 export default (props) => {
   return (
-     <div className="info-menu-container">
+     <div className="info-menu-container info-menu-item">
       {
         nav.infoMenu.map((item,index) => {
           switch (item.id) {

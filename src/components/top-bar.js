@@ -5,6 +5,7 @@ import About from './about';
 import IconMenu from 'material-ui/svg-icons/navigation/menu';
 import IconClose from 'material-ui/svg-icons/navigation/close';
 import '../style/components/top-bar.scss';
+import '../style/components/info-menu.scss';
 
 const TopBar = (props) => {
   const { handleInfoMenu, infoMenuOpen } = props;
@@ -21,7 +22,7 @@ const TopBar = (props) => {
       <h1 className="title"><span>mug</span>math</h1>
 
       <Route strict path="/info" component={InfoMenu} />
-      <Route path="/info/about" component={About} />
+      <Route path="/about" component={About} />
     </div>
   );
 };

@@ -3,7 +3,7 @@
     {
       "id": "about",
       "title": "About",
-      "url": "info/about"
+      "url": "/about"
     },
     {
       "id": "share",

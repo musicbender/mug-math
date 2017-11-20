@@ -1,3 +1,32 @@
 @import '../helpers/_variables';
 @import '../helpers/_mixins';
-@import '../helpers/_placeholders';
+
+.info-menu-item {
+  @include super-center();
+  width: 90%;
+  max-width: 20em;
+  height: 28em;
+
+  &.about-container {
+
+    > .about-back {
+      color: $white;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+
+      > svg {
+        color: $white !important;
+        transform: translateY(5px);
+      }
+    }
+
+    > p {
+      padding: 1em 3em;
+      font-size: 1.25em;
+      color: rgba($white,0.75);
+      line-height: 1.4;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { content_box } from '../constants/content';
+import { content_box } from '../constants/content.json';
 import '../style/components/content-box.scss';
 
 const ContentBox = (props) => {
