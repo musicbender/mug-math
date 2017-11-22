@@ -1,5 +1,6 @@
 @import '../helpers/_variables';
 @import '../helpers/_mixins';
+@import '../helpers/_textures';
 
 .content-box {
   @include super-center($top: 80%);
@@ -17,8 +18,8 @@
     top: 75%;
   }
   > h5 {
+    @include stripes-3();
     font-size: $medium;
-    background-color: $_100;
     color: $_800;
     padding: 1em 1em 1em 0.7em;
     width: 100%;
@@ -31,5 +32,12 @@
     line-height: 1.6;
     padding: 2em 1em;
     margin: 0;
+  }
+  &.title-false {
+    @include stripes-2();
+    padding: 1em;
+    p {
+      background-color: $white;
+    }
   }
 }

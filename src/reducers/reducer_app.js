@@ -4,7 +4,7 @@ const initialState = {
   open: false,
   audioContext: null,
   loaded: false,
-  contentBox: false,
+  contentBox: true,
   infoMenuOpen: false
 }
 

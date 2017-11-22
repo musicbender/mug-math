@@ -86,13 +86,12 @@ class HomeMenu extends Component {
       <div className={`home-container ${this.toggleDarken()}`}>
         <TopBar
           handleInfoMenu={this.handleInfoMenu}
-          infoMenuOpen={this.props.infoMenuOpen}
-        />
+          infoMenuOpen={this.props.infoMenuOpen} />
         <div className="menu-container">
           {this.getMenu()}
           {this.props.contentBox && <ContentBox />}
         </div>
-        <Footer location={this.props.location.pathname} type="outside"/>
+        <Footer location={this.props.location.pathname} type="outside" />
       </div>
     );
   }
