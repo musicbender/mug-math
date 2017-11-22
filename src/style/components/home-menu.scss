@@ -132,8 +132,11 @@
 
 /******* MODIFIERS *******/
 
+.app-open .menu-container {
+  z-index: 31;
+}
 .menu-item-container.active-true {
-  z-index: 26;
+  z-index: 32;
 
   .menu-circle {
     box-shadow: none;
@@ -148,9 +151,6 @@
   }
 
   .menu-text {
-    // opacity: 0;
-    // transform: translate(-50%, -50%) rotate(215deg);
-    // transition: opacity 200ms, transform $app-speed;
     animation: svg-text-hide $app-speed linear;
     animation-fill-mode: forwards;
   }
@@ -251,8 +251,8 @@
 }
 
 @keyframes close-z {
-  0% { z-index: 26; }
-  99% { z-index: 26; }
+  0% { z-index: 31; }
+  99% { z-index: 31; }
   100% { z-index: 1; }
 }
 
