@@ -112,11 +112,11 @@ h1 {
   @media (min-width: $tablet-width) {
     &.home-container,
     .menu-item-container:not(.active-true) > .menu-circle,
-    .title-container,
+    .top-bar-container,
     .footer-container,
     .content-box {
       will-change: background-color;
-      background-color: rgba($black, 0.25);
+      background-color: rgba($black, 0.2);
       transition: background-color $app-speed-slow $easeOut,
                   border-color $app-speed-slow $easeOut;
     }
@@ -128,6 +128,11 @@ h1 {
 
     .footer-container {
       border-color: rgba($black, 0.35);
+    }
+
+    .content-box.title-false > p {
+      background-color: rgba($white, 0.4);
+      transition: background-color $app-speed-slow $easeOut;
     }
   }
 }

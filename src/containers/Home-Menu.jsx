@@ -62,15 +62,11 @@ class HomeMenu extends Component {
   }
 
   isHome() {
-    return this.props.location.pathname === '/';
+    return !this.props.location.pathname.match(/sub-apps/g);
   }
 
   toggleDarken() {
-    if (this.isHome()) {
-      return '';
-    } else {
-      return 'sub-open darken';
-    }
+    return this.isHome() ? '' : 'sub-open darken';
   }
 
   handleInfoMenu() {
