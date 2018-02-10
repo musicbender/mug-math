@@ -12,7 +12,7 @@ const rsync = new Rsync()
     '404.html',
     '.foreverignore'
   ])
-  .destination('patjacobs:/var/www/mug-math/')
+  .destination('ec2-pj:/var/www/mug-math/')
   .set('delete');
 
 rsync.execute((error, code, cmd) => {
