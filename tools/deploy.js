@@ -34,7 +34,7 @@ webpack([
     .flags('avz')
     .source('dist/')
     .source('server/config.js')
-    .destination('patjacobs:/home/patjacob/mug-math/dist/')
+    .destination('ec2-pj:/var/www/mug-math/dist')
     .set('delete');
 
   rsync.execute((error, code, cmd) => {
