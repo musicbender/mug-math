@@ -13,9 +13,6 @@ import App from '../src/containers/App.jsx';
 import reducers from '../src/reducers/index';
 import config from './config';
 const criticalCSS = require('./views/critical.css').toString();
-require('babel-core/register')({
-    presets: ['es2015', 'react']
-});
 
 console.log(process.env.ONSERVER);
 const app = new express();
