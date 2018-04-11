@@ -18,14 +18,19 @@
   ],
   "subApps": [
     {
+      "id": "brw",
+      "title": "Nerdy Brew Calculator",
+      "url": "/brew-calculator"
+    },
+    {
+      "id": "ezb",
+      "title": "Easy Brew Calculator",
+      "url": "/easy-brew-calculator"
+    },
+    {
       "id": "cdt",
       "title": "Cold Drip Timer",
       "url": "/cold-drip-timer"
-    },
-    {
-      "id": "brw",
-      "title": "Brew Calculator",
-      "url": "/brew-calculator"
     },
     {
       "id": "dev",

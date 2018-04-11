@@ -1,0 +1,48 @@
+@import '../../../style/helpers/_variables';
+
+/******* TIME PICKER *******/
+
+body.roast-dev > div:nth-last-child(-n+2):not(#app) > div > div > div > div > div > div {
+
+  /* numbers */
+  > div:nth-child(2) > div:nth-child(2) > span {
+    left: 43.5%;
+  }
+
+  /* picker line */
+  > div:nth-child(2) > div:nth-child(2) > div:first-child {
+    left: 49.3%;
+  }
+
+  /* minute/seconds numbers at top */
+  > div:first-child {
+    // padding: 2em 0 !important;
+
+    > div {
+      transform: translateY(-16px);
+
+      * { transform: translateY(0); }
+    }
+
+    * { padding: 0 !important}
+  }
+
+  /* added minute/second text */
+  > div > div > div:nth-child(2) {
+    &:after {
+      content: '(minutes : seconds)';
+      font-size: 0.25em;
+      position: absolute;
+      bottom: -4em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10em;
+      text-align: center;
+      color: $grey;
+
+      *:after {
+          content: '';
+      }
+    }
+  }
+}

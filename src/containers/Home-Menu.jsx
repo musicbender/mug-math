@@ -11,7 +11,7 @@ import MenuItem from '../components/menu-item.jsx';
 import TopBar from '../components/top-bar.js';
 import Footer from '../components/footer.jsx';
 import ContentBox from '../components/content-box';
-import menuData from '../util/menu-data';
+import { subApps as menuData } from '../constants/nav.json';
 import '../style/components/home-menu.scss';
 
 class HomeMenu extends Component {
@@ -28,8 +28,10 @@ class HomeMenu extends Component {
     switch (item) {
       case "Cold Drip Timer":
         return <IconColdDrip />;
-      case "Brew Calculator":
+      case "Nerdy Brew Calculator":
         return <IconCoffee />;
+      case "Easy Brew Calculator":
+        return <IconMoisture />;
       case "Roast Development":
         return <IconFire />;
       case "Roast Moisture":
@@ -40,7 +42,7 @@ class HomeMenu extends Component {
   }
 
   getMenu() {
-    const menu = menuData.map((item) => {
+    const menu = menuData.map(item => {
       const thisPath = `/sub-apps${item.url}`;
       return (
         <MenuItem
