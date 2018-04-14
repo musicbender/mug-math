@@ -9,7 +9,7 @@ class BottomSection extends Component {
         <div className="block-result-div">
           <div className="inner-wrapper">
             <div className={`block-result ezb-result`}>
-              <span></span> development
+              <span></span>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/sweet-spot-box.scss';
+import '../style/components/sweet-spot-box.scss';
 
 export default (props) => {
   let sweetspotVisability = props.sweetspot ? "sweetspot-show" : "sweetspot-hide";

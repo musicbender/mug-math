@@ -1,0 +1,43 @@
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+@import '../helpers/_placeholders';
+
+.slider-div {
+  @include super-center;
+  width: 75%;
+  height: 4em;
+
+  > div > div:first-child {
+    background-color: transparent !important;
+  }
+
+  > .slider {
+    @include super-center;
+    display: inline-block;
+    width: calc(100% - 100px);
+
+    > div > div:first-child {
+      background-color: $grey !important;
+    }
+  }
+
+  .plus,
+  .minus {
+    display: inline-block;
+    position: absolute !important;
+    top: -7%;
+  }
+
+  .plus {
+    right: -5%;
+  }
+
+  .minus {
+    left: -5%;
+  }
+
+  .plus .material-icon,
+  .minus .material-icon {
+    font-size: 32px !important;
+  }
+}

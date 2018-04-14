@@ -1,6 +1,6 @@
-@import '../../../style/helpers/_variables';
-@import '../../../style/helpers/_mixins';
-@import '../../../style/helpers/_textures';
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+@import '../helpers/_textures';
 
 #sweetspot {
   @include stripes-1;

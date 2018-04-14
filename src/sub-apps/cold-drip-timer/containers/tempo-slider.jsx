@@ -3,20 +3,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { soundOn, soundOff, changeTempo } from '../actions/index';
-import Slider from 'material-ui/Slider';
-import IconButton from 'material-ui/IconButton';
-import IconPlus from 'material-ui/svg-icons/content/add';
-import IconMinus from 'material-ui/svg-icons/content/remove';
+// import Slider from 'material-ui/Slider';
+// import IconButton from 'material-ui/IconButton';
+// import IconPlus from 'material-ui/svg-icons/content/add';
+// import IconMinus from 'material-ui/svg-icons/content/remove';
+import Mugslide from '../../../components/mugslide';
 import FontIcon from 'material-ui/FontIcon';
-import SweetSpotBox from '../components/sweet-spot-box.jsx';
+// import SweetSpotBox from '../components/sweet-spot-box.jsx';
 import '../style/tempo-slider.scss';
-
-const config = {
-  min: 10,
-  max: 120,
-  step: 1,
-  defaultValue: 40
-}
 
 class TempoSlider extends Component {
   constructor(props) {
@@ -24,6 +18,7 @@ class TempoSlider extends Component {
 
     this.handleSlider = this.handleSlider.bind(this);
     this.handleIcon = this.handleIcon.bind(this);
+    this.stopSound = this.stopSound.bind(this)
   }
   stopSound() {
     const {playing, soundOff, audioContext} = this.props;
@@ -53,7 +48,7 @@ class TempoSlider extends Component {
 
     return (
       <section className="section section-bottom tempo-slider-section withcolorfade">
-        <div className="tempo-slider-div">
+        {/* <div className="slider-div tempo-slider-div">
           <IconButton className="minus" onClick={() => this.handleIcon("down")} iconStyle={iconColor}>
             <IconMinus className="material-icon">-</IconMinus>
           </IconButton>
@@ -62,13 +57,27 @@ class TempoSlider extends Component {
             onDragStart={() => this.stopSound()}
             value={this.props.tempo}
             onChange={this.handleSlider}
-            className="tempo-slider"
+            className="slider tempo-slider"
           />
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
             <IconPlus className="material-icon">+</IconPlus>
           </IconButton>
           <SweetSpotBox sweetspot={this.props.sweetspot} />
-        </div>
+        </div> */}
+        <Mugslide
+          min={10}
+          max={120}
+          step={1}
+          defaultValue={40}
+          onDragStart={this.stopSound}
+          value={this.props.tempo}
+          sliderClass="tempo-slider"
+          iconColor={iconColor}
+          handleIcon={this.handleIcon}
+          handleSlider={this.handleSlider}
+          hasSweetSpot="true"
+          sweetspot={this.props.sweetspot}
+        />
       </section>
     )
   }
