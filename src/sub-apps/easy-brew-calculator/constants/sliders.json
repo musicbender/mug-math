@@ -1,5 +1,6 @@
 {
   "strength": {
+    "label": "Strength",
     "min": 1,
     "max": 5,
     "step": 1,
@@ -8,6 +9,7 @@
     "hasSweetSpot": false
   },
   "volume": {
+    "label": "How Many Cups",
     "min": 1,
     "max": 16,
     "step": 1,

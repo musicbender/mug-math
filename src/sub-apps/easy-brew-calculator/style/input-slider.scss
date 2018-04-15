@@ -1,0 +1,25 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+
+.slider-container {
+  $top: 2rem;
+  $offset: 10%;
+  position: relative;
+  height: 13rem;
+  > .name,
+  > .value {
+    position: absolute;
+    top: $top;
+    font-size: $medium-small;
+  }
+  > .name {
+    left: $offset;
+  }
+  > .value {
+    right: $offset;
+    font-weight: bold;
+  }
+  > .slider-div {
+    top: 80%;
+  }
+}

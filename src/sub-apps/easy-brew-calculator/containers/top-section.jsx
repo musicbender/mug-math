@@ -12,14 +12,20 @@ class TopSection extends Component {
     super(props);
     this.handleSlider = this.handleSlider.bind(this);
     this.handleIcon = this.handleIcon.bind(this);
+    this.strengthArray = ["light", "medium", "strong", "robust", "black hole in your cup"]
   }
 
-  getBlock(id) {
+  getTargetId(target) {
+    return target.id ? target.id : target.parentElement.id;
+  }
+
+  getBlock(target) {
+    const id = this.getTargetId(target);
     return id.replace('-slider', '');
   }
 
   handleSlider(e, value) {
-    const block = this.getBlock(e.target.id);
+    const block = this.getBlock(e.target);
     this.props.changeValue(value, block);
   }
 
@@ -41,6 +47,7 @@ class TopSection extends Component {
           onChange={this.handleSlider}
           onIconClick={this.handleIcon}
           value={this.props[slider]}
+          strengthArray={this.strengthArray}
           key={sliders[slider].sliderClass + i}
         />
       );
