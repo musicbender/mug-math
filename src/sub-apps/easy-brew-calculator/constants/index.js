@@ -1,2 +1,6 @@
+export const VALUE_CHANGE = "EZB::VALUE_CHANGE";
+export const VALUE_INCREMENT = "EZB::VALUE_INCREMENT";
+export const VALUE_DECREMENT = "EZB::VALUE_DECREMENT";
+
 export const HELP_OPEN = "EZB::HELP_OPEN";
 export const HELP_CLOSE = "EZB::HELP_CLOSE";

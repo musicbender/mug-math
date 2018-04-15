@@ -24,13 +24,15 @@ class MugSlide extends Component {
       sweetspot,
       hasSweetSpot,
       iconColor,
-      handleIcon,
-      handleSlider
+      onIconClick,
     } = this.props;
+
+    const iconStyle = iconColor || { color: '#000' };
+    const handleDrag = onDragStart || (() => null);
 
     return (
       <div className={`slider-div ${sliderClass}`}>
-        <IconButton className="minus" onClick={() => handleIcon("down")} iconStyle={iconColor}>
+        <IconButton className="minus" onClick={() => onIconClick("down", sliderClass)} iconStyle={iconStyle}>
           <IconMinus className="material-icon">-</IconMinus>
         </IconButton>
         <Slider
@@ -38,12 +40,13 @@ class MugSlide extends Component {
           max={max}
           step={step}
           defaultValue={defaultValue}
-          onDragStart={() => onDragStart()}
+          onDragStart={() => handleDrag()}
           value={value}
-          onChange={handleSlider}
+          onChange={onChange}
           className="slider"
+          id={sliderClass}
         />
-        <IconButton className="plus" ref="plus" onClick={() => handleIcon("up")} iconStyle={iconColor}>
+        <IconButton className="plus" ref="plus" onClick={() => onIconClick("up", sliderClass)} iconStyle={iconStyle}>
           <IconPlus className="material-icon">+</IconPlus>
         </IconButton>
         { hasSweetSpot && <SweetSpotBox sweetspot={sweetspot} /> }

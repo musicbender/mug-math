@@ -6,5 +6,5 @@ export default (props) => {
 
   return (
     <div id="sweetspot" className={sweetspotVisability}></div>
-  )
+  );
 }

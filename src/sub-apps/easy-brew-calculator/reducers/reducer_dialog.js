@@ -1,7 +1,7 @@
-import { HELP_OPEN, HELP_CLOSE } from '../constants/index';
+import { HELP_OPEN, HELP_CLOSE,VALUE_CHANGE, VALUE_INCREMENT, VALUE_DECREMENT } from '../constants/index';
 
 const initialState = {
-    help: false,
+  help: false,
 }
 
 export default function dialog(state = initialState, action) {

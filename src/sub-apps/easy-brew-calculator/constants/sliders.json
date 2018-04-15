@@ -1,0 +1,18 @@
+{
+  "strength": {
+    "min": 1,
+    "max": 5,
+    "step": 1,
+    "defaultValue": 3,
+    "sliderClass": "strength-slider",
+    "hasSweetSpot": false
+  },
+  "volume": {
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "defaultValue": 4,
+    "sliderClass": "volume-slider",
+    "hasSweetSpot": false
+  }
+}
