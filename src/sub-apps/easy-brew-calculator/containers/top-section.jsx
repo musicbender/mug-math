@@ -15,22 +15,17 @@ class TopSection extends Component {
     this.strengthArray = ["light", "medium", "strong", "robust", "black hole in your cup"]
   }
 
-  getTargetId(target) {
-    return target.id ? target.id : target.parentElement.id;
-  }
-
-  getBlock(target) {
-    const id = this.getTargetId(target);
+  getBlockId(id) {
     return id.replace('-slider', '');
   }
 
-  handleSlider(e, value) {
-    const block = this.getBlock(e.target);
+  handleSlider(e, value, slider) {
+    const block = this.getBlockId(slider);
     this.props.changeValue(value, block);
   }
 
   handleIcon(direction, id) {
-    const block = this.getBlock(id);
+    const block = this.getBlockId(id);
     if (direction === "up") {
       this.props.incrementValue(block);
     } else {
