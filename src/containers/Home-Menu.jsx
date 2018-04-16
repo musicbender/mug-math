@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Route, withRouter, Link } from 'react-router-dom';
 import IconCoffee from 'material-ui/svg-icons/maps/local-cafe';
+import IconDrink from 'material-ui/svg-icons/maps/local-drink';
 import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
@@ -29,9 +30,9 @@ class HomeMenu extends Component {
       case "Cold Drip Timer":
         return <IconColdDrip />;
       case "Nerdy Brew Calculator":
-        return <IconCoffee />;
+        return <IconDrink />;
       case "Easy Brew Calculator":
-        return <IconMoisture />;
+        return <IconCoffee />;
       case "Roast Development":
         return <IconFire />;
       case "Roast Moisture":
