@@ -1,0 +1,28 @@
+@import '../../../style/helpers/_variables';
+@import '../../../style/helpers/_mixins';
+
+.ezb-bottom-section {
+  > .block-result-div {
+    transition: background-color $moderate $easeInOut;
+    > [class^="result-block-"] {
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      padding: 2em;
+      > .label {
+        font-size: $medium-small;
+        color: $_200;
+      }
+      > .value {
+        margin: 0;
+        font-size: 4.5em;
+        color: $white;
+      }
+      > .unit {
+        margin-top: 0;
+        font-size: $small;
+        color: $_200;
+      }
+    }
+  }
+}

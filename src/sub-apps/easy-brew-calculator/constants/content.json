@@ -1,0 +1,12 @@
+{
+  "results": {
+    "water": {
+      "label": "Water Amount:",
+      "unit": "oz"
+    },
+    "coffee": {
+      "label": "Coffee Amount:",
+      "unit": "Tbsp"
+    }
+  }
+}

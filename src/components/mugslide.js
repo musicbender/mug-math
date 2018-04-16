@@ -30,7 +30,7 @@ export default ({
   return (
     <div className={`slider-div ${sliderClass}`}>
       <IconButton className="minus" onClick={() => onIconClick("down", sliderClass)} iconStyle={iconStyle}>
-        <IconMinus className="material-icon">-</IconMinus>
+        <IconMinus className="material-icon"></IconMinus>
       </IconButton>
       <Slider
         min={min}
@@ -44,7 +44,7 @@ export default ({
         id={sliderClass}
       />
       <IconButton className="plus" onClick={() => onIconClick("up", sliderClass)} iconStyle={iconStyle}>
-        <IconPlus className="material-icon">+</IconPlus>
+        <IconPlus className="material-icon"></IconPlus>
       </IconButton>
       { hasSweetSpot && <SweetSpotBox sweetspot={sweetspot} /> }
     </div>

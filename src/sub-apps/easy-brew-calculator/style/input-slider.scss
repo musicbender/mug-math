@@ -1,11 +1,10 @@
 @import '../../../style/helpers/_variables';
-@import '../../../style/helpers/_mixins';
 
 .slider-container {
   $top: 2rem;
   $offset: 10%;
   position: relative;
-  height: 13rem;
+  height: 12rem;
   > .name,
   > .value {
     position: absolute;
