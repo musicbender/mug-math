@@ -37,6 +37,8 @@ class HomeMenu extends Component {
         return <IconFire />;
       case "Roast Moisture":
         return <IconMoisture />;
+      case "Roast Bean Color":
+        return <IconMoisture />;
       default:
         break;
     }

@@ -41,6 +41,11 @@
       "id": "moi",
       "title": "Roast Moisture",
       "url": "/roast-moisture-calculator"
+    },
+    {
+      "id": "rct",
+      "title": "Roast Bean Color",
+      "url": "/roast-color-tool"
     }
   ]
 }

@@ -14,6 +14,7 @@ import ColdDripTimer from '../sub-apps/cold-drip-timer/index.jsx';
 import RoastMoistureCalculator from '../sub-apps/roast-moisture-calculator/index.jsx';
 import RoastDevCalculator from '../sub-apps/roast-development-calculator/index.jsx';
 import EasyBrewCalculator from '../sub-apps/easy-brew-calculator/index.jsx';
+import RoastColorTool from '../sub-apps/roast-color-tool';
 import HomeMenu from './Home-Menu.jsx';
 
 let muiTheme;
@@ -55,6 +56,7 @@ class App extends Component {
             <Route path="/sub-apps/roast-moisture-calculator" component={RoastMoistureCalculator} />
             <Route path="/sub-apps/roast-development-calculator" component={RoastDevCalculator} />
             <Route path="/sub-apps/easy-brew-calculator" component={EasyBrewCalculator} />
+            <Route path="/sub-apps/roast-color-tool" component={RoastColorTool} />
           </div>
         </MuiThemeProvider>
       </div>
