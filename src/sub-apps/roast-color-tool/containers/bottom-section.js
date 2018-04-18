@@ -2,58 +2,45 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { soundOn, soundOff, changeTempo } from '../actions/index';
+import { changeColor, incrementColor, decrementColor } from '../actions/index';
 import Mugslide from '../../../components/mugslide';
-import '../style/tempo-slider.scss';
+import colors from '../constants/colors.json';
+import sliderConfig from '../constants/slider.json';
+import { getRGB } from '../util/color';
+import '../style/bottom-section.scss';
 
-class TempoSlider extends Component {
+class BottomSection extends Component {
   constructor(props) {
     super(props);
 
     this.handleSlider = this.handleSlider.bind(this);
     this.handleIcon = this.handleIcon.bind(this);
-    this.stopSound = this.stopSound.bind(this)
-  }
-  stopSound() {
-    const {playing, soundOff, audioContext} = this.props;
-    if(playing) { soundOff(audioContext); }
   }
 
   handleSlider(e, value) {
-    this.props.changeTempo(value);
+    this.props.changeColor(value);
   }
 
-  handleIcon(a) {
-    const { changeTempo, tempo } = this.props;
-    const currentTempo = tempo;
-
-    this.stopSound();
-
-    if (a === "up") {
-      changeTempo(currentTempo + 1);
+  handleIcon(direction) {
+    if (direction === "up") {
+      this.props.incrementColor();
     } else {
-      changeTempo(currentTempo - 1);
+      this.props.decrementColor();
     }
   }
 
   render() {
-    var bgColor = {backgroundColor: this.props.color};
-    var iconColor = {color: this.props.color};
-
+    const color = Object.keys(colors)[this.props.color];
+    const iconColor = { color: getRGB(colors[color]) };
     return (
-      <section className="section section-bottom tempo-slider-section withcolorfade">
+      <section className="section section-bottom color-slider-section withcolorfade">
         <Mugslide
-          min={10}
-          max={120}
-          step={1}
-          defaultValue={40}
-          onDragStart={this.stopSound}
-          value={this.props.tempo}
-          sliderClass="tempo-slider"
+          {...sliderConfig}
+          max={Object.keys(colors).length - 1}
+          value={this.props.color}
           iconColor={iconColor}
           onIconClick={this.handleIcon}
           onChange={this.handleSlider}
-          hasSweetSpot="true"
           sweetspot={this.props.sweetspot}
         />
       </section>
@@ -63,23 +50,20 @@ class TempoSlider extends Component {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-      soundOn,
-      soundOff,
-      changeTempo,
+      changeColor,
+      incrementColor,
+      decrementColor,
     }, dispatch);
 }
 
-function mapStateToProps({coldDripTimer}) {
-  const { tempo, color } = coldDripTimer.speed;
-  const { playing } = coldDripTimer.sound;
-  const { sweetspot } = coldDripTimer.sweetspot;
+function mapStateToProps({roastColorTool}) {
+  const { sweetspot } = roastColorTool.sweetspot;
+  const { color } = roastColorTool.color;
 
   return {
-    tempo,
-    color,
-    playing,
     sweetspot,
+    color
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TempoSlider));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BottomSection));

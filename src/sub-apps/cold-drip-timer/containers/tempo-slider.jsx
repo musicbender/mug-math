@@ -37,8 +37,7 @@ class TempoSlider extends Component {
   }
 
   render() {
-    var bgColor = {backgroundColor: this.props.color};
-    var iconColor = {color: this.props.color};
+    const iconColor = { color: this.props.color };
 
     return (
       <section className="section section-bottom tempo-slider-section withcolorfade">

@@ -1,10 +1,10 @@
 import React from 'react';
-import '../style/tempo-view.scss';
+import '../style/level-view.scss';
 
-export default (props) => {
+export default ({value}) => {
   return (
     <div className="roast-level-view-div">
-      <span className="roast-level-number">City +</span>
+      <span className="roast-level-number">{value}</span>
     </div>
   )
 }

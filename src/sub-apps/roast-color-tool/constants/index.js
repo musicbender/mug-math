@@ -2,3 +2,6 @@ export const HELP_OPEN = 'RCT::HELP_OPEN';
 export const HELP_CLOSE = 'RCT::HELP_CLOSE';
 export const SWEETSPOT_ON = 'RTC::SWEETSPOT_ON';
 export const SWEETSPOT_OFF = 'RTC::SWEETSPOT_OFF';
+export const COLOR_CHANGE = 'RTC::COLOR_CHANGE';
+export const COLOR_INCREMENT = 'RTC::COLOR_INCREMENT';
+export const COLOR_DECREMENT = 'RTC::COLOR_DECREMENT';

@@ -6,6 +6,8 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import DropdownMenu from './components/dropdown-menu.jsx';
+import TopSection from './containers/top-section';
+import BottomSection from './containers/bottom-section';
 import barStyle from '../../style/app-bar-style';
 import { openApp, closeApp } from '../../actions/index';
 import { openHelp, closeHelp, onSweetspot, offSweetspot } from './actions/index';
@@ -40,7 +42,7 @@ class RoastColorTool extends Component {
       <div className="transition-item">
         <div className="sub-app preload">
           <AppBar
-            title="Cold Drip Coffee Timer"
+            title="Roast Bean Color"
             titleStyle={barStyle.title}
             style={barStyleObj}
             className="app-bar"
@@ -63,7 +65,8 @@ class RoastColorTool extends Component {
               />
             }
           />
-
+          <TopSection />
+          <BottomSection />
         </div>
         <Link to="/" className="sub-app-outter" />
       </div>
