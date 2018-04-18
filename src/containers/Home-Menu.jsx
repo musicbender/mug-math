@@ -7,6 +7,7 @@ import IconDrink from 'material-ui/svg-icons/maps/local-drink';
 import IconColdDrip from 'material-ui/svg-icons/action/opacity';
 import IconMoisture from 'material-ui/svg-icons/image/blur-on';
 import IconFire from 'material-ui/svg-icons/social/whatshot';
+import IconTonality from 'material-ui/svg-icons/image/tonality';
 import { loadedMenu, toggleInfoMenu } from '../actions/index';
 import MenuItem from '../components/menu-item.jsx';
 import TopBar from '../components/top-bar.js';
@@ -38,7 +39,7 @@ class HomeMenu extends Component {
       case "Roast Moisture":
         return <IconMoisture />;
       case "Roast Bean Color":
-        return <IconMoisture />;
+        return <IconTonality />;
       default:
         break;
     }
