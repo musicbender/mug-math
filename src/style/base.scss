@@ -79,7 +79,7 @@ h1 {
     overflow: hidden;
     background-color: transparent;
     animation: appOpen $speed $easeOut;
-    animation-delay: $speed;
+    animation-delay: 675ms;
     animation-fill-mode: forwards;
     z-index: 10;
     @media (min-width: 767px) {

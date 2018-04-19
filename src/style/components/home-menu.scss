@@ -15,6 +15,11 @@
     $height: $menu-height;
     height: $height;
   }
+  @media only screen and (min-width: 767px) {
+    width: $app-width;
+    height: $app-height;
+    transform: translate(0,6%);
+  }
 }
 
 
@@ -32,6 +37,9 @@
   transition: $app-speed;
   transition-delay: 100ms;
   z-index: 1;
+  @media only screen and (min-width: 767px) {
+    width: 25%;
+  }
 
   .menu-item-link {
     @extend %full-position;
@@ -52,7 +60,7 @@
     background-color: rgba($white, 1);
     will-change: transform;
     transform: translate(-50%,-50%) scale(1);
-    transition: transform $app-speed $easeInOut;
+    animation: circle-shrink $app-speed linear;
     > p {
       transform: translateX(-9999px)
     }
@@ -67,7 +75,7 @@
       color: $black !important;
       opacity: 1 !important;
       transform: translate(-50%, -50%) scale(1);
-      animation: icon-show $app-speed $easeInOut;
+      animation: icon-show 300ms $easeInOut;
   }
 
   .menu-text {
@@ -80,11 +88,10 @@
       text-transform: uppercase;
       will-change: transform, opacity;
       -webkit-transform: translate(-50%,-50%) rotate(75deg);
-      transform: translate(-50%,-50%) rotate(75deg);
+      transform: translate(-50%,-50%) rotate(75deg) scale(1);
       animation: svg-text-show $app-speed linear;
       animation-fill-mode: forwards;
       z-index: -1;
-
       &:after {
         content: 'x';
         width: 4em;
@@ -117,7 +124,6 @@
 @media only screen and (min-width: 767px) {
   .menu-item-container {
     $offset: 4em;
-
     &:nth-child(1) { transform: translate( $column-1 , $row-1 + $offset ); }
     &:nth-child(2) { transform: translate( $column-2 , $row-1 + $offset ); }
     &:nth-child(3) { transform: translate( $column-3 , $row-1 + $offset ); }
@@ -141,17 +147,17 @@
   .menu-circle {
     box-shadow: none;
     will-change: transform;
-    transform: scale(18);
-    transition: transform $app-speed $easeIn;
+    animation: circle-grow $app-speed linear;
+    animation-fill-mode: forwards;
   }
 
   svg:not(.menu-text) {
-    animation: icon-hide 50ms $easeIn;
+    animation: icon-hide 75ms $easeIn;
     animation-fill-mode: forwards;
   }
 
   .menu-text {
-    animation: svg-text-hide $app-speed linear;
+    animation: svg-text-hide 325ms linear;
     animation-fill-mode: forwards;
   }
 }
@@ -179,30 +185,42 @@
 @keyframes svg-text-hide {
   0% {
     opacity: 1;
-    transform: translate(-50%,-50%) rotate(75deg);
+    transform: translate(-50%,-50%) rotate(75deg) scale(1);
   }
-  33% {
+  12% {
+    opacity: 0.3;
+    transform: translate(-50%,-50%) rotate(75deg) scale(0.6);
+  }
+  24% {
     opacity: 0.1;
-    transform: translate(-25%, -33%) rotate(145deg);
+    transform: translate(-50%,-50%) rotate(75deg) scale(0.3);
   }
   100% {
     opacity: 0;
-    transform: translate(-46%, -14%) rotate(215deg);
+    transform: translate(-50%,-50%) rotate(75deg) scale(0);
   }
 }
 
 @keyframes svg-text-show {
   0% {
     opacity: 0;
-    transform: translate(-46%, -14%) rotate(215deg);
+    transform: translate(-50%,-50%) rotate(75deg) scale(0);
   }
-  10% {
-    opacity: 0.1;
-    transform: translate(-25%, -33%) rotate(145deg);
+  30% {
+    opacity: 1;
+    transform: translate(-50%,-50%) rotate(75deg) scale(0.55);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(-50%,-50%) rotate(75deg) scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%,-50%) rotate(75deg) scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%,-50%) rotate(75deg);
+    transform: translate(-50%,-50%) rotate(75deg) scale(1);
   }
 }
 
@@ -245,39 +263,28 @@
     transform: translate(-50%, -50%) scale(1);
   }
   100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
   }
+}
+
+@keyframes circle-grow {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  25% { transform: translate(-50%, -50%) scale(0.8); }
+  45% { transform: translate(-50%, -50%) scale(0.8); }
+  100% { transform: translate(-50%, -50%) scale(18); }
+}
+
+@keyframes circle-shrink {
+  0% { transform: translate(-50%, -50%) scale(18); }
+  40% { transform: translate(-50%, -50%) scale(0.8); }
+  60% { transform: translate(-50%, -50%) scale(1.2); }
+  80% { transform: translate(-50%, -50%) scale(0.92); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes close-z {
   0% { z-index: 31; }
   99% { z-index: 31; }
   100% { z-index: 1; }
-}
-
-
-/******* MEDIA QUERIES *******/
-
-@media only screen and (min-width: 960px) {
-  .menu-circle {
-    width: $circle-size;
-    height: $circle-size;
-  }
-  .menu-text {
-    top: 50%;
-    left: 50%;
-    font-size: 1em;
-  }
-}
-
-@media only screen and (min-width: 767px) {
-  .menu-container {
-    width: $app-width;
-    height: $app-height;
-    transform: translate(0,6%);
-  }
-  .menu-item-container {
-    width: 25%;
-  }
 }
