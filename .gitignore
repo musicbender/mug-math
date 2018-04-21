@@ -51,3 +51,4 @@ jspm_packages
 dist
 server/config.js
 server/.foreverignore
+server/nginx

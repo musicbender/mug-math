@@ -21,7 +21,10 @@ const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 app.set('view engine', 'pug');
 app.set('views', viewDir);
 
-app.use(express.static(path.join(__dirname, 'public/')));
+if (!process.env.LIVE) {
+  app.use(express.static(path.join(__dirname, 'public/')));
+}
+
 app.use(bodyParser.json());
 
 app.get('*', (req, res) => {

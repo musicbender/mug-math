@@ -17,7 +17,6 @@ class TopSection extends Component {
     for (let i = 0; i < rdevBlock.length; i++) {
       let input = rdevBlock[i].getElementsByTagName('input')[0];
       input.setAttribute('readonly', 'true');
-      console.log(input);
     }
   }
 

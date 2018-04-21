@@ -9,18 +9,17 @@
   max-width: 40em;
   height: auto;
   margin: 0 auto;
-  background-color: $white;
+  background-color: $black;
   transition: background-color $app-speed-slow $easeOut;
   @media (max-width: 380px) {
-    top: 78%;
+    top: 80%;
   }
   @media (min-width: 767px) {
-    top: 91%;
+    top: 95%;
   }
   > h5 {
-    @include stripes-3();
     font-size: $medium;
-    color: $_800;
+    color: $_100;
     padding: 1em 1em 1em 0.7em;
     width: 100%;
     margin: 0;
@@ -28,16 +27,9 @@
   }
   > p {
     font-size: $small;
-    color: $_600;
+    color: $_100;
     line-height: 1.6;
-    padding: 2em 1em;
-    margin: 0;
-  }
-  &.title-false {
-    @include stripes-2();
     padding: 1em;
-    p {
-      background-color: $white;
-    }
+    margin: 0;
   }
 }
