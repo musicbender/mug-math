@@ -19,12 +19,12 @@
   "subApps": [
     {
       "id": "brw",
-      "title": "Nerdy Brew Calculator",
+      "title": "Nerdy Brew Ratio",
       "url": "/brew-calculator"
     },
     {
       "id": "ezb",
-      "title": "Easy Brew Calculator",
+      "title": "Easy Brew Ratio",
       "url": "/easy-brew-calculator"
     },
     {

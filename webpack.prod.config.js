@@ -61,8 +61,8 @@ const config = {
       },
       externals: [
         '/',
-        'static/offline.html',
-        'static/manifest.json',
+        '/offline.html',
+        '/manifest.json',
         'https://fonts.googleapis.com/icon?family=Material+Icons',
         'https://fonts.googleapis.com/css?family=Slabo+27px'
       ]

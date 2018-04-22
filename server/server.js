@@ -21,9 +21,9 @@ const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
 app.set('view engine', 'pug');
 app.set('views', viewDir);
 
-if (!process.env.LIVE) {
-  app.use(express.static(path.join(__dirname, 'public/')));
-}
+// if (!process.env.LIVE) {
+//   app.use(express.static(path.join(__dirname, 'public/')));
+// }
 
 app.use(bodyParser.json());
 
@@ -72,6 +72,6 @@ if (!process.env.LIVE) {
 } else {
   app.listen(config.LIVE_PORT, err => {
     if (err) { console.error(err); }
-    console.log(`MugMath now live at ${config.LIVE_PORT}!`);
+    console.log(`MugMath now liiive at ${config.LIVE_PORT}!`);
   });
 }

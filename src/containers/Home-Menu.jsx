@@ -28,17 +28,17 @@ class HomeMenu extends Component {
 
   getIcon(item) {
     switch (item) {
-      case "Cold Drip Timer":
+      case "cdt":
         return <IconColdDrip />;
-      case "Nerdy Brew Calculator":
+      case "brw":
         return <IconDrink />;
-      case "Easy Brew Calculator":
+      case "ezb":
         return <IconCoffee />;
-      case "Roast Development":
+      case "dev":
         return <IconFire />;
-      case "Roast Moisture":
+      case "moi":
         return <IconMoisture />;
-      case "Roast Bean Color":
+      case "rct":
         return <IconTonality />;
       default:
         break;
@@ -58,7 +58,7 @@ class HomeMenu extends Component {
           id={item.id}
           open={this.props.open}
         >
-          {this.getIcon(item.title)}
+          {this.getIcon(item.id)}
           <p>{item.id}</p>
         </MenuItem>
       );
