@@ -16,7 +16,7 @@ body.roast-dev > div:nth-last-child(-n+2):not(#app) > div > div > div > div > di
 
   /* minute/seconds numbers at top */
   > div:first-child {
-    // padding: 2em 0 !important;
+    padding: 2em 0 !important;
 
     > div {
       transform: translateY(-16px);

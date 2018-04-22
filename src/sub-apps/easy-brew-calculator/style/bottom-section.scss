@@ -9,6 +9,9 @@
       width: 50%;
       height: 100%;
       padding: 2em;
+      @media (min-width: $tablet-width) {
+        padding: 2em 12%;
+      }
       > .label {
         font-size: $medium-small;
         color: $_200;
